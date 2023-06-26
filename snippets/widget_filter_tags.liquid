@@ -1,0 +1,16 @@
+<div class="sidebarBlock custom">
+    {% if blog.tags.size > 0 %}
+        <div class="blog-filter">
+            <label class="blog-filter__label select-label hide" for="BlogTagFilter">{{ 'collections.filters.title_tags' | t }}</label>
+            <div class="select-group">
+                <select id="BlogTagFilter" aria-describedby="a11y-refresh-page-message a11y-selection-message">
+                    <option value="{{ blog.url }}">{{ 'blogs.article.all_topics' | t }}</option>
+                    {% for tag in blog.all_tags %}
+                        <option value="{{ blog.url }}/tagged/{{ tag | handleize }}" {% if current_tags contains tag %}selected{% endif %}>{{ tag }}</option>
+                    {% endfor %}
+                </select>
+                {% render 'icon-chevron-down' %}
+            </div>
+        </div>
+    {% endif %}
+</div>

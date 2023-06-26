@@ -1,0 +1,20 @@
+<div class="container">
+     <div class="page page-product-detail">
+        <div class="page-content">
+                      {% section 'product-template' %}
+          
+           {% section 'frequently-by-together' %}
+            <div class="">
+                {% section 'tab-horizontal-2' %}
+              {% section 'product_bottom_details' %}
+               {% if product.id != 7410828837041 %}
+                {% section 'product-recommendations' %}
+                 {% endif %}
+            </div>
+          </div>
+    </div>
+</div>
+ {% if product.id != 7410828837041 %}
+{% section 'recently-viewed-products' %}
+   {% endif %}
+

@@ -1,0 +1,18 @@
+<div class="modal fade halo_modal" id="newsletter-success-modal" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-quickview">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div class="success">
+                	<a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+	                <i class="fa fa-check" aria-hidden="true"></i>
+	                <span>{% render 'multilang' with settings.newssletter_success_text %}</span>
+                </div>
+                <div class="error" style="display: none;">
+                	<a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+	                <i class="fa fa-check" aria-hidden="true"></i>
+	                <span>{% render 'multilang' with settings.newssletter_error_text %}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

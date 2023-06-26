@@ -1,0 +1,44 @@
+<div class="header-Mobile-item text-left">
+    <div class="items item--hamburger">
+        <a class="mobileMenu-toggle" href="javascript:void(0)" data-mobile-menu-toggle="menu" aria-label="menu">
+            <span class="mobileMenu-toggleIcon">Toggle menu</span>
+        </a>
+    </div>
+   <!-- <div class="items item--searchMobile">
+        <a class="navUser-action" href="javascript:void(0)" data-search="quickSearch" aria-label="search">
+            <div class="navUser-icon">
+                {% render 'icon-search' %}
+                {% render 'icon-close' %}
+            </div>
+        </a>
+    </div>-->
+</div>
+<div class="header-Mobile-item text-center">
+    <div class="items">
+    </div>
+</div>
+<div class="header-Mobile-item text-right">
+    {% if shop.customer_accounts_enabled %}
+        <div class="items item--account">
+            {% if customer %}
+                <a class="navUser-action" href="{{ routes.account_url }}" aria-label="account">
+                    {% render 'icon-user' %}
+                </a>
+            {% else %}
+                <a class="navUser-action" href="javascript:void(0)" data-login-toggle aria-label="account">
+                    {% render 'icon-user' %}
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="items item--cart themevale_cart" style="margin-left: 10px;">
+        <a class="navUser-action" data-cart-preview data-options="align:right" href="javascript:void(0)" aria-label="cart" style="padding-right: 10px;">
+            {% render 'icon-cart' %}
+            <span class="countPill cart-quantity" data-cart-count>{{ cart.item_count }}</span>
+        </a>
+       <a class="navUser-action" data-rent-cart-preview data-options="align:right" href="javascript:void(0)"  aria-label="cart">
+                                        {% render 'icon-rent-cart' %}
+                                       <span class="rentcountPill cart-quantity" data-rent-cart-count></span>
+                                    </a>
+    </div>
+</div>

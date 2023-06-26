@@ -1,0 +1,125 @@
+<!--link rel="dns-prefetch" href="//6cc1-183-82-121-175.ngrok.io/widget/shopify.js">
+<link rel="preconnect" href="//6cc1-183-82-121-175.ngrok.io/widget/shopify.js"-->
+<style>
+.rentity-loaded{
+  display: none;
+}
+.rentity-loading {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+.btn-rent-remove {
+  right: 0;
+  top: 50%;
+  font-size: 30px;
+  position: absolute;
+  transform: translateY(-50%);
+  color: #999999;
+}
+  
+.rentity-add-to-rent-cart-btn .action-buttons{
+  display: flex;
+  margin-top:8px;
+}
+
+.rentity-add-to-rent-cart-btn  .rental-option{
+  font-weight: bold;
+  float:left;
+}
+
+.rentity-add-to-rent-cart-btn .action-buttons button{
+  border-radius: 3px;
+  font-size: 14px;
+  display: inline-block;
+  vertical-align: middle;
+  width: calc(100%);
+  padding:5px;
+  cursor: pointer;
+  border: 1px solid #e47066;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.rentity-add-to-rent-cart-btn .btn--primary {
+  color: #e47066;
+  border-color: #e47066;
+  background-color: #ffffff;
+}
+
+.rentity-add-to-rent-cart-btn .btn--primary:not([disabled]):hover, 
+.btn--primary:focus {
+  color: #fff;
+  border-color: #c9564c;
+  background-color: #c9564c;
+}
+.rentity-add-to-rent-cart-btn .btn--primary:not([disabled]):hover .st0{
+  color: #fff;
+  fill: #fff;
+}
+
+.rentity-add-to-rent-cart-btn .rentCartIcon{
+  display:inline-block;
+  vertical-align:middle;
+}
+  
+.rentity-sm-screen .rentity-add-to-rent-cart-btn .rentCartIcon{
+  display: none;
+}
+.rentity-sm-screen .rentity-add-to-rent-cart-btn .action-buttons button{
+  padding:8px;
+}  
+.rentity-add-to-rent-cart-btn .btn--secondary {
+  color: #e47066;
+  border-color: #e47066;
+  background-color: #fff;
+}
+.open_Rent_Cart .overlay_background {
+  opacity: 1;
+  visibility: visible;
+}
+
+.halo_mobileNavigation#rent-cart-mobile {
+  left: auto;
+  right: -101%;
+}
+.open_Rent_Cart .halo_mobileNavigation#rent-cart-mobile {
+  right: 0;
+}
+.summary-row{
+	border: 0 !important;
+    padding: 8px 0 8px  !important;
+  	margin-bottom: 0px !important;
+}
+.summary-total{
+	border-top: 1px solid #e2e4e8 !important;
+  	padding: 8px 0 8px !important;
+}
+
+.rentity-capsule .label{
+    background-color: #e47066;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;  
+}
+.rentity-sm-screen .rentity-capsule .label{
+    padding: 0px 3px;
+    border-radius: 2px;  
+}
+</style>
+<input id="r_sid" type="hidden" value="{{ customer.email }}"/>
+<script src="{{ 'rentity.js' | asset_url }}"></script>

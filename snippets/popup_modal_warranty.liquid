@@ -1,0 +1,21 @@
+{% if section.settings.warranty_product and product.metafields.halo['warranty'] != blank %}
+    <div class="modal fade halo_modal" id="warranty_product" role="dialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% if section.settings.warranty_header != blank %}
+                        <h5 class="modal-title">
+                            {% render 'multilang' with section.settings.warranty_header %}
+                        </h5>
+                    {% endif %}
+                    <a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                       {{ product.metafields.halo['warranty'] }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

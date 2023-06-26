@@ -1,0 +1,65 @@
+{% comment %}
+    Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% unless template == 'index' %}
+<div class="breadcrumb-wrapper">
+    <ul class="breadcrumb">
+        <li class="item">
+            <a href="{{ routes.root_url }}" aria-label="home">{{ 'general.breadcrumbs.home' | t }}</a>
+            {% render 'icon-chevron-right' %}
+        </li>
+        {% if template contains 'product' %} 
+            {% if collection %}
+                {% if collection.handle %}
+                    {% capture url %}{{ routes.collections_url }}/{{ collection.handle }}{% endcapture %}
+                    <li class="item">
+                        <span>{{ collection.title | link_to: url }}</span>
+                        {% render 'icon-chevron-right' %}
+                    </li>
+                {% endif %}
+            {% endif %}
+            <li class="item">
+                <span>{{ product.title }}</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+        {% elsif template == 'cart' %}
+            <li class="item">
+                <span>{{ 'general.breadcrumbs.cart' | t }}</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+        {% elsif template == 'cart.rentity' %}
+            <li class="item">
+                <span>Rent Cart</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+        {% elsif template == 'article' %}
+            <li class="item">
+                <span>{{ blog.title | link_to: blog.url }}</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+            <li class="item">
+                <span>{{ article.title }}</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+        {% else %}
+            <li class="item">
+                <span>{{ page_title }}</span>
+                {% render 'icon-chevron-right' %}
+            </li>
+        {% endif %}
+    </ul>
+  
+    {% if template contains 'product' %} 
+    {% elsif template == 'cart' %}
+        <h1 class="page-heading">{{ 'general.breadcrumbs.cart' | t }}</h1>
+  {% elsif template == 'cart.rentity' %}
+        <h1 class="page-heading">Rent Cart</h1>
+      {% elsif template == 'search' %}
+        <h1 class="page-heading"><span class="visually-hidden">{{ 'general.search.heading' | t: count: search.results_count }}:</span>
+        {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}</h1>
+  
+  
+    {% endif %}
+</div>
+{% endunless %}

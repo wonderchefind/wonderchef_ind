@@ -1,0 +1,39 @@
+{% comment %}
+    MailChimp is the go-to newsletter service for Shopify.
+    Use the link below to find your MailChimp "form action"
+    and insert it in your site settings.
+
+    MailChimp newsletter integration and requirement:
+     - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+
+{% endcomment %}
+
+{%- capture newsletter_form_action -%}/contact{%- endcapture -%}
+{%- capture newsletter_form -%}
+
+{%- form 'customer', action: newsletter_form_action, class: 'input-group', id: 'contact_form_2' -%}
+{% if form.posted_successfully? %}
+{% if newsletter-form == 'password' %}
+    <p class="password-newsletter-success">{{message}}</p>
+{% else %}
+    <script>
+        $(document).ready(function(){
+            var newsletterSuccessPopup = (function(){
+                var popup = $('#newsletter-success-modal');
+                popup.modal('show')
+                $.cookie('emailSubcribeModal', 'closed', {
+                    expires: 1,
+                    path: '/'
+                });
+            })();
+        })
+    </script>
+{% endif %}
+    {% endif %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input class="input-group-field form-control" type="email" name="contact[email]" aria-label="Email Address" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" required="required">
+        <input class="btn btn--primary" type="submit" value="{{ 'general.newsletter_form.submit' | t }}">
+{%- endform -%}
+{% endcapture %}
+
+{{ newsletter_form }}

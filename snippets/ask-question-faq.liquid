@@ -1,0 +1,226 @@
+  <dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1"> {{ product.metafields['product']['ask_question1'] }}</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block"> {{ product.metafields['product']['ask_answer1'] }} </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2"> {{ product.metafields['product']['ask_question2'] }} </a></dt>
+    <dd class="acc_container">
+        <div class="block"> {{ product.metafields['product']['ask_answer2'] }}</div>
+    </dd>
+  </div>
+</dl>
+
+
+
+
+
+<!--
+<li class=" askquestion_tab" id="tab-5"> 
+  
+       <h2 class="heading_description">Frequently Asked Questions</h2>
+        
+        <div id="accordion">
+        <div class="card card-2">
+            <div class="card-header" id="heading-1569828417275">
+                <button class="title collapsed" data-toggle="collapse" data-target="#1569828417275" aria-expanded="true" aria-controls="1569828417275">
+                    {{ product.metafields['product']['ask_question1'] }}
+                </button>
+                
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewbox="0 0 498.98 284.49"><defs></defs><path class="cls-1" d="M80.93 271.76A35 35 0 0 1 140.68 247l189.74 189.75L520.16 247a35 35 0 1 1 49.5 49.5L355.17 511a35 35 0 0 1-49.5 0L91.18 296.5a34.89 34.89 0 0 1-10.25-24.74z" transform="translate(-80.93 -236.76)"></path></svg>
+            </div>
+            <div id="1569828417275" class="collapse" aria-labelledby="heading-1569828417275" data-parent="#accordion">
+                <div class="card-body">
+                    
+                   {{ product.metafields['product']['ask_answer1'] }}
+                </div>
+            </div>
+        </div>
+    
+
+    
+        <div class="card card-2">
+            <div class="card-header" id="heading-1569828968822">
+                <button class="title collapsed" data-toggle="collapse" data-target="#1569828968822" aria-expanded="true" aria-controls="1569828968822">
+                    {{ product.metafields['product']['ask_question2'] }}
+                </button>
+                
+                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down" viewbox="0 0 498.98 284.49"><defs></defs><path class="cls-1" d="M80.93 271.76A35 35 0 0 1 140.68 247l189.74 189.75L520.16 247a35 35 0 1 1 49.5 49.5L355.17 511a35 35 0 0 1-49.5 0L91.18 296.5a34.89 34.89 0 0 1-10.25-24.74z" transform="translate(-80.93 -236.76)"></path></svg>
+            </div>
+            <div id="1569828968822" class="collapse" aria-labelledby="heading-1569828968822" data-parent="#accordion">
+                <div class="card-body">
+                    {{ product.metafields['product']['ask_answer2'] }}
+                    </div>
+            </div>
+        </div>
+   
+    
+</div>
+  !-->      
+       
+       
+       
+       
+               
+        
+        
+       <!-- 
+<li class=" askquestion_tab" id="tab-5"> 
+  
+       <h2 class="heading_description">Frequently Asked Questions</h2>
+        <div class="details_description">
+          <dl class="faqAccordion">
+            {% if product.metafields.product.ask_question1 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question1'] }}</button></dt>
+            {% endif %}
+            {% if product.metafields.product.ask_answer1 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer1'] }} </p>
+              </div>
+            </dd>
+             {% endif %}
+            {% if product.metafields.product.ask_question_bullet_1 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question_bullet_1'] }}</button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer_bullet_1 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+               {{ product.metafields['product']['ask_answer_bullet_1'] }}
+              </div>
+            </dd>
+             {% endif %}
+            {% if product.metafields.product.ask_question2 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question2'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer2 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+               <p>{{ product.metafields['product']['ask_answer2'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+             {% if product.metafields.product.ask_question3 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question3'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer3 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer3'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+              {% if product.metafields.product.ask_question4 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question4'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer4 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer4'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+          </dl>
+        </div>
+  
+      </li>
+ !-->
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

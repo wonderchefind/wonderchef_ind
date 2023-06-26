@@ -1,0 +1,877 @@
+{% assign button_color = "#e31e24" %} 
+{% assign text_color = "#fff" %} 
+
+<style>
+     .txpress-wrapper{
+       width: 100%;
+       float: unset;
+       max-width: 450px;
+       padding-left: 20px;
+       margin-top: 25px;
+     }
+     .xpress-grid{
+       float: right;
+       width: 50%;
+     }
+     .txpress-wrapper .te-input-wrapper{
+       display: flex;
+     }
+     .txpress-wrapper .redeem-coupon{
+       margin-bottom: 0px;
+       font-size:13px;
+       min-height: 40px;
+       max-width: 270px;
+       border-radius: 2px 0 0 2px;
+       text-align: left;
+       padding: 10px 18px;
+       border: 1px solid #949494;
+       background-color: #fff;
+       color: #000;
+       line-height: 1.2;
+       padding-left:35px;
+     }
+     .close-xpress-modal{
+       cursor:pointer;
+     }
+     .redeem-btn{
+       height: 40px;
+       min-height: 40px;
+       line-height: 21px;
+       margin-left: 10px;
+       -webkit-user-select: none;
+       user-select: none;
+       -webkit-appearance: none;
+       -moz-appearance: none;
+       appearance: none;
+       display: inline-block;
+       width: auto;
+       text-decoration: none;
+       text-align: center;
+       vertical-align: middle;
+       cursor: pointer;
+       background:{{button_color}};
+       border: 1px solid transparent;
+       border-radius: 2px;
+       padding: 8px 15px;
+       color: {{text_color}};
+       font-style: normal;
+      
+       text-transform: inherit;
+       letter-spacing: 0.08em;
+       white-space: normal;
+       font-size: 14px;
+     }
+     .redeem-btn.disabled {
+       background: #b6b6b6;
+       background-color: #b6b6b6 !important;
+     }
+     .ticket-heading{
+       font-size: 14px;
+       font-weight:600;
+       text-transform: inherit;
+       padding-bottom: 15px;
+       display: block;
+     }
+     .multi-redeem{
+       display:block;
+       font-size: 14px;
+       text-decoration: underline;
+       padding-top: 8px;
+       padding-left: 5px;
+       cursor:pointer;
+       float: right;
+     }
+     .txpress-error,.redeem-error,.multiredeem-error,.voucher-err{
+       display:none;
+       font-size: 14px;
+       color: #ff0000;
+       padding-left: 5px;
+       padding-top: 5px;
+     }
+   
+     .txpress-error{
+       margin-bottom:0px;
+     }
+   
+     .success-msg,.response-msg{
+       display:none;
+       font-size: 14px;
+       color: #4caf50;
+       float:inherit;
+       padding-left: 5px;
+       padding-top: 5px;
+     }
+     .response-msg.txError{
+       color:#f00;
+     }
+     .response-msg.txSuccess{
+       color: #4caf50;
+     }
+     .xpress-modal{
+       display: none;
+       position: fixed;
+       z-index: 1000;
+       left: 0;
+       top: 0;
+       margin-top: 0 !Important;
+       border-radius: unset !Important;
+       max-width: 100% !Important;
+       width: 100% !Important;
+       height: 100% !Important;
+       overflow: auto;
+       background-color: rgba(0,0,0,0.6);
+       color: #2f343b;
+       font-size: 17px;
+       line-height: 2em;
+     }
+     .xpress-modal-content{
+       background-color:#fff;
+       margin: auto;
+       padding: 0px;
+       width: 30%;
+       min-width: 500px;
+       min-height: 164px;
+       padding: 20px;
+       transform: translateY(35vh);
+       height: auto;
+     }
+     .xpress-header{
+       position: absolute;
+       right: 12px;
+       top: 2px;
+       font-size: 17px;
+     }
+     .redemption-wrapper{
+       display:none;
+       text-align:center;
+     }
+     .authenticate-title,.redemption-title{
+       font-size: 16px;
+       font-weight: 600;
+       display: block;
+       text-align: center;
+       padding-bottom: 15px;
+     }
+     input.auth-pin{
+       background-image: url('https://cdn.shopify.com/s/files/1/0012/0658/3356/files/key.svg?60349');
+       background-repeat: no-repeat;
+       background-size: 15px 15px;
+       background-position: 8px;
+       padding: 10px 15px 10px 35px;
+     }
+     .amount-wrapper{
+      display:block;
+      width:100%;
+      margin: 0 auto;
+    }
+    .ticket-input{
+      margin-bottom: 0px;
+      font-size: 13px;
+      min-height: 40px;
+      width: 55%;
+      max-width: 100%;
+      border-radius: 2px 0 0 2px;
+      text-align: left;
+      padding: 10px 18px;
+      border: 1px solid #383838;
+      background-color: #fff;
+      color: #383838;
+      line-height: 1.2;
+    }
+    input.amount-redeem,input.multi_coupon_amount {
+      background-image: url('https://cdn.shopify.com/s/files/1/0012/0658/3356/files/wallet_3.svg?60345');
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      background-position: 8px;
+      padding:10px 15px 10px 35px;
+    }
+    .add-coupon{
+      display: block;
+      text-align: left;
+      margin-top:2px;
+      font-size: 14px;
+      font-weight:700;
+      float:left;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .multiple-wrapper{
+      display:none;
+    }
+    .multiple-wrapper .multi-couponbox{
+      display: block;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .multi_coupon{
+      width: 100%;
+      margin: 0 auto;
+    }
+    .flex-coupon{
+      display:flex;
+    }
+    .flex-coupon input{
+      margin-bottom:15px;
+    }
+    .remove-coupon{
+      display:none;
+      text-align: right;
+      text-decoration:underline;
+      width: 100%;
+      font-size: 13px;
+      cursor:pointer;
+      position: absolute;
+      top: 0;
+    }
+    .cloned .remove-coupon{
+      display:block;
+    }
+    .multiple-boxes, .replicate-boxes{
+      position: relative;
+      margin-bottom: 15px;
+      padding-bottom: 0px;
+    }
+    .replicate-boxes{
+      border-bottom: 2px dashed #878787;
+    }
+    .replicate-boxes:last-child{
+      border:none;
+    }
+    .replicate-boxes.cloned{
+      padding-bottom:20px;
+    }
+    .replicate-boxes.cloned:last-child{
+      padding-bottom:0px;
+    }
+    .multi-red-btn{
+      text-align:right;
+    }
+    .input-item{
+      margin-bottom:15px;
+    }
+    #response-wrapper{
+      text-align:center;
+    }
+    #try-btn{
+      display:none;
+    }
+    .voucher-details{
+      font-size: 15px;
+      padding-bottom: 5px;
+      display: block;
+    }
+    input[name="multi_coupon"],input[name="coupon_box"]{
+      background-image: url('https://cdn.shopify.com/s/files/1/0015/0765/5739/files/coupon.svg?233');
+      background-repeat: no-repeat;
+      background-size: 15px 15px;
+      background-position: 8px;
+      padding:10px 15px 10px 35px;
+      margin-bottom:0px;
+    }
+    .multiple-boxes .balance-div{
+      display:flex;
+      justify-content: flex-end;
+    }
+    .balance-text,.balance-info{
+      width: 100%;
+      font-size: 14px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .balance-color{
+      color: #2196F3;
+    }
+    .balance-btn{
+      margin-bottom: 0;
+      cursor:pointer;
+      width: 50%;
+      display: block;
+      text-align: right;
+      font-size: 13px;
+      letter-spacing:1px;
+      background: #fff;
+      text-decoration: underline;
+      color: #000;
+    }
+    .voucher-bottom{
+      margin-bottom: 0px;
+    }
+    .balance-text,.balance-info{
+      display:none;
+    }
+    .balance-info{
+      margin-left:5px;
+      margin-top:5px;
+    }
+    .check-balance{
+      display: block;
+      font-size: 14px;
+      text-decoration: underline;
+      padding-top: 8px;
+      padding-left: 5px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .balance-div{
+      display: flex;
+      justify-content: space-between;
+    }
+    .voucher-box{
+      display:flex;
+      position:relative;
+    }
+    @media only screen and (max-width: 600px) {
+      .xpress-modal-content{
+        width:95%;
+        min-width:95%;
+      }  
+      .amount-wrapper{
+        display:block;
+        width:100%;
+      }
+      .txpress-wrapper .te-input-wrapper{
+        display:block;
+      }
+      .txpress-wrapper{
+        padding-top:35px;
+        float: unset;
+        width: 100%;
+        margin-bottom:20px;
+      }
+      .xpress-grid{
+        float: unset;
+        width: 100%;
+      }
+      .txpress-wrapper .redeem-coupon{
+        max-width: 100%;
+        width: 100%;
+      }
+      #coupon-redeem{
+        margin: 0 auto;
+        display: block;
+        margin-top: 10px;
+      }
+      .ticket-input{
+        width:100%;
+      }
+      .multiple-wrapper .multi-couponbox{
+        width:100%;
+      }
+      .xpress-modal-content{
+        transform: translateY(20vh);
+      }
+      .balance-div{
+        display:block;
+        padding-top: 10px;
+        padding-bottom: 15px;
+      }
+      .check-balance{
+        text-align:center;
+      }
+      .multi-redeem{
+        float:unset;
+        text-align:center;
+      }
+    }
+  </style>
+  <div class="txpress-wrapper">
+    <span class="ticket-heading">Redeem Ticket Xpress vouchers here. For redemption of other gift cards, please proceed to checkout.</span>
+    <div class="te-input-wrapper">
+      <input type="text" name="coupon_box" class="redeem-coupon input-group__field" value="" placeholder="Enter Ticket Xpress Code">
+      <button type="button" id="coupon-redeem" class="btn button redeem-btn">Redeem Now</button>
+    </div>
+    <span class="coupon-bal balance-info">Balance : <span class="balance-color">Rs. <span class="singlegetbalance"></span></span></span>
+    <div class="balance-div">
+      <span class="check-balance" id="check-bal">Check Balance</span>
+      <span id="link-multi-redeem" class="multi-redeem" style="">Redeem more than one gift card ?</span>
+    </div>
+    <p class="txpress-error"></p>
+    <span class="success-msg">Voucher redeemed successfully, the discount will be applied automatically on checkout.</span>
+  
+  
+    <div id="discountModal" class="xpress-modal">
+      <div class="xpress-modal-content">
+        <div class="xpress-header">
+          <span class="close-xpress-modal">X</span>
+        </div>
+        <div class="xpress-body">
+          <div class="redemption-wrapper">
+            <span class="redemption-title">Enter Details</span>
+            <div class="amount-wrapper">
+              <div class="input-item">
+                <input type="number" name="coupon_amount" class="amount-redeem ticket-input input-group__field" value="" placeholder="Enter amount to redeem">
+              </div>
+              <div class="input-item">
+                <input type="text" name="auth_pin" class="auth-pin ticket-input input-group__field" value="" placeholder="Enter Pin">
+              </div>
+              <p class="redeem-error"></p>
+              <button type="button" id="final-redeem" class="btn button redeem-btn">Redeem Now</button>
+            </div>
+          </div>
+          <div class="multiple-wrapper">
+            <span class="redemption-title">Enter Ticket Xpress Coupons</span>
+            <div class="multi-couponbox">
+              <div class="multiple-boxes">
+                <div class="replicate-boxes">
+                  <div class="voucher-box">
+                    <span class="voucher-details">Voucher Details</span>
+                    <p class="remove-coupon">Remove</p>
+                  </div>
+                  <div class="flex-coupon voucher-bottom">
+                    <input type="text" name="multi_coupon" class="multi_coupon ticket-input input-group__field" value="" placeholder="Enter Gift Voucher Code">
+                  </div>
+                  <span class="voucher-err"></span>
+  
+                  <div class="balance-div">
+                    <span class="balance-text">Balance : <span class="balance-color">Rs. <span class="getbalance"></span></span></span>
+                    <span class="balance-btn">Check Balance</span>
+                  </div>
+  
+                  <div class="flex-coupon">
+                    <input type="number" name="multi_coupon_amount" class="multi_coupon_amount ticket-input input-group__field" value="" placeholder="Enter Amount to Redeem">
+                  </div>
+                  <div class="flex-coupon">
+                    <input type="text" name="multi_auth_pin" class="multi_coupon auth-pin ticket-input input-group__field" value="" placeholder="Enter Authentication Pin">
+                  </div>
+                  <p class="redeem-error"></p>
+                </div>
+              </div>
+              <p class="multiredeem-error"></p>
+              <div class="multi-red-btn">
+                <span class="add-coupon">Add More</span>
+                <button type="button" id="final-multi-redeem" class="btn button redeem-btn">Redeem All</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="response-wrapper" class="xpress-modal">
+      <div class="xpress-modal-content">
+        <div class="xpress-header">
+          <span class="close-xpress-modal">X</span>
+        </div>
+        <div class="xpress-body">
+          <p class="response-msg"></p>
+          <button id="txpress-checkout" type="button" class="btn button redeem-btn txpress-checkout">Go to Checkout</button>
+          <button id="try-btn" type="button" class="btn button redeem-btn">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    initTicket = function(){
+      var pin_check = false;
+      var partial_check = false;
+      var redeem_coupon = [];
+      var auth_pin = [];
+      var transamount = [];
+      var multi_redeem = false;
+      $.ajax({
+        url:"https://ticketxpress.marmeto.com/admin/getSetting/{{shop.permanent_domain}}", 
+        type:'GET',
+        success:function(data) {
+        if(data.enable_pin == 'true'){
+        pin_check = true;
+      }
+              if(data.enable_partial == 'true'){
+        partial_check = true;
+      }
+    }
+    });
+  
+    function httpGet(theUrl) {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.open("GET", theUrl, false); // false for synchronous request
+      xmlHttp.send(null);
+      return xmlHttp.responseText;
+    }
+  
+    var getCheckout = httpGet("/checkout");
+    var codeLength = $(getCheckout).find('.tag .reduction-code .reduction-code__text');
+  
+    if(codeLength.length >0 ){
+      var getCodeVal = $(codeLength).text();
+      if(getCodeVal.startsWith('TX')){
+        $('[name="coupon_box"]').val(getCodeVal);
+        $('.txpress-error').hide();
+        $('.success-msg').html("Voucher redeemed successfully. The discount will be applied automatically on the checkout page.").addClass("txSuccess").show();
+      }
+    }
+  
+    $(document).on('click', '.add-coupon', function(){
+      var getLen = $('.replicate-boxes').length;
+      var getBundle = $('.replicate-boxes')[getLen-1];
+      $(getBundle).clone().addClass("cloned").appendTo( ".multiple-boxes" );
+      var newBox = $('.replicate-boxes.cloned').last();
+      $(newBox).find('input').val("");
+      $(newBox).find('.balance-text').hide();
+      $(newBox).find('.voucher-err').hide();
+      var getLatestLen = $('.replicate-boxes').length;
+      if(getLatestLen > 1){
+        $('.remove-coupon').show();
+      }
+      else{
+        $('.remove-coupon').hide();
+      }
+    });
+    $(document).on('click', '.remove-coupon', function(){
+      $(this).parents('.replicate-boxes').remove();
+      var getLength = $('.replicate-boxes').length;
+      if(getLength > 1){
+        $('.remove-coupon').show();
+      }
+      else{
+        $('.remove-coupon').hide();
+      }
+    });
+    $(document).on('click', '#coupon-redeem', function(){
+      $('.redemption-wrapper input[name="coupon_amount"]').val("");
+      $('.redemption-wrapper input[name="auth_pin"]').val("");
+      $('.redeem-error').hide();
+      var redeemVal = $('input[name="coupon_box"]').val();
+      if ( redeemVal != "" && redeemVal != null){
+        if (redeemVal.match(/^[a-zA-Z0-9_]*$/)) {
+          multi_redeem = false;
+          if(pin_check){
+            $('.redemption-wrapper').show();
+            if(!partial_check){
+              $('.redemption-wrapper input[name="coupon_amount"]').hide();
+            }
+            $('.multiple-wrapper').hide();
+            showModal();
+          }
+          else if(partial_check){
+            $('.redemption-wrapper').show();
+            $('.redemption-wrapper input[name="auth_pin"]').hide();
+            $('.multiple-wrapper').hide();
+            showModal();
+          }
+          else{
+            voucherValidate($(this));
+          }
+        }
+        else{
+          $('.txpress-error').html("Please enter a valid voucher.").show();
+        }
+      }
+      else{
+        $('.txpress-error').html("Please enter a voucher.").show();
+      }
+    });
+    function showModal(){
+      $(window).scrollTop(0);
+      $('#discountModal').show();
+    }
+    function hideModal(){
+      $('#discountModal').hide();
+      $('#response-wrapper').hide();
+    }
+    function voucherValidate(clickedParam){
+      auth_pin = [];
+      redeem_coupon = [];
+      var getbtnVal = $(clickedParam).text();
+      $(clickedParam).addClass("disabled").text("Redeeming...");
+      if(multi_redeem == true){
+        $('[name="multi_coupon"]').each(function() {
+          redeem_coupon.push($(this).val());
+        });
+        $('[name="multi_auth_pin"]').each(function() {
+          auth_pin.push($(this).val());
+        });
+      }
+      else{
+        auth_pin.push($('input[name="auth_pin"]').val());
+        redeem_coupon.push($('input[name="coupon_box"]').val());
+      }
+      $.ajax({
+        url:"https://ticketxpress.marmeto.com/customer/validate", 
+        type:'POST',
+        data:{
+          shop_url:"{{shop.permanent_domain}}",
+          voucher:redeem_coupon,
+          pin:auth_pin
+        },
+        success:function(data) {
+          transamount = [];
+          var successFlag = true;
+          $(clickedParam).removeClass("disabled").text(getbtnVal);
+          if(data.length > 1){
+            $(data).each(function(i) {
+              var getParent = $('.replicate-boxes')[i];
+              if(data[i].message !== "Success"){
+                $(getParent).find('.redeem-error').html(data[i].message).show();
+                successFlag = false;
+              }
+              else{
+                if(partial_check){
+                  transamount.push($(getParent).find('[name="multi_coupon_amount"]').val());
+                }
+                else{
+                  transamount.push(data[i].balance);
+                }
+              }
+            });
+            if(successFlag == true){
+              voucherRedeem(redeem_coupon,auth_pin,transamount,clickedParam);
+            }
+            else{
+              console.log('Some vouchers are not valid');
+            }
+          }
+          else {
+            if(data[0].message == "Success"){
+              if(multi_redeem == true){
+                $('[name="multi_coupon_amount"]').each(function() {
+                  transamount.push($(this).val());
+                });
+              }
+              else{
+                if(partial_check){
+                  transamount.push($('.redemption-wrapper input[name="coupon_amount"]').val());
+                }
+                else{
+                  transamount.push(data[0].balance);
+                }
+              }
+              voucherRedeem(redeem_coupon,auth_pin,transamount,clickedParam);
+            }
+            else{
+              if(multi_redeem == true){
+                $('.multiredeem-error').html("The Voucher is invalid.").show();
+                showModal();
+              }
+              else if(multi_redeem == false && (pin_check == true || partial_check == true)){
+                $('.redeem-error').html(data[0].message).show();
+                showModal();
+              }
+              else{
+                $('.txpress-error').html(data[0].message).show();
+              }
+  
+            }
+          }
+  
+        }
+      });
+    }
+    function voucherRedeem(vredeem_coupon,vauth_pin,vtransamount,clickelem){
+  
+      $(clickelem).addClass("disabled");
+      var getclickVal = $(clickelem).text();
+      $(clickelem).text("Redeeming...");
+  
+      $.ajax({
+        url:"https://ticketxpress.marmeto.com/customer/redeem", 
+        type:'POST',
+        data:{
+          shop_url:"{{shop.permanent_domain}}",
+          voucher:vredeem_coupon,
+          pin: vauth_pin,
+          amount:vtransamount
+        },
+        success:function(data) {
+          if(data[0].message == "Success"){
+            if($('form[action="/cart"]').length > 0){
+              $('form[action="/cart"]').append('<input type="hidden" name="discount" value="'+data[0].coupon+'" >')
+            }
+            else{
+              $('[name="discount"]').val(data[0].coupon);
+            }
+            $('.response-msg').html("Voucher Redeemed Successfully. This discount will be applied automatically on the checkout page.").addClass("txSuccess").show();
+            $('.txpress-checkout').show();
+            $('#try-btn').hide();
+            $('#response-wrapper').show();
+            $('#discountModal').hide();
+            $('.success-msg').show();
+          }
+          else{
+            $('#discountModal').hide();
+            $('.txpress-checkout').hide();
+            $('#try-btn').show();
+            $('.response-msg').html(data[0].message).addClass("txError").show();
+            $('#response-wrapper').show();
+          }
+          //$(clickelem).removeClass("disabled").text(getclickVal);
+        }
+      });
+    }
+    $(document).on('click', '#final-redeem', function(){
+      var validData = true;
+      if(pin_check){
+        if(!$('input[name="auth_pin"]').val()){
+          validData = false;
+        }
+      }
+      if(partial_check){
+        if(!$('input[name="coupon_amount"]').val()){
+          validData = false;
+        }
+      }
+      if(validData == true){
+        voucherValidate($(this));
+      }
+      else{
+        $('.redeem-error').html('Please fill up all the voucher details.').show();
+      }
+    });
+  
+    $(document).on('click', '#final-multi-redeem', function(){
+      var validateData = true;
+      for(i = 0; i < $('.replicate-boxes').length; i++){
+        var getBox = $('.replicate-boxes')[i];
+  
+        if(partial_check){
+          if(!$(getBox).find('input[name="multi_coupon_amount"]').val()){
+            validateData = false;
+          }
+        }
+  
+        if(pin_check){
+          if(!$(getBox).find('input[name="multi_auth_pin"]').val()){
+            validateData = false;
+          }
+        }
+        if(!$(getBox).find('input[name="multi_coupon"]').val()){
+          validateData = false;
+        }
+        if(validateData == false){
+          $(getBox).find('.redeem-error').text("Please fill up all the voucher details.").show();
+        }
+      };
+      if(validateData){
+        voucherValidate($(this));
+      }
+    });
+  
+    $(document).on('click', '#txpress-checkout', function(){
+      var cookieDiscount = $('[name="discount"]').val();
+      window.location.href = "/checkout?discount="+$('[name="discount"]').val();
+    });
+  
+    $(document).on('click', '#link-multi-redeem', function(){
+      multi_redeem = true;
+      $('.multiple-wrapper').show();
+      $('.redemption-wrapper').hide();
+      $('.voucher-err').hide();
+      $('.redeem-error').hide();
+      if(!pin_check){
+        $('[name="multi_auth_pin"]').hide();
+      }
+      if(!partial_check){
+        $('[name="multi_coupon_amount"]').hide();
+      }
+      if($(".replicate-boxes:not(.cloned)").length <= 0){
+        $('.replicate-boxes.cloned').first().removeClass('cloned');
+      }
+      $('.replicate-boxes.cloned').remove();
+      $('.remove-coupon').hide();
+      $('.multiple-boxes input').val("");
+      showModal();
+    });
+  
+  
+    $(document).on('click', '.balance-btn', function(){
+      var balancebtn = $(this);
+      var redemptionVoucher = $(this).parents('.replicate-boxes').find('input[name="multi_coupon"]').val();
+      if(redemptionVoucher == ""){
+        $(balancebtn).parents('.replicate-boxes').find('.voucher-err').html('Please enter the correct voucher details.').show();
+      }
+      else if (redemptionVoucher.match(/^[a-zA-Z0-9_]*$/)) {
+        $(balancebtn).text("Checking...");
+        var redeemArr = [];
+        redeemArr.push(redemptionVoucher);
+        var pinArr =[];
+        pinArr.push("");
+
+        $.ajax({
+          url:"https://ticketxpress.marmeto.com/customer/validate", 
+          type:'POST',
+          data:{
+            shop_url:"{{shop.permanent_domain}}",
+            voucher:redeemArr,
+            pin:pinArr
+          },
+          success:function(data) {
+            if(data[0].message == "Success"){
+              $(balancebtn).parent().find('.getbalance').text(data[0].balance);
+              $(balancebtn).parent().find('.balance-text').show();
+              $(balancebtn).parents('.replicate-boxes').find('.voucher-err').html("").hide();
+            }
+            else{
+              $(balancebtn).parents('.replicate-boxes').find('.voucher-err').html(data[0].message).show();
+            }
+            $(balancebtn).text("Check Balance");
+          },
+          error:function(err) {
+            $(balancebtn).text("Check Balance");
+          }
+        });
+      }
+      else{
+        $(balancebtn).parents('.replicate-boxes').find('.voucher-err').html('Please enter the correct voucher details.').show();
+      }
+    });
+  
+    $(document).on('click', '#check-bal', function(){
+      var getCheckBal = $(this);
+      var redemptionCode = $('[name="coupon_box"]').val();
+      if(redemptionCode == ""){
+        $('.txpress-error').text('Please enter a voucher.').show();
+      }
+      else if (redemptionCode.match(/^[a-zA-Z0-9_]*$/)) {
+        var redeemArr = [];
+        $(getCheckBal).text("Checking...");
+        redeemArr.push(redemptionCode);
+        var pinArr =[];
+        pinArr.push("");
+
+        $.ajax({
+          url:"https://ticketxpress.marmeto.com/customer/validate", 
+          type:'POST',
+          data:{
+            shop_url:"{{shop.permanent_domain}}",
+            voucher:redeemArr,
+            pin:pinArr
+          },
+          success:function(data) {
+            if(data[0].message == "Success"){
+              $('.singlegetbalance').text(data[0].balance);
+              $('.coupon-bal').show();
+              $('.txpress-error').hide();
+            }
+            else{
+              $('.txpress-error').html(data[0].message).show();
+            }
+            $(getCheckBal).text("Check Balance");
+          },
+          error:function(err){
+            $(getCheckBal).text("Check Balance");
+          }
+        });
+      }
+      else{
+        $('.txpress-error').text('Please enter a valid voucher.').show();
+      }
+    });
+  
+  
+    $(document).on('click', '.close-xpress-modal', function(){
+      hideModal();
+    });
+  
+    $(document).on('click', '#try-btn', function(){
+      hideModal();
+    });
+    }
+    if(window.jQuery){
+      initTicket();
+    }
+    else{   
+      var script = document.createElement('script'); 
+      document.head.appendChild(script);  
+      script.type = 'text/javascript';
+      script.src = "//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js";
+      script.onload = initTicket;
+    }
+  </script>

@@ -1,0 +1,411 @@
+{% assign productDescription = product.description | split:"<!-- split -->"%}
+<div class="productView-description">
+    <ul class="nav tab-horizontal" role="tablist">
+        {% if section.settings.display_product_detail_description %}
+          {% if productDescription[0] !=blank %}
+      <li class="nav-item tab">
+                <a href="#tab1" class="tab-title {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %} active {% endif %}" role="tab" data-toggle="tab" aria-controls="tab1">
+                  {% render 'multilang' with section.settings.product_description_title %}
+                </a>
+            </li>
+            {% endif %}
+    {%  if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}
+       <li class="nav-item tab">
+                <a href="#tab2" class="tab-title {% if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}active{% endif %}" role="tab" data-toggle="tab" aria-controls="tab2">
+                  Product Details
+                </a>
+            </li>
+      {% endif %}
+       {% if productDescription[1] !=blank %}
+                   <li class="nav-item tab">
+                <a href="#tab3" class="tab-title {% if productDescription[2] == blank and productDescription[0] == blank %} active {% endif %}" role="tab" data-toggle="tab" aria-controls="tab3">
+                  Specification
+                </a>
+            </li>
+     {% endif %}
+          {% if product.tags contains 'FAQ' %}
+       <li class="nav-item tab ">
+                <a href="#tab4" class="tab-title " role="tab" data-toggle="tab" aria-controls="tab4">
+                    FAQ
+                </a>
+            </li>
+     {% endif %}
+       <li class="nav-item tab">
+                <a href="#tab5" class="tab-title" role="tab" data-toggle="tab" aria-controls="tab5">
+                    REVIEWS
+                </a>
+            </li>
+        {% endif %}
+
+       <!-- {% for block in section.blocks %}
+            {% if block.settings.type_tab == 'custom' %}
+                {% assign content = block.settings.product_tab_content_2 %}
+                {% if product.metafields.halo[content] != blank %}
+                    <li class="nav-item tab">
+                        <a href="#{{ block.id }}" class="tab-title" role="tab" data-toggle="tab" aria-controls="{{ block.id }}">
+                            {% render 'multilang' with block.settings.product_tab_title %}
+                        </a>
+                    </li>
+                {% endif %}
+            {% else %}
+                <li class="nav-item tab">
+                    <a href="#{{ block.id }}" class="tab-title" role="tab" data-toggle="tab" aria-controls="{{ block.id }}">
+                        {% render 'multilang' with block.settings.product_tab_title %}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}-->
+    </ul>
+    <div class="tab-content">
+        {% if section.settings.display_product_detail_description %}
+           
+   
+      <div id="tab1" class="tab-description tab-pane fade {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %}show active{% endif %}" role="tabpanel">
+                <div class="toggle-title">
+                    <a class="toggleLink collapsed" data-toggle="collapse" href="#tab1_mobile">
+                        <span class="page-heading">{% render 'multilang' with section.settings.product_description_title %}</span>
+                       
+                     
+                      {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                <div class="toggle-content collapse {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %}show{% endif %}" id="tab1_mobile">
+                    {% assign des = product.description %}
+                  {{ productDescription[0] }}
+                  
+            
+                </div>
+            </div>
+       
+      <div id="tab2" class="tab-pane fade {% if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}show active{% endif %}" role="tabpanel">
+                 <div class="toggle-title">
+                    <a class="toggleLink " data-toggle="collapse" href="#tab2_mobile">
+                        <span class="page-heading">Product Details</span>
+                       
+                     
+                      {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                
+                <div class="toggle-content collapse show" id="tab2_mobile">
+                 
+                  <div class="aplus">
+                    {{ productDescription[2] }}
+                  </div>
+                    {% assign des = product.description %}
+                  
+                      {% if product.tags contains 'new-description' and  product.tags contains 'phase_2'%}
+       		{% include 'product_description_phase_two'%} 
+        {% elsif product.tags contains 'new-description' %}
+       		{% include 'product_description'%} 
+  
+        {% endif %}
+       <!-- <img width="100%" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/A_-last-module_REVISED.jpg?v=1679995285">
+                  <hr> -->
+                 
+                
+                    <div>
+                       
+                     
+                                          
+                    </div>
+                    
+                  
+                </div>
+            </div>
+      
+      <div id="tab3" class="tab-pane fade {% if productDescription[2] == blank and productDescription[0] == blank %}show active{% endif %}" role="tabpanel">
+               {% if productDescription[1] !=blank %} <div class="toggle-title">
+                    <a class="toggleLink collapsed" data-toggle="collapse" href="#tab3_mobile">
+                        <span class="page-heading">Specification</span>
+                       
+                     
+                      {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                 {% endif %}
+                <div class="toggle-content collapse {% if productDescription[2] == blank and productDescription[0] == blank %}show{% endif %}" id="tab3_mobile">
+                   {{ productDescription[1] }}
+                                    
+               
+                    <div>
+                       
+                     
+                                          
+                    </div>
+                    
+                  
+                </div>
+            </div>
+      <div id="tab4" class="tab-pane fade" role="tabpanel">
+                 {% if product.tags contains 'FAQ' %} <div class="toggle-title ">
+                    <a class="toggleLink collapsed " data-toggle="collapse" href="#tab4_mobile">
+                        <span class="page-heading ">FAQ</span>
+                       
+                     
+                      {% render 'icon-chevron-up' %}
+                    </a>
+                </div> {% endif %}
+                <div class="toggle-content collapse " id="tab4_mobile">
+                    {% assign des = product.description %}
+                    <div >
+                       
+         {% if product.tags contains 'faq_nutri-blend-400' %} {% include 'faq-nutriblend-2jar' %}{% endif %}
+         {% if product.tags contains 'toaster faq' %} {% include 'faq_toasters' %}{% endif %}
+         {% if product.tags contains 'nutri chop faq' %} {% include 'faq_nutri_chop' %}{% endif %}
+          {% if product.tags contains 'FAQ Die-Cast' %} {% include 'faq_Die_cast_stand_mixer' %}{% endif %}
+         {% if product.id == 6843387216049 %} {% include 'faq_razor_knife_block_set' %}{% endif %}
+        {% if product.id == 2775145087076 %} {% include 'faq_infrared_cooktop' %}{% endif %}
+        {% if product.tags contains 'Granite Non-stick faq' %} {% include 'faq_granite_non_stick' %}{% endif %}
+         {% if product.tags contains 'Ceramide Non-stick faq' %} {% include 'faq_ceramide_non_stick' %}{% endif %}
+        {% if product.tags contains 'Turbo Chopper faq' %} {% include 'faq_turbo_chopper' %}{% endif %}
+        {% if product.tags contains 'Cold Press Juicer faq' %} {% include 'faq_cold_press_juicer' %}{% endif %}
+        {% if product.tags contains 'Ebony' %} {% include 'faq_hard_anodized_cookware' %}{% endif %}
+         {% if product.tags contains 'String Chopper faq' %} {% include 'faq_string_chopper' %}{% endif %}
+       {% if product.tags contains 'Hand Mixure FAQ' %} {% include 'faq_hand_mixers' %}{% endif %}
+        {% if product.tags contains 'Single Wall Bottle FAQ' %} {% include 'faq_flasks_bottles' %}{% endif %}
+        {% if product.id == 2775041015908 %} {% include 'faq_smart_fruits_and_vegetables_peeler' %}{% endif %}
+          {% if product.tags contains 'Nigella 3Ply Generic FAQ' %} {% include 'faq_nigella_3_ply_generic' %}{% endif %}
+           {% if product.tags contains 'Nigella 3Ply Casserole FAQ' %} {% include 'faq_nigella_3_ply_casserole' %}{% endif %}
+         {% if product.tags contains 'Nigella 3Ply Sauce Pan FAQ' %} {% include 'faq_nigella_3_ply_sauce_pan' %}{% endif %}
+           {% if product.tags contains 'Nigella 3Ply Fry Pan FAQ' %} {% include 'faq_nigella_3_ply_fry_pan' %}{% endif %}
+           {% if product.tags contains 'Nigella 3Ply Kadhai FAQ' %} {% include 'faq_nigella_3_ply_kadhai' %}{% endif %}
+          {% if product.tags contains 'Nutri Pot FAQ' %} {% include 'faq_nutri_pot' %}{% endif %}
+        {% if product.tags contains 'Sumo Vietri Glory FAQ' %} {% include 'faq_sumo_vietri_glory' %}{% endif %}
+         {% if product.tags contains 'faq_nutri-blend-600' %} {% include 'faq_nutriblend_600' %}{% endif %}
+         {% if product.tags contains 'faq_nutri-blend-1000' %} {% include 'faq_nutriblend_1000' %}{% endif %}
+         {% if product.tags contains 'faq_nutri-blend-300' %} {% include 'faq_nutriblend_300' %}{% endif %}
+        {% if product.tags contains 'Royal Velvet faq' %} {% include 'faq_royal_velvet_non_stick_cookware' %}{% endif %}
+        {% if product.tags contains 'Caesar Non-stick FAQ' %} {% include 'faq_caesar_nonstick' %}{% endif %}
+        {% if product.tags contains 'Stanton FAQ' %} {% include 'faq_stanton_3_ply_cookware' %}{% endif %}
+        {% if product.tags contains 'SKT FAQ' %} {% include 'faq_skt' %}{% endif %}
+         {% if product.tags contains 'kettle FAQ' %} {% include 'faq_kettle' %}{% endif %}
+		{% if product.tags contains 'Pressure Cooker FAQ' %} {% include 'faq_pressure_cooker' %}{% endif %}
+        {% if product.tags contains 'Celebration FAQ' %} {% include 'faq_celebration' %}{% endif %}
+         {% if product.tags contains 'Pressure Cooker Taurus Ultima FAQ' %} {% include 'faq_pressure_cooker_taurus_and_ultima' %}{% endif %}
+         {% if product.tags contains 'Platinum Non-stick FAQ' %} {% include 'faq_platinum_nonstick' %}{% endif %}
+         {% if product.tags contains 'Capri Mixer Grinder FAQ' %} {% include 'faq_capri_mixer_grinder' %}{% endif %}
+		 {% if product.tags contains 'Coffee Maker FAQ' %} {% include 'faq_coffee_maker' %}{% endif %}
+         {% if product.tags contains 'Double Wall' %} {% include 'faq_double_walled_bottles' %}{% endif %}
+          {% if product.tags contains 'Air Fryer FAQ' %} {% include 'faq_air_fryer' %}{% endif %}
+        {% if product.tags contains 'Cast Iron FAQ' %} {% include 'faq_cast_iron' %}{% endif %}
+        {% if product.tags contains 'Egg Boiler FAQ' %} {% include 'faq_egg_boiler' %}{% endif %}
+        {% if product.tags contains 'OTG FAQ' %} {% include 'faq_otg' %}{% endif %}
+          {% if product.tags contains 'BEAN TO CUP BREW FAQ' %} {% include 'faq_bean_to_cup_brew' %}{% endif %}
+            {% if product.tags contains 'CAPSULE MACHINE FAQ' %} {% include 'faq_capsule_machine' %}{% endif %}
+          {% if product.tags contains 'FRENCH PRESS COFFEE MAKER FAQ' %} {% include 'faq_french_Press_coffee_maker' %}{% endif %}
+            {% if product.tags contains 'BREW COFFEE MAKER FAQ' %} {% include 'faq_brew_coffee_maker' %}{% endif %}
+          {% if product.tags contains 'PRONTO COFFEE MAKER FAQ' %} {% include 'faq_pronto_coffee_maker' %}{% endif %}
+          {% if product.tags contains 'REGALIA FACM FAQ' %} {% include 'faq_regalia_FACM' %}{% endif %}
+          {% if product.tags contains 'REGALIA COFFEE GRINDER FAQ' %} {% include 'faq_regalia_coffee_grinder' %}{% endif %}
+          {% if product.tags contains 'NON-STICK COOKWARE FAQ' %} {% include 'faq_non-stick-cookware' %}{% endif %}
+          {% if product.tags contains 'ZIPPY CHOPPER FAQ' %} {% include 'faq_zippy_chopper' %}{% endif %}
+            {% if product.tags contains 'CHARCOAL BBQ FAQ' %} {% include 'faq_charcoal_bbq' %}{% endif %}
+           {% if product.tags contains 'DURALIFE DIE CAST FAQ' %} {% include 'faq_duralife_die_cast' %}{% endif %}
+                      
+                      
+ <!-- non stick faq !-->                     
+{%if product.tags contains 'askquestion' %} {% include 'ask-question-faq' %} {% endif %}
+    
+                                </div>
+                    
+                   
+                </div>
+            </div>
+      
+      <div id="tab5" class="tab-pane fade" role="tabpanel">
+                <div class="toggle-title">
+                    <a class="toggleLink collapsed" data-toggle="collapse" href="#tab5_mobile">
+                        <span class="page-heading">CUSTOMER REVIEWS</span>
+                       
+                     
+                      {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                <div class="toggle-content {% comment %}collapse{% endcomment %} " id="tab5_mobile">
+                   
+      	{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+    
+       
+                    <div>
+                       
+                     
+                                          
+                    </div>
+                    
+                  
+                </div>
+            </div>
+      
+        {% endif %}
+
+        {% for block in section.blocks %}
+            {% if block.settings.type_tab == 'custom' %}
+                {% assign content = block.settings.product_tab_content_2 %}
+                
+                {% if product.metafields.halo[content] != blank %}
+                    <div id="{{ block.id }}" class="tab-pane fade" role="tabpanel">
+                        <div class="toggle-title">
+                            <a class="toggleLink collapsed" data-toggle="collapse" href="#{{ block.id }}_mobile">
+                                <span class="page-heading">{% render 'multilang' with block.settings.product_tab_title %}</span>
+                                {% render 'icon-chevron-up' %}
+                            </a>
+                        </div>
+                        <div class="toggle-content collapse" id="{{ block.id }}_mobile">
+                            {% assign des2 = product.metafields.halo[content] %}
+                            <div>
+                           
+                                {{ des2 }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div id="{{ block.id }}" class="tab-pane fade" role="tabpanel">
+                    <div class="toggle-title">
+                        <a class="toggleLink collapsed" data-toggle="collapse" href="#{{ block.id }}_mobile">
+                            <span class="page-heading">{% render 'multilang' with block.settings.product_tab_title %}</span>
+                            {% render 'icon-chevron-up' %}
+                        </a>
+                    </div>
+                    <div class="toggle-content collapse" id="{{ block.id }}_mobile">
+                        {% assign des3 = block.settings.product_tab_content %}
+                        <div>
+                         
+                            {{ des3 }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<div class="product_services mobile">
+              
+                {% if section.settings.show_contacts %}
+                    <div class="contact">
+                        <div class="image-contact">
+                            {% if section.settings.contacts_image != blank %}
+                                {{ section.settings.contacts_image | img_url: '65x65' | img_tag: block.settings.image.alt, 'image' }}
+                            {% endif %}
+                        </div>
+                        <div class="content-contact">
+                            <p class="text">{{ section.settings.contact_title }}</p>
+                            <div class="link">
+                                <a class="number-phone" href="tel:{{ section.settings.contact_phone }}">{{ section.settings.contact_phone }}</a>
+                                {% if section.settings.ask_an_expert %}
+                                <a data-toggle="modal" data-target="#ask_an_expert" href="javascript:void(0)">
+                                    {{ section.settings.ask_an_expert_title }}
+                                    {% render 'icon-chevron-right' %}
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if section.settings.show_services %}
+                    <ul class="services">
+                        {% for i in (1..4) %}
+                            {% capture cap_icon %}services_icon_{{ i }}{% endcapture %}
+                            {% assign icon = section.settings[cap_icon] %}
+                            {% capture cap_title %}services_title_{{ i }}{% endcapture %}
+                            {% assign title = section.settings[cap_title] %}
+                            {% capture cap_description %}services_description_{{ i }}{% endcapture %}
+                            {% assign description = section.settings[cap_description] %}
+                            <li class="item">
+                                <div class="service-item">
+                                    <div class="icons"> 
+                                        {{ icon }}
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">{{ title }}</h4>
+                                        <p class="description">{{ description }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+           
+            
+{% schema %}
+{
+    "name": "Product Tabs",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Product Tab"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_detail_description",
+            "label": "Enable Product Description?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "product_description_title",
+            "label": "Product Description Title",
+            "default": "Description",
+            "info": "This is the CarosTheme's default tab"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product_tab",
+            "name": "Another Product Tab",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Product Tab"
+                },
+                {
+                    "type": "select",
+                    "id": "type_tab",
+                    "label": "Type Tab",
+                    "default": "all",
+                    "options": [
+                        {
+                            "value": "all",
+                            "label": "Show For All Product"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Only Show For This Product"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "product_tab_title",
+                    "label": "Product Tab Title",
+                    "default": "Product Tab"
+                },
+                {
+                    "type": "html",
+                    "id": "product_tab_content",
+                    "label": "Product Tab Content",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>",
+                    "info": "Show For All Product"
+                },
+                {
+                    "type": "text",
+                    "id": "product_tab_content_2",
+                    "label": "Product Tab Content 2",
+                    "info": "Only Show For This Product - Please install app Metafields Guru and setting like Document"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}
+
+<script>
+  $(".toggleLink").click(function(){
+    $('.toggle-content').collapse('hide');
+});
+  
+</script>

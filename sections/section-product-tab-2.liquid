@@ -1,0 +1,266 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+
+{% case section.settings.column %}
+    {% when 1 %}
+        {%- assign column = '1' -%}
+    {% when 2 %}
+        {%- assign column = '2' -%}
+    {% when 3 %}
+        {%- assign column = '3' -%}
+    {% when 4 %}
+        {%- assign column = '4' -%}
+    {% when 5 %}
+        {%- assign column = '5' -%}
+{% endcase %}
+
+{%- assign carousel = carousel | default: section.settings.collection_layout -%}
+{%- assign sort_by = sort_by | default: section.settings.collection_sort -%}
+{%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
+{%- assign dots = dots | default: section.settings.carousel-dots -%}
+
+
+<div class="halo-section {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-type="collection-tabs">
+    <div class="container">
+        <div class="halo-collection-tab tab-special">
+            {% if section.settings.title != blank %}
+                <div class="section-header">
+                    <h2>{% include 'multilang' with section.settings.title %}</h2>
+                </div>
+            {% endif %}
+            <ul class="nav nav-tabs" role="tablist">
+                {% for block in section.blocks %}
+                <li class="nav-item">
+                    <a class="nav-link {% if forloop.first %}active{% endif %}" data-row="{{ section.settings.limit_product }}" href="#{{ block.id }}" data-toggle="tab" role="tab" data-href="/collections/{{ block.settings.collection }}?view=json&sort_by={{ sort_by }}">
+                        {% include 'multilang' with block.settings.title_tab %}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="tab-content">
+                {% for block in section.blocks %}
+                    <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="{{ block.id }}" role="tabpanel">
+                        <div class="halo-row halo-row-custom column-{{ column }} {%if carousel == 'carousel' %}collection-carousel{% endif %}" 
+                            {% if carousel == 'carousel' %}
+                                data-slick='{
+                                    "dots": true,
+                                    "arrows": false,
+                                    "infinite": true,
+                                    "mobileFirst": true,
+                                    "adaptiveHeight": true,
+                                    "slidesToShow": 2,
+                                    "slidesToScroll": 2,
+                                    "prevArrow": "<div class=&apos;slick-prev slick-arrow&apos;><svg id=&apos;arrow-left&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 370.814 370.814&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>", 
+                                    "nextArrow": "<div class=&apos;slick-next slick-arrow&apos;><svg id=&apos;arrow-right&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 478.448 478.448&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>",
+                                    "responsive": [
+                                        {
+                                            "breakpoint": 1100,
+                                            "settings": {
+                                                "slidesToScroll": {{ column }},
+                                                "slidesToShow": {{ column }},
+                                                "arrows": {{ arrows }},
+                                                "dots": {{ dots }}
+                                            }
+                                        },
+                                        {
+                                            "breakpoint": 992,
+                                            "settings": {
+                                                "slidesToScroll": 4,
+                                                "slidesToShow": 4
+                                            }
+                                        },
+                                        {
+                                            "breakpoint": 551,
+                                            "settings": {
+                                                "slidesToScroll": 3,
+                                                "slidesToShow": 3
+                                            }
+                                        }
+                                    ]
+                                }'
+                            {% endif %}>
+                            <div class="halo-item-full halo-loading">
+                                <img class="image_lazyload" src="{{ 'loading.svg' | asset_url }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Product Tab 2",
+    "max_blocks": 8,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Product Tabs"
+        },
+        {
+            "type": "header",
+            "content": "Product Layout"
+        },
+        {
+            "type": "range",
+            "id": "limit_product",
+            "label": "Limit Product",
+            "min": 1,
+            "max": 20,
+            "step": 1,
+            "default": 6
+        },
+        {
+            "type": "select",
+            "id": "collection_layout",
+            "label": "Layout",
+            "default": "carousel",
+            "options": [
+                {
+                    "value": "grid",
+                    "label": "Grid"
+                },
+                {
+                    "value": "carousel",
+                    "label": "Carousel"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Column",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default": 4
+        },
+        {
+            "type": "checkbox",
+            "id": "carousel-arrows",
+            "label": "show arrows (Layout carousel)",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "carousel-dots",
+            "label": "show dots (Layout carousel)",
+            "default": false
+        },
+        {
+            "type": "header",
+            "content": "Product Sort By"
+        },
+        {
+            "type": "select",
+            "id": "collection_sort",
+            "label": "Sort By",
+            "default": "manual",
+            "options": [
+                {
+                    "value": "manual",
+                    "label": "Featured"
+                },
+                {
+                    "value": "created-descending",
+                    "label": "New Product"
+                },
+                {
+                    "value": "best-selling",
+                    "label": "best Selling"
+                }
+            ]
+        }
+    ],
+    "blocks" : [
+        {
+            "type" : "collectiontab",
+            "name" : "Collection",
+            "settings":[
+                {
+                    "type" : "text",
+                    "id" : "title_tab",
+                    "label" : "Title Tab",
+                    "default" : "Title Tab"
+                },
+                {
+                    "type" : "collection",
+                    "id" : "collection",
+                    "label" : "Collection to use"
+                }          
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Product Tab 2",
+            "category": "Product Tabs",
+            "blocks": [
+                {
+                    "type": "collectiontab"
+                },
+                {
+                    "type": "collectiontab"
+                },
+                {
+                    "type": "collectiontab"
+                },
+                {
+                    "type": "collectiontab"
+                },
+                {
+                    "type": "collectiontab"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

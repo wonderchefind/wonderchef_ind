@@ -1,0 +1,29 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+
+<div class="container">
+ 
+<br>
+    <div class="page page-product-detail">
+        <div class="page-content">
+          
+           
+          {% section 'gift-card-product' %}
+
+          
+           {% section 'frequently-by-together' %}
+            <div class="">
+               
+              {% section 'product_bottom_details' %}
+                {% section 'product-recommendations' %}
+            </div>
+           <!-- {% section 'product-reviews' %}-->
+
+        </div>
+    </div>
+</div>
+{% section 'recently-viewed-products' %}
+
+

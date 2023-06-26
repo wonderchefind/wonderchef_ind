@@ -1,0 +1,147 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQNIbPMaADxLkNP0tvEA9CeUYzfV2oXNg"></script>
+<script>
+
+  /*********************************************************
+    PINCODE SUGGESTIONS
+    - Suggest nearest sublocalities on changing pincodes.
+  *********************************************************/
+
+  var getPincodes = {};
+  var pinAddress,pinDistrict,pinState,stateCode,pinval,pinurl = "";
+  $(document).on('page:load page:change', function() {
+    $('.clear_fields').remove();
+      $('.field[data-address-field="last_name"]').after("<div class='clear_fields' style='clear:both'></div>");
+    if($('.pincode_wrapper').length <= 0){
+      var pincodeWrapper = '<div class="pincode_wrapper"><div class="pincode_container"><div class="pin-header"><p>Suggestions</p><span class="close-pin">X</span></div><div class="pin-suggestions"></div></div></div>';
+    }
+    if($('.location_pin').length <= 0){
+      $('.field[data-address-field="zip"] .field__input-wrapper').append('<img src="https://cdn.shopify.com/s/files/1/1276/5299/files/user.png?5334209926771320265" alt="pin" class="location_pin" />')
+    }
+    $('.field[data-address-field="phone"]').insertAfter('.clear_fields').addClass("field--half");
+    
+    $('.field[data-address-field="zip"]').insertAfter('.field[data-address-field="phone"]').removeClass("field--third").addClass("field--half");
+    $('.field[data-address-field="country"]').insertAfter('.field[data-address-field="province"]');
+    $('.field[data-address-field="city"]').addClass("field--third");
+    $(pincodeWrapper).appendTo('.field[data-address-field="zip"]');
+    
+  });
+  
+  $(document).on('click', '.close-pin,body', function(){
+    $('.pincode_wrapper').hide();
+  });
+
+  $(document).on('click', '.pin-list', function(){
+    $('.field[data-address-field="city"] input').val($(this).attr('data-city'));
+    $('.field[data-address-field="address1"] input').val($(this).attr('data-address'));
+    $('option[value="'+$(this).attr('data-code')+'"]').prop("selected",true);
+    $('.pincode_wrapper').hide();
+  });
+
+  $(document).on('keyup', '#checkout_shipping_address_zip', function(){
+    pinval = $(this).val();
+    pinurl = "https://pincode.wonderchef.com/admin/pin?pin="+pinval;
+    var pinlength = $(this).val().length;
+    if(pinlength == 6){
+      $.ajax({
+        url: pinurl,
+        type: "POST",
+        success: function(data){
+          var createList = "<ul>";
+          if(data.pincode != undefined){
+            $(data.pincode).each(function(i) {
+              pinAddress = $(this)[0].officeName;
+              pinDistrict = $(this)[0].districtName;
+              pinState = $(this)[0].stateName.toLowerCase();
+              stateCode = $(this)[0].regionName;
+              createList += "<li class='pin-list' data-address='"+pinAddress+"' data-city='"+pinDistrict+"' data-state ='"+pinState+"' data-code='"+stateCode+"'><span>"+pinAddress+", "+pinDistrict+", "+pinState+"</span></li>"
+            });
+            createList += "</ul>";
+            $('.pin-suggestions').empty();
+            $('.pin-suggestions').append(createList);
+
+            $('.pincode_wrapper').show();
+            $('.field[data-address-field="city"] input').val(pinDistrict);
+            $('option[value="'+stateCode+'"]').prop("selected",true);
+          }
+          else{
+            $('.pincode_wrapper').hide();
+          }
+        },
+        error: function(){
+        }
+      });
+    }
+    else{
+      $('.pincode_wrapper').hide();
+    }
+  });
+</script>
+  
+<script>
+  
+  /*********************************************************
+  CURRENT LOCATION
+  	- Fill up user information by getting current location
+  *********************************************************/
+
+  var geocoder;
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition, errorFunction);
+    } else { 
+      x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    codeLatLng(position.coords.latitude, position.coords.longitude);
+  }
+  function errorFunction(){
+    alert("Enter Your Pincode");
+  }
+  function initialize() {
+    geocoder = new google.maps.Geocoder();
+  }
+  function codeLatLng(lat, lng) {
+    var latlng = new google.maps.LatLng(lat, lng);
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        if (results[1]) {
+          var dataResult = results[0].address_components;
+          for (var i=0; i<results[0].address_components.length; i++) {
+            for (var b=0;b<results[0].address_components[i].types.length;b++) {
+              if (results[0].address_components[i].types[b] == "administrative_area_level_1") {
+                state = results[0].address_components[i];
+              }
+              if (results[0].address_components[i].types[b] == "postal_code") {
+                pincode = results[0].address_components[i];
+              }
+              if (results[0].address_components[i].types[b] == "country") {
+                country = results[0].address_components[i];
+              }
+              if (results[0].address_components[i].types[b] == "locality") {
+                city = results[0].address_components[i];
+              }
+            } 
+          }
+          $('.field[data-address-field="zip"] input').val(pincode.long_name); 
+          $('.field[data-address-field="city"] input').val(city.long_name);
+          $('.field[data-address-field="province"] select').val(state.short_name);
+          $('.field[data-address-field="address1"] input').val(results[0].formatted_address);
+          $('.field[data-address-field="country"] select').val(country.long_name);
+          $('.pin-input__error').hide();
+        } else {
+          console.log("Please enter pincode");
+        } 
+      } else {
+        alert("Please enter pincode");
+      }
+    });
+  }
+  $(document).on('click', '.location_pin', function(){
+    getLocation();
+  });
+  $(window).load(function(){
+    initialize();
+  });
+</script>

@@ -1,0 +1,216 @@
+{% comment %}
+** Collection list - default view **
+- Template
+- Uses blocks
+- This template can be viewed by going to /collections of the shop.
+{% endcomment %}
+{% if section.settings.featured_collection_image %}
+<header class="banner center page_banner ">
+  
+ 
+  <hr>
+</header>
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+
+<div class="container nutriblend_main" style="margin-top:20px;">
+  
+  <div class="sixteen columns  clearfix mobile_hidden">
+  <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </span>
+    <span class="breadcrumb-divider">/</span>
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ page.url }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ page.title }}</span>
+        <meta itemprop="position" content="3" />
+      </a>
+    </span>
+  </div><br>
+</div>
+  
+  <div class="section clearfix">
+    <div class="eight columns"></div>
+    {% if section.settings.display_collection_title %}
+    <div class="heading_titlee clearfix">
+      <h1 class="headline">{{ collection.title }}</h1>
+      <div class="sixteen columns">
+        <div class="feature_divider"></div>
+      </div>
+      {% if collection.description != blank %}
+      <div class="coll_des">{{ collection.description }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  
+   <h1>E-recipe Books</h1>
+  <div class="list-collections clearfix equal-columns--clear equal-columns--outside-trim">
+    
+    
+     
+        <div class="four columns">
+        <a class="collection-info__caption " href="/pages/generic-e-recipe-book" itemprop="url">
+          <div class="enlarge_pane_contain" >
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/1.GENERIC_RECIPE_BOOK.jpg?v=1672126941" sizes="100vw" alt="" id="test-img">
+                </div>
+                <p>GENERIC RECIPE BOOK</p>
+              </div>
+            </div>
+          </div>
+        </a>
+           
+        </div>
+       
+          <div class="four columns">
+             <a class="collection-info__caption " href="/pages/nutri-blend-e-recipe-book" itemprop="url">
+          <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/2.NUTRI-BLEND_E-RECIPE_BOOK_copy.jpg?v=1672126941" sizes="100vw" alt="" id="test-img">
+                </div>
+                               <p>NUTRI-BLEND</p>
+              </div>
+            </div>
+          </div>
+       
+        </a>
+       </div>
+    
+    <div class="four columns">
+             <a class="collection-info__caption " href="/pages/crimson-edge-otgs-e-recipe-book" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/3.CRIMSON_EDGE_OTGS.jpg?v=1672126941" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>CRIMSON EDGE OTGs</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+    
+    
+          <div class="four columns">
+             <a class="collection-info__caption " href="/pages/mixer-grinders-e-recipe-book" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/4.MIXER_GRINDERS_E-RECIPE_BOOK.jpg?v=1672126940" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>MIXER GRINDERS</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+
+    </div>
+  <hr>
+
+    <div class="grid-container">
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1GO4kwGHOQ094iKGCz1IU98CPCH7s-hqJ/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/15.jpg?v=1641563593"><br><h2>Nutri-Pot Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1fMyIzkCmai1CromautjthaC51i2Hcx7V/view" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/heater-blender.jpg?v=1648820689"><br><h2>Nutri Cook Heater Blender</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1ctkB0gO7lH1OnY5KfasRpwI-J5yCGoIj/view" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/oven-fryer.jpg?v=1648820689"><br><h2>Air Fryer Oven</h2></a></div>
+ <div class="grid-item"><a href="https://drive.google.com/file/d/1hVoOPsBYktmx0w8HGmn51hp2vppref2X/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/2_358a537b-afe9-49b3-b154-15aa03243e24.jpg?v=1641563593"><br><h2>Automatic Soup Maker Recipe Book</h2></a></div>
+  <div class="grid-item"><a href="https://drive.google.com/file/d/17uSejppHuxoSKvIMrgCxllOxsWSERSyk/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/1_aa5025cb-85a4-4ccd-b301-4b0b8f759d5d.jpg?v=1641563593"><br><h2>Air Fryer Recipe Book</h2></a></div>
+      <div class="grid-item"><a href="https://drive.google.com/file/d/10djKNgNg1nPgUYbl7dYQgI7MxzxoibxC/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/21.jpg?v=1641563594"><br><h2>Crimson Edge Compact Air Fryer Recipe Book</h2></a></div>
+      <div class="grid-item"><a href="https://drive.google.com/file/d/1hgcKExUn3_4WxsLn3U6T7B0vte0O_ELl/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/16.jpg?v=1641563593"><br><h2>OTG 19L Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1ZZClHQbqoHR5c_ltn4OBC-V3TJx_ZqIo/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/17.jpg?v=1641563594"><br><h2>OTG 28L & 40L Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1CXZAypvIAVmtn-H6dxvcv5TiwUiQuw2y/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/24.jpg?v=1641563594"><br><h2>Sumo Mixer Grinder Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1BO9fr9JonjbM2avt_3bQdHjAmYpHokHM/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/7_8865418c-0a2b-490d-b091-44a0629c9e2a.jpg?v=1641563593" ><br><h2>Crimson Edge SKT Mini Plus Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1Gu9U2Aw52yPwrcrLSr_mFeKzdXqdzVQH/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/32.jpg?v=1641563594"><br><h2>Cold Press Juicer Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1UeL-yIRyNs-ULbmQZ4jpQUXTEqiM4-5K/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/20.jpg?v=1641563594"><br><h2>Pressure Cooker Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1MNAHxkzKsSjXp1fd0t0YNik28lxcV803/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/22.jpg?v=1641563594"><br><h2>Pressure Cooker Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/12bm7uLAuA6X10Kjoxwu4c-SkVSXFO9_d/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/23.jpg?v=1641563594"><br><h2>Regalia Atta Kneader & Bread Maker Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1JlSFQFqXgHludEjIXG9v_ZPb0fgJ867F/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/27.jpg?v=1641563594"><br><h2>Regalia Plus Bread Maker White Recipe Book</h2></a> </div>
+ <div class="grid-item"><a href="https://drive.google.com/file/d/18ymvWAyIRCWX1DRarDBPWCvqCleijt88/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/3_e86f668e-721a-4fea-b136-5c60fd5ef8bb.jpg?v=1641563593"><br><h2>Ceramide Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1ZTWnQpvgNg8wDsW46j46dt6YvvVBGytk/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/9_b20ab7cd-96a7-4df2-a31a-41a2e7579188.jpg?v=1641563593"><br><h2>Electric Dosa Maker Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1ifiniFb3PtY1kE7iyqh1jKjguZXMrYS4/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/11_43f4dca4-f965-451e-831f-764448434616.jpg?v=1641563593"><br><h2>GOT DUO Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1sPnjLJu6-Lhbo3jhM41MKj7kYSksH6I_/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/18.jpg?v=1641563594"><br><h2>Prato Compact Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1Kjn0-CPINIfesVM7-ttkFrQVk5XPYsZV/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/19.jpg?v=1641563594"><br><h2>Prato Electric Rice Cooker 1.8L</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1aif-aAn7j-yBpp-OU4V0CFdcBIkwiW-T/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/30.jpg?v=1641563594"><br><h2>Victor Mixer Grinder Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1VtMRyEVLAoOmeLTybjk2SCpkd0arPS8O/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/8_c1f3b41f-0f5d-4b63-90b8-0db3c3d46d88.jpg?v=1641563593"><br><h2>Digital Power Blender Recipe Book</h2></a></div>
+    </div>
+ 
+    
+    <div class="clearfix">
+      <br>
+      <br>
+    </div>
+  </div>
+
+
+<style>
+  .four .enlarge p{
+    font-weight: 500;
+    text-align: center;
+margin-top: 10px;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+.grid-container {
+  display: grid;
+  
+  grid-template-columns: 25% 25% 25% 25%;
+ 
+  padding: 10px;
+}
+.grid-item {
+  padding: 2px;
+  font-size: 30px;
+  text-align: center;
+}
+  .grid-item img{      
+    width:80%;
+    box-shadow: 5px 5px 5px grey;
+  }
+  
+  .grid-item h2{ 
+  font-family: 'gohtam-book';
+    font-size: 18px;
+    padding: 0px 30px;
+     text-align:left;
+margin-bottom:20px;
+    margin-top:10px;
+  }
+
+   @media only screen and (max-width: 600px) {
+  .grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+ 
+  }
+    .book_p{
+    text-align:left;
+    padding: 0px 20px!important;
+  }
+    .grid-item h2{ 
+  font-family: 'gohtam-book';
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding: 0px 20px;
+     text-align:left;
+  }
+  
+  .book_p{
+    text-align:left;
+    padding: 0px 30px;
+  }
+</style>

@@ -1,0 +1,49 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script type="text/javascript">
+
+  window.cart_data = [];
+  window.codAppied = false;
+  window.checkoutLineItem = [];
+  $(".loading_me").appendTo('body');
+  brfbwacb.shopDomain = "{{shop.domain}}";
+  {%- for item in checkout.line_items -%}  
+  var item  = {};
+  item.id = '{{item.variant_id}}';
+  item.quantity = '{{item.quantity}}';
+  properties = {};
+  {%- for pro in item.properties -%}
+  {% if pro.last == '_cod' %}
+  {%- assign cod = true -%}
+  {% endif %}
+  properties['{{pro.first}}'] = '{{pro.last}}';
+             {%- endfor -%}
+             item.properties = properties;
+             window.cart_data.push(item);
+             {%- endfor -%}
+             var cod_input = $("#checkout_payment_gateway_21037252708");
+             var disccount_banner = $(".section--payment-method .section__content");
+             $(document).on('page:load page:change', function() {
+               {%- if cod -%}
+                 cod_input.click();
+                 $(".order-summary__sections").addClass("active");
+                 codAppied = true;
+                 if($('.cod_banner').length <= 0){
+                 	$(".section--payment-method .section__content").prepend("<p class='cod_banner'>Pay Online to get 5% off on your order now!</p>");
+                 }
+               {% else %}
+                 if($('.cod_banner').length <= 0){
+                 	$(".section--payment-method .section__content").prepend("<p class='cod_banner'>Offer Applied : 5% off on Online Payment</p>");  
+                 };
+               {%- endif -%}
+             });
+             
+//    Checking copon code here
+             $('[data-trekkie-id="apply_discount_button"]').click(function() {
+             console.log('hello');
+             var Coponcode =  $('#checkout_reduction_code').val();
+             console.log(Coponcode);
+            
+             });           
+                 
+</script>
+{{ 'marmeto-checkout-script.js' | asset_url | script_tag }} 

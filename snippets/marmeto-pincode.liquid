@@ -1,0 +1,220 @@
+<style>
+  .pin-input__error {
+    display: none;
+    color: #e32c2b;
+    margin: 7px;
+  }
+  .error-pin__field {
+    outline: none;
+    border: 1px transparent solid;
+    border-color: #e32c2b !important;
+    -webkit-box-shadow: 0 0 0 1px #f20c15;
+    box-shadow: 0 0 0 1px #f20c15;
+  }    
+  .error-msg{
+    background: #fff;
+    padding: 10px;
+    color: #dd2c00;
+    border-radius: 4px;
+    border: 2px solid #d9d9d9;
+  }
+  .cod-error{
+    color: #545454;
+    font-size: 13px;
+  }
+  .enable-error,.enable-error span,.enable-error label{
+    opacity: 0.6;
+    cursor: no-drop !important;
+  }
+</style>
+<script>
+  /*====================Retrieving Sheet Data=====================*/
+  var sheetData = undefined;
+  
+   $.ajax({
+      url: "https://sheets.googleapis.com/v4/spreadsheets/1mR_O0ntyu8fUES-trgq8zrdCwyV_70jqp37gdqy1jnk/values/Sheet1?key=AIzaSyC_r9lAkc0vg05u5qF-H8SkPS840eE9Nwk",
+      dataType: "json",
+      success: function(data){
+        sheetData = data.values;
+        $('body').trigger('sheet_ready');        
+      }
+    });
+  
+  /*====================Append Error message for non-servicable pin code ===================*/ 
+          
+  $(document).on('page:load page:change', function() {
+   if($('.pin-input__error').length <= 0 && Shopify.Checkout.step == "contact_information"){
+    $('.step__sections .section--shipping-address').after('<p class="pin-input__error">Unfortunately your pin code is not serviceable by us! If you have an alternate delivery address, please try using that.</p>');
+   }
+  });
+  
+  
+
+  /*====================Checking Pin In Sheet===================*/
+  
+  function checkInSheet(pincode) {  
+    var result = "NA";
+    for(var i=0; i<sheetData.length; i++){
+      if(!sheetData[i] || !sheetData[i].length) {
+      	continue;
+      }
+      else if(sheetData[i]) {
+        var fullyServiced = sheetData[i][0];
+        if(fullyServiced && fullyServiced.indexOf(pincode) != -1){
+          	result = "FS";
+        	break;
+        }                       
+      }
+    }    
+    return result;  
+  }
+  
+  
+  /*==================Verifying Entered Pincode================*/
+    
+  function verifyEnteredPin(sheet_result, btnClick){
+	//Fully Serviceable
+    if(sheet_result == "FS"){
+      	if($('.step[data-step="contact_information"]').length > 0 && btnClick == true){
+        	$('.step__footer__continue-btn').click();
+        }     
+      	else if($('.step[data-step="payment_method"]').length > 0){
+          $('[data-select-gateway="21037252708"]').attr('style', 'pointer-events: auto; opacity: 1;');
+          $('[data-select-gateway="21037252708"]').show();
+          $('.step__footer__continue-btn').removeAttr("disabled", "disabled");
+          $('.step__footer__continue-btn').removeClass("btn--disabled");
+        }
+      return true;
+    }
+    
+    //Non-Service
+    else {
+    	if($('.step[data-step="contact_information"]').length > 0) {
+           $('.pin-input__error').attr('style', 'display: inline-block');
+           $('.step__footer__continue-btn').addClass("btn--disabled");
+           $('.step__footer__continue-btn').attr("disabled", "disabled");
+        }
+        else if($('.step[data-step="shipping_method"]').length > 0) {
+          $('.section--shipping-method .section__content').prepend("<p class='error-msg'>Unfortunately your pin code is not serviceable by us! If you have an alternate delivery address, please try using that.</p>")
+          $('.section--shipping-method .content-box[data-shipping-methods]').remove();
+          $('.step__footer__continue-btn').addClass("btn--disabled");
+          $('.step__footer__continue-btn').attr("disabled", "disabled");
+        }
+      	else if($('.step[data-step="payment_method"]').length > 0) {
+          $('.section--payment-method .section__content').empty();
+          $('.section--payment-method .section__content').prepend("<p class='error-msg'>Unfortunately your pin code is not serviceable by us! If you have an alternate delivery address, please try using that.</p>")
+          $('.step__footer__continue-btn').addClass("btn--disabled");
+          $('.step__footer__continue-btn').attr("disabled", "disabled");
+          $('#complete_btn1').attr("disabled", "disabled");
+		  $('#complete_btn1').addClass("btn--disabled");
+        }
+      return false;
+    }
+  }
+      
+  /*===================Getting Pincode and Calling Functions===================*/
+  $("body").on('sheet_ready', function() {
+
+      if($('.step[data-step="contact_information"]').length > 0) {
+           
+        //Checking Pincode In Customer Info Page 
+        $(document).on('submit', '[data-step="contact_information"]>form', function(){
+          if ($('.section--shipping-address').length > 0){
+              var pincode_entered = $('#checkout_shipping_address_zip').val();
+              var pin_length = pincode_entered.length;
+          	}
+            else{
+              var pincode_entered = $('#checkout_billing_address_zip').val();
+              var pin_length = pincode_entered.length;
+            }
+          if(pin_length == 6) {
+            var sheet_result = checkInSheet(pincode_entered);
+            var getData = verifyEnteredPin(sheet_result, true);
+            if(getData == true){
+              return true;
+            }
+            else{
+              return false;
+            }
+          }
+          else if(pin_length <= 0){
+            return true;
+          }
+          else{
+            $('.pin-input__error').attr('style', 'display: inline-block');
+            return false;
+          }
+          if ($('.section--shipping-address').length > 0){
+            var Phone_entered = $('#checkout_shipping_address_phone').val();
+            var Phone_length = Phone_entered.length;
+          }else{
+          	var Phone_entered = $('#checkout_shipping_address_phone').val();
+             var Phone_length = Phone_entered.length;
+           }
+           if(Phone_length == 10){
+          	return true;
+           }else{
+           	return false;
+           }
+        });
+        
+         $(document).on('click', '#checkpin1', function(){
+           if ($('.section--shipping-address').length > 0){
+             var pincode_entered = $('#checkout_shipping_address_zip').val();
+             var pin_length = pincode_entered.length;
+           }else{
+            var pincode_entered = $('#checkout_billing_address_zip').val();
+             var pin_length = pincode_entered.length;
+           }
+           if(pin_length == 6) {
+             var sheet_result = checkInSheet(pincode_entered);
+             verifyEnteredPin(sheet_result, true);
+           }
+           else if(pin_length <= 0){
+             $('.step__footer__continue-btn').click();
+           }
+           else{
+            $('.pin-input__error').attr('style', 'display: inline-block');
+           }
+         });
+
+        if ($('.section--shipping-address').length > 0) {
+          $(document).on('change keyup', '#checkout_shipping_address_zip', function(){
+            $('.pin-input__error').hide();
+            $('.step__footer__continue-btn').removeClass("btn--disabled");
+            $('.step__footer__continue-btn').removeAttr("disabled"); 
+          });
+        } 
+        else{
+          $(document).on('change keyup', '#checkout_billing_address_zip', function(){
+            $('.pin-input__error').hide();
+            $('.step__footer__continue-btn').removeClass("btn--disabled");
+            $('.step__footer__continue-btn').removeAttr("disabled");
+          });
+        }
+      }
+    
+      //Checking Pincode In Shipping Info Page
+      else if ($('.step[data-step="shipping_method"]').length > 0){
+          {% if checkout.shipping_address %}
+              var pincode_entered = "{{checkout.shipping_address.zip}}";
+          {% elsif checkout.billing_address %}
+              var pincode_entered = "{{checkout.billing_address.zip}}";   
+          {% endif %}
+          var sheet_result = checkInSheet(pincode_entered);
+          verifyEnteredPin(sheet_result, false);
+
+      }
+      
+      //Checking Info In Payment Method Page
+      else if ($('.step[data-step="payment_method"]').length > 0) {
+          {% if checkout.shipping_address %}
+              var pincode_entered = "{{checkout.shipping_address.zip}}";
+          {% elsif checkout.billing_address %}
+              var pincode_entered = "{{checkout.billing_address.zip}}";   
+          {% endif %}
+          var sheet_result = checkInSheet(pincode_entered);
+          verifyEnteredPin(sheet_result, false);      
+      }    
+  });    
+</script>

@@ -1,0 +1,74 @@
+{% if product.tags contains 'Healthcare' %}
+<style>
+  .icon-wrapper{
+  	width:33.33% !important;
+  }
+</style>
+<div class="brand-icons" style="">
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'quality.png' | file_url }}" alt="Genuine Products">
+    </div>
+    <div class="subtext-wrapper" style=> 
+      <h4>Premium Quality</h4>
+    </div>
+  </div>
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'free_shipping.png' | file_url }}"  alt="Shipping">
+    </div>
+    <div class="subtext-wrapper"> 
+      <h4>Free Shipping</h4>
+
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'lock.png' | file_url }}"  alt="Secure Payment">
+    </div>
+    <div class="subtext-wrapper"> 
+      <h4>100% Secure</h4>
+
+    </div>
+  </div>
+  
+</div>
+{% else %}
+	<div class="brand-icons" style="">
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'quality.png' | file_url }}" alt="Genuine Products">
+    </div>
+    <div class="subtext-wrapper" style=> 
+      <h4>Premium Quality</h4>
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'free_shipping.png' | file_url }}"  alt="Shipping">
+    </div>
+    <div class="subtext-wrapper"> 
+      <h4>Free Shipping</h4>
+
+    </div>
+  </div>
+
+  <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 icon-wrapper ">
+    <div class="img-wrapper" style="">
+      <img src="{{'lock.png' | file_url }}"  alt="Secure Payment">
+    </div>
+    <div class="subtext-wrapper"> 
+      <h4>100% Secure</h4>
+
+    </div>
+  </div><div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 icon-wrapper ">
+  <div class="img-wrapper" style="">
+    <img src="{{'ssk.png' | file_url }}"  alt="Secure Payment">
+  </div>
+  <div class="subtext-wrapper"> 
+    <h4>Chef SK Assured</h4>
+  </div>
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,15 @@
+{% layout none %}
+{% assign limit = canonical_url | split: 'limit=%26' | last %}
+<div class="halo-row {{ canonical_url }}"> 
+{% if collection.products_count > 0 %}    
+    {% for product in collection.products limit: limit %}
+    <div class="halo-item"> 
+        {% render 'product-card-grid' with product as product%}
+    </div>
+    {% endfor%}
+{% else %}
+    <div class="halo-item halo-item-full">
+        {{ 'collections.general.no_matches' | t }}
+    </div>
+{% endif %}
+</div>

@@ -1,0 +1,55 @@
+{% if settings.display_popup_newsletter %}
+
+{%- assign newsletter_delay = newsletter_delay | default: settings.popup_newsletter_delay | times: 1000 -%}
+
+<div id="halo_newsletter">
+    <div class="popup-overlay"></div>
+    <div class="newsletterPopup" data-delay="{{ newsletter_delay }}" data-expire="{{ settings.popup_newsletter_expire }}">
+        <a href="#" class="modal-close close" aria-label="{{lang 'common.close'}}" role="button" data-close-newsletter-popup>
+            <span aria-hidden="true">&#215;</span>
+        </a>
+        <div class="newsletter-content">
+            {% if settings.popup_newsletter_title != blank %}
+                <h2 class="newsletter-heading">
+                    {{ settings.popup_newsletter_title }}
+                </h2>
+            {% endif %}
+            <p class="newsletter-sub-heading">{{ settings.popup_newsletter_des_1 }}</p>
+            <div id="mailchimp-email-subscibe" class="newsletter">
+                <div id="mc_embed_signup">
+                    {% render 'newsletter-form' %}
+                </div>
+            </div>
+            {% if settings.popup_newsletter_des != blank %}
+                <p class="newsletter-message">
+                    {{ settings.popup_newsletter_des }}
+                </p>
+            {% endif %}
+
+            {% if settings.display_popup_social %}
+                <div class="social_list">
+                    {% render 'social-media' %}
+                </div>
+            {% endif %}
+            {% if settings.popup_newsletter_text_note != blank and settings.when_to_show == 'first_time' %}
+                <div class="newsletter-show-again">
+                    <input id="dismiss" class="do-not-show-again" type="checkbox" name="dismiss">
+                    <label for="dismiss">
+                        <span>{{ settings.popup_newsletter_text_note }}</span>
+                    </label>
+                </div>
+            {% endif %}
+        </div>
+        <div class="newsletter-image">
+            {% if settings.newsletter != blank %}
+                <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ settings.newsletter | img_url: '420x380' }}" data-sizes="auto" alt="" data-image>
+            {% else %}
+                <div class="placeholder-background">
+                    <span class="recommended_size">420x380</span>
+                    {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endif %}

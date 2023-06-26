@@ -1,0 +1,17 @@
+<div class="cart-popup-wrapper cart-popup-wrapper--hidden" role="dialog" aria-modal="true" data-cart-popup-frequently-wrapper>
+    <div class="cart-popup" data-cart-popup-frequently tabindex="-1">
+        <button class="cart-popup__close" aria-label="{{ 'general.accessibility.close_modal' | t }}" data-cart-popup-close-frequently >
+            <span aria-hidden="true">&#215;</span>
+        </button>
+        <div class="cart-popup-content">
+        </div>
+        <div class="button-group">
+            <button class="cart-popup__dismiss-button text-link text-link--accent btn btn--secondary" data-cart-popup-dismiss-frequently>
+                {{ 'cart.general.continue_shopping' | t }}
+            </button>
+            <a href="{{ routes.cart_url }}" aria-label="view cart" class="cart-popup__cta-link btn btn--secondary">
+                {{ 'products.product.view_cart' | t }} <span data-cart-popup-cart-quantity></span>
+            </a>
+        </div>
+    </div>
+</div>

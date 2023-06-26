@@ -1,0 +1,317 @@
+{% assign product_found = false %}
+{% assign skip = false %}
+{% assign collection_group = products | map: 'id' %}
+{% assign collection_group_thumb = collection_group | append : 'thumb' %}
+{% assign collection_group_mobile = collection_group | append : 'mobile' %}
+
+{% if template contains 'collection' %}
+  {% assign matrixType = 'collection-matrix' %}
+{% elsif template contains 'search' %}
+  {% assign matrixType = 'search-matrix' %}
+{% endif %}
+
+
+
+{% if product.tags contains 'combo' or product.tags contains 'combos' or collection.title == 'Winter collection' or collection.title == 'Home & Living' or collection.title == 'Combos' or collection.title == 'Coffee Machine' or collection.title == 'Cooking Together' %}
+
+
+  {% comment %}
+	<!-- Remove Sold out products form the product array and make new array -->
+  {% endcomment %}  
+  {% assign productAvailable = null | sort %}
+  {% for availableProduct in products  %}
+  	{% if availableProduct.available %}  
+      {% assign singleAvailArr = availableProduct | sort %}
+      {% assign productAvailable = productAvailable | concat: singleAvailArr %}
+    {% endif %}
+  {% endfor %}
+  {% assign products = productAvailable %}      
+  
+  {% if enable_featured == true %}  
+
+    {% comment %}
+      <!-- Remove Sold out products form the hero product array and make new array -->
+    {% endcomment %}  
+    {% assign heroProductAvailable = null | sort %}
+    {% for availableHeroProduct in products_h  %}
+      {% if availableHeroProduct.available %}  
+        {% assign singleAvailHeroArr = availableHeroProduct | sort %}
+        {% assign heroProductAvailable = heroProductAvailable | concat: singleAvailHeroArr %}
+      {% endif %}
+    {% endfor %}
+    {% assign products_h = heroProductAvailable %}        
+  
+{% endif %}
+
+{% endif %}
+
+<div itemtype="http://schema.org/ItemList" class="product-list {{ matrixType }} clearfix equal-columns--clear equal-columns--outside-trim">
+  {% for product in products limit: limit %}
+    {% if product.id == skip_product.id or skip == true %}
+      {% assign product_found = true %}
+    {% else %}
+      {% if forloop.rindex0 == 0 and product_found == false and forloop.length != products.count and template != 'search' and template != 'index' and type != 'block' %}
+        {% assign skip = true %}
+      {% else %}
+
+  
+  <!-- add to cart code -->
+      
+   {% comment %}New product fetch with variant{% endcomment %}
+	{% assign variant = product.selected_or_first_available_variant %}
+
+    {% if variant.price < variant.compare_at_price %}
+	{% assign discount = variant.price | times: -100 | divided_by: variant.compare_at_price | plus: 100 | ceil | append: '%' %}
+    {% endif %}
+
+    {% assign price = variant.price | money | replace: "Rs. ", "" %}
+    {% assign compare_at_price = variant.compare_at_price | money | replace: "Rs. ", "" %}
+    {% assign price = price | replace: ".00", "" %}
+    {% assign compare_at_price_max = compare_at_price | replace: ".00", "" %}
+
+
+{% comment %}End new product code with variant{% endcomment %}
+
+  
+  <div class="
+  {% if products_per_row == 2 %}
+    eight columns
+  {% elsif products_per_row == 3 %}
+    one-third column
+  {% elsif products_per_row == 4 %}
+    four columns
+  {% elsif products_per_row == 5 %}
+    one-fifth column
+  {% elsif products_per_row == 6 %}
+    one-sixth column
+  {% elsif products_per_row == 7 %}
+    one-seventh column
+   {% else %}
+    one-third column
+  {% endif %}
+              
+  {% if settings.mobile_products_per_row == '1' %}
+    medium-down--one-half
+    small-down--one-whole
+  {% else %}
+    medium-down--one-half
+    small-down--one-half
+  {% endif %}
+  thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}">
+  
+    <div class="collection-product">
+  <div class="prod-banner shortProd">
+    <div class="relative product_image {% unless collection.title== 'Gift Card' %}swap-{{ settings.collection_secondary_image }}{% endunless %}">
+      
+      <a href="{{ product.url | within: collection }}" itemprop="url">
+        <div class="image__container">
+          {% include 'image-element', image: product.featured_image, alt: alt_text, object_fit: settings.align_height, max_height: section.settings.collection_height %}
+        </div>
+         {% unless collection.title== 'Gift Card' %}
+          {% if settings.collection_secondary_image != blank %}
+            <div class="image__container">
+               <img class="secondary lazyload lazyload-fade"
+                         src="{% if product.images[1] != blank %}{{ product.images[1] | img_url: '300x' }}{% else %}{{ product.featured_image | img_url: '300x' }}{% endif %}"
+                         data-src="{% if product.images[1] != blank %}{{ product.images[1] | img_url: '300x' }}{% else %}{{ product.featured_image | img_url: '300x' }}{% endif %}"
+                         data-sizes="auto"
+                         alt="{{ alt_text | escape }}">
+            </div>
+          {% endif %}
+         {% endunless %}
+        </a>
+      {% include "product-details" %}
+      {% include 'swym-product-view', product: product %}
+        <div class ="swym-collections">
+      <button class="swym-button swym-add-to-wishlist-view-product product_{{product.id}}" data-url="{{ product.url | within: collection }}" data-swaction="addToWishlist" data-product-id="{{product.id | json}}" data-variant-id="{{product.variants[0].id | json}}" data-with-epi="true"></button>
+      </div> 
+      
+       {% assign date_published = product.published_at | date:'%s' %}
+      {% assign date_now = 'now' | date:'%s' %}
+      {% assign date_difference = date_now | minus: date_published %}
+       {% if product.title contains "Forza"  %}<div class="productlable"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/image.png?v=1641997796" style="width:50%;float:left;padding-top:10px;"></div>{% endif %}
+{% if collection.title contains 'The Big Mega Sale' %}
+      {% if discount != blank and discount != "0"  %}
+    <div class="discount">{{ discount }} off</div> 
+    {% endif %}
+      {% endif %}
+      {% if date_difference < 1810704 %}<div class="newarrivals"><span class="snize-right-arrow"></span>New</div>{% endif %}
+      
+    </div>
+  
+ 
+    <div class="card-escription">
+      <div class="nameDetails">
+        <div class="titlePro">{{ product.title }}</div>
+        <h2>
+          {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+          {{ price }}/- 
+         {% if product.compare_at_price_max >= product.price and product.price != product.compare_at_price and product.available %}
+             <small> {{ compare_at_price_max }}/-</small>
+    	 {% endif %}
+        </h2>
+       </div>
+        {% comment %}        
+		<!-- <a href="#" onclick="document.getElementById('form-{{ product.variants.first.id }}-{{section.id}}').submit();">
+          <form id="form-{{ product.variants.first.id }}-{{section.id}}" method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+            <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+            <input style="display:none" type="submit" value="ADD TO BASKET" />
+          </form>
+        </a> -->
+        {% endcomment %}        
+        {% assign productInCart = 'none' %}
+        {% assign productNotInCart = '' %}        
+        {% for item in cart.items %}
+        	{% if item.id == variant.id %}
+		        {% assign productInCart = 'block' %}
+		        {% assign productNotInCart = 'none' %}
+        	{% endif %}
+        {% endfor %}
+        {% if variant.available %}        
+        <div class="AddCart" style="{% if product.title contains "Happy Raksha Bandhan" or product.title contains "Wedding Gift Card" or collection.title== 'Gift Card' %}display:none;{% endif %}">      
+          <span style="display:{{ productNotInCart }}" class="cart-button-{{ variant.id }}-{{section.id}}">
+            <a href="javascript:void(0);"  onclick="addCartFun('{{ variant.id }}-{{section.id}}')" class="Click-here">          
+              <img style="display:none;" class="blur-up lazyloaded" src="{{'cart.png' | asset_img_url }}">
+              <img class="show-cart-hover" src="{{'white-cart.png' | asset_img_url }}">            
+              ADD TO CART
+            </a>
+          </span>
+          <span class="goto-basket go-basket-button-{{ variant.id }}-{{section.id}}" style="display:{{ productInCart }}">
+            <a href="/cart" onclick="addCartFun('{{ variant.id }}-{{section.id}}')">          
+              <img class="blur-up lazyloaded" src="{{'white-cart.png' | asset_img_url }}">
+              GO TO BASKET
+            </a>
+          </span> 
+        </div>        
+        {% else %}     
+        <div class="AddCart disabled">        
+          <span class="disabled cart-button-{{ variant.id }}-{{section.id}}">
+            <a href="javascript:void(0);" >                       
+            {% if product.tags contains 'coming-soon' or product.tags contains 'Bormioli' %} Coming soon {% else %} SOLD OUT {% endif %}
+            </a>
+          </span>
+        </div>        
+        {% endif %}        
+
+    </div>
+    
+  </div>
+    </div>
+  </div>
+  
+  <!-- add to cart code end -->
+
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+  {% if template contains 'collection' %}
+    {% if settings.pagination_type == 'load_more' or settings.pagination_type == 'infinite_scroll' %}
+      {% if paginate.next.url %}
+        <span class="js-load-more load-more">
+          <a href="{{ paginate.next.url }}" data-no-instant class="load-more__btn action_button">
+            {% if template contains 'collection' %}
+              {{ 'collections.general.load_more' | t }}
+            {% elsif template contains 'search' %}
+              {{ 'general.search.load_more' | t }}
+            {% endif %}
+          </a>
+        </span>
+      {% endif %}
+    {% endif %}
+  {% elsif template contains 'search' %}
+    {% if settings.search_pagination_type == 'load_more' or settings.search_pagination_type == 'infinite_scroll' %}
+      {% if paginate.next.url %}
+        <span class="js-load-more load-more">
+          <a href="{{ paginate.next.url }}" data-no-instant class="load-more__btn action_button ">
+            {% if template contains 'collection' %}
+              {{ 'collections.general.load_more' | t }}
+            {% elsif template contains 'search' %}
+              {{ 'general.search.load_more' | t }}
+            {% endif %}
+          </a>
+        </span>
+      {% endif %}
+    {% endif %}
+  {% endif %}
+</div>
+<div class="load-more__icon"></div>
+
+<script>
+    
+  function addCartFun(str_id){
+	let id = str_id.split('-');
+    let formData = {
+
+     'items': [{
+
+      'id': id[0],
+
+      'quantity': 1
+
+      }]
+
+    };
+
+
+    fetch('/cart/add.js', {
+
+      method: 'POST',
+
+      headers: {
+
+        'Content-Type': 'application/json'
+
+      },
+
+      body: JSON.stringify(formData)
+
+    })
+
+    .then(response => response.json())
+    .then(result => {
+      $(".cart-button-"+str_id).hide();
+      $(".go-basket-button-"+str_id).show();
+	  $("#cartModalAdded").show();      
+      // console.log('Success:', result.items[0]);
+      $("#added_product").html('<b>'+result.items[0].product_title+'</b> is added in your cart');
+      setTimeout(function(){ $("#cartModalAdded").hide(); }, 3000);
+      
+      var cartCountNum = $("#cart_countId").text();      
+      if(cartCountNum != ''){
+        cartCountNum = parseInt(cartCountNum) + 1;
+      	$(".cart_count").html(cartCountNum);
+      } else {
+      	$(".cart_count").html(1);
+      }
+
+    })
+    .catch((error) => {
+      console.log('Error:', error);
+
+    });    
+    
+  }
+  
+  </script>
+
+<style>
+  .collection-product .prod-banner{
+    margin: 10px 10px 30px!important;
+  }
+  .collection-product .discount {
+    font-size: 14px;
+    padding: 4px 8px;
+}
+  .collection-product .titlePro{
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    min-height:32px;
+    font-size:12px !important;
+  }
+  .collection-product .nameDetails h2{
+    font-size:12px !important;
+  }
+  </style>

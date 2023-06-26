@@ -1,0 +1,72 @@
+{% if settings.show_product_compare %}
+    <div class="modal fade halo_modal" id="compare" role="dialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-compare">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        {{ 'general.compare.title' | t }}
+                    </h5>
+                    <a href="javascript:void(0)" class="remove-all" data-compare-remove-all>
+                        {{ 'general.compare.remove_all' | t }}
+                    </a>
+                    <a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+                </div>
+                <div class="modal-body">
+                    <div class="compare-modal-wrapper" data-compare-modal>
+                        <div class="product-row row t-product">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'cart.label.product' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="product-grid grid"></div>
+                            </div>
+                        </div>
+
+                        {% if settings.show_product_reviews %}
+                        <div class="product-row row t-rating">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'general.compare.rating' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="rating grid">
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="product-row row t-description">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'general.compare.description' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="description grid"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-row row t-collection">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'collections.general.collection_label' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="collection grid"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-row row t-availability">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'products.product.availability' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="availability grid"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-row row t-product-type">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'products.product.product_type' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="product-type grid"></div>
+                            </div>
+                        </div>
+
+                        <div class="product-row row t-product-sku">
+                            <div class="compare-header col-6 col-md-2 col-lg-2">{{ 'customer.order.sku' | t }}</div>
+                            <div class="compare-content col-6 col-md-10 col-lg-10">
+                                <div class="product-sku grid"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

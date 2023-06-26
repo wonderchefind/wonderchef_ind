@@ -1,0 +1,78 @@
+<div id="cart-dropdown" class="cart-dropdown"> 
+    <div class="no-items">
+        <p class="cart_empty">
+            {{ 'cart.general.empty' | t }}
+        </p>
+        <div class="text-continue">
+            <a class="btn btn--primary" aria-label="button" href="{{ routes.all_products_collection_url }}">
+                {{ 'cart.general.continue_shopping' | t }}
+            </a>
+        </div>
+    </div>
+    <div class="has-items">
+        <div class="products-list">  
+            {% for item in cart.items %}
+            <div class="items" id="cart-item-{{item.id}}">
+                <div class="product-on-cart">
+                    <a href="{{item.url}}" class="product-image">
+                        <img src="{{ item.image | product_img_url: '160x' }}" alt="{{item.title}}">
+                    </a>
+
+                    <div class="product-details">
+                        <a href="javascript:void(0)" title="{{ 'cart.general.remove' | t }}" class="btn-remove" aria-label="close">
+                            <span>&#215;</span>
+                        </a>
+
+                        <a class="product-name" href="{{item.url}}" aria-label="title">
+                            {{ item.product.title }}
+                        </a>
+                        
+                        {% if item.product.variants.size != 0 %}
+                            <div class="option">
+                                {% unless item.variant.title contains 'Default' %}
+                                    <span>{{ item.variant.title }}</span>
+                                {% endunless %}
+                            </div>
+                        {% endif %}
+
+                        <div class="cart-collateral">
+                            <span class="qtt">
+                                {{ item.quantity }} X
+                            </span>
+                            <span class="price money">
+                                {{ item.price | money }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="summary">                
+            <span class="label">
+                {{ 'cart.label.total' | t }}:
+            </span>
+            <span class="price">
+                {{ cart.total_price | money }}
+            </span>
+        </div>
+
+        <div class="actions">
+            <a class="btn btn--secondary btn--viewCart" aria-label="view cart" href="{{ routes.cart_url }}">
+                {{ 'products.product.view_cart' | t }}
+            </a>
+            {% if settings.terms_conditions %}
+                <div class="terms_conditions_wrapper mb-3">
+                    <input type="checkbox" id="terms-conditions-dropdowncart" value=""/>
+                    <label class="title" for="terms-conditions-dropdowncart">
+                        {{ settings.terms_conditions_text }}
+                    </label>
+                </div>
+            {% endif %}
+            <a class="btn btn--primary" href="{{ routes.cart_url | split: '/cart' | first }}/checkout">
+                {{ 'cart.general.checkout' | t }}
+            </a>
+        </div>
+    </div>
+</div>

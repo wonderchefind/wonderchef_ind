@@ -1,0 +1,328 @@
+{% comment %}
+** Contact page - custom view **
+- Page template
+{% endcomment %}
+
+{% if section.settings.image != nil %}
+  <header class="banner center page_banner dark-overlay-{{ section.settings.image_darken }}">
+    {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+    <div class="caption captionOverlay--true">
+      <h1 class="headline">{{ section.settings.title }}</h1>
+      <p class="subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+  </header>
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content">
+
+  <div class="ten columns offset-by-three page clearfix equal-columns--outside-trim">
+    {% if section.settings.image == nil %}
+      <h1 style="display:none">{{ page.title }}</h1>
+      <div class="feature_divider" style="display:none"></div>
+    <div class="container contact_page">
+<div class="timing hed text-center">
+<h3 class="pb-3">We're here for you</h3>
+<p>Our Experts are happy to answer any of your queries.<br>Call, Whatsapp or email us and we’ll get back to you at the earliest! </p>
+<p class="text-orange">We’re available, Mon to Saturday: 10am - 7pm</p>
+<div>
+<div>
+<h6>Email</h6>
+<a class="text-grey" href="mailto:care@wonderchef.in">
+<p>care@wonderchef.in</p>
+</a>
+</div>
+<div>
+<h6>Call </h6>
+<p>
+<a class="phone_no_hover" href="tel:+9118602660788">+91 1860 266 0788</a>
+
+
+</p>
+  
+</div>
+  <div>
+<h6>WhatsApp </h6>
+<p>
+<a  href="https://web.whatsapp.com/send?phone=917070595959" target="_blank">+91 70705 95959</a>
+
+
+</p>
+  
+</div>
+</div>
+</div>
+</div>
+    <style>
+      .timing>div {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 4% 0% 0% 0%;
+}
+      .timing.hed h3 {
+    font-size: 1.6rem!important;
+    text-transform: initial;
+        color:#b81f1f;
+}
+      .timing p {
+    max-width: 585px;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+            font-size: 1rem;
+}
+      .timing p.text-orange {
+    color:#b81f1f;
+}
+      .timing>div h6 {
+    
+    font-size: 1rem;
+        color:#b81f1f;
+}
+      
+      .timing>div>div {
+    border-right: 2px solid #b81f1f;
+}
+      
+      .timing>div>div:last-child {
+    border-right: 2px solid #fff;
+}
+      .timing>div>div {
+    flex: 1;
+}
+      
+   .conatct_form{
+     
+     background-color: #ebebeb;
+  
+    padding: 2.2rem;
+     margin-bottom:3.2rem;
+   }
+      
+      @media only screen and (max-width: 767px){
+.timing>div {
+    flex-direction: column;
+}
+        
+        
+       
+.timing>div>div:first-child {
+    border: none!important;
+}
+        
+         .timing>div>div {
+           border: none!important;
+}
+      }
+      }
+    </style>
+    {% endif %}
+<div class="conatct_form">
+      {% if section.settings.text %}
+        {{ section.settings.text }}
+      {% endif %}
+    {% form 'contact' %}
+      {% if form.posted_successfully? %}
+        <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+      {% endif %}
+
+      {% if form.errors %}
+        <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+       {% assign message = 'contact.form.message' | t %}
+        <ul class="center">
+          {% for field in form.errors %}
+            {% if field == 'form' %}
+              <li>
+                {{ form.errors.messages[field] }}
+              </li>
+            {% else %}
+              <li>
+                {% assign field_name = field | replace: 'body', message %}
+                {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+              </li>
+            {% endif %}
+          {% endfor %}
+         </ul>
+      {% endif %}
+
+       <br class="clear" />
+    <div class="field-group">
+      {% assign name_attr = 'contact.form.name' | handle %}
+        <label for="contactFormName">{{ 'contact.form.name' | t }} <span class="red">*</span></label> 
+      <input autofocus class=" floating-label" type="text" id="contactFormName" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}" required="required">
+      
+    </div>
+    <div class="field-group">
+       <label for="contactFormEmail">{{ 'contact.form.email' | t }} <span class="red">*</span></label> 
+      <input class=" floating-label" type="email" id="contactFormEmail" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" required="required">
+       
+    </div>
+    
+       {% comment %} {% endcomment %}
+    <div class="field-group">
+      {% assign name_attr = 'contact.form.phone' | t | handle %}
+         <label for="contactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }} <span class="red">*</span></label>
+      <input class=" floating-label" type="tel" id="contactFormPhone" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+ 
+    </div>
+    <div class="field-group">
+         <label for="contactFormSubject">Subject <span class="red">*</span></label> 
+      <input class=" floating-label" type="text" id="contactFormName" name="contact['Subject']" placeholder="Subject" autocapitalize="words" value=""  maxlength="50" required="required">
+     
+    </div>
+    <div class="field-group">
+       <label for="contactFormMessage">{{ 'contact.form.message' | t }} <span class="red">*</span></label>
+      <textarea class=" floating-label" rows="5" id="contactFormMessage" name="contact['Message']" placeholder="{{ 'contact.form.message' | t }}" required="required">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+    
+    </div>
+    
+      <input type="submit" class="submit action_button" value="{{ 'contact.form.send' | t }}" />
+    {% endform %}
+    </div>
+  </div>
+  
+</div>
+
+{% if section.settings.show_map %}
+  {% include 'include-map' %}
+{% endif %}
+
+{% schema %}
+
+{
+  "name": "Contact",
+  "class": "contact-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1800 x 800px recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_darken",
+      "label": "Darken banner image",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Get in touch"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Subheading"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+        "type": "header",
+        "content": "Map"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_map",
+      "label": "Show map",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "wide_display",
+      "label": "Wide display",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "map_address",
+      "label": "Address",
+      "info": "Google Maps will find the exact location"
+    },
+    {
+      "type": "range",
+      "id": "map_height",
+      "min": 300,
+      "max": 600,
+      "step": 10,
+      "unit": "px",
+      "label": "Map height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "zoom_level",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "unit": "x",
+      "label": "Map zoom level",
+      "default": 16
+    },
+    {
+      "type": "image_picker",
+      "id": "map_image",
+      "label": "Image",
+      "info": "Displayed when map isn't loaded"
+    },
+    {
+      "type": "header",
+      "content": "API key"
+    },
+    {
+      "type": "text",
+      "id": "api_key",
+      "label": "Google Maps API key",
+      "info": "You’ll need to [register a Google Maps API Key](https://help.shopify.com/manual/using-themes/troubleshooting/map-section-api-key) to display the map"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pin",
+      "label": "Show pin",
+      "info": "Requires use of API key",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "map_style",
+      "label": "Map color scheme",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "aubergine",
+          "label": "Aubergine"
+        },
+        {
+          "value": "night",
+          "label": "Night"
+        },
+        {
+          "value": "retro",
+          "label": "Retro"
+        },
+        {
+          "value": "silver",
+          "label": "Silver"
+        }
+      ],
+      "default": "default",
+      "info": "Requires use of API key"
+    }
+  ]
+}
+
+{% endschema %}

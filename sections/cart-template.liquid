@@ -1,0 +1,294 @@
+<div data-section-id="{{ section.id }}" data-section-type="cart-page">
+
+    {% if cart.item_count > 0 %}
+        <a href="{{ routes.all_products_collection_url }}" class="text-link continue_shopping_link" aria-label="link">
+            {{ 'cart.general.continue_shopping' | t }} {% render 'icon-chevron-right' %}
+        </a>
+
+        <form action="{{ routes.cart_url }}" method="post" novalidate class="cart cart-template">
+            <!-- auto apply coupon code start -->    
+{% comment %} {% if cart.total_price >= 300000 %} 
+    <input class="js-form-discount" type="hidden" name="discount" value="PXWCF0197" >
+{% endif %}
+      {% endcomment %}
+     
+    <!-- auto apply coupon code end -->  
+          <div class="left-col cart_items">
+                <div class="box-title">
+                    <h3 class="title">{{ 'cart.label.product' | t }} </h3>
+                </div> 
+                
+                <ul class="cart-list">
+       {% assign total_saving = 0 %}
+                    {% for item in cart.items %}
+                       {% if item.variant.compare_at_price > item.variant.price %}
+            {% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+            {% assign total_saving = saving | plus: total_saving %}
+          {% endif %}
+                    <li data-product_id="{{ item.product_id }}">
+                        <div class="details">   
+                            <div class="cart-thumb">
+                                <a class="product-img" href="{{ item.url | within: collections.all }}" aria-label="link">
+                                    <img src="{{ item | img_url: '160x' }}"  alt="{{ item.title | escape }}">
+                                </a> 
+                            </div>
+                            <div class="cart-details">
+                                <h4 class="product-title">
+                                    <a href="{{ item.url }}" class="product-name" aria-label="link">
+                                        {{ item.product.title }}
+                                    </a>
+                                </h4>
+                                <div class="size product-vendor">  
+                                    {% if item.product.variants.size != 0 %}
+                                        {% unless item.variant.title contains 'Default' %}
+                                            {{ item.variant.title }}
+                                        {% endunless %}
+                                    {% endif %}
+                                </div>
+
+                                <div class="properties product-vendor">
+                                    {%- for p in item.properties -%}
+                                        {%- unless p.last == blank -%}
+                                            <label>{{ p.first }}:&nbsp;</label>
+                                            {%- if p.last contains '/uploads/' -%}
+                                                <a href="{{ p.last }}" aria-label="link">{{ p.last | split: '/' | last }}</a>
+                                            {%- else -%}
+                                                {{ p.last }}
+                                            {%- endif -%}
+                                        <br>
+                                        {%- endunless -%}
+                                    {%- endfor -%}
+                                </div>
+                                {% if settings.show_product_vendor %}
+                                <div class="product-vendor">
+                                    {{ item.vendor }}
+                                </div>
+                                {% endif %}
+                                
+                                   {%- assign compare_at_price = variant.compare_at_price -%}
+    {%- assign price = variant.price -%}
+    {%- assign available = variant.available -%}
+
+
+<div class="product-price {% if item.variant.compare_at_price > item.price %}price--on-sale{% endif %}" data-price>
+    {% if item.variant.compare_at_price > item.price %}
+        <span class="price-item price-item--regular" data-regular-price>
+            {{ item.variant.compare_at_price | money }}
+        </span>
+        <span class="price-item price-item--sale" data-sale-price>
+            {{ item.price | money }}
+        </span>
+  <br>
+   <span class="sale savings" >
+                 
+                  Save  <span>{{ item.variant.compare_at_price | minus: item.price | times: 100 | divided_by: item.variant.compare_at_price }}% </span> (<span class="money">{{ item.variant.compare_at_price | minus: item.price | money }}</span>)
+                 
+                </span>
+    {% else %}
+        <span class="price-item price-item--regular" data-regular-price>
+            {{ item.price | money }}
+        </span>
+        <span class="price-item price-item--sale" data-sale-price></span>
+    {% endif %}
+  
+              
+   
+</div>  
+                                <div class="button-groups cart__update-wrapper">
+                                    <div class="quantity cart__update-control">
+                                        <label for="Quantity-{{ section.id }}" class="form-label">{{ 'cart.label.quantity' | t }}:</label>
+                                        <div class="qty-group">
+                                            <a href="#" data-qtt data-minus-qtt class="minus button"> {% render 'icon-chevron-down' %} </a>
+                                            <input class="cart__qty-input" type="text" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-quantity-item="{{ forloop.index }}">
+                                            <a href="#" data-qtt data-plus-qtt class="plus button"> {% render 'icon-chevron-up' %}</a>
+                                        </div>
+                                    </div>
+                                    <div class="group-action">
+                                        <button type="submit" name="update" class=" btn btn--secondary cart__update-control" aria-label="{{ 'cart.general.update' | t }} {{ item.product.title }}">
+                                            {{ 'cart.general.update' | t }}
+                                        </button>
+
+                                        <a class="remove btn btn--secondary" href="/cart/change?line={{ forloop.index }}&amp;quantity=0" data-id="{{ item.id }}" aria-label="link">
+                                            <span class="icon--big">&#215;</span>
+                                            {{ 'cart.general.remove' | t }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                
+                {% if section.settings.display_trust_img and section.settings.img_trust != blank %}
+                    <div class="product_trust_img mt-4">
+                        <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ section.settings.img_trust | img_url: '500x'  }}" alt="">
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="right-col">
+                <div class="box-title text-center">
+                    <h3 class="title">{{ 'cart.label.order_summary' | t }}</h3> 
+                </div>
+                
+                <div class="total" style="padding:20px 0 0 0;border-bottom: 0px solid #e2e4e8;">
+                    <span class="label prices">
+                        <span>
+                            MRP:
+                        </span>
+                    </span>
+                    <span class="prices" style="text-decoration: line-through;color: #999;">
+                        {{ cart.total_price | plus:total_saving | money }}
+                    </span> 
+      
+                 </div>
+      
+       <div class="total" style="padding:2px 0 0px 0;border-bottom: 0px solid #e2e4e8;">
+                    <span class="label prices">
+                        <span>
+                            You Pay:
+                        </span>
+                    </span>
+                    <span class="prices">
+                        {{ cart.total_price | money }}
+                    </span> 
+                 </div>
+      <div class="total" style="padding:0px 0 10px 0;color:red;font-size:12px;">
+                    <span class="label prices">
+                        <span>
+                           Your Savings:
+                        </span>
+                    </span>
+                    <span class="prices">
+                        {{ total_saving | money }}
+                    </span> 
+                 </div>
+      
+  
+               
+                {% if section.settings.cart_notes_enable %}
+                    <label class="add-comments" for="cartSpecialInstructions">
+                        <span class="note">
+                            {{ 'cart.label.note' | t }}
+                        </span>
+                        <span>
+                            {{ 'cart.general.note' | t }}
+                        </span>
+                    </label>
+                    <textarea name="note" id="CartSpecialInstructions" class="cart-note__input form-control">{{ cart.note }}</textarea>
+                {% endif %}
+                {% if settings.terms_conditions %}
+                    <div class="terms_conditions_wrapper mb-3">
+                        <input type="checkbox" id="terms-conditions-cart" value=""/>
+                        <label class="title" for="terms-conditions-cart">
+                            {% render 'multilang' with settings.terms_conditions_text %}
+                        </label>
+                    </div>
+                {% endif %}
+                
+                <div class="btn-actions">
+                    <input type="submit" name="checkout" class="btn btn--primary cart__submit cart__submit-control" value="{{ 'cart.general.checkout_two' | t }}">
+                </div>
+
+                {% if section.settings.cart_securityContact %}
+                    <div class="securityContact mt-4">
+                        <div class="wrapper">
+                            <svg class="icon" id="icon-user-protection" viewBox="0 0 612 612">
+                                <path d="M251.733,288.168c79.576,0,144.084-64.509,144.084-144.084S331.31,0,251.733,0c-79.575,0-144.084,64.509-144.084,144.084 S172.158,288.168,251.733,288.168z M319.071,201.378c-6.555,21.671-34.632,37.963-68.283,37.963 c-33.651,0-61.728-16.292-68.282-37.963H319.071z M603.71,426.278c-3.09,85.35-37.799,158.706-118.848,185.722 c-81.049-27.016-115.758-100.372-118.848-185.722c-0.242-6.655,5.258-12.049,11.91-11.765 c37.873,1.615,70.926-10.577,99.877-34.521c4.074-3.37,10.045-3.37,14.121,0c28.949,23.943,62.004,36.136,99.875,34.521 C598.452,414.229,603.95,419.623,603.71,426.278z M341.194,427.167c1.414,39.206,8.896,73.968,21.902,103.688 c-30.627,3.456-67.427,5.733-111.363,5.733c-138.927,0-206.913-22.701-231.838-33.792c-6.431-2.86-11.613-11.042-11.613-18.082 V437.22c0-71.171,54.188-130.214,123.333-138.123c2.101-0.241,5.216,0.659,6.929,1.899c31.881,23.08,70.912,36.854,113.19,36.854 c42.278,0,81.31-13.774,113.19-36.854c1.713-1.24,4.828-2.14,6.93-1.899c39.904,4.564,74.748,26.218,97.148,57.348 c-2.482,1.222-4.875,2.624-7.023,4.403c-23.57,19.485-48.898,28.966-77.418,28.966c-1.844,0-3.697-0.039-5.588-0.126l-1.543-0.029 c-9.811,0-19.33,4.047-26.133,11.102C344.522,407.788,340.835,417.424,341.194,427.167z" />
+                            </svg>
+                            <p class="text">{% render 'multilang' with section.settings.cart_securityContact_text1 %}</p>
+                        </div>
+                        <p class="description">{% render 'multilang' with section.settings.cart_securityContact_text2 %}</p>
+                    </div>
+                {% endif %}
+              
+              {% unless cart.item_count == 0 %}
+
+ <div class="text-center" style="font-size:14px">
+   
+   
+   {% if customer %}
+   <p style="font-size:16px"><u>Redeem your Wonderpoints at checkout.</u><p>
+   
+   {% else %}
+   <p style="font-size:16px"><a href="#smile-home"><u>Log in</u></a> to redeem your Wonderpoints at the checkout.<p>
+   {% endif %}
+                {% endunless %}
+            </div>
+          </div>
+        </form>
+    {% else %}
+         
+          
+       <h1>{{ 'cart.general.title' | t }}</h1>
+            <p class="cart--empty-message">{{ 'cart.general.empty' | t }}</p>
+            <div class="cookie-message">
+                <p>{{ 'cart.general.cookies_required' | t }}</p>
+            </div>
+            <a href="{{ routes.root_url }}" class="btn btn--has-icon-after cart__continue-btn btn--primary" aria-label="link">
+                {{ 'general.404.link' | t }}
+                {% render 'icon-arrow-right' %}
+            </a>
+      
+{% endif %}
+
+                                 
+</div>
+    
+
+
+
+
+{% schema %}
+{
+    "name": "Cart page",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "cart_notes_enable",
+            "label": "Enable cart notes",
+            "default": false,
+            "info": "Only enabled in the ajax cart if you use your cart.liquid markup. See docs below."
+        },
+        {
+            "type": "header",
+            "content": "Trust Image"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_trust_img",
+            "label": "Enable Trust Image?",
+            "default": false
+        },
+        {
+            "type": "image_picker",
+            "id": "img_trust",
+            "label": "Image Trust"
+        },
+        {
+            "type": "header",
+            "content": "Security Contact"
+        },
+        {
+            "type": "checkbox",
+            "id": "cart_securityContact",
+            "label": "Enable Security Contact?",
+            "default": false
+        },
+        {
+            "type": "text",
+            "id": "cart_securityContact_text1",
+            "label": "Text 1",
+            "default": "Secure Shopping Guarantee. Your information is secure."
+        },
+        {
+            "type": "text",
+            "id": "cart_securityContact_text2",
+            "label": "Text 2",
+            "default": "Need Help? Contact us or Get in touch 1.800.000.8809"
+        }
+        
+    ]
+}
+{% endschema %}

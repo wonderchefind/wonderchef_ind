@@ -1,0 +1,34 @@
+{% if settings.display_someone-purchased %}
+
+{%- assign time = time | default: settings.autorotate_speed | times: 1000 -%}
+
+<div class="product-notification {% if settings.display_someone-purchased_mb %}product-notification-mb{% endif %}" data-time="{{ time }}">
+    <a href="javascript:void(0)" title="Close" class="close close-notifi">&#215;</a>
+    <div class="product-suggest">
+        <a class="product-image" href="">
+            <img src="{{ 'loading.svg' | asset_url }}" alt="">
+        </a>
+        <div class="column-right">
+            <p class="text">{{ settings.text }}</p>
+            <a class="product-name" href=""></a>
+            <div class="info-ago">
+                <span class="time-text"></span>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        {% for i in (1..5) %}
+            {% capture cap_product %}someone_recently_product_{{ i }}{% endcapture %}
+            {% assign product_id = settings[cap_product] %}
+            {% assign product = all_products[product_id] %}
+            {% capture cap_from_ago %}from_ago_{{ i }}{% endcapture %}
+            {% assign from_ago = settings[cap_from_ago] %}
+            {% if product %}
+                <div class="data-product" data-id="someone_recently_{{ i }}" data-image="{{ product.featured_image.src | product_img_url: 'compact' }}" data-url="{{ product.url | within: collection }}" data-title="{{ product.title | truncatewords: 9}}" data-alt="{{ product.title }}" data-local="{{ from_ago }}"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="clearfix"></div>
+
+{% endif %}

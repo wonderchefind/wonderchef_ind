@@ -1,0 +1,105 @@
+{% if section.settings.display_sidebar == false %}
+    <style>
+        .page .page-sidebar,
+        .page .sidebar_mobile_wrapper .sidebar_mobile {
+            display: none !important;
+        }
+
+        .page .page-content,
+        .page .page-sidebar + .page-content {
+            display: block;
+            width: 100%;
+            padding-left: 0;
+        }
+
+        .sidebar_mobile_wrapper {
+            display: none;
+        }
+    </style>
+{% endif %}
+
+{% if section.settings.position_sidebar == 'right' %}
+    <style>
+        @media only screen and (min-width: 1025px) {
+            .page .page-sidebar {
+                float: right;
+                padding-left: 25px;
+                padding-right: 0;
+            }
+
+            .page .page-sidebar + .page-content {
+                padding-left: 0;
+                padding-right: 25px;
+            }
+        }
+    </style>
+{% endif %}
+
+<div class="sidebar_close">
+    <a href="javascript:void(0)" class="close">
+        <span class="icon">&#215;</span>
+        <span class="text">{{ 'general.accessibility.close_modal' | t }}</span>
+    </a>
+</div>
+<div class="sidebar_content">
+    {% for block in section.blocks %}
+    <div class="sidebarBlock sidebarBlock_custom">
+        <h5 class="sidebarBlock-heading"><span>{{ block.settings.title }}</span></h5>
+        <div class="sidebarBlock-content">
+            {{ block.settings.text }}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% schema %}
+{
+    "name": "FAQs Sidebar",
+    "class": "page-sidebar",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "display_sidebar",
+            "label": "Enable Sidebar",
+            "default": true
+        },
+        {
+            "type": "select",
+            "id": "position_sidebar",
+            "label": "Position Sidebar on:",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "widget_sidebar",
+            "name": "Custom Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

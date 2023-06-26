@@ -1,0 +1,428 @@
+
+
+<!-- {% if section.settings.dpl_someone %}
+<section class="product-notification" data-time="{{section.settings.someone_speed}}">
+  <a href="javascript:void(0)" title="Close" class="close-notifi">
+  <svg class="closemnu" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="357px" height="357px" viewBox="0 0 357 357" style="enable-background:new 0 0 357 357;" xml:space="preserve"><g><g><polygon points="357,35.7 321.3,0 178.5,142.8 35.7,0 0,35.7 142.8,178.5 0,321.3 35.7,357 178.5,214.2 321.3,357 357,321.3 214.2,178.5"></polygon></g></g></svg>
+  </a> -->
+<!--   
+  {% for block in section.blocks %}
+  <div class="product-suggest"  >
+    <img class="lazyload {{ settings.image_loading_style }}" src="{{ 'Pop_up_434212c5-0872-4bca-9639-a177219bf52a.jpg' | file_url }}" data-src="{{'Pop_up_434212c5-0872-4bca-9639-a177219bf52a.jpg' | file_url }}" alt="Wonderchef">  
+  </div>
+  {% endfor %} -->
+<!--   <div class="offertime1"></div> -->
+<script type="text/javascript" xml="space">// 
+
+// Set the date we're counting down to
+  var countDownDate = new Date("{{settings.date_timer}}").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get todays date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now an the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var convertedDays = days*24; 
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  var convertedHours = hours + convertedDays;
+
+  // Display the result in the element with id="demo"
+ jQuery(".offertime").html(convertedHours + "h:"  + minutes + "m:" + seconds + "s left");
+jQuery(".offertime1").html(convertedHours + "h:"  + minutes + "m:" + seconds + "s left");
+  // If the count down is finished, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+     jQuery(".offertime").html( "");
+  }
+}, 1000);
+</script>
+<!-- </section> -->
+{% endif %}
+{% schema %}
+{
+    "name": "Someone Purchased",
+    "max_blocks": 10,
+    "settings": [		
+	  {
+		"type" : "checkbox",
+		"id" : "dpl_someone",
+		"label" : "Display Someone Purchased",
+		"default" : true
+	  },
+	  {
+		"type" : "checkbox",
+		"id" : "dpl_someone_mb",
+		"label" : "Display Someone Purchased Popup on mobile",
+		"default" : false
+	  },
+      {
+        "type": "select",
+        "id": "someone_speed",
+        "label": "Change slides every",
+
+      "options": [
+          { "value": "5000", "label": "5 seconds" },
+          { "value": "6000", "label": "6 seconds" },
+          { "value": "7000", "label": "7 seconds" },
+          { "value": "8000", "label": "8 seconds" },
+          { "value": "9000", "label": "9 seconds" },
+          { "value": "10000", "label": "10 seconds" },
+		  { "value": "60000", "label": "1 minutes" },
+		  { "value": "180000", "label": "3 minutes" }
+        ],
+          "default": "7000"
+      },
+      {
+		"type" : "text",
+		"id" : "text",
+		"label" : "Text Someone recently bought", 
+		"default" : "Someone recently bought"
+      }
+    ],
+    "blocks" : [
+        {
+            "type" : "image",
+            "name" : "Image Slide",
+            "settings":[
+            	{
+                  "type": "image_picker",
+                  "id": "image",
+                  "label": "Image",
+                  "info": "1600 x 1000px recommended"
+            	},
+				{
+                  "type" : "text",
+                  "id" : "from_ago",
+				  "default" : "in Washington,",
+                  "label" : "Purchase Location"
+                },
+                {
+                  "type" : "text",
+                  "id" : "time_ago",
+				  "default" : "about 43 minutes ago",
+                  "label" : "Purchase Time"
+                }
+				
+            ]
+        }
+    ]
+}
+{% endschema %}
+{% if section.settings.dpl_someone %}
+<script type="text/javascript">
+  (function(e){if(typeof define==="function"&&define.amd){define(["jquery"],e)}else{e(jQuery)}})(function(e){function n(e){return e}function r(e){return decodeURIComponent(e.replace(t," "))}function i(e){if(e.indexOf('"')===0){e=e.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,"\\")}try{return s.json?JSON.parse(e):e}catch(t){}}var t=/\+/g;var s=e.cookie=function(t,o,u){if(o!==undefined){u=e.extend({},s.defaults,u);if(typeof u.expires==="number"){var a=u.expires,f=u.expires=new Date;f.setDate(f.getDate()+a)}o=s.json?JSON.stringify(o):String(o);return document.cookie=[s.raw?t:encodeURIComponent(t),"=",s.raw?o:encodeURIComponent(o),u.expires?"; expires="+u.expires.toUTCString():"",u.path?"; path="+u.path:"",u.domain?"; domain="+u.domain:"",u.secure?"; secure":""].join("")}var l=s.raw?n:r;var c=document.cookie.split("; ");var h=t?undefined:{};for(var p=0,d=c.length;p<d;p++){var v=c[p].split("=");var m=l(v.shift());var g=l(v.join("="));if(t&&t===m){h=i(g);break}if(!t){h[m]=i(g)}}return h};s.defaults={};e.removeCookie=function(t,n){if(e.cookie(t)!==undefined){e.cookie(t,"",e.extend({},n,{expires:-1}));return true}return false}})
+  function SomeonePurchased() {
+    {% unless section.settings.dpl_someone_mb %}
+    if(window.innerWidth > 767 ){
+    {% endunless %}
+      if (jQuery.cookie('pr_notification') == 'closed') {
+        jQuery('.product-notification').remove();
+      }
+
+      jQuery('.close-notifi').bind('click',function(){
+        jQuery('.product-notification').remove();
+        jQuery.cookie('pr_notification', 'closed', {expires:1, path:'/'});
+      });  
+      function toggleSomething() {
+
+        if($('.product-notification').hasClass('active')){
+          $('.product-notification').removeClass('active')
+        }
+        else{     
+          var number=$('.data-product').length,
+              i = Math.floor(Math.random() * number),         
+              images = $('.product-notification .data-product:eq('+i+')').data('image'),
+              title = $('.product-notification .data-product:eq('+i+')').data('title'),
+              url = $('.product-notification .data-product:eq('+i+')').data('url'),
+              local =  $('.product-notification .data-product:eq('+i+')').data('local'),
+              times =$('.product-notification .data-product:eq('+i+')').data('time');
+
+          $('.product-notification').addClass('active');
+          $('.product-notification .product-image').find('img').attr('src', images );
+          $('.product-notification .product-name').text(title).attr('href', url );
+          $('.product-notification .product-image').attr('href', url );
+          $('.product-notification .time-ago').text(times);
+          $('.product-notification .from-ago').text(local);
+        }
+      }
+      var time = $('.product-notification').data('time');
+      var timer = setInterval(toggleSomething, time);
+    {% unless section.settings.dpl_someone_mb %}
+    }
+    {% endunless %}
+  }
+  SomeonePurchased();
+  $(document)
+    .on( 'shopify:section:load', SomeonePurchased )
+    .on( 'shopify:section:unload', SomeonePurchased)
+</script>
+{% endif %}
+{% if section.settings.dpl_someone %}
+
+<style>
+  .product-suggest img{
+      box-shadow: 4px 2px 8px 0px rgba(0,0,0,0.5);
+    width:300px;
+}
+   .offertime1{
+     position: relative;
+     font-weight: 600;
+     color: #000;
+     left: 10%;
+     bottom: 0;
+     z-index: 99999999999;
+     font-family: 'Montserrat',sans-serif;
+     text-transform: uppercase;
+     font-size: 20px;
+     border-radius: 50%;
+     letter-spacing: 1px;
+    
+  }
+/*  .product-notification::after {
+    position: absolute;
+    content: "";
+    height: 60px;
+    width: 30px;
+    background: white;
+    right: -5px;
+    bottom: -20px;
+    transform: rotate(45deg);
+} */
+ @media (min-width: 768px) {
+/*    section.product-notification::before {
+     background: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/ssk.png?14295)no-repeat scroll center center;
+     position: absolute;
+     content: "";
+     top: -100px;
+     width: 100px;
+     height: 100px;
+     left: 50px;
+     right: 0;
+     z-index: 0;
+     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+     border-radius: 99px;
+     background-color:#fff;
+   } */
+  
+ }
+  .product-notification {
+   position: fixed;
+    min-height: 42px;
+    bottom: 10vh;
+    background: transparent;
+    width: 350px;
+    transition-timing-function: ease-out;
+    transition: 1s;
+    transform: translateX(-25%);
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+    filter: alpha(opacity=0);
+    z-index: 999;
+    left: 0vh;
+    border: 1px solid #eee;
+    visibility: hidden;
+  }
+  .product-notification.active{
+   bottom: 10vh;
+    transition-timing-function: ease-in;
+    transition: 1s;
+    transform: translateX(10%);
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=100)";
+    filter: alpha(opacity=100);
+    visibility: visible;
+  }
+  .product-notification .close-notifi {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: -34px;
+    z-index: 1;
+    top: -20px;
+    border-radius: 1px;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    background: #fff;
+    color: #fff;
+    border-radius: 100%;
+    border: 1px solid #E12F36;
+    fill: #696969;
+    padding-top: 1px;
+  }
+  .product-notification .product-suggest {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-align-items: flex-start;
+    -moz-align-items: flex-start;
+    -ms-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-box-pack: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+  }
+ .product-notification .product-suggest .product-image {
+    min-width: 90%;
+    display: block;
+    max-width: 90%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+}
+  .product-notification .product-suggest .column-right {
+    padding: 8px 20px 7px;
+    line-height: 20px;
+  }
+  .product-notification .product-suggest .column-right label {
+    display: inline;
+    color: #969696;
+    font-size: 12px;
+        font-weight: 400;
+
+  }
+  .product-notification .close-notifi svg {
+    width: 10px;
+    height: 10px;
+  }
+  .product-notification .product-suggest .column-right .from-ago, .product-notification .product-suggest .column-right .time-ago {
+    color: #969696;
+    font-size: 11px;
+  }
+  
+    .product-notification .product-suggest .product-image {
+    padding: 4px 8px 4px 20px;
+    background: #fff;
+    border-radius: 0px 30px 30px 0px;
+}
+    .product-notification{
+      width: 150px;
+      left: -15px;
+      border: 0;
+      background: #ffffff;
+    }
+    .product-notification .product-suggest .product-image h2 span{
+      font-weight: 700;
+      font-size: 22px;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+    .product-notification .product-suggest .product-image h2 {
+      font-size: 18px;
+      letter-spacing: -1px;
+      font-weight: 500;
+      margin-top: 0;
+      padding-top: 0;
+      line-height: 22px;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+    .product-notification .product-suggest{
+    background: transparent;
+    }
+    
+    .product-notification .product-suggest .product-image h3 {
+      margin-bottom: 0;
+      color: #e31e24;
+      text-transform: none;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 0;
+}
+  .newpopup{
+  	margin-top: 71px;width: 109%;font-size: 19px;left: -5%;background-color: #fff ;text-align: center;
+  }
+  {% unless section.settings.dpl_someone_mb %}
+  {% endunless %}
+  @media (max-width: 768px) {
+   
+    .product-notification .product-suggest .product-image {
+      padding: 8px 8px 4px;
+      background: #fff;
+    }
+    .product-notification{
+      width: 100%;
+      left: 0px;
+      
+    }
+    .product-notification .product-suggest .product-image h2 span{
+      font-weight: 500;
+      font-size: 16px;
+      font-style: italic;
+      letter-spacing: -1px;
+    }
+    .product-notification .product-suggest .product-image h2 {
+      font-size: 12px;
+      letter-spacing: -1px;
+      font-weight: 500;
+      margin-top: 0;
+      padding-top: 0;
+      padding-bottom: 0px;
+      margin-bottom: 0px;
+    }
+    .product-notification .product-suggest{
+    background: transparent;
+    }
+    .product-notification{
+      width: 150px;
+      left: -24px;
+      border: 0;
+      bottom: 20vh!important;
+    }
+    .product-notification .product-suggest .product-image h3 {
+      margin-bottom: 0;
+      color: #e31e24;
+      text-transform: none;
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0;
+}
+    .product-suggest img {
+    width: 220px;
+}
+     .offertime1{
+   font-size: 16px;
+   }
+    .newpopup{
+  	margin-top: 28px;width: 105%;font-size: 19px;left: -5%;background-color: #fff;text-align: center;
+  }
+  }
+  @media (max-width: 375px) {
+    .product-notification{
+      width: 150px;
+      left: -34px;
+      border: 0;
+    }
+    .product-notification .close-notifi{
+      right:0px;	
+    }
+    .product-suggest img {
+    width: 220px;
+}
+     .offertime1{
+   font-size: 16px;
+   }
+    .newpopup{
+  	margin-top: 28px;width: 105%;font-size: 19px;left: -5%;background-color: #fff;text-align: center;
+  }
+  }
+  
+</style>
+{% endif %}

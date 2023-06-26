@@ -1,0 +1,157 @@
+
+<!--   home demo start    -->
+      {%if template contains 'index'%} 
+      {% include 'home-demo' %}
+      {%endif%}
+
+
+
+
+
+
+
+
+
+
+
+
+<a id="homedemo">.</a>
+
+<div data-pop="pop-in" id="popuphomedemo" >
+  <div class="reward-popupp">
+    <div class="popupcontrols">
+      <span id="popupclose">×</span>
+    </div>
+    <div class="popupcontent">
+      <center><h3>Home Demo</h3></center>
+<!--       <div style="margin:0 auto;" class="pxFormGenerator" id="W682Zgz3axSoELtrxW8SzQ"></div> -->
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScmhUSyKYwp6jCdhrDAxCkjIQLi8DvUXFjyBCyo16n39D3cTQ/viewform?embedded=true" width="400" height="1445" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    </div>
+  </div>
+</div>
+
+<div id="overlay" class="show"></div>
+<script>
+  $(document).ready(function () {
+    var closePopup = document.getElementById("popupclose");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popuphomedemo");
+    var button = document.getElementById("homedemo");
+    // Close Popup Event
+    overlay.onclick = function() {
+      overlay.className = '';
+      popup.className = '';
+    };
+    // Close Popup Event
+    closePopup.onclick = function() {
+      overlay.className = '';
+      popup.className = '';
+    };
+    // Show Overlay and Popup
+    button.onclick = function() {
+      overlay.className = 'show';
+      popup.className = 'show';
+    }
+  });
+</script>
+<style>
+  #popupclose {
+    color: #c11616;
+    float: right;
+    font-size: 50px;
+    font-weight: 400;
+    border: 1px solid #e32c2b;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    padding: 4px 4px 4px 5px;
+    line-height: 32px;
+    letter-spacing: 6px;
+    top: -14px;
+    position: relative;
+    right: -14px;
+    cursor: pointer;
+  }
+  #popuphomedemo {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    background: #fff;
+    width: 32%;
+    height: auto;
+    margin: 0;
+    z-index: -1;
+    visibility: hidden;
+    right: 0;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  #popuphomedemo[data-pop="slide-down"] {
+    top: -50%;
+    transition: all .5s ease-in-out;
+  }
+  #popuphomedemo[data-pop="slide-down"].show {
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+    top: 50%;
+  }
+  #popuphomedemo[data-pop="slide-down"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  #popuphomedemo[data-pop="pop-in"] {
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+  }
+  #popuphomedemo[data-pop="pop-in"].show {
+    transform: scale(1);
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.175);
+    transition: all .5s ease-in-out;
+  }
+  #popuphomedemo[data-pop="pop-in"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  .reward-procondition {
+    overflow: auto;
+    height: 500px;
+  }
+  #popuphomedemo[data-pop="pop-swirl"] {
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+  }
+  #popuphomedemo[data-pop="pop-swirl"].show {
+    -webkit-animation: pop-swirl 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+  }
+  #popuphomedemo[data-pop="pop-swirl"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  #popuphomedemo[data-pop="anvil"] {
+    transition: all .5s ease-in-out;
+  }
+  #popuphomedemo[data-pop="anvil"].show {
+    -webkit-animation: anvil 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+  }
+  #popuphomedemo[data-pop="anvil"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+</style>
+
+<!--   home demo end     -->

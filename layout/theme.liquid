@@ -1,0 +1,459 @@
+<!doctype html>
+<html class="no-js" lang="{{ shop.locale }}">
+<head>
+
+  {% include 'shop-sheriff-amp' %}
+{% if template contains 'product' %}
+  
+   <script>
+      YETT_WHITELIST = [
+        /cdn.judge.me/,
+        /jdgm/,
+        /judge/
+      ]
+    </script>
+  {% endif %}
+{% render 'yett' %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="{{ settings.color_theme }}">
+  
+  {% comment %}
+   <div itemprop="aggregateRating" itemtype="https://schema.org/AggregateRating" itemscope>
+        <meta itemprop="reviewCount" content="89" >
+        <meta itemprop="ratingValue" content="5" >
+      </div>
+      <div itemprop="review" itemtype="https://schema.org/Review" itemscope>
+    <link rel="canonical" href="{{ canonical_url }}">
+    {% endcomment %}
+
+  
+    {%- if settings.favicon != blank -%}
+        <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {%- endif -%}
+
+    {%- capture seo_title -%}
+        {%- if template == 'search' and search.performed == true -%}
+            {{ 'general.search.heading' | t: count: search.results_count }}: {{ 'general.search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+        {%- else -%}
+            {{ page_title }}
+        {%- endif -%}
+        {%- if current_tags -%}
+            {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+        {%- endif -%}
+        {%- if current_page != 1 -%}
+            &ndash; {{ 'general.meta.page' | t: page: current_page }}
+        {%- endif -%}
+        {%- assign escaped_page_title = page_title | escape -%}
+        {%- unless escaped_page_title contains shop.name -%}
+            &ndash; {{ shop.name }}
+        {%- endunless -%}
+    {%- endcapture -%}
+    <title>{{ seo_title | strip }}</title>
+
+    {%- if page_description -%}
+        <meta name="description" content="{{ page_description | escape }}">
+    {%- endif -%}
+  <!--  {% include 'fb-open-graph-tags' %}-->
+  {% include 'social-meta-tags' %}
+    <link href="{{ 'vendor.min.css' | asset_url }}" rel="stylesheet">
+    <link href="{{ 'theme.scss.css' | asset_url }}" rel="stylesheet">
+    {%- if settings.customcss_enable -%}
+        <link href="{{ 'custom.css' | asset_url }}" rel="stylesheet">
+    {%- endif -%}
+  
+
+    <script>
+        var theme = {
+            strings: {
+                addToCart: {{ 'products.product.add_to_cart' | t | json }},
+                select_options: {{ 'products.product.select_options' | t | json }},
+                soldOut: {{ 'products.product.sold_out' | t | json }},
+                unavailable: {{ 'products.product.unavailable' | t | json }},
+                regularPrice: {{ 'products.product.regular_price' | t | json }},
+                sale: {{ 'products.product.on_sale' | t | json }},
+                showMore: {{ 'general.filters.show_more' | t | json }},
+                showLess: {{ 'general.filters.show_less' | t | json }},
+                addressError: {{ 'sections.map.address_error' | t | json }},
+                addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+                addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+                authError: {{ 'sections.map.auth_error_html' | t | json }},
+                newWindow: {{ 'general.accessibility.link_messages.new_window' | t | json }},
+                external: {{ 'general.accessibility.link_messages.external' | t | json }},
+                newWindowExternal: {{ 'general.accessibility.link_messages.new_window_and_external' | t | json }},
+                quantityMinimumMessage: {{ 'products.product.quantity_minimum_message' | t | json }},
+                unitPrice: {{ 'products.product.unit_price_label' | t | json }},
+                unitPriceSeparator: {{ 'general.accessibility.unit_price_separator' | t | json }},
+                remove: {{ 'cart.general.remove' | t | json }},
+                oneCartCount: {{ 'cart.popup.cart_count' | t: count: 1 | json }},
+                otherCartCount: {{ 'cart.popup.cart_count' | t: count: '[count]' | json }},
+                quantityLabel: {{ 'cart.popup.quantity_label' | t: quantity_count: '[count]' | json }},
+                in_stock: {{ 'products.product.in_stock' | t | json }},
+                out_of_stock: {{ 'products.product.out_of_stock' | t | json }},
+                previous: {{ 'general.pagination.previous' | t | json }},
+                next: {{ 'general.pagination.next' | t | json }},
+                added_to_cart: {{ 'cart.popup.added_to_cart' | t | json }},
+                pre_order: {{ 'products.product.pre_order' | t | json }}
+            },
+
+            moneyFormat: {{ shop.money_format | json }}
+        }
+
+        window.shop_currency = "{{ shop.currency }}";
+        window.money_format = {{ shop.money_format | json }};
+        window.multi_lang = {{ settings.enable_multilang }};
+        window.show_multiple_currencies = {{ settings.enable_multiple_currencies }};
+        window.show_auto_currency = {{ settings.enable_auto_currency }};
+        window.enable_sidebar_multiple_choice = true;
+        window.router = "{{ routes.cart_url | split: '/cart' | first}}";
+
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+    </script>
+
+    {%- if template.directory == 'customers' -%}
+        <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+    
+
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    {{ content_for_header }}
+
+  <!-- OrderLogic checkout restrictions ========================================= -->
+  {% include 'order-logic' %}
+
+ 
+ 
+
+{% render 'gsf-conversion-pixels' %}
+   <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MT2DQRG');</script>
+<!-- End Google Tag Manager -->
+
+ {% render 'gift-card-pro' %} 
+  {% render 'judgeme_core' %}
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SSRFNVNCEM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-SSRFNVNCEM');
+</script>
+</head>
+
+<body class="template-{{ template | split: '.' | first }}">
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT2DQRG"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    {% render 'scheme' %}
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    {% if settings.header_layout == 'header_1' %}        
+        {% section 'header' %}
+    {% elsif settings.header_layout == 'header_2' %}
+        {% section 'header_2' %}
+    {% elsif settings.header_layout == 'header_3' %}
+        {% section 'header_3' %}
+    {% endif %}
+    
+    <div class="page-container" id="PageContainer">
+        <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
+            {{ content_for_layout }}
+        </main>
+
+        {% section 'footer' %}
+
+  
+
+    
+
+    </div>
+   <!-- START of FAQPRIME Code -->
+<!-- START of FAQPRIME Code -->
+    <div id="faq-bot-codestart-id" class="faq-bot-codestart"></div>
+    <script>
+       var faqbotKey = 'wonderchef';
+    </script>
+    <script src="https://myfaqprime.appspot.com/bot/bot.js" defer="defer"></script>
+    <link href="https://myfaqprime.appspot.com/bot/bot.css" rel="stylesheet" type="text/css">
+<!-- END of FAQPRIME Code -->
+
+    <div class="footbar-fixed">
+        <div class="footbar-fixed-left">
+            {% if settings.show_someone-purchased == 'left' %}
+                {% render 'someone-purchased' %}
+            {% endif %}
+            {% if settings.show_gdpr == 'left' %}
+                {% render 'GDPR-modal' %}
+            {% endif %}
+        </div>
+        <div class="clearfix"></div>
+        <div class="footbar-fixed-right">
+            {% if settings.show_someone-purchased == 'right' %}
+                {% render 'someone-purchased' %}
+            {% endif %}
+            {% if settings.show_gdpr == 'right' %}
+                {% render 'GDPR-modal' %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="halo_mobileNavigation" id="login-mobile">
+        <div class="halo_mobileNavigation_wrapper">
+        </div>
+    </div>
+
+    <div class="halo_mobileNavigation" id="cart-mobile">
+        <div class="close_header">
+            <h2 class="title">{{ 'cart.general.title' | t }} </h2>
+            <a href="javascript:void(0)" class="close" data-close-cart-preview >&#215;</a>
+        </div>
+        <div class="halo_mobileNavigation_wrapper"></div>
+    </div>
+   <div class="halo_mobileNavigation" id="rent-cart-mobile">
+        <div class="close_header">
+            <h2 class="title">Your Rent Cart </h2>
+            <a href="javascript:void(0)" class="close" data-close-rent-cart-preview >&#215;</a>
+        </div>
+        <div class="halo_mobileNavigation_wrapper"></div>
+    </div>
+
+    {% render 'popup_modal_ask_an_expert' %}
+
+    {% render 'popup_modal_newsletter' %}
+
+    {% render 'popup_modal_quickview' %}
+
+    {% render 'popup_modal_cart_frequently' %}
+
+    {% render 'popup_modal_subscribed' %}
+
+    {% render 'cart-popup' %}
+
+    
+  <!--  <div class="overlay_background"></div>
+   {% include 'social-login' %}
+   <script defer="defer">
+    Cookies.remove('payment_gateway');
+  </script>-->
+   <script  src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'lazysizes.js' | asset_url }}" async="async"></script>
+    <script src="{{ 'api.jquery.js' | shopify_asset_url }}" async="async"></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
+
+    {% if settings.enable_multilang %}
+        {% render 'language-converter' %}
+    {% endif %}
+
+    {% render 'new-currency' %}
+  
+
+{% include 'swymSnippet' %}
+  
+   
+  <style>
+
+  
+    .faq-bot-right, .faq-bot-button-right{
+      margin-bottom:150px !important;
+      right:-4px !important;
+      bottom:0px;
+      padding: 8px !important;
+      font-family:Montserrat, sans-serif !important;
+      border-radius:7px !important;
+      padding:4px !important;
+      font-size :12px !important;
+    }
+
+    .faq-bot-button-text{
+      margin : 0px 0px 0px 1px !important; 
+      font-size :12px !important;
+      font-family:Montserrat, sans-serif !important;
+    }
+@media (max-width: 768px) {
+    #mybutton {
+    position: fixed;
+    text-align: center;
+    left: -45px;
+    top: 78%;
+    z-index: 999999;
+    animation-name: example;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+  .scene {
+    width: 20em;
+    /* height: 12em; */
+    perspective: 300em;
+}
+
+  .front  { transform: rotateY(0deg) translateZ(6em); }
+.right  { transform: rotateY(90deg) translateZ(6em);  }
+.left   { transform: rotateY(-90deg) translateZ(6em); }
+.back   { transform: rotateY(180deg) translateZ(6em); }
+   .closes {
+  cursor: pointer;
+ position: absolute;
+    top: 19%;
+    right: 9%;
+    padding: 10px 10px;
+    transform: translate(0%, -50%);
+} 
+}
+    @media (min-width: 769px) {
+#mybutton {
+     position: fixed;
+  
+    text-align: center;
+    left: 0px;
+  top:85%;
+  z-index:999999;
+   animation-name: example;
+  animation-duration: 1s;  
+  animation-fill-mode: forwards;
+}
+
+       .front  { transform: rotateY(0deg) translateZ(7.5em); }
+.right  { transform: rotateY(90deg) translateZ(7.5em);  }
+.left   { transform: rotateY(-90deg) translateZ(7.5em); }
+.back   { transform: rotateY(180deg) translateZ(7.5em); }
+
+      .scene {
+       width: 26em;
+    /* height: 12em; */
+    perspective: 300em;
+}
+      .closes {
+  cursor: pointer;
+ position: absolute;
+    top: 18%;
+    right: 8%;
+    padding: 10px 10px;
+    transform: translate(0%, -50%);
+}
+    }
+    @keyframes example {
+  from {bottom: 0px;}
+  to {bottom: 30px;}
+}
+    
+
+
+.closes:hover {background: #bbb;}
+  </style>
+ 
+ 
+ 
+
+
+{% comment %}
+ {% if template != 'index' %}
+{% include 'zest-money-widget' %}
+  {% endif %}
+ {% endcomment %}
+  {% render 'rentity-embed-widget' %}
+
+  <script>
+  $(document).ready(function(){
+    var proTitle = "{{product.title}}";
+//     console.log("product title---",proTitle);
+    var url = "{{shop.url}}";
+//     console.log("url-->", url);
+    var proUrl = "{{product.url}}";
+//     console.log("product url---",proUrl);
+
+    var pageUrl = url + proUrl;
+//         console.log("pageUrl-->", pageUrl);
+    var refreshIntervalId_priceMatchform = setInterval( function(){ 
+      var new_frame = document.getElementById('frame_s91IHf1Dl14pFAOv-KuOmQ'); 
+      if(new_frame != null){
+        new_frame.contentWindow.postMessage({prodTitle: proTitle, prodUrl: pageUrl, form_name: "Book a Demo Product" }, 'https://formbuilder.hulkapps.com/corepage/customform?id=s91IHf1Dl14pFAOv-KuOmQ');
+      }
+    }  , 2000 );
+  });
+</script> 
+
+  
+         {% include 'smile-initializer' %}
+       
+  <style>
+
+    .cube {
+      width: 100%;
+    height: 100%;
+    position: relative;
+    animation: spinning 6s infinite;
+    transform-style: preserve-3d;
+}
+
+@keyframes spinning {
+  from  { transform: translateZ(-5em) rotateY(0deg);   }
+  to    { transform: translateZ(-5em) rotateY(360deg); }
+}
+
+    .face {
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:rgba(3, 121, 255, 0.5);
+  
+  color:#FFF;
+  line-height:10em;
+  text-align:center;
+}
+   
+   
+  </style>
+
+	<!-- SMARTECH TRACKING START -->
+	{% include 'smartech_config' %}
+	<!-- SMARTECH TRACKING END -->
+   <script>
+    var isReplaced = false;       
+    function MeroxIO_Function(){
+      if(!isReplaced){
+        window.yett.unblock();
+        console.log("apps lazyloaded successfully");
+        isReplaced=true;
+      }
+    }      
+    document.addEventListener("click", MeroxIO_Function);
+    document.addEventListener("scroll", MeroxIO_Function);
+    document.addEventListener("touchstart", MeroxIO_Function);
+    document.addEventListener("mousemove", MeroxIO_Function);
+    document.addEventListener("DOMContentLoaded", function() {
+      var lazyImages = [].slice.call(document.querySelectorAll("img.merox-lazy"));;
+
+      if ("IntersectionObserver" in window && "IntersectionObserverEntry" in window && "intersectionRatio" in window.IntersectionObserverEntry.prototype) {
+        let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              let lazyImage = entry.target;
+              lazyImage.src = lazyImage.dataset.src;
+              lazyImage.classList.remove("merox-lazy");
+              lazyImageObserver.unobserve(lazyImage);
+            }
+          });
+        });
+
+        lazyImages.forEach(function(lazyImage) {
+          lazyImageObserver.observe(lazyImage);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+{% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
+{% for html in content %}{% assign htmlblock = html | strip | prepend: ' <' %}{{htmlblock | replace: ' </', '</' | replace: 'judge78d7ca7fme', '<' }}{% endfor %}
+

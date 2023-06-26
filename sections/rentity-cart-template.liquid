@@ -1,0 +1,74 @@
+<div data-section-id="{{ section.id }}" data-section-type="cart-page" class="rent-cart-page">
+        <a href="{{ routes.root_url }}" class="text-link continue_shopping_link" aria-label="link">
+            {{ 'cart.general.continue_shopping' | t }} {% render 'icon-chevron-right' %}
+        </a>
+
+        <div novalidate class="cart cart-template">
+          <!-- auto apply coupon code start -->        
+   
+    <!-- auto apply coupon code end -->  
+            <div class="left-col cart_items">
+                <div class="box-title">
+                    <h3 class="title">
+                      {{ 'cart.label.product' | t }} 
+                    </h3>
+                </div> 
+                <div style="text-align: right; 0;font-size: 9px;font-style: italic;font-weight: normal">
+                  Powered by <img src="data:image/png;base64,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" style="width: 42px;">
+                </div>                
+                <ul class="cart-list">
+					<li>Loading...</li>
+                </ul>
+                            </div>
+            
+            <div class="right-col">
+                <div class="box-title text-center">
+                    <h3 class="title">{{ 'cart.label.order_summary' | t }}</h3> 
+                </div>
+                <div class="total summary-row">
+                    <span class="label">
+                        <span>
+                            Rent Due:
+                        </span>
+                    </span>
+                    <span class="prices rental-dues">
+                        
+                    </span> 
+                 </div>
+                <div class="total summary-row">
+                    <span class="label">
+                        <span>
+                            Refundable Deposit:
+                        </span>
+                    </span>
+                    <span class="prices rental-deposit">
+                        
+                    </span> 
+                 </div>
+                
+                <div class="total summary-total">
+                    <span class="label">
+                        <span>
+                            {{ 'cart.label.total' | t }}:
+                        </span>
+                    </span>
+                    <span class="prices rental-total-price">
+                        {{ cart.total_price | money }}
+                    </span> 
+                 </div>
+                <form id="rentityCheckoutPageForm" action="" method="post"> 
+                  <div class="btn-actions">
+                      <input type="hidden" id="rentityCartPageCheckoutId" name="checkoutId"/>
+                      <input type="submit" name="checkout" class="btn btn--primary cart__submit cart__submit-control" value="{{ 'cart.general.checkout_two' | t }}">
+                  </div>
+                  <div style="font-size:14px">
+   
+   
+  <p style="font-size:16px">After clicking on Proceed To Checkout, you will be taken to <b>rentity.in</b> to complete the transaction.<p>
+ 
+             
+            </div>
+              </form>
+          </div>
+        </div>
+</div>

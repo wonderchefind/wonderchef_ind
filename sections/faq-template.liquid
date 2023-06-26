@@ -1,0 +1,120 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+{% comment %}
+    This page template is a requirement if you are submitting your theme to the Shopify Theme Store.
+    Be sure to select page.contact as the template from the admin page to have this template take effect.
+{% endcomment %}
+<div
+  class=" halo-section  {{ padding_top }} {{ padding_bottom }} {{ background_color }} "
+  data-section-id="{{ section.id }}"
+  data-section-type="faq"
+>
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+       
+         <h2 class="smart-title gradiant">{% render 'multilang' with section.settings.title %}</h2>
+    
+      </div>
+    {% endif %}
+<!--<div class="sidebar_mobile_wrapper">
+    <div class="item item-iconSidebar text-left">
+        <div class="sidebar_mobile">
+            <span class='text'>{{ 'collections.sidebar.title' | t }}:</span>
+            {% render 'icon-sidebar' %}
+        </div>
+    </div>
+</div>-->
+
+{% if page.content.size > 0 %}
+    {{ page.content }}
+{% endif %}
+
+<div id="accordion">
+    {% for block in section.blocks %}
+        <div class="card">
+            <div class="card-header image-shadow" id="heading-{{ block.id }}">
+                <button class="title-faq collapsed" data-toggle="collapse" data-target="#{{ block.id }}" aria-expanded="true" aria-controls="{{ block.id }}">
+                    {{ block.settings.question_faqs }}
+    
+       {% render 'icon-chevron-up' %}
+                            </button>
+              
+               
+            </div>
+            <div id="{{ block.id }}" class="collapse" aria-labelledby="heading-{{ block.id }}" data-parent="#accordion">
+                <div class="card-body">
+                    {{ block.settings.answer_faqs }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<!--<div class="button-group text-right mt-5">
+    <a class="btn btn--primary btn--big" href="{{ section.settings.email_url }}">{{ section.settings.email_text }}</a>
+</div>-->
+ </div>
+</div>
+{% schema %}
+{
+    "name": "FAQs Content",
+    "class": "page-content",
+    "settings": [
+       {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+       {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "FAQ"
+        },
+        {
+            "type" : "text",
+            "id"   : "email_text",
+            "label": "Button contact text",
+            "default": "Contact Support"
+        },
+        {
+            "type" : "url",
+            "id"   : "email_url",
+            "label": "Email contact"
+        }
+    ],
+    "blocks": [
+        {
+            "type" : "question",
+            "name" : "Question",
+            "settings":[
+                {
+                    "type" : "text",
+                    "id" : "question_faqs",
+                    "label" : "Question",
+                    "default": "Question"
+                },
+                {
+                    "type" : "html",
+                    "id" : "answer_faqs",
+                    "label" : "Answer",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

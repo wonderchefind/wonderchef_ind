@@ -1,0 +1,235 @@
+<script>
+  if(Shopify.Checkout.step == "contact_information" || Shopify.Checkout.step == "shipping_method" || Shopify.Checkout.step == "payment_method" ){
+/*--------------------------------------------------------------------------------------------
+    Initializing Global Variables
+  --------------------------------------------------------------------------------------------*/
+  window.yaiyimc = window.yaiyimc || {};
+  window.$ = window.Checkout.$;
+  window.checkDiscount = false;
+  window.cartCount = 0;
+  var properties = {};
+  var allProperties = {};
+  var selectedgate = '';
+  var lineQty = 1;
+  window.codGateway = $('[data-select-gateway] .radio__label__primary:contains(COD)').parents('[data-select-gateway]').attr('data-select-gateway');
+
+  /*--------------------------------------------------------------------------------------------
+    Appending Script Loader
+  ----------------------------------------------------------------------------------------------*/
+  $('.content[data-content]').after("<div class='discount_loader'><div class='img_loader'><div id='loading'></div><p class='gatewayText'>Processing...</p></div></div>");
+  $('.banner').after("<div class='discount_header'><span>{{settings.discount_banner_text}}</span></div>");
+
+  /*--------------------------------------------------------------------------------------------
+    Capturing previous line item properties:
+      - We need to capture previous properties becuase on adding or removing properties 
+      through change.js it will change the complete property object through which we may loose
+      other line item properties.
+      - If first line item contains '_discount' property only than we will trigger discount.
+  --------------------------------------------------------------------------------------------*/
+
+  {% for items in checkout.line_items %}
+  {% if forloop.first %}
+  lineQty = {{items.quantity}};
+  {% for prop in items.properties %}
+  {% if prop.first == '_discount' and prop.last == 'true' %}
+  {% assign checkDiscount = true %}
+  checkDiscount = true;
+  {% else %}
+  properties['{{prop.first}}'] = '{{prop.last}}'; 
+  {%endif%}
+  {% endfor %}
+  {% endif %}
+  {% endfor %}
+
+  /*-----------------------------------------------------------------------------------------------
+     Handling Abandoned Checkouts
+        - Call cart.json to identify abandon checkout.
+        - If abandoned checkout is found, create a cart with existing customer information.
+        - Redirect user back to the checkout with the saved info.
+  -------------------------------------------------------------------------------------------------*/
+  $.ajax({
+  type: 'GET',
+  url: '/cart.json',
+  dataType: 'json',
+  success: function(data){
+    cartCount = data.item_count;
+    if(cartCount == 0){
+      $('body').hide();
+      $('.discount_loader').fadeIn();
+      handleCart();
+    }
+  },
+    error: function(){}
+  });
+
+  function handleCart() {  
+    Shopify.queue = [];
+
+    Shopify.moveAlong = function() {
+      if (Shopify.queue.length) {
+        var request = Shopify.queue.shift();
+        Shopify.addItem(request.variantId, request.quantity, request.properties, Shopify.moveAlong);
+      }
+      else {
+        var address1 = encodeURIComponent("{{ checkout.shipping_address.address1 }}");
+        var address2 = encodeURIComponent("{{ checkout.shipping_address.address2 }}");
+        var checkoutUrl = "/checkout";
+        checkoutUrl += "?checkout[email]={{ checkout.email }}";
+        checkoutUrl += "&checkout[shipping_address][first_name]={{ checkout.shipping_address.first_name }}";
+        checkoutUrl += "&checkout[shipping_address][last_name]={{ checkout.shipping_address.last_name }}";
+        checkoutUrl += "&checkout[shipping_address][address1]="+address1;
+        checkoutUrl += "&checkout[shipping_address][address2]="+address2;
+        checkoutUrl += "&checkout[shipping_address][city]={{ checkout.shipping_address.city }}";
+        checkoutUrl += "&checkout[shipping_address][country]={{ checkout.shipping_address.country }}";
+        checkoutUrl += "&checkout[shipping_address][province]={{ checkout.shipping_address.province }}";
+        checkoutUrl += "&checkout[shipping_address][zip]={{ checkout.shipping_address.zip }}";
+        checkoutUrl += "&checkout[shipping_address][country]={{ checkout.shipping_address.country }}";
+        checkoutUrl += "&checkout[shipping_address][phone]={{ checkout.shipping_address.phone }}";
+        document.location.href = checkoutUrl;
+      }
+    };
+
+    Shopify.addItem = function(id, qty, properties, callback) {
+      var params = {
+        quantity: qty,
+        id: id
+      };
+      if(properties != false){
+        params.properties = properties;
+      }
+      $.ajax({
+        type: 'POST',
+        url: '/cart/add.js',
+        dataType: 'json',
+        data: params,
+        success: function(){
+          if(typeof callback === 'function'){
+            callback();
+          }
+        },
+        error: function(){}
+      });
+    }
+
+    function push_to_queue(variantID, quantity, properties) {
+      Shopify.queue.push({
+        variantId: variantID,
+        quantity: quantity,
+        properties: properties
+      });
+    }
+
+    {% for item in checkout.line_items %}
+    allProperties = {};
+    {% for prop in item.properties %}
+    {% unless prop.first == "_discount" %}
+    allProperties['{{prop.first}}'] = '{{prop.last}}';  
+    {% endunless %}
+    {% endfor %}
+    push_to_queue({{ item.variant_id }},{{ item.quantity }},allProperties);
+    {% endfor %}
+    Shopify.moveAlong();
+
+  };
+
+  /*-----------------------------------------------------------------------------------------------
+     Change.js 
+        - Change.js is used to add or remove the '_discount' line item property.
+  -------------------------------------------------------------------------------------------------*/
+
+  function changeProperty(discount){
+    if(discount){
+      properties['_discount'] = "true";
+    }
+    else {
+      properties['_discount'] = "false";
+    }
+
+    var params = {
+      line: 1,
+      quantity: lineQty,
+      properties: properties
+    };
+
+    $.ajax({
+      type: 'POST',
+      url: '/cart/change.js',
+      dataType: 'json',
+      data: params,
+      success: function(){
+        //$('.discount_loader').fadeOut();
+        $('.step__footer__continue-btn').attr("disabled",true).addClass("btn--disabled");
+        document.location.href = '/checkout';
+      },
+      error: function(){}
+    });
+  }
+  /*---------------------------------------------------------------------------------------
+    jQuery.cookie.js
+          - This file is being used to handle the cookies while switching payment gateways.
+  ---------------------------------------------------------------------------------------*/
+  !function(e){var n=!1;if("function"==typeof define&&define.amd&&(define(e),n=!0),"object"==typeof exports&&(module.exports=e(),n=!0),!n){var o=window.Cookies,t=window.Cookies=e();t.noConflict=function(){return window.Cookies=o,t}}}(function(){function e(){for(var e=0,n={};e<arguments.length;e++){var o=arguments[e];for(var t in o)n[t]=o[t]}return n}return function n(o){function t(n,r,i){var c;if("undefined"!=typeof document){if(arguments.length>1){if("number"==typeof(i=e({path:"/"},t.defaults,i)).expires){var a=new Date;a.setMilliseconds(a.getMilliseconds()+864e5*i.expires),i.expires=a}i.expires=i.expires?i.expires.toUTCString():"";try{c=JSON.stringify(r),/^[\\{\\[]/.test(c)&&(r=c)}catch(e){}r=o.write?o.write(r,n):encodeURIComponent(String(r)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),n=(n=(n=encodeURIComponent(String(n))).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent)).replace(/[\\(\\)]/g,escape);var s="";for(var f in i)i[f]&&(s+="; "+f,!0!==i[f]&&(s+="="+i[f]));return document.cookie=n+"="+r+s}n||(c={});for(var p=document.cookie?document.cookie.split("; "):[],d=/(%[0-9A-Z]{2})+/g,u=0;u<p.length;u++){var l=p[u].split("="),C=l.slice(1).join("=");this.json||'"'!==C.charAt(0)||(C=C.slice(1,-1));try{var g=l[0].replace(d,decodeURIComponent);if(C=o.read?o.read(C,g):o(C,g)||C.replace(d,decodeURIComponent),this.json)try{C=JSON.parse(C)}catch(e){}if(n===g){c=C;break}n||(c[g]=C)}catch(e){}}return c}}return t.set=t,t.get=function(e){return t.call(t,e)},t.getJSON=function(){return t.apply({json:!0},[].slice.call(arguments))},t.defaults={},t.remove=function(n,o){t(n,"",e(o,{expires:-1}))},t.withConverter=n,t}(function(){})});
+
+  
+  /*-----------------------------------------------------------------------------------------------
+     Handling propeties on click of payment gateway
+  -------------------------------------------------------------------------------------------------*/
+  $(document).on('click', '.radio__input input[name="checkout[payment_gateway]"]', function(){
+    selectedgate = $(this).val();    
+    Cookies.set('payment_gateway', selectedgate , { expires: 1 });
+    
+    if (selectedgate === codGateway){
+      if(checkDiscount){
+        $('.discount_loader').fadeIn();
+        changeProperty(false);
+      }
+    }
+    else{
+      if(!checkDiscount){
+        $('.discount_loader').fadeIn();
+        changeProperty(true);
+      }
+    }
+  });
+
+  /*-----------------------------------------------------------------------------------------------
+     Handling discounts and selected gateway on dom change and dom ready
+  ------------------------------------------------------------------------------------------------*/
+
+  $(document).on('page:load page:change', function() {
+    'use strict';
+    $(".section--payment-method .section__content").after("<p class='disc_banner cod_disc' style='margin-top:10px;justify-content:left;'>COD OPTION IS TEMPORARILY SUSPENDED</p>");
+//     if(Shopify.Checkout.step == "payment_method"){ 
+		
+//       var payment_gateway = Cookies.get('payment_gateway');
+//       if(payment_gateway != undefined){
+
+//         if(payment_gateway === codGateway && !checkDiscount){
+//           if($('.discount_banner').length <= 0 ){
+//             $(".section--payment-method .section__content").prepend("<p class='disc_banner cod_disc'>{{settings.before_discount_text}}</p>");
+//           }
+//           $(".radio-wrapper[data-select-gateway='"+payment_gateway+"'] .radio__input input").prop("checked", true); 
+//         }
+//         else if(payment_gateway !== codGateway && checkDiscount){
+//           if($('.discount_banner').length <= 0 ){
+//             $(".section--payment-method .section__content").prepend("<p class='disc_banner pre_disc'>{{settings.after_discount_text}}</p>");
+//           }
+//           $(".radio-wrapper[data-select-gateway='"+payment_gateway+"'] .radio__input input").prop("checked", true); 
+//         }
+//         else {
+//           $(".section--payment-method .section__content").prepend("<p class='disc_banner cod_disc'>{{settings.before_discount_text}}</p>");
+//           Cookies.remove('payment_gateway');
+//           $(".section--payment-method .radio-wrapper .input-radio").prop("checked", false);
+//         }
+//       }
+//       else {
+//         $(".section--payment-method .section__content").prepend("<p class='disc_banner cod_disc'>{{settings.before_discount_text}}</p>");
+//         $(".section--payment-method .radio-wrapper .input-radio").prop("checked", false);
+//       } 
+//     }
+  });
+}
+if(Shopify.Checkout.step == "thank_you"){
+  !function(e){var n=!1;if("function"==typeof define&&define.amd&&(define(e),n=!0),"object"==typeof exports&&(module.exports=e(),n=!0),!n){var o=window.Cookies,t=window.Cookies=e();t.noConflict=function(){return window.Cookies=o,t}}}(function(){function e(){for(var e=0,n={};e<arguments.length;e++){var o=arguments[e];for(var t in o)n[t]=o[t]}return n}return function n(o){function t(n,r,i){var c;if("undefined"!=typeof document){if(arguments.length>1){if("number"==typeof(i=e({path:"/"},t.defaults,i)).expires){var a=new Date;a.setMilliseconds(a.getMilliseconds()+864e5*i.expires),i.expires=a}i.expires=i.expires?i.expires.toUTCString():"";try{c=JSON.stringify(r),/^[\\{\\[]/.test(c)&&(r=c)}catch(e){}r=o.write?o.write(r,n):encodeURIComponent(String(r)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g,decodeURIComponent),n=(n=(n=encodeURIComponent(String(n))).replace(/%(23|24|26|2B|5E|60|7C)/g,decodeURIComponent)).replace(/[\\(\\)]/g,escape);var s="";for(var f in i)i[f]&&(s+="; "+f,!0!==i[f]&&(s+="="+i[f]));return document.cookie=n+"="+r+s}n||(c={});for(var p=document.cookie?document.cookie.split("; "):[],d=/(%[0-9A-Z]{2})+/g,u=0;u<p.length;u++){var l=p[u].split("="),C=l.slice(1).join("=");this.json||'"'!==C.charAt(0)||(C=C.slice(1,-1));try{var g=l[0].replace(d,decodeURIComponent);if(C=o.read?o.read(C,g):o(C,g)||C.replace(d,decodeURIComponent),this.json)try{C=JSON.parse(C)}catch(e){}if(n===g){c=C;break}n||(c[g]=C)}catch(e){}}return c}}return t.set=t,t.get=function(e){return t.call(t,e)},t.getJSON=function(){return t.apply({json:!0},[].slice.call(arguments))},t.defaults={},t.remove=function(n,o){t(n,"",e(o,{expires:-1}))},t.withConverter=n,t}(function(){})});
+}    
+</script>

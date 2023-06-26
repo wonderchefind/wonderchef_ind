@@ -1,0 +1,139 @@
+<style>
+  .phone-error {
+    display: none;
+    color: red;
+    padding-top: 10px;
+  }
+  .name-error {
+    display: none;
+    color: red;
+    padding-top: 10px;
+  }
+  .last-error {
+    display: none;
+    color: red;
+    padding-top: 10px;
+  }
+  .address-error {
+    display: none;
+    color: red;
+    padding-top: 10px;
+  }
+</style>
+<!-- Phone Number Validation A.J @Marmeto -->
+<script>  
+  //Function to allow only numbers
+  function _isNumberCheck(evt) {
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+    return true;
+  }
+
+  function onlyAlphabets(name) {
+	console.log(name);
+  	var regex = /^[a-zA-Z]*$/;
+    if (regex.test(name)) {
+
+       $('.name-error').hide();
+       return true;
+    } else {
+//         document.getElementById("notification").innerHTML = "Alphabets Only";
+      	$('.name-error').show();
+        return false;
+    }
+}
+  function onlyAddressAlphabets(name){
+    
+    var str = name;
+    if (str.search(/'|"/g) !== -1) {
+     $('.address-error').show();
+        return false;
+    }else{
+     $('.address-error').hide();
+    	return true;
+    }
+  }
+    function onlyLastAlphabets(name) {
+	
+  	var regex = /^[a-zA-Z]*$/;
+    if (regex.test(name)) {
+
+       $('.last-error').hide();
+       return true;
+    } else {
+//         document.getElementById("notification").innerHTML = "Alphabets Only";
+      	$('.last-error').show();
+        return false;
+    }
+}
+
+  
+  
+  //Function to validate number
+  function _isNumberDigit($input){
+    console.log($input.val());
+    let $countryInputValue = $('#checkout_shipping_address_country').val();
+
+    
+      let $inputNumber = $input.val(),
+          $trimNumber = $inputNumber.replace(/ /g, '');
+
+      $input.val($trimNumber);
+
+      if($input.val().length == 10 ){
+        if ($trimNumber.match(/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/)) {
+          $('.phone-error').hide();
+          return true;
+        }
+        else {
+          $('[data-address-field="phone"]').addClass("field--error");
+          $('.phone-error').show();
+          if ($('#error-for-phone').length > 0 ){$('.phone-error').hide();}
+          return false;
+        }
+      }
+      else {
+        $('[data-address-field="phone"]' ).addClass( "field--error" );
+        $('.phone-error').show();
+        if ($('#error-for-phone').length > 0 ){$('.phone-error').hide();}
+        return false;
+      }
+    
+  }
+
+
+  $(document).ready(function(){
+
+    //Append the message
+    $('.field[data-address-field="phone"]').append('<div><p class="phone-error">Please enter a valid phone number</p></div>');
+	$('.field[data-address-field="first_name"]').append('<div><p class="name-error">Please enter Only Alphabets</p></div>');
+    $('.field[data-address-field="last_name"]').append('<div><p class="last-error">Please enter Only Alphabets</p></div>');
+    $('.field[data-address-field="address1"]').append('<div><p class="address-error">Your string contains illegal characters.</p></div>');
+    let $phoneInput = $('.field[data-address-field="phone"] input'),
+        $contactForm = $('[data-step="contact_information"] > form');
+    //On keypress allow only number 
+    $phoneInput.keypress(function() {
+      return _isNumberCheck(event);
+    });
+
+    //On form submit validate number
+    $contactForm.on('submit', function(){
+      var checkname = onlyAlphabets($('.field[data-address-field="first_name"] input').val());
+      var checklname = onlyLastAlphabets($('.field[data-address-field="last_name"] input').val());
+      var checkaddress = onlyAddressAlphabets($('.field[data-address-field="address1"] input').val());
+      var checkphone = _isNumberDigit($phoneInput);
+      if(checkname == true && checkphone == true && checklname == true && checkaddress == true){
+        return true;
+      }else{
+      	return false; 
+      }
+    });
+
+    //Input on click remove error message
+    $phoneInput.on('click', function() {
+      $('[data-address-field="phone"]').removeClass("field--error");
+      $('.phone-error').hide();
+    });
+  });  
+</script>

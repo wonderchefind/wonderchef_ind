@@ -1,0 +1,578 @@
+<div class="clearfix"></div>
+{% capture banner %}logo_razor.png{% endcapture %}
+{% capture alt %}Wonderchef{% endcapture %}
+<div class="product-details">
+  <div class="description">
+    <ul class="product-tabs tabs">
+      {% if product.description != blank %}{% endif %}
+      <li><a href="#tab-1">Description</a></li>
+      
+      {% if product.description != blank %}{% endif %}
+      <li><a href="#tab-2">Specifications</a></li>
+      
+       {% if product.description != blank %}
+       {%if product.tags contains 'uses' %}
+      <li><a href="#tab-3">Uses</a></li>
+      {% endif %}{% endif %}
+      {%if product.tags contains 'Hot Sets' or product.tags contains 'Frying Pans' 
+             or product.tags contains 'Woks & Kadhais'  or product.tags contains 'Grill Pans' 
+             or product.tags contains 'Casseroles'  or product.tags contains 'Frying Pans'  or product.tags contains 'Sauce Pans' 
+             or product.tags contains 'Dosa Tawas' or product.tags contains 'Individual' or product.tags contains 'Sauce Pans'   
+             or product.tags contains 'Tadka Pan'%}
+      <li><a href="#tab-4">Non-Stick Process</a></li>
+       {% endif %}
+       {%if product.tags contains 'askquestion' %}
+      <li><a href="#tab-5">FAQS</a></li>
+      {% endif %}
+      <li><a href="#tab-6">Reviews</a></li>
+    </ul>
+    <ul class="tabs-content">
+      {% if product.metafields.product != blank %}
+      <li class="active dis_tab" id="tab-1">
+        <h2 class="heading_description">Product Information</h2>
+      	 <div class="details_description">
+           
+           <!-- Featured icon description  -->
+           {% if product.metafields.product.featured_icon != blank %}
+           <div class="featured-icon">
+             <div class="icon-toolsfeatured">
+<!-- 				
+               {% for image in product.image %}
+               {% assign featured_name = tag | split: '_' %}
+               {% if tag_name[0] == 'generic' %}  
+               {% assign generic_name = tag_name[1] %}
+               {{ generic_name }}
+               {% endif %}
+               {% endfor %} -->
+               {{ product.metafields['product']['featured_icon'] }}
+             </div>
+           </div>
+           {% endif %}
+           <!-- A+ content 63151691  id="bio1" -->
+           	<div class="content-aplus loaderanimation collapse">
+               
+              {% if product.metafields.product.aplus_fullwidth_image != blank %}
+              <div class="seconttype-description clearfix">
+              <div class="product-banner-second-type">
+                <img class="lazyload lazyload-fade"
+                     src="{{ product.metafields['product']['aplus_fullwidth_image'] }}"
+                     data-src="{{ product.metafields['product']['aplus_fullwidth_image'] }}"
+                     data-sizes="auto"
+                     alt="{{product.title}}">
+              </div>
+              </div>
+              {% endif %}
+              {% if product.tags contains 'new-nutriblend' or product.tags contains 'content1' %}
+              	<hr class="clearfix">
+                    <div class="thirdtype-description clearfix">
+                      <div class="paracontent">
+                          {% if product.metafields.product.aplus_content1_p != blank %}
+                            <p>{{ product.metafields['product']['aplus_content1_p'] }}</p>
+                            {% endif %}
+                            {% if product.metafields.product.aplus_content2_p != blank %}
+                            <p> {{ product.metafields['product']['aplus_content2_p'] }}</p>
+                      	  {% endif %}
+                        </div>
+                    </div>
+              
+              		<hr class="clearfix">
+                        <div class="fourthtype-description clearfix" style="padding-bottom:0px;" >
+                          <div class="product-banner-fourth-type">
+                            <ul class="slider-description" style="padding-bottom:0px;" >
+                              <li>
+                                {% if product.metafields.product.aplus_li1_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li1_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li1_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li1_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li1_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li2_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li2_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li2_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li2_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li2_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li3_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li3_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li3_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li3_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li3_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li4_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li4_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li4_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li4_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li4_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li5_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li5_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li5_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li5_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li5_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li6_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li6_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li6_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li6_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li6_p'] }}</p>
+                             {% endif %}
+                              </li>
+                               
+                            </ul>
+                          </div>
+                        </div>
+              			{% if product.metafields.product.aplus_fullwidth_image != blank %}
+                          <div class="seconttype-description clearfix">
+                          <div class="product-banner-second-type">
+                            <img class="lazyload lazyload-fade"
+                                 src="{{ product.metafields['product']['aplus_fullwidth_image_second'] }}"
+                                 data-src="{{ product.metafields['product']['aplus_fullwidth_image_second'] }}"
+                                 data-sizes="auto"
+                                 alt="{{product.title}}">
+                          </div>
+                          </div>
+              			{% endif %}
+              				<hr class="clearfix">
+              					<div class="fourthtype-description clearfix"  style="padding-bottom:0px;">
+                                  <div class="product-banner-fourth-type">
+                                    <ul class="slider-description" style="padding-bottom:0px;" >
+                                      <li>
+                                        {% if product.metafields.product.aplus_li7_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li7_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li7_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li7_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li7_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                      <li>
+                                        {% if product.metafields.product.aplus_li8_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li8_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li8_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li8_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li8_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                      <li>
+                                        {% if product.metafields.product.aplus_li9_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li9_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li9_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li9_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li9_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                    </ul>
+                                  </div>
+              					</div>
+              {% else %}
+              <hr class="clearfix">
+              <div class="thirdtype-description clearfix">
+                <div class="product-banner-third-type">     
+              {% if product.metafields.product.aplus_halfwidth_image != blank %}
+                  <div class="eight columns alpha">
+                    <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_halfwidth_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_halfwidth_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                  </div>
+                   {% endif %}
+                  
+                  <div class="eight columns omega content">
+                    <div class="paracontent">
+                      {% if product.metafields.product.aplus_content1_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_content1_p'] }}</p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_content2_p != blank %}
+                      <p> {{ product.metafields['product']['aplus_content2_p'] }}</p>
+                  {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr class="clearfix">
+              <div class="fourthtype-description clearfix" style="padding-bottom:0px;" >
+                <div class="product-banner-fourth-type">
+                  <ul class="slider-description" style="padding-bottom:0px;" >
+                    <li>
+                      {% if product.metafields.product.aplus_li1_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li1_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li1_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li1_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li1_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li2_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li2_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li2_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li2_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li2_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li3_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li3_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li3_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li3_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li3_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li4_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li4_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li4_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li4_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li4_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li5_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li5_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li5_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li5_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li5_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li6_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li6_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li6_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li6_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li6_p'] }}</p>
+                   {% endif %}
+                    </li>
+                     <li>
+                      {% if product.metafields.product.aplus_li7_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li7_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li7_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li7_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li7_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li>
+                      {% if product.metafields.product.aplus_li8_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li8_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li8_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li8_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li8_p'] }}</p>
+                   {% endif %}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              {% endif %}
+              <hr>
+               <p><b>Description</b></p>
+               {% if product.metafields.product.description_p != blank %}
+                    <p>{{ product.metafields['product']['description_p'] }}</p>
+               {% endif %}
+               <hr>
+               <p><b>Features</b></p>
+               {% if product.metafields.features.description_p != blank %}
+                    <p>{{ product.metafields['features']['description_p'] }}</p>
+               {% endif %}
+               {% if product.metafields.features.description_li != blank %}
+                 <ul>
+                  {{ product.metafields['features']['description_li'] }}
+                 </ul>
+                {% endif %}
+           </div>
+           {% if product.metafields.product.aplus_logo != blank %}
+<!--            <div class="showmore-class">
+             <div class="showmorebtn"><a href="#bio1" class="open-discription btn">View More »</a></div>
+           </div> -->
+            {% endif %}
+           
+        </div>
+      </li>
+        {% endif %}
+     {% if product.metafields.product != blank %}
+      <li class=" specic_tab" id="tab-2">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img class="" src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+       <h2 class="heading_description specification">Specifications</h2>
+      	 <div class="details_specification">
+         {{ product.metafields['product']['specification'] }}
+           <br>
+           {% include 'supplier_address'%}
+        </div>
+      </li>
+        {% endif %}
+       {%if product.tags contains 'uses' %}
+      <li class=" uses_tab" id="tab-3">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+        <h2 class="heading_description">Uses</h2>
+        <div class="details_description">
+          <div class="uses">
+            {{ product.metafields['product']['uses'] }}
+          </div>
+        </div>
+        
+      </li>
+       {% endif %}
+      {%if product.tags contains 'Hot Sets' or product.tags contains 'Frying Pans' 
+             or product.tags contains 'Woks & Kadhais'  or product.tags contains 'Grill Pans' 
+             or product.tags contains 'Casseroles'  or product.tags contains 'Frying Pans'  or product.tags contains 'Sauce Pans' 
+             or product.tags contains 'Dosa Tawas' or product.tags contains 'Individual' or product.tags contains 'Sauce Pans'   
+             or product.tags contains 'Tadka Pan'%}
+      <li class=" non-stick_tab" id="tab-4">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+        {% include 'non-stick-new' %}
+      </li>
+      {% endif %}
+      {%if product.tags contains 'askquestion' %}
+      <li class=" askquestion_tab" id="tab-5"> 
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+          </div>
+        </div>
+       <h2 class="heading_description">Frequently Asked Questions</h2>
+        <div class="details_description">
+          <dl class="faqAccordion">
+            {% if product.metafields.product.ask_question1 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question1'] }}</button></dt>
+            {% endif %}
+            {% if product.metafields.product.ask_answer1 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer1'] }} </p>
+              </div>
+            </dd>
+             {% endif %}
+            {% if product.metafields.product.ask_question_bullet_1 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question_bullet_1'] }}</button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer_bullet_1 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+               {{ product.metafields['product']['ask_answer_bullet_1'] }}
+              </div>
+            </dd>
+             {% endif %}
+            {% if product.metafields.product.ask_question2 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question2'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer2 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+               <p>{{ product.metafields['product']['ask_answer2'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+             {% if product.metafields.product.ask_question3 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question3'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer3 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer3'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+              {% if product.metafields.product.ask_question4 != blank %}
+            <dt class="dis_tab"><button type="button" aria-controls="panel-01" aria-expanded="true">{{ product.metafields['product']['ask_question4'] }} </button></dt>
+             {% endif %}
+            {% if product.metafields.product.ask_answer4 != blank %}
+            <dd class="dis_tab" id="panel-01" aria-hidden="false">
+              <div class="descriptions bottom" >
+                <p>{{ product.metafields['product']['ask_answer4'] }}</p>
+              </div>
+            </dd>
+             {% endif %}
+          </dl>
+        </div>
+      </li>
+      {% endif %}
+      <li class=" reviews" id="tab-6">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+          </div>
+        </div>
+      	{% include 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true %}
+      </li>
+       
+    </ul>
+  </div>
+</div>
+
+<script>
+$('.open-discription').click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('href');
+
+    if ($(id).is(":visible")) {
+        $(this).text("View More »");
+    } else {
+        $(this).text("View Less «");
+    }
+
+    $(id).slideToggle(500);
+});
+</script>
+{{ 'scrollmenu.js'  | asset_url |script_tag }}
+
+<style>
+  
+  .featuredicon {
+    display: inline-block;
+    padding: 0 20px;
+    width: 15%;
+    text-align: center;
+  }
+  .icon-toolsfeatured {
+    text-align: center;
+    padding: 40px 0;
+  }
+  </style>

@@ -1,0 +1,6 @@
+<div class="product-compare-btn {% if settings.show_product_compare_mb %}compare-btn-mb{% endif %}" data-icon-compare data-compare-product-handle="{{ product.handle }}" data-id="{{ product.id }}">
+    <input id="compare_{{ product.id }}" class="compare" type="checkbox" name="compare">
+    <label for="compare_{{ product.id }}">
+        <span>{{ 'general.compare.title' | t }}</span>
+    </label>
+</div>

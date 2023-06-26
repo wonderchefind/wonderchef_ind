@@ -1,0 +1,54 @@
+<!-- snippet/product-price.liquid -->
+{% if product.id == 7085444858033 %}
+    {%- assign compare_at_price = 1750000 -%}
+    {%- assign price = 1199900 -%}
+    {%- assign available = true -%}
+{% endif %}
+{% if product.id == 7085433585841 %}
+    {%- assign compare_at_price = 950000 -%}
+    {%- assign price = 649900 -%}
+    {%- assign available = true -%}
+{% endif %}
+
+{% if product.id == 7206815400113 %}
+    {%- assign compare_at_price = 950000 -%}
+    {%- assign price = 649900 -%}
+    {%- assign available = true -%}
+{% endif %}
+<div class="product-price {% if compare_at_price > price %}price--on-sale{% endif %}" data-price>
+    {% if compare_at_price > price %}
+        <span class="price-item price-item--regular" data-regular-price>
+            {{ compare_at_price | money }}
+        </span>
+        <span class="price-item price-item--sale" data-sale-price>
+            {{ price | money }}
+        </span>
+   <br>
+   <span class="sale savings" >
+                  {% if price < compare_at_price %}
+                  Save  <span >{{ compare_at_price | minus: price | times: 100 | divided_by: compare_at_price }}% </span> (<span class="money">{{ compare_at_price | minus: price | money }}</span>)
+                  {% endif %}
+                </span>
+    {% else %}
+        <span class="price-item price-item--regular" data-regular-price>
+            {{ price | money }}
+        </span>
+        <span class="price-item price-item--sale" data-sale-price></span>
+   <br>
+     <span class="sale savings" >
+                  {% if price < compare_at_price %}
+                  Save  <span >{{ compare_at_price | minus: price | times: 100 | divided_by: compare_at_price }}% </span> (<span class="money">{{ compare_at_price | minus: price | money }}</span>)
+                  {% endif %}
+                </span>
+    {% endif %}
+    {% if settings.show_wishlist %}
+        <a class="wishlist {% if settings.show_wishlist_mb %}wishlist_mb{% endif %}" aria-label="wishlist" data-icon-wishlist href="#" data-product-handle="{{ product.handle }}" data-id="{{ product.id }}">
+            {% render 'icon-heart' %}
+        </a>
+    {% endif %}
+  
+  <!-- Rentity Snippet for Product Card -->
+{% render 'rentity-product-capsule', product: product %}
+<!-- Rentity Snippet for Product Card -->
+  
+</div>

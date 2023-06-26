@@ -1,0 +1,41 @@
+<div id="login-dropdown" class="login-dropdown">
+    <div class="login-header">
+        <h2 class="login-title">{{ 'customer.login.title' | t }}</h2>
+        <a href="javascript:void(0)" class="close" data-close-login-dropdown-pc aria-label="close"><span aria-hidden="true">&#215;</span></a>
+        <a href="javascript:void(0)" class="close" data-close-login-dropdown aria-label="close"><span aria-hidden="true">&#215;</span></a>
+    </div>
+    <div class="login-content">
+        <form accept-charset="UTF-8" action="{{ routes.account_login_url }}" method="post">
+            <input name="form_type" type="hidden" value="customer_login" />
+            <input name="utf8" type="hidden" value="✓" />
+            <div class="login-form">
+                <p class="intro">{{ 'customer.login.intro_1' | t }}</p>
+                <div class="form-field">
+                    <label class="form-label" for="customer_email">
+                        {{ 'customer.login.email' | t }}
+                        <em>*</em>
+                    </label>
+                    <input id="customer_email" class="form-control" type="email" value="" name="customer[email]" placeholder="{{ 'customer.login.email' | t }}" >
+                </div>
+                <div class="form-field">
+                    <label class="form-label" for="customer_password">
+                        {{ 'customer.login.password' | t }}
+                        <em>*</em>
+                    </label>
+                    <input id="customer_password" class="form-control" type="password" value="" placeholder="{{ 'customer.login.password' | t }}" name="customer[password]" >
+                </div>
+                <div class="form-actions">
+                    <a class="forgot-password" href="{{ routes.account_login_url }}#recover" aria-label="forgot password">
+                        {{ 'customer.login.forgot_password' | t }}
+                    </a>
+                    <input type="submit" class="btn btn--secondary" value="{{ 'layout.customer.log_in' | t }}">
+                </div>
+            </div>
+        </form>
+      <div class='oxi-social-login'></div>
+    </div>
+    <div class="login-footer">
+        <p class="intro">{{ 'customer.login.intro_2' | t }}</p>
+        <a class="btn btn--secondary-accent" href="{{ routes.account_register_url }}" aria-label="register">{{  'customer.register.title' | t }}</a>
+    </div>
+</div>

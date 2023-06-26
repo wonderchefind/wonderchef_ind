@@ -1,0 +1,66 @@
+{% comment %}
+    MailChimp is the go-to newsletter service for Shopify.
+    Use the link below to find your MailChimp "form action"
+    and insert it in your site settings.
+
+    MailChimp newsletter integration and requirement:
+     - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
+
+{% endcomment %}
+
+{%- capture newsletter_form_action -%}/contact{%- endcapture -%}
+{%- capture newsletter_form -%}
+
+{%- form 'customer', action: newsletter_form_action, class: 'input-group', id: 'contact_form_3' -%}
+{% if form.posted_successfully? %}
+    {% if newsletter-form == 'password' %}
+        <p class="password-newsletter-success">{{message}}</p>
+    {% else %}
+        <script>
+            $(document).ready(function(){
+                var newsletterSuccessPopup = (function(){
+                    var popup = $('#newsletter-success-modal');
+                    var success = popup.find('.success');
+                    var error = popup.find('.error');
+                    success.show();
+                    error.hide();
+                    popup.modal('show')
+                    $.cookie('emailSubcribeModal', 'closed', {
+                        expires: 1,
+                        path: '/'
+                    });
+                })();
+                var newURL = location.href.split("?")[0];
+                window.history.pushState('object', document.title, newURL);
+            })
+        </script>
+    {% endif %}
+{% else %}
+    <script>
+        $(document).ready(function(){
+            if (window.location.href.indexOf('newsletter&form_type=customer') > -1) {
+                var newsletterSuccessPopup = (function(){
+                    var popup = $('#newsletter-success-modal');
+                    var success = popup.find('.success');
+                    var error = popup.find('.error');
+                    success.hide();
+                    error.show();
+                    popup.modal('show')
+                    $.cookie('emailSubcribeModal', 'closed', {
+                        expires: 1,
+                        path: '/'
+                    });
+                })();
+                var newURL = location.href.split("?")[0];
+                window.history.pushState('object', document.title, newURL);
+            }
+        })
+    </script>
+{% endif %}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input class="input-group-field form-control" type="email" name="contact[email]" aria-label="Email Address" {% if settings.enable_multilang %}data-translate="general.newsletter_form.email_placeholder" translate-item="placeholder"{% endif %} placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" required="required">
+        <input class="btn btn--primary" type="submit" {% if settings.enable_multilang %}data-translate="general.newsletter_form.submit"{% endif %} value="{{ 'general.newsletter_form.submit' | t }}">
+{%- endform -%}
+{% endcapture %}
+
+{{ newsletter_form }}

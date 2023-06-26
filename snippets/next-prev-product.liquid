@@ -1,0 +1,173 @@
+{% if collection.previous_product or collection.next_product %}
+<div class="next-prev-product">
+    <div class="next-prev-icons">
+        {% if collection and collection.previous_product %}
+        <a class="prev-icon" href="{{ collection.previous_product }}" data-next-prev-icon data-target="#prev-product-modal" aria-label="link">
+            {% render 'icon-chevron-left' %}
+        </a>
+        {% endif %}
+        {% if collection and collection.next_product %}
+        <a class="next-icon" href="{{ collection.next_product }}" data-next-prev-icon data-target="#next-product-modal" aria-label="link">
+            {% render 'icon-chevron-right' %}
+        </a>
+        {% endif %}
+    </div>
+    
+    <div class="next-prev-modal" data-next-prev-modal>
+        {% if collection and collection.previous_product %}
+        <div id="prev-product-modal" class="next-prev-content" data-next-prev-content>
+            <div class="product-on-cart">
+                <a class="product-image" href="{{ collection.previous_product }}" aria-label="image">
+                    <img src="{{ collection.previous_product.images[0] | img_url: 'compact' }}" alt="{{ collection.previous_product.title }}">
+                </a>
+                <div class="product-details">
+                    <a class="product-name" href="{{ collection.previous_product }}" aria-label="title">
+                        {{ collection.previous_product.title }}
+                    </a>
+                    <div class="product-price {% if collection.previous_product.compare_at_price_min > collection.previous_product.price_min %}price--on-sale{% endif %}">
+                        {% if collection.previous_product.compare_at_price_min > collection.previous_product.price_min %}
+                            <span class="price-item price-item--regular">
+                                {{ collection.previous_product.compare_at_price_min | money }}
+                            </span>
+                            <span class="price-item price-item--sale">
+                                {{ collection.previous_product.price_min | money }}
+                            </span>
+                        {% else %}
+                            {% if collection.previous_product.price_varies %}
+                                <span class="price-item price-item--regular">
+                                    {{ collection.previous_product.price_min | money }}
+                                </span>
+                                <span class="symbol">-</span>
+                                <span class="price-item price-item--regular">
+                                    {{ collection.previous_product.price_max | money }}
+                                </span>
+                            {% else %}
+                                <span class="price-item price-item--regular">
+                                    {{ collection.previous_product.price_min | money }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if settings.show_wishlist %}
+                        <a class="wishlist" data-icon-wishlist href="#" data-product-handle="{{ product.handle }}" data-id="{{ product.id }}" aria-label="wishlist">
+                            {% render 'icon-heart' %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if collection and collection.next_product %}
+        <div id="next-product-modal" class="next-prev-content" data-next-prev-content>
+            <div class="product-on-cart">
+                <a class="product-image" href="{{ collection.next_product }}" aria-label="image">
+                    <img src="{{ collection.next_product.images[0] | img_url: 'compact' }}" alt="{{ collection.next_product.title }}">
+                </a>
+                <div class="product-details">
+                    <a class="product-name" href="{{ collection.previous_product }}" aria-label="title">
+                        {{ collection.next_product.title }}
+                    </a>
+                    <div class="product-price {% if collection.next_product.compare_at_price_min > collection.next_product.price_min %}price--on-sale{% endif %}">
+                        {% if collection.next_product.compare_at_price_min > collection.next_product.price_min %}
+                            <span class="price-item price-item--regular">
+                                {{ collection.next_product.compare_at_price_min | money }}
+                            </span>
+                            <span class="price-item price-item--sale">
+                                {{ collection.next_product.price_min | money }}
+                            </span>
+                        {% else %}
+                            {% if collection.next_product.price_varies %}
+                                <span class="price-item price-item--regular">
+                                    {{ collection.next_product.price_min | money }}
+                                </span>
+                                <span class="symbol">-</span>
+                                <span class="price-item price-item--regular">
+                                    {{ collection.next_product.price_max | money }}
+                                </span>
+                            {% else %}
+                                <span class="price-item price-item--regular">
+                                    {{ collection.next_product.price_min | money }}
+                                </span>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if settings.show_wishlist %}
+                        <a class="wishlist" data-icon-wishlist aria-label="wishlist" href="#" data-product-handle="{{ product.handle }}" data-id="{{ product.id }}">
+                            {% render 'icon-heart' %}
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var nextPrevProduct = $('.next-prev-product'),
+                iconNextPrev = nextPrevProduct.find('[data-next-prev-icon]'),
+                contentNextPrev = nextPrevProduct.find('[data-next-prev-content]'),
+                modal = nextPrevProduct.find('[data-next-prev-modal]');
+        
+        if(!('ontouchstart' in document)) {
+            iconNextPrev.hover(function() {
+                var curLink = $(this),
+                        curContent = $(curLink.data('target'));    
+                
+                if(!$(this).hasClass('active')) {
+                    iconNextPrev.removeClass('active');
+                    contentNextPrev.removeClass('active');
+                    
+                    curLink.addClass('active');
+                    curContent.addClass('active');
+                    modal.show();
+                }
+                                
+                nextPrevProduct.mouseleave(function() {
+                    if(modal.is(':visible')) {
+                        iconNextPrev.removeClass('active');
+                        contentNextPrev.removeClass('active');
+                        modal.hide();
+                    };
+                });   
+            });
+        }
+        
+        else {
+            iconNextPrev.off('click').on('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                var curLink = $(this),
+                        curContent = $(curLink.data('target'));
+                
+                if(!$(this).hasClass('active')) {
+                    iconNextPrev.removeClass('active');
+                    contentNextPrev.removeClass('active');
+                    
+                    curLink.addClass('active');
+                    curContent.addClass('active');
+                    modal.show();
+                }
+                else {
+                    curLink.removeClass('active');
+                    curContent.removeClass('active');
+                    modal.hide();
+                }
+            });
+        };
+        
+        $(document).on('click', function(e) {
+            if(!$(e.target).closest('[data-next-prev-modal]').length && modal.is(':visible')) {
+                iconNextPrev.removeClass('active');
+                contentNextPrev.removeClass('active');
+                modal.hide();
+            };
+        });
+    });
+</script>
+{% endif %}

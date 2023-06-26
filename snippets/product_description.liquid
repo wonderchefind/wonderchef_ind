@@ -1,0 +1,711 @@
+<div class="clearfix"></div>
+{% capture banner %}logo_razor.png{% endcapture %}
+{% capture alt %}Wonderchef{% endcapture %}
+
+<div class="product-details">
+  <div class="description">
+   
+    
+    <ul class="tabs-content">
+      {% if product.metafields.product.aplus_fullwidth_image != blank %}
+      <li class="active dis_tab" >
+        <!--<h2 class="heading_description">Product Information</h2>-->
+      	 <div class="details_description">
+           {% comment %}
+           {% if product.metafields.product.description_p != blank %}
+           <p>{{ product.metafields['product']['description_p'] }}</p>
+           {% endif %}
+           {% if product.metafields.product.description_li != blank %}
+             <ul>
+              {{ product.metafields['product']['description_li'] }}
+             </ul>
+            {% endif %}
+           {% endcomment %}
+           <!-- Featured icon description  -->
+           {% if product.metafields.product.featured_icon != blank %}
+           <div class="featured-icon">
+             <div class="icon-toolsfeatured">
+<!-- 				
+               {% for image in product.image %}
+               {% assign featured_name = tag | split: '_' %}
+               {% if tag_name[0] == 'generic' %}  
+               {% assign generic_name = tag_name[1] %}
+               {{ generic_name }}
+               {% endif %}
+               {% endfor %} -->
+               {{ product.metafields['product']['featured_icon'] }}
+             </div>
+           </div>
+           {% endif %}
+           
+           <!-- A+ content 63151691  id="bio1" -->
+           	<div class="content-aplus  ">
+              {% comment%}
+               {% if product.metafields.product.aplus_logo != blank %}
+              <div class="row">
+              <div class="product-banner-logo">
+                <img class="lazyload lazyload-fade"
+                     src="{{ product.metafields['product']['aplus_logo'] }}"
+                     data-src="{{ product.metafields['product']['aplus_logo'] }}"
+                     data-sizes="auto"
+                     alt="Wonderchef">
+              </div>
+              </div>
+              {% endif %}
+              {% endcomment%}
+              {% if product.metafields.product.aplus_fullwidth_image != blank %}
+              <div class="seconttype-description clearfix">
+              <div class="product-banner-second-type">
+                <img class="lazyload lazyload-fade"
+                     src="{{ product.metafields['product']['aplus_fullwidth_image'] }}"
+                     data-src="{{ product.metafields['product']['aplus_fullwidth_image'] }}"
+                     data-sizes="auto"
+                     alt="{{product.title}}">
+              </div>
+              </div>
+              {% endif %}
+              {% if product.metafields.product.aplus_fullwidth_image_one != blank %}
+              <div class="seconttype-description clearfix" style="margin-top:15px;">
+              <div class="product-banner-second-type">
+                <img class="lazyload lazyload-fade"
+                     src="{{ product.metafields['product']['aplus_fullwidth_image_one'] }}"
+                     data-src="{{ product.metafields['product']['aplus_fullwidth_image_one'] }}"
+                     data-sizes="auto"
+                     alt="{{product.title}}">
+              </div>
+              </div>
+              {% endif %}
+              {% if product.tags contains 'new-nutriblend' or product.tags contains 'new-Chimney' or product.tags contains 'content1' %}
+              	
+              {% if product.tags contains 'Venice'  %}
+              		  <style>
+                            #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                   width: 25%;
+                            }
+                              	@media only screen and  (max-width: 798px){
+                                  #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                    width: 100%;
+                                  }
+                                 }
+                              	@media only screen and  (max-width: 411px){
+                                    #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                    width: 100%;
+                                  }
+                        
+                        
+                      </style>
+            	{% endif %}
+              
+              <hr class="clearfix">
+                    <div class="thirdtype-description clearfix">
+                      <div class="paracontent">
+                          {% if product.metafields.product.aplus_content1_p != blank %}
+                            <p>{{ product.metafields['product']['aplus_content1_p'] }}</p>
+                            {% endif %}
+                            {% if product.metafields.product.aplus_content2_p != blank %}
+                            <p> {{ product.metafields['product']['aplus_content2_p'] }}</p>
+                      	  {% endif %}
+                        </div>
+                    </div>
+              
+              		<hr class="clearfix">
+                        <div class="fourthtype-description clearfix">
+                          <div class="product-banner-fourth-type">
+                            <ul class="slider-description">
+                              <li>
+                                {% if product.metafields.product.aplus_li1_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li1_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li1_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li1_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li1_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li2_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li2_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li2_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li2_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li2_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li3_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li3_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li3_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li3_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li3_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li {% if product.id == 7129840550065 or product.id == 7129835962545 %} style="width:100%" {% endif %}>
+                                {% if product.metafields.product.aplus_li4_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}" >
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li4_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li4_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li4_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li4_p'] }}</p>
+                             {% endif %}
+                              </li>
+                             
+                              <li>
+                                {% if product.metafields.product.aplus_li5_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li5_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li5_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li5_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li5_p'] }}</p>
+                             {% endif %}
+                              </li>
+                              <li>
+                                {% if product.metafields.product.aplus_li6_image != blank %}
+                                <img class="lazyload lazyload-fade"
+                                   src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                                   data-src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                                   data-sizes="auto"
+                                   alt="{{product.title}}">
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li6_h != blank %}
+                                <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li6_h'] }}</b></p>
+                                {% endif %}
+                                {% if product.metafields.product.aplus_li6_p != blank %}
+                                <p>{{ product.metafields['product']['aplus_li6_p'] }}</p>
+                             {% endif %}
+                              </li>
+                               
+                            </ul>
+                          </div>
+                        </div>
+              			{% if product.metafields.product.aplus_fullwidth_image_second != blank %}
+                          <div class="seconttype-description clearfix">
+                          <div class="product-banner-second-type">
+                            <img class="lazyload lazyload-fade"
+                                 src="{{ product.metafields['product']['aplus_fullwidth_image_second'] }}"
+                                 data-src="{{ product.metafields['product']['aplus_fullwidth_image_second'] }}"
+                                 data-sizes="auto"
+                                 alt="{{product.title}}">
+                          </div>
+                          </div>
+              			{% endif %}
+              				<hr class="clearfix">
+              					<div class="fourthtype-description clearfix">
+                                  <div class="product-banner-fourth-type">
+                                    <ul class="slider-description">
+                                      <li>
+                                        {% if product.metafields.product.aplus_li7_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li7_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li7_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li7_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li7_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                      <li>
+                                        {% if product.metafields.product.aplus_li8_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li8_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li8_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li8_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li8_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                      <li>
+                                        {% if product.metafields.product.aplus_li9_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li9_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li9_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li9_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li9_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                       <li>
+                                         {% if product.tags contains 'description-List13' %}
+                                        {% if product.metafields.product.aplus_li10_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li10_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li10_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li10_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li10_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li10_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li10_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                       <li>
+                                        {% if product.metafields.product.aplus_li11_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li11_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li11_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li11_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li11_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li11_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li11_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                       <li>
+                                        {% if product.metafields.product.aplus_li12_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li12_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li12_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li12_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li12_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li12_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li12_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                       <li>
+                                        {% if product.metafields.product.aplus_li13_image != blank %}
+                                        <img class="lazyload lazyload-fade"
+                                           src="{{ product.metafields['product']['aplus_li13_image'] }}"
+                                           data-src="{{ product.metafields['product']['aplus_li13_image'] }}"
+                                           data-sizes="auto"
+                                           alt="{{product.title}}">
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li13_h != blank %}
+                                        <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li13_h'] }}</b></p>
+                                        {% endif %}
+                                        {% if product.metafields.product.aplus_li13_p != blank %}
+                                        <p>{{ product.metafields['product']['aplus_li13_p'] }}</p>
+                                     {% endif %}
+                                      </li>
+                                      {% endif %}
+                                      
+                                    </ul>
+                                  </div>
+              					</div>
+              {% else %}
+              <hr class="clearfix">
+              <div class="thirdtype-description clearfix">
+                {% if product.metafields.product.aplus_halfwidth_image != blank %}
+                <div class="product-banner-third-type">     
+                
+                  {% if product.title ==  'Mobile Phone Sterilizer, 9W' or product.title == 'Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter'  or product.title == 'Florence Chimney 60Cm' or product.title == 'Napoli Chimney 90cm/1250m3/h with Baffle Filters' or product.title == 'Napoli Chimney 60cm/1250m3/h with Baffle Filters' or product.title == 'Genoa Chimney 60cm/700m3/h with Baffle Filters' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W'  or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer' or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Vietri Mixer Grinder With 3 Anti-Rust Stainless Steel Jars and Blades, 3-Speed Knob, Anti-Skid Feet, 5 Years Warranty On Copper Armature Motor, 550W - Black & Red' %} 
+                  	<div class="sixteen alpha" style="width:auto;margin-bottom:10px;">
+                  {% else %}
+                      <div class="eight columns alpha">
+                  {% endif %}
+                    <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_halfwidth_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_halfwidth_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                  </div>
+                   
+                  {% if product.title !=  "Mobile Phone Sterilizer, 9W" and product.title != "Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml" and product.title != "Veneto Ozonizer 10L, 25W" and product.title != "Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter" and product.title != "Florence Chimney 60Cm" and product.title != "Napoli Chimney 90cm/1250m3/h with Baffle Filters" and product.title != "Napoli Chimney 60cm/1250m3/h with Baffle Filters" and product.title != "Genoa Chimney 60cm/700m3/h with Baffle Filters" and product.title != "Turin Spray Bottle for Chlorination, 500ml, 9W" and product.title != "Lazio Steam Gun, 200ml, 1200W" and product.title != 'Torino Anti-Viral UVC Oven 21L, 25W' and product.title != 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' and product.title != "Copper Coated Reusable Anti-Bacterial Face Mask"and product.title != "Ultra-Violet Toothbrush Sterilizer" and product.title != 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' and product.title != 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red'%} 
+                  <div class="eight columns omega content">
+                    <div class="paracontent">
+                      {% if product.metafields.product.aplus_content1_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_content1_p'] }}</p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_content2_p != blank %}
+                      <p> {{ product.metafields['product']['aplus_content2_p'] }}</p>
+                  	  {% endif %}
+                    </div>
+                  </div>
+                  {% endif%}
+                      
+                      
+                </div>
+              </div>
+                {% endif %}
+                
+                
+              
+                
+              {% if product.title != "Mobile Phone Sterilizer, 9W" and product.title != "Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml" and product.title != "Veneto Ozonizer 10L, 25W" and product.title != "Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter" and product.title != "Florence Chimney 60Cm" and product.title != "Napoli Chimney 90cm/1250m3/h with Baffle Filters" and product.title != "Napoli Chimney 60cm/1250m3/h with Baffle Filters"  and product.title != "Genoa Chimney 60cm/700m3/h with Baffle Filters"  and product.title != "Ultra-Violet Toothbrush Sterilizer" and product.title != "Turin Spray Bottle for Chlorination, 500ml, 9W" and product.title != "Lazio Steam Gun, 200ml, 1200W" and product.title != 'Torino Anti-Viral UVC Oven 21L, 25W' and product.title != 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' and product.title != "Copper Coated Reusable Anti-Bacterial Face Mask" and product.title != 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' and product.title != 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red' %} 
+              <hr class="clearfix">
+              {% endif %}
+                
+                {% if  product.id == 6072669110449 or 7146591649969 or  product.id ==6754414690481 or  product.id == 6732480348337 or  product.id == 6732478611633 or  product.id == 6732478644401 or  product.id == 6732480643249 or product.id == 6732481167537 or product.id == 6732480970929  or product.id == 6723417309361 or product.id == 6683156185265 or product.id == 6571077730481 or product.id == 6571077763249 or product.id == 6571077501105 or product.id == 6561862680753 or product.id == 2775026958436 or product.id == 4671509758000 or product.id == 4671509758000 or product.id == 6113387741361 or product.id == 6115024240817 or product.id == 6010397884593 or product.id == 6010400309425 or product.id == 6010427670705 or product.id == 6010431963313 or product.id == 6010439958705 or product.id == 6010463453361 or product.id == 6010418069681 or product.id == 6010373603505 or product.id == 6010303840433 or product.id == 6010299875505 or product.id == 6010254262449 or product.id == 6113372111025 or product.id == 2775117693028 or product.id == 2775117594724 or product.id == 2775118217316 or product.id == 2775118315620 or product.id == 2775118512228 or product.id == 2775072800868 or product.id == 2775073652836 or product.id == 2775072145508 or product.id == 2774919872612 or product.id == 2775071621220  or product.id == 2775072309348 or product.id == 2775073194084 or product.id == 2775014506596 or  product.id == 4123657371696 or product.id == 4123651670064 or product.id == 3887215345712 or product.id == 3887215280176 or product.id == 4123704983600 or product.id == 4123689517104 or product.id == 3746487599152 or product.id == 3746487631920 or product.id == 2774986227812 or product.id == 3461866979428 or product.id == 3461866913892 or product.id == 3811497607216 or product.id == 2775012769892 or product.id == 2775011393636  or product.id == 3880393441328 or product.id == 6045658153137 or product.id == 6571076976817 or product.id == 2774912598116 or product.id == 4658071633968 or product.id == 4658069372976 or product.id == 6571078647985 or product.id == 6571078615217 or product.id == 6580866613425 or product.id == 6580860059825 or product.id == 6580840431793 or product.id == 6580858028209 or product.id == 6571078713521 or product.id == 6571078090929 or product.id == 6571078123697 or product.id == 6571078189233 or product.id == 6571078254769 or product.id == 6571078287537 or product.id == 6571078320305 or product.id == 6571078385841 or product.id == 6571077861553 or product.id == 6655864733873 or product.id == 7062872293553  or  product.id == 7062872162481 or  product.id == 7062872228017 or  product.id ==7062872621233 or  product.id ==7062872359089 or  product.id ==7062872424625 or  product.id ==7062872555697 or  product.id ==7062872490161 or  product.id ==7062872785073 or  product.id ==7062872686769 or  product.id ==7062872490161 or  product.id ==7062872654001 or  product.id ==7062872260785 or  product.id ==7062872850609 or  product.id ==7062872326321 or  product.id ==7062872195249 or  product.id ==7062872391857 or  product.id ==7062872457393 or  product.id == 7062872588465 or  product.id == 7062872719537 or  product.id ==7062872522929 or  product.id ==7062794535089 or  product.id ==7062816587953 or  product.id ==7062730834097 or  product.id ==7062796632241 or  product.id ==7062822420657 or  product.id ==7062735618225 or  product.id ==7062872817841 or  product.id ==7062872883377 or  product.id ==7062289350833 or  product.id ==7062815015089 or  product.id ==7062736404657 or  product.id ==7062826188977 or  product.id ==7062830645425 or  product.id ==7062724837553 or  product.id ==7062797058225 or  product.id ==7062793322673 or  product.id ==7062829990065 or  product.id ==7062838476977 or  product.id ==7092681801905  or product.id == 7021620494513 or product.id == 6687381291185 or product.id == 2774826942564 or product.id == 2775059136612 or product.id == 6741294710961 or product.id == 6697691021489 or product.id == 2775131160676 or product.id == 2775130832996 or product.id == 2775130669156 or product.id == 2775131652196 or product.id == 2775131029604 or product.id == 4417148059696 or product.id == 2775131357284 or product.id == 2774855155812 or product.id == 2775131881572 or product.id == 2775131422820 or product.id == 7080363425969 or product.id == 7080360673457 or product.id == 7080333967537 or product.id == 7129537020081 or product.id == 7129537183921 or product.id == 7129537216689 or product.id == 7129537249457 or product.id == 7129537282225 or product.id == 7129537314993 or product.id == 7129537380529 or product.id == 7129537413297 or product.id == 7129537642673 or product.id == 7129537675441 or product.id == 7129537708209 or product.id == 7129537740977 or product.id == 7129537085617 or product.id == 7129537118385 or product.id == 7129537151153 or product.id == 7129537347761 or product.id == 7129537478833 or product.id == 7129537511601 or product.id == 7129537577137 or product.id == 7129537609905 or product.id == 7129537773745 or product.id == 7133225189553  %}
+              		  <style>
+                            #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                   width: 25%;
+                            }
+                              	@media only screen and  (max-width: 798px){
+                                  #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                    width: 100%;
+                                  }
+                                 }
+                              	@media only screen and  (max-width: 411px){
+                                    #shopify-section-product-template .description .tabs-content li .details_description .content-aplus .fourthtype-description .product-banner-fourth-type ul.slider-description li{
+                                    width: 100%;
+                                  }
+                        
+                        
+                      </style>
+            	{% endif %}
+                
+              
+                
+                
+                
+              <div class="fourthtype-description clearfix">
+                <div class="product-banner-fourth-type">
+                  <ul class="slider-description">
+                    <li {% if product.title ==  "Mobile Phone Sterilizer, 9W"    or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black"  or product.title == "Platinum Mixer Grinder 550W with 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == "Vietri Mixer Grinder 750W" or product.title == "Ruby Mixer Grinder With 3 Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 550W, 5 Years Warranty, Red and Black" or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor"  or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.tags contains 'all-full-banners' or product.title == "Sumo Mixer Grinder-600W With 3 Stainless Steel Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor, Red and Black" or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == "Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml" or product.title == "Veneto Ozonizer 10L, 25W"  or product.title == "Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter"  or product.title == "Florence Chimney 60Cm" or product.title == "Napoli Chimney 90cm/1250m3/h with Baffle Filters" or product.title == "Napoli Chimney 60cm/1250m3/h with Baffle Filters"  or product.title == "Genoa Chimney 60cm/700m3/h with Baffle Filters" or product.title == "Turin Spray Bottle for Chlorination, 500ml, 9W"  or product.title == "Lazio Steam Gun, 200ml, 1200W" or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer' or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red' %} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li1_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li1_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li1_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li1_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li1_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li1_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li {% if product.title ==  'Mobile Phone Sterilizer, 9W'  or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black" or product.title == "Platinum Mixer Grinder 550W with 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == "Vietri Mixer Grinder 750W" or product.title == "Ruby Mixer Grinder With 3 Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 550W, 5 Years Warranty, Red and Black" or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.tags contains 'all-full-banners' or product.title == "Sumo Mixer Grinder-600W With 3 Stainless Steel Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor, Red and Black"  or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == 'Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml'  or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter' or product.title == 'Florence Chimney 60Cm' or product.title == 'Napoli Chimney 90cm/1250m3/h with Baffle Filters' or product.title == 'Napoli Chimney 60cm/1250m3/h with Baffle Filters' or product.title == 'Genoa Chimney 60cm/700m3/h with Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer' or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red' %} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li2_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li2_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li2_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li2_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li2_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li2_p'] }}</p>
+                   {% endif %}
+                    </li> 
+                    <li {% if product.title ==  'Mobile Phone Sterilizer, 9W' or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black" or product.title == "Platinum Mixer Grinder 550W with 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson"  or product.title == "Vietri Mixer Grinder 750W"  or product.title == "Ruby Mixer Grinder With 3 Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 550W, 5 Years Warranty, Red and Black" or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.tags contains 'all-full-banners' or product.title == "Sumo Mixer Grinder-600W With 3 Stainless Steel Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor, Red and Black" or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == 'Thermo-Bot Double Wall Stainless Steel Vacuum Insulated Hot And Cold Flask, 450ml'  or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Venezia Chimney 60cm/1250m3/h with 5 Layer Aluminium Mesh Filter' or product.title == 'Florence Chimney 60Cm' or product.title == 'Napoli Chimney 90cm/1250m3/h with Baffle Filters' or product.title == 'Genoa Chimney 60cm/700m3/h with Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer' or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red' %} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li3_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li3_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li3_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li3_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li3_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li3_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li {% if product.id == 7129840550065 or product.id == 7129835962545 or product.title == 'Mobile Phone Sterilizer, 9W' or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black"  or product.title == "Platinum Mixer Grinder 550W with 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == "Vietri Mixer Grinder 750W" or product.title == "Ruby Mixer Grinder With 3 Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 550W, 5 Years Warranty, Red and Black" or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.tags contains 'all-full-banners' or product.title == "Sumo Mixer Grinder-600W With 3 Stainless Steel Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor, Red and Black" or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson"  or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm/700m3/h with Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer' or product.title == 'Vietri Mixer Grinder with 3 Anti-rust Stainless Steel Jars and Blades, 3-speed Knob, Anti-skid Feet, 5 Years Warranty on Copper Armature Motor, 550W - Black & Red'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li4_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li4_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li4_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li4_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li4_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li4_p'] }}</p>
+                   {% endif %}
+                    </li> 
+                    <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black" or product.title == "Platinum Mixer Grinder 550W with 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson" or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Sumo Mixer Grinder-600W With 3 Stainless Steel Jars and Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor, Red and Black" or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson"  or product.title == 'Regalia Brew Coffee Maker, Makes 7 Cups Coffee, Removable Filter, with Keep Warm Plate, 2 Years Warranty, 700ml, 550W - Black' or product.title == 'Veneto Ozonizer 10L, 25W' or product.tags contains 'all-full-banners' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W'or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li5_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li5_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li5_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li5_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li5_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li5_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == "Sumo Mixer Grinder 1000W With 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor, Red And Black"  or product.title == "Glory Mixer Grinder,  750 W with 4 Stainless Steel Jars and Anti-rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor" or product.title == "Glory Mixer Grinder, 600 W With 3 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty on Motor"or product.title == "Platinum Mixer Grinder 750W with 4 Stainless Steel Jars And Anti-Rust Stainless Steel Blades, Ergonomic Handles, 5 Years Warranty On Motor,  Black & Crimson"  or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li6_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li6_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li6_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li6_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li6_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li6_p'] }}</p>
+                   {% endif %}
+                    </li>
+                     <li {% if product.title == 'Mobile Phone Sterilizer, 9W'or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Air Purifier with Anti-bacterial copper filter and water wash technology, 65W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li7_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li7_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li7_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li7_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li7_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li7_p'] }}</p>
+                   {% endif %}
+                    </li>
+                    <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li8_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li8_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li8_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li8_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li8_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li8_p'] }}</p>
+                   {% endif %}
+                    </li>  
+                    <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li9_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li9_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li9_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li9_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li9_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li9_p'] }}</p>
+                   {% endif %}
+                    </li>
+                      <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li10_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li10_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li10_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li10_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li10_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li10_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li10_p'] }}</p>
+                   {% endif %}
+                    </li>
+                      <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li11_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li11_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li11_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li11_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li11_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li11_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li11_p'] }}</p>
+                   {% endif %}
+                    </li>
+                 <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
+                      {% if product.metafields.product.aplus_li12_image != blank %}
+                      <img class="lazyload lazyload-fade"
+                         src="{{ product.metafields['product']['aplus_li12_image'] }}"
+                         data-src="{{ product.metafields['product']['aplus_li12_image'] }}"
+                         data-sizes="auto"
+                         alt="{{product.title}}">
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li12_h != blank %}
+                      <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li12_h'] }}</b></p>
+                      {% endif %}
+                      {% if product.metafields.product.aplus_li12_p != blank %}
+                      <p>{{ product.metafields['product']['aplus_li12_p'] }}</p>
+                   {% endif %}
+                    </li>
+                  </ul>
+                </div>  
+              </div>
+                {% if product.metafields.product.aplus_fullwidth_image_last != blank %}
+                  <div class="seconttype-description clearfix">
+                    <div class="product-banner-second-type">
+                      <img class="lazyload lazyload-fade"
+                           src="{{ product.metafields['product']['aplus_fullwidth_image_last'] }}"
+                           data-src="{{ product.metafields['product']['aplus_fullwidth_image_last'] }}"
+                           data-sizes="auto"
+                           alt="{{product.title}}">
+                    </div>
+                  </div>
+              	{% endif %}
+                {% if product.metafields.product.aplus_fullwidth_image_last_one != blank %}
+                  <div class="seconttype-description clearfix" style="margin-top:15px;">
+                    <div class="product-banner-second-type">
+                      <img class="lazyload lazyload-fade"
+                           src="{{ product.metafields['product']['aplus_fullwidth_image_last_one'] }}"
+                           data-src="{{ product.metafields['product']['aplus_fullwidth_image_last_one'] }}"
+                           data-sizes="auto"
+                           alt="{{product.title}}">
+                    </div>
+                  </div>
+              	{% endif %}
+              {% endif %}
+                
+           </div>
+           {% if product.metafields.product.aplus_logo != blank %}
+<!--            <div class="showmore-class">
+             <div class="showmorebtn"><a href="#bio1" class="open-discription btn">View More »</a></div>
+           </div> -->
+            {% endif %}
+        </div>
+      </li>
+        {% endif %}
+     {% if product.metafields.product != blank %}
+      {% comment %}
+      <li class=" specic_tab" id="tab-2">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img class="" src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+       <h2 class="heading_description specification">Specifications</h2>
+      	 <div class="details_specification">
+         {{ product.metafields['product']['specification'] }}
+           <br>
+           {% include 'supplier_address'%}
+        </div>
+      </li>
+      {% endcomment %}
+        {% endif %}
+       {%if product.tags contains 'uses' %}
+      <li class=" uses_tab" id="tab-3">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+        <h2 class="heading_description">Uses</h2>
+        <div class="details_description">
+          <div class="uses">
+            {{ product.metafields['product']['uses'] }}
+          </div>
+        </div>
+        
+      </li>
+       {% endif %}
+      {%if product.tags contains 'Hot Sets' or product.tags contains 'Frying Pans' 
+             or product.tags contains 'Woks & Kadhais'  or product.tags contains 'Grill Pans' 
+             or product.tags contains 'Casseroles'  or product.tags contains 'Frying Pans'  or product.tags contains 'Sauce Pans' 
+             or product.tags contains 'Dosa Tawas' or product.tags contains 'Individual' or product.tags contains 'Sauce Pans'   
+             or product.tags contains 'Tadka Pan'%}
+      <li class=" non-stick_tab" id="tab-4">
+        <div class="br_feviconicons">
+          <div class="brd">
+            <div>
+              <img src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
+            </div>
+            </div>
+        </div>
+        {% include 'non-stick-new' %}
+      </li>
+      {% endif %}
+     
+     
+    </ul>
+  </div>
+</div>
+
+<script>
+$('.open-discription').click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('href');
+
+    if ($(id).is(":visible")) {
+        $(this).text("View More »");
+    } else {
+        $(this).text("View Less «");
+    }
+
+    $(id).slideToggle(500);
+});
+</script>
+{{ 'scrollmenu.js'  | asset_url |script_tag }}
+
+<style>
+  
+  .featuredicon {
+    display: inline-block;
+    padding: 0 20px;
+    width: 15%;
+    text-align: center;
+  }
+  .icon-toolsfeatured {
+    text-align: center;
+    padding: 40px 0;
+  }
+  
+ 
+  
+  </style>

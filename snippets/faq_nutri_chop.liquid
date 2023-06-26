@@ -1,0 +1,147 @@
+<div>
+ 
+   
+             <h2 class="heading_description" style="text-align:center;">Frequently Asked Questions</h2>
+        
+        </div>
+
+
+<dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1">What is the use of an electric chopper like Nutri-chop?</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block">Cutting Veggies like onions with a knife can become tedious and a little messy. With the help of an electric chopper like Nutri-Chop, this can be done in a jiffy, without any discomfort, and it will also be time-saving. Wonderchef Nutri-chop comes with a powerful 300 watts motor & one-touch operation to seamlessly chop everything.</div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2">Is this battery-operated, or will it always require wire?</a></dt>
+    <dd class="acc_container">
+        <div class="block">While there are multiple choices in the market, the wired ones are reliable & long-lasting. Wonderchef Nutri-chop is a wired appliance and has 2 years of warranty. </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle3">Are the Nutri-chop blades removable?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Unlike the local electric choppers, where one can not remove the blades, Wonderchef Nutri-chop's unique design makes it easy to remove the blades for easy cleaning in no time.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle4">What is one-touch pulse control?</a></dt>
+    <dd class="acc_container">
+        <div class="block">One-touch plus control is a unique feature to operate the Wonderchef Nutri-chop, and just a press on the soft knob at the top rotates blades for even chopping. This handsfree feature of Wonderchef Nutri-chop is ideal for mincing, chopping, and mixing vegetables, fruits, nuts, herbs, chocolates, meat, and more.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle5">How do I clean and maintain Nutri-chop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef Nutri-chop comes with a unique design that makes it easier to clean. You can remove blades easily for easy and hassle-free cleaning. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle6">Can I make purees in the Nutri-chop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, with a combination of powerful 300 watts motor and the duo-blades, you can make purees in no time. The blades are made from anti-rust stainless steel, which is perfectly hygienic, so with Wonderchef Nutri-chop, you can also make delicious treats for babies.  </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle7">What is the capacity of the jar?</a></dt>
+    <dd class="acc_container">
+        <div class="block">The jar comes with a 700ml transparent processing bowl with measurement markings so you can chop as per your desired quantity. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle8">Can this be used for egg beating?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, the one-touch pulse control of Wonderchef Nutri-chop helps beat eggs. </div>
+    </dd>
+   
+   
+  
+</div>
+</dl>
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

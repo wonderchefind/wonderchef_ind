@@ -1,0 +1,43 @@
+{% if section.settings.display_size_chart %}
+    <div class="modal fade halo_modal" id="size_chart" role="dialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    {% if section.settings.custom_size_chart_header != blank %}
+                        <h5 class="modal-title">
+                            {% render 'multilang' with section.settings.custom_size_chart_header %}
+                        </h5>
+                    {% endif %}
+                    <a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+                </div>
+                <div class="modal-body">
+                    <div class="size-chart-img text-center">
+                        {% if section.settings.size_chart == 'product_vendor' %}          
+                            {% capture img_vendor %}
+                                {{ product.vendor | handle | append: '-sizechart.jpg' | file_url }}
+                            {% endcapture %}
+                            <img src="{{ img_vendor }}" alt="{{ section.settings.custom_size_chart_header }}"/>
+                        
+                        {% elsif section.settings.size_chart == 'product_type' %}          
+                            {% capture img_type %}
+                                {{ product.type | handle | append: '-sizechart.jpg' | file_url }}
+                            {% endcapture %}
+                            <img src="{{ img_type }}" alt="{{ section.settings.custom_size_chart_header }}"/>
+                        
+                        {% elsif section.settings.size_chart == 'different' %} 
+                            {% if product.metafields.halo['Size Chart'] %}
+                                {% capture img_product %}
+                                    {{ product.metafields.halo['Size Chart'] }}
+                                {% endcapture %}
+                                {{ product.metafields.halo['Size Chart'] }}
+                            {% endif %}
+
+                        {% elsif section.settings.size_chart == 'none' %} 
+                            <img src="{{ section.settings.custom_size_chart | img_url: 'original' }}" alt="{{ section.settings.custom_size_chart_header }}"/>
+                        {% endif %}               
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

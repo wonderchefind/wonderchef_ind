@@ -1,0 +1,204 @@
+{% if section.settings.display_sidebar == false %}
+    <style>
+        .page .page-sidebar,
+        .page .sidebar_mobile_wrapper .sidebar_mobile {
+            display: none !important;
+        }
+
+        .page .page-content,
+        .page .page-sidebar + .page-content {
+            display: block;
+            width: 100%;
+            padding-left: 0;
+        }
+    </style>
+{% endif %}
+
+{% if section.settings.position_sidebar == 'right' %}
+    <style>
+        @media only screen and (min-width: 1025px) {
+            .page .page-sidebar {
+                float: right;
+                padding-left: 15px;
+                padding-right: 0;
+            }
+
+            .page .page-sidebar + .page-content {
+                padding-left: 0;
+                padding-right: 15px;
+            }
+        }
+    </style>
+{% endif %}
+
+<div class="sidebar_close">
+    <a href="javascript:void(0)" class="close">
+        <span class="icon">&#215;</span>
+        <span class="text">{{ 'general.accessibility.close_modal' | t }}</span>
+    </a>
+</div>
+<div class="sidebar_content">
+    {% for block in section.blocks %}
+        {% case block.type %}
+            {% when 'collection_1' %}
+                {% render 'widget_collection', block: block %}
+            {% when 'recent_post' %}
+                {% render 'widget_recent_post', block: block %}
+            {% when 'product_carousel' %}
+                {% render 'widget_product_carousel', block: block %}
+            {% when 'quote' %}
+                {% render 'widget_cms_block', block: block %}
+            {% when 'image' %}
+                {% render 'widget_image_ads', block: block %}
+        {% endcase %}
+    {% endfor %}
+</div>
+
+{% schema %}
+{
+    "name": "Sidebar",
+    "class": "page-sidebar",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "display_sidebar",
+            "label": "Enable Sidebar",
+            "default": false
+        },
+        {
+            "type": "select",
+            "id": "position_sidebar",
+            "label": "Position Sidebar on:",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ],
+            "default": "left"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection_1",
+            "name": "Collection Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "type": "radio",
+                    "id": "collection_id",
+                    "label": "Show all \/ Only a few Collection",
+                    "options": [
+                        {
+                            "value": "show_all",
+                            "label": "Show All Collection"
+                        },
+                        {
+                            "value": "little_category",
+                            "label": "Only A Few Collection"
+                        }                    
+                    ]
+                },
+                {
+                    "type": "link_list",
+                    "id": "link_list",
+                    "label": "Choose a Collection",
+                    "default": "main-menu"
+                }
+            ]
+        },
+        {
+            "type": "recent_post",
+            "name": "Recent Post",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "type": "range",
+                    "id": "number",
+                    "label": "number post",
+                    "min": 1,
+                    "max": 5,
+                    "step": 1,
+                    "default": 3
+                }
+            ]
+        },
+        {
+            "type": "image",
+            "name": "Image Block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "Recommended Image: 225 x 225px"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link",
+                    "info": "Optional"
+                }
+            ]
+        },
+        {
+            "type": "quote",
+            "name": "Custom Block",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Text",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>"
+                }
+            ]
+        },
+        {
+            "type": "product_carousel",
+            "name": "Product Carousel",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Heading"
+                },
+                {
+                    "id": "collection",
+                    "type": "collection",
+                    "label": "Collection"
+                },
+                {
+                    "type": "range",
+                    "id": "number",
+                    "label": "Product Limit",
+                    "min": 1,
+                    "max": 8,
+                    "step": 1,
+                    "default": 3
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

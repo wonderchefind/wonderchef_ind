@@ -1,0 +1,435 @@
+{% if type == 'block' %}
+  {% assign title = block.settings.title %}
+  {% assign settingCollection = block.settings.collection %}
+  {% assign collection_style = block.settings.collection_style %}
+  {% assign collection_description = block.settings.collection_description %}
+  {% assign products_per = block.settings.products_per %}
+  {% assign products_limit = block.settings.products_limit %}
+{% else %}
+  {% assign title = section.settings.title %}
+  {% assign settingCollection = section.settings.collection %}
+  {% assign collection_style = section.settings.collection_style %}
+  {% assign collection_description = section.settings.collection_description %}
+  {% assign products_per = section.settings.products_per %}
+  {% assign products_limit = section.settings.products_limit %}
+{% endif %}
+
+{% if settingCollection == blank %}
+  {%- assign section_onboarding = true -%}
+  {% comment %}assign product length to be selected limit for onboarding{% endcomment %}
+  {% assign products_length = products_limit | plus: 0 %}
+{% else %}
+  {%- assign section_onboarding = false -%}
+{% endif %}
+
+<div class="container featured_products product-{{ collection_style }}">
+  <div class=" left homepage_content">
+    {% if title != blank %}
+      <a href="{{ collections[settingCollection].url }}"><h2 class="title red_title">{{ title }}</h2></a>
+      <div class="feature_divider"></div>
+    {% endif %}
+    {% if collection_description and collections[settingCollection].description != blank %}
+      <div class="section clearfix">
+        {{ collections[settingCollection].description }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% assign limit = products_limit %}
+
+{% if collection_style == 'slider' %}
+  {% assign col = settingCollection %}
+  {% assign products = collections[settingCollection].products %}
+  {% assign per_slide = products_per %}
+  <div class="container js-product-slider homepage-product-slider  {% if per_slide == 2 or per_slide == 4 or per_slide == 6 %}even-num-slides{% endif %}" id="top">
+    {% if section_onboarding == false %}
+  
+    <div class="  one-third column " style="margin: 0px 10px 20px 0px;"> <a href="https://www.wonderchef.com/collections/gift-below-1500"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_OTG.jpg?v=1629176644" alt="GIft 1000" style="width:100%"></a></div>
+
+      {% if col and collections[col].all_products_count > 0 %}
+        {% include 'product-slider', per_slide: products_per, featured_collection: col  %}
+    
+      {% endif %}
+   
+    
+    {% else %}
+      <div class="slider-gallery products-slider products-length-{{ products_length }}"
+            data-products-per-slide="{{ per_slide }}"
+            data-products-limit="{{ limit }}"
+            data-products-available="{{ products_length }}">
+        {% for i in (1..limit) %}
+          {% assign per_slide_num = products_per | plus: 0 %}
+          <div class="gallery-cell thumbnail
+          {% if products_length > per_slide_num %}visible-{{ per_slide }}{% else %}visible-{{ products_length }}{% endif %}
+          ">
+            <div class="product-wrap">
+              <div class="relative product_image">
+                <a href="#" itemprop="url">
+                  <object class="placeholder-image">
+                    {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+                  </object>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    
+  </div>
+{% else %}
+  {% if section_onboarding == false %}
+    {% assign limit = products_limit %}
+    {% assign collection = collections[settingCollection] %}
+    {% assign products = collections[settingCollection].products %}
+    {% assign products_per_row = products_per %}
+    <div class="container">
+ 
+      <div class="sixteen columns" >
+        
+        
+        
+        
+        
+        <div itemtype="http://schema.org/ItemList" class="product-list collection-matrix clearfix equal-columns--clear equal-columns--outside-trim"> <div class="
+  
+    four columns
+  
+  
+    medium-down--one-half
+    small-down--one-half
+  
+  thumbnail odd"> <div class="product-wrap"> <div class="relative product_image swap-false"> <a href="/collections/gifting/products/nutri-blend-bolt-ckm-black-600w" itemprop="url"> <div class="image__container">
+          
+
+
+
+
+
+
+
+
+
+
+
+<div class="image-element__wrap" style=" "> <img alt="Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger &amp; Swifter with Sipper Lid, 22000RPM, 4 Unbreakable Jars, Sharper Steel Blades, 2 Years Warranty, Black, E-Recipe Book By Chef Sanjeev Kapoor" src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1600x.jpg?v=1626688926" data-src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1600x.jpg?v=1626688926" data-sizes="auto" data-aspectratio="1080/1080" data-srcset="//cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_5000x.jpg?v=1626688926 5000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_4500x.jpg?v=1626688926 4500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_4000x.jpg?v=1626688926 4000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_3500x.jpg?v=1626688926 3500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_3000x.jpg?v=1626688926 3000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_2500x.jpg?v=1626688926 2500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_2000x.jpg?v=1626688926 2000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1800x.jpg?v=1626688926 1800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1600x.jpg?v=1626688926 1600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1400x.jpg?v=1626688926 1400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1200x.jpg?v=1626688926 1200w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1000x.jpg?v=1626688926 1000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_800x.jpg?v=1626688926 800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_600x.jpg?v=1626688926 600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_400x.jpg?v=1626688926 400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_200x.jpg?v=1626688926 200w" style=";" class="transition--blur-up lazyautosizes lazyloaded" sizes="278px" srcset="//cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_5000x.jpg?v=1626688926 5000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_4500x.jpg?v=1626688926 4500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_4000x.jpg?v=1626688926 4000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_3500x.jpg?v=1626688926 3500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_3000x.jpg?v=1626688926 3000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_2500x.jpg?v=1626688926 2500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_2000x.jpg?v=1626688926 2000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1800x.jpg?v=1626688926 1800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1600x.jpg?v=1626688926 1600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1400x.jpg?v=1626688926 1400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1200x.jpg?v=1626688926 1200w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_1000x.jpg?v=1626688926 1000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_800x.jpg?v=1626688926 800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_600x.jpg?v=1626688926 600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_400x.jpg?v=1626688926 400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_200x.jpg?v=1626688926 200w">
+</div>
+
+
+
+<noscript> <img src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_2000x.jpg?v=1626688926" alt="Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger &amp; Swifter with Sipper Lid, 22000RPM, 4 Unbreakable Jars, Sharper Steel Blades, 2 Years Warranty, Black, E-Recipe Book By Chef Sanjeev Kapoor" class="">
+</noscript></div></a>
+      
+<div class="thumbnail-overlay"> <a href="/collections/gifting/products/nutri-blend-bolt-ckm-black-600w" itemprop="url" class="hidden-product-link">Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger &amp; Swifter with Sipper Lid, 22000RPM, 4 Unbreakable Jars, Sharper Steel Blades, 2 Years Warranty, Black, E-Recipe Book By Chef Sanjeev Kapoor</a> <div class="info"></div>
+</div>
+<div class="banner_holder">
+  
+  
+  
+</div>
+
+
+
+      
+<script class="swym-product-view-snippet">
+['SwymViewProducts', 'SwymWatchProducts', 'SwymProductVariants'].forEach(function(k){
+  if(!window[k]) window[k] = {};
+});
+(function(et){
+    var collections = "Nutri-blend";
+    var o={}, empi=6737919574193,
+    piu = "\/\/cdn.shopify.com\/s\/files\/1\/0104\/9211\/7092\/products\/01_fff6cccd-8c2a-4db3-a507-bcaef75e647b_620x620.jpg?v=1626688926";
+    
+    
+    
+    SwymProductVariants[40014317650097] = {
+      empi:empi,epi:40014317650097,
+      du:"https://www.wonderchef.com/products/nutri-blend-bolt-ckm-black-600w",
+      dt:"Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger \u0026 Swifter with Sipper Lid, 22000RPM, 4 Unbreakable Jars, Sharper Steel Blades, 2 Years Warranty, Black, E-Recipe Book By Chef Sanjeev Kapoor",
+      ct: collections,
+      iu:  piu ,
+      stk: 117,
+      pr: 499900/100,
+       op: 750000/100, 
+      variants: [{ "Default Title" : 40014317650097}]
+    };
+    SwymWatchProducts[40014317650097] = o[40014317650097] = {"id": 40014317650097, "available": true,"inventory_management": "shopify","inventory_quantity": 117,"title": "Default Title", "inventory_policy": "deny"};
+    
+    var product_data = {
+      empi:empi, epi:40014317650097,
+      dt	:"Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger \u0026 Swifter with Sipper Lid, 22000RPM, 4 Unbreakable Jars, Sharper Steel Blades, 2 Years Warranty, Black, E-Recipe Book By Chef Sanjeev Kapoor",du:"https://www.wonderchef.com/products/nutri-blend-bolt-ckm-black-600w",
+      ct 	:collections,pr:499900/100,stk:117,
+      iu	: piu ,variants:[{ "Default Title" : 40014317650097 }]
+       ,op:750000/100 
+    };
+    SwymViewProducts["nutri-blend-bolt-ckm-black-600w"] = SwymViewProducts[6737919574193] = product_data;
+    SwymWatchProducts["nutri-blend-bolt-ckm-black-600w"] = SwymWatchProducts[6737919574193] = o;
+  })();
+
+</script> <div class="swym-collections"> <button class="swym-button swym-add-to-wishlist-view-product product_6737919574193 swym-icon swym-heart swym-loaded" data-url="/collections/gifting/products/nutri-blend-bolt-ckm-black-600w" data-swaction="addToWishlist" data-product-id="6737919574193" data-variant-id="40014317650097" data-with-epi="true" aria-label="Add to Wishlist"><span class="swym-tooltip swym-tooltip-clickable"><span class="swym-tooltip-text">Add to wishlist</span></span></button></div></div> <a class="product-info__caption " href="/collections/gifting/products/nutri-blend-bolt-ckm-black-600w" itemprop="url">
+      
+<div class="product-details"> <span class="product_title   " itemprop="name">Nutri-blend BOLT-600W CKM Mixer with Chopper, Stronger &amp; Swifter with Sipper ... <span></span></span>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="" class="jdgm-widget jdgm-preview-badge jdgm-preview-badge--with-link jdgm--done-setup" data-id="6737919574193" data-template="collection.gifting_new" data-auto-install="false"> <div style="display:none" class="jdgm-prev-badge" data-average-rating="5.00" data-number-of-reviews="2" data-number-of-questions="0"> <span class="jdgm-prev-badge__stars" data-score="5.00" tabindex="0" aria-label="5.00 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></span> <span class="jdgm-prev-badge__text">5 | 2</span></div>
+</div> <div class="shopify-reviews reviewsVisibility--true"></div> <span class="price sale"> <span class="money                     ">₹ 4,999</span> <span class="was_price "> <span class="money">₹ 7,500</span></span> <div class="sale_banner thumbnail_banner"> <span class="snize-right-arrow"></span> <span class="savings">
+          33%</span></div></span>
+  
+</div></a></div>
+  
+</div> <div class="
+  
+    four columns
+  
+  
+    medium-down--one-half
+    small-down--one-half
+  
+  thumbnail even"> <div class="product-wrap"> <div class="relative product_image swap-false"> <a href="/collections/gifting/products/wonderchef-inducta-dosa-tawa-28cm" itemprop="url"> <div class="image__container">
+          
+
+
+
+
+
+
+
+
+
+
+
+<div class="image-element__wrap" style=" "> <img alt="Cookware Wonderchef 8904214704339" src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1600x.jpg?v=1584611688" data-src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1600x.jpg?v=1584611688" data-sizes="auto" data-aspectratio="1000/1000" data-srcset="//cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_5000x.jpg?v=1584611688 5000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_4500x.jpg?v=1584611688 4500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_4000x.jpg?v=1584611688 4000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_3500x.jpg?v=1584611688 3500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_3000x.jpg?v=1584611688 3000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_2500x.jpg?v=1584611688 2500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_2000x.jpg?v=1584611688 2000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1800x.jpg?v=1584611688 1800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1600x.jpg?v=1584611688 1600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1400x.jpg?v=1584611688 1400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1200x.jpg?v=1584611688 1200w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1000x.jpg?v=1584611688 1000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_800x.jpg?v=1584611688 800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_600x.jpg?v=1584611688 600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_400x.jpg?v=1584611688 400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_200x.jpg?v=1584611688 200w" style=";" class="transition--blur-up lazyautosizes lazyloaded" sizes="278px" srcset="//cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_5000x.jpg?v=1584611688 5000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_4500x.jpg?v=1584611688 4500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_4000x.jpg?v=1584611688 4000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_3500x.jpg?v=1584611688 3500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_3000x.jpg?v=1584611688 3000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_2500x.jpg?v=1584611688 2500w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_2000x.jpg?v=1584611688 2000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1800x.jpg?v=1584611688 1800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1600x.jpg?v=1584611688 1600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1400x.jpg?v=1584611688 1400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1200x.jpg?v=1584611688 1200w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_1000x.jpg?v=1584611688 1000w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_800x.jpg?v=1584611688 800w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_600x.jpg?v=1584611688 600w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_400x.jpg?v=1584611688 400w,
+    //cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_200x.jpg?v=1584611688 200w">
+</div>
+
+
+
+<noscript> <img src="//cdn.shopify.com/s/files/1/0104/9211/7092/products/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_2000x.jpg?v=1584611688" alt="Cookware Wonderchef 8904214704339" class="">
+</noscript></div></a>
+      
+<div class="thumbnail-overlay"> <a href="/collections/gifting/products/wonderchef-inducta-dosa-tawa-28cm" itemprop="url" class="hidden-product-link">Inducta Non-stick Dosa Tawa, Induction Bottom, Soft Touch Bakelite Handle, Die-cast Aluminium- 28cm, 2.3mm Body, 3.8mm Bottom, 2 Years Warranty, Black</a> <div class="info"></div>
+</div>
+<div class="banner_holder">
+  
+  
+  
+</div>
+
+
+
+      
+<script class="swym-product-view-snippet">
+['SwymViewProducts', 'SwymWatchProducts', 'SwymProductVariants'].forEach(function(k){
+  if(!window[k]) window[k] = {};
+});
+(function(et){
+    var collections = "Cookware";
+    var o={}, empi=2774891823204,
+    piu = "\/\/cdn.shopify.com\/s\/files\/1\/0104\/9211\/7092\/products\/63152074_813ca635-0f67-4837-85dd-d13dd0bc15ad_620x620.jpg?v=1584611688";
+    
+    
+    
+    SwymProductVariants[24136735588452] = {
+      empi:empi,epi:24136735588452,
+      du:"https://www.wonderchef.com/products/wonderchef-inducta-dosa-tawa-28cm",
+      dt:"Inducta Non-stick Dosa Tawa, Induction Bottom, Soft Touch Bakelite Handle, Die-cast Aluminium- 28cm, 2.3mm Body, 3.8mm Bottom, 2 Years Warranty, Black",
+      ct: collections,
+      iu:  piu ,
+      stk: 28,
+      pr: 149900/100,
+       op: 200000/100, 
+      variants: [{ "Default Title" : 24136735588452}]
+    };
+    SwymWatchProducts[24136735588452] = o[24136735588452] = {"id": 24136735588452, "available": true,"inventory_management": "shopify","inventory_quantity": 28,"title": "Default Title", "inventory_policy": "deny"};
+    
+    var product_data = {
+      empi:empi, epi:24136735588452,
+      dt	:"Inducta Non-stick Dosa Tawa, Induction Bottom, Soft Touch Bakelite Handle, Die-cast Aluminium- 28cm, 2.3mm Body, 3.8mm Bottom, 2 Years Warranty, Black",du:"https://www.wonderchef.com/products/wonderchef-inducta-dosa-tawa-28cm",
+      ct 	:collections,pr:149900/100,stk:28,
+      iu	: piu ,variants:[{ "Default Title" : 24136735588452 }]
+       ,op:200000/100 
+    };
+    SwymViewProducts["wonderchef-inducta-dosa-tawa-28cm"] = SwymViewProducts[2774891823204] = product_data;
+    SwymWatchProducts["wonderchef-inducta-dosa-tawa-28cm"] = SwymWatchProducts[2774891823204] = o;
+  })();
+
+</script> <div class="swym-collections"> <button class="swym-button swym-add-to-wishlist-view-product product_2774891823204 swym-icon swym-heart swym-loaded" data-url="/collections/gifting/products/wonderchef-inducta-dosa-tawa-28cm" data-swaction="addToWishlist" data-product-id="2774891823204" data-variant-id="24136735588452" data-with-epi="true" aria-label="Add to Wishlist"><span class="swym-tooltip swym-tooltip-clickable"><span class="swym-tooltip-text">Add to wishlist</span></span></button></div></div> <a class="product-info__caption " href="/collections/gifting/products/wonderchef-inducta-dosa-tawa-28cm" itemprop="url">
+      
+<div class="product-details"> <span class="product_title   " itemprop="name">Inducta Non-stick Dosa Tawa, Induction Bottom, Soft Touch Bakelite Handle, Di... <span></span></span>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="" class="jdgm-widget jdgm-preview-badge jdgm-preview-badge--with-link jdgm--done-setup" data-id="2774891823204" data-template="collection.gifting_new" data-auto-install="false"> <div style="display:none" class="jdgm-prev-badge" data-average-rating="5.00" data-number-of-reviews="2" data-number-of-questions="0"> <span class="jdgm-prev-badge__stars" data-score="5.00" tabindex="0" aria-label="5.00 stars" role="button"> <span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span><span class="jdgm-star jdgm--on"></span></span> <span class="jdgm-prev-badge__text">5 | 2</span></div>
+</div> <div class="shopify-reviews reviewsVisibility--true"></div> <span class="price sale"> <span class="money                         ">₹ 1,499</span> <span class="was_price "> <span class="money">₹ 2,000</span></span> <div class="sale_banner thumbnail_banner"> <span class="snize-right-arrow"></span> <span class="savings">
+          25%</span></div></span>
+  
+</div></a></div>
+  
+</div>      
+</div>
+       
+      
+        {% include 'product-loop' %}
+      </div>
+      
+    </div>
+  {% else %}
+    {% assign products_per_row = products_per %}
+    <div class="container equal-columns--outside-trim">
+      <div class="sixteen columns">
+        {% capture new_row %}
+            <br class="clear product_clear" />
+        {% endcapture %}
+
+        <div itemtype="http://schema.org/ItemList" class="product-list collection-matrix clearfix">
+          {% for i in (1..limit) %}
+            {% comment %}{% assign collection_group = products | map: 'id' %}{% endcomment %}
+            {% assign collection_group_thumb = collection_group | append : 'thumb' %}
+            {% assign collection_group_mobile = collection_group | append : 'mobile' %}
+              <div class="
+              {% if products_per_row == 2 %}
+                eight columns {% cycle collection_group_thumb: 'alpha', 'omega' %}
+              {% elsif products_per_row == 3 %}
+                one-third column {% cycle collection_group_thumb: 'alpha', '', 'omega' %}
+              {% elsif products_per_row == 4 %}
+                four columns {% cycle collection_group_thumb: 'alpha', '', '', 'omega' %}
+              {% elsif products_per_row == 5 %}
+                one-fifth column {% cycle collection_group_thumb: 'alpha', '', '', '', 'omega' %}
+              {% elsif products_per_row == 6 %}
+                one-sixth column {% cycle collection_group_thumb: 'alpha', '', '', '', '', 'omega' %}
+              {% else %}
+                one-seventh column {% cycle collection_group_thumb: 'alpha', '', '', '', '', '', 'omega' %}
+              {% endif %} thumbnail {% cycle collection_group_mobile: 'even', 'odd' %}
+              {% if settings.mobile_products_per_row == '1' %}
+                medium-down--one-half
+                small-down--one-whole
+              {% else %}
+                medium-down--one-half
+                small-down--one-half
+              {% endif %}">
+
+              <div class="product-wrap">
+                <div class="relative product_image swap-{{ settings.collection_secondary_image }}">
+                  <a href="#" itemprop="url">
+                    {% capture num %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'product-' | append: num | placeholder_svg_tag: 'placeholder-svg placeholder-svg--product' }}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {% if products_per_row == 2 %}
+              {% cycle collection_group: '', new_row %}
+            {% elsif products_per_row == 3 %}
+              {% cycle collection_group: '', '', new_row %}
+            {% elsif products_per_row == 4 %}
+              {% cycle collection_group: '', '', '', new_row %}
+            {% elsif products_per_row == 5 %}
+              {% cycle collection_group: '', '', '', '', new_row %}
+            {% elsif products_per_row == 6 %}
+              {% cycle collection_group: '', '', '', '', '', new_row %}
+            {% elsif products_per_row == 7 %}
+              {% cycle collection_group: '', '', '', '', '', '', new_row %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+
+      
+    </div>
+     
+  {% endif %}
+
+{% endif %}

@@ -1,0 +1,108 @@
+<style>
+  .margintop{
+  	margin-top:15px;
+  }
+  @media only screen and (max-width: 768px) { 
+    ol.progtrckr[data-progtrckr-steps="4"] li {
+    	width:100% !important;
+    }
+  }
+</style>
+<a name="pagecontent" id="pagecontent"></a>
+<div class="sixteen columns  clearfix mobile_hidden">
+  <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </span>
+    <span class="breadcrumb-divider">/</span>
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ page.url }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ page.title }}</span>
+        <meta itemprop="position" content="3" />
+      </a>
+    </span>
+  </div><br>
+</div>
+
+<div class="sixteen columns clearfix">
+
+  <h1>
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+
+  <div  class="static-page">
+    {% include 'page-multi-column', content: page.content %}
+  </div>
+  <link rel="stylesheet" href="https://rewards.wonderchef.com/shopify/tracking.css"/>
+  <script type="text/javascript" src="https://rewards.wonderchef.com/shopify/tracking.js"></script>
+  <div class="twelve columns offset-by-three page clearfix equal-columns--outside-trim">
+<!--     <form id="track_form" accept-charset="UTF-8" class="track-form"> -->
+      <input type="hidden" name="form_type" value="contact">
+      <input type="hidden" name="utf8" value="✓"> 
+      <br class="clear"> 
+      <div class="field-group  large_form field-group sixteen columns"> 
+        <label for="tracking_id" class="sixteen columns">
+          Tracking Id or Order ID 
+          <span class="red">*</span>
+        </label>
+        <div class=" ten columns">
+          <input autofocus="" class=" floating-label" type="text" id="tracking_id" name="tracking_id" placeholder="Tracking ID or Order ID" autocapitalize="words" value="" required="required"> 
+          <spen class="err"></spen>
+        </div>
+        <div class="six columns">
+          <input type="button" class="submit action_button large_form field-group" id="action_button" value="TRACK">
+        </div>
+      </div> 
+
+<!--     </form> -->
+    <div class="getchart sixteen columns">
+    </div>
+    <button id="show" class="margintop">Show More</button>
+    <button id="hidd" class="margintop">Show Less</button>    
+    <div id="trackid" class="get_track_data sixteen columns">
+    </div>
+   
+  </div>
+
+
+  <div class="sixteen columns"> <br>
+   {% include 'security_icon'%}
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  
+  $('#hidd').hide();
+  $('#show').hide();
+  $('.get_track_data').hide();
+  
+  $('#show').click(function(){
+    	$('#hidd').show();
+      	$('#show').hide();
+      	$('.get_track_data').show();
+    });
+    $('#hidd').click(function(){
+    	$('#hidd').hide();
+      	$('#show').show();
+      	$('.get_track_data').hide();
+    });
+  
+    var input = document.getElementById("tracking_id");
+    input.addEventListener("keyup", function(event) {
+      if (event.keyCode === 13) {
+       event.preventDefault();
+       document.getElementById("action_button").click();
+      }
+    });
+
+// $('#contact_form').bind('keydown', function(e) {
+//     if (e.keyCode == 13) {
+//         e.preventDefault();
+//     }
+// });
+});
+</script>

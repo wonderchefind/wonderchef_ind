@@ -1,0 +1,33 @@
+<div class="sidebarBlock">
+    <h5 class="sidebarBlock-heading"><span>{{ block.settings.title }}</span></h5>
+    <div class="sidebarBlock-content">
+        {% if block.settings.collection_id == 'show_all' %}
+            <ul class="all-categories-list">
+                {% for collection_list in collections limit: 10 %}
+                    <li class="navPages-item">
+                        <a href="{{ collection_list.url }}">{{ collection_list.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {% assign collection_list = block.settings.link_list | handleize %}
+            <ul class="all-categories-list">
+                {% for link in linklists[collection_list].links %}
+                    <li class="navPages-item navPages-level-1">
+                        {% if linklists[link.handle] == empty %}
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        {% else %}
+                            <p class="navPages-action-wrapper">
+                                <a class="navPages-action has-subMenu" href="{{ link.url }}">{{ link.title }}</a>
+                                <span class="icon-arrow">
+                                    {% render 'icon-chevron-right' %}
+                                </span>
+                            </p>
+                            {% render 'dropdown-category', link: link.handle %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>

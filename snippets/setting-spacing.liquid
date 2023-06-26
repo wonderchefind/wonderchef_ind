@@ -1,0 +1,44 @@
+{% case section.settings.padding-top %}
+    {% when 1 %}
+        {%- assign padding_top = 'padding-top-10' -%}
+    {% when 2 %}
+        {%- assign padding_top = 'padding-top-20' -%}
+    {% when 3 %}
+        {%- assign padding_top = 'padding-top-30' -%}
+    {% when 4 %}
+        {%- assign padding_top = 'padding-top-40' -%}
+    {% when 5 %}
+        {%- assign padding_top = 'padding-top-50' -%}
+    {% when 6 %}
+        {%- assign padding_top = 'padding-top-60' -%}
+    {% when 7 %}
+        {%- assign padding_top = 'padding-top-70' -%}
+    {% when 8 %}
+        {%- assign padding_top = 'padding-top-80' -%}
+    {% when 9 %}
+        {%- assign padding_top = 'padding-top-90' -%}
+    {% when 10 %}
+        {%- assign padding_top = 'padding-top-100' -%}
+    {% endcase %}
+{% case section.settings.padding-bottom %}
+    {% when 1 %}
+        {%- assign padding_bottom = 'padding-bottom-10' -%}
+    {% when 2 %}
+        {%- assign padding_bottom = 'padding-bottom-20' -%}
+    {% when 3 %}
+        {%- assign padding_bottom = 'padding-bottom-30' -%}
+    {% when 4 %}
+        {%- assign padding_bottom = 'padding-bottom-40' -%}
+    {% when 5 %}
+        {%- assign padding_bottom = 'padding-bottom-50' -%}
+    {% when 6 %}
+        {%- assign padding_bottom = 'padding-bottom-60' -%}
+    {% when 7 %}
+        {%- assign padding_bottom = 'padding-bottom-70' -%}
+    {% when 8 %}
+        {%- assign padding_bottom = 'padding-bottom-80' -%}
+    {% when 9 %}
+        {%- assign padding_bottom = 'padding-bottom-90' -%}
+    {% when 10 %}
+        {%- assign padding_bottom = 'padding-bottom-100' -%}
+    {% endcase %}

@@ -1,0 +1,302 @@
+{% if section.settings.custom_color %}
+    {% render 'customcolor_hero' %}
+{% endif %}
+
+<div class="halo-section " data-section-id="{{ section.id }}" data-section-type="hero-section">
+    {% if section.settings.hero_layout == 'fixed_width' %}
+        <div class="container">
+    {% else %}
+        <div class="container-fluid">
+    {% endif %}
+        <div class="hero hero--{{ section.settings.hero_size }} hero-overlay--{{ section.settings.overlay }}">
+            <div class="hero-image-wrapper">
+                {% for block in section.blocks %}
+                    {%- assign product = all_products[block.settings.product] -%}
+                    <div class="points_popup" style="top: {{ block.settings.coordinates_y }}%; left: {{ block.settings.coordinates_x }}%;">
+                        <div class="point"> + </div>
+                        <div class="custom-product-card">
+                            <a href="javascript:void(0)" title="Close" class="close">&#215;</a>
+                            {% render 'product-card-grid-2', product: product %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="hero-image {% if section.settings.image == blank %}hero-image-default{% endif %}">
+                    {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+                    {%- if section.settings.label_1 != blank or section.settings.label_2 != blank -%}
+                        <div class="label-wrapper">
+                            <h3 class="label-1">{% render 'multilang' with section.settings.label_1 %}</h3>
+                            <h3 class="label-2">{% render 'multilang' with section.settings.label_2 %}</h3>
+                        </div>
+                    {% endif %}
+                    {% if section.settings.image == blank %}
+                        <div class="placeholder-background">
+                            <span class="recommended_size">1920x600</span>
+                            {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+                    {% else %}
+                        <img
+                            class="image-background lazyload"
+                            src="{{ 'loading.svg' | asset_url }}"
+                            data-src="{{ section.settings.image | img_url: 'master' }}"
+                            alt="{{ section.settings.image.alt | escape }}" data-image>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hero-content hero-content--{{ section.settings.content-layout }}">
+                {%- if section.settings.title != blank -%}
+                    <h2 class="title mega-title--{{ section.settings.text_size }}">
+                        {% render 'multilang' with section.settings.title %}
+                    </h2>
+                {%- endif -%}
+                {%- if section.settings.text != blank -%}
+                    <div class="description">{{ section.settings.text }}</div>
+                {%- endif -%}
+                {%- if section.settings.button_label != blank or section.settings.button_video != blank -%}
+                    <div class="button-group">
+                        {%- if section.settings.button_label != blank and section.settings.button_link != blank -%}
+                            <a href="{{ section.settings.button_link }}" class="btn btn--primary">
+                                {% render 'multilang' with section.settings.button_label %}
+                            </a>
+                        {%- endif -%}
+                        {%- if section.settings.button_video != blank and section.settings.button_video_link != blank -%}
+                            <a href="javascript:void(0)" data-toggle="modal" data-target="#popup_video_{{ section.id }}" class="btn btn--secondary btn-popup-video" data-src="{{ section.settings.button_video_link }}" data-id="{{ section.id }}">
+                                {% render 'multilang' with section.settings.button_video %}
+                            </a>
+                        {%- endif -%}
+                    </div>
+                {%- endif -%}
+            </div>
+        </div>
+    </div>
+</div>
+<div id="popup_video_{{ section.id }}" class="modal fade halo_modal halo_modal_video" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-video">
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Full width banner",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Banner Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+        },
+        {
+            "type": "select",
+            "id": "hero_layout",
+            "label": "Layout",
+            "default": "full_width",
+            "options": [
+                {
+                    "label": "Full width",
+                    "value": "full_width"
+                },
+                {
+                    "label": "Fixed width",
+                    "value": "fixed_width"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "hero_size",
+            "label": "Section height",
+            "default": "medium",
+            "options": [
+                {
+                    "label": "Adapt to image",
+                    "value": "adapt"
+                },
+                {
+                    "label": "Extra Small",
+                    "value": "x-small"
+                },
+                {
+                    "label": "Small",
+                    "value": "small"
+                },
+                {
+                    "label": "Medium",
+                    "value": "medium"
+                },
+                {
+                    "label": "Large",
+                    "value": "large"
+                },
+                {
+                    "label": "Extra Large",
+                    "value": "x-large"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "overlay",
+            "label": "Overlays",
+            "default": "none",
+            "options": [
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                },
+                {
+                    "label": "Light",
+                    "value": "light"
+                },
+  				 {
+                    "label": "None",
+                    "value": "none"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Banner Content"
+        },
+        {
+            "type": "select",
+            "id": "content-layout",
+            "label": "layout",
+            "default": "middle",
+            "options": [
+                {
+                    "label": "left",
+                    "value": "left"
+                },
+                {
+                    "label": "Right",
+                    "value": "right"
+                },
+                {
+                    "label": "Middle",
+                    "value": "middle"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "text_size",
+            "label": "Text size",
+            "default": "medium",
+            "options": [
+                {
+                    "label": "Medium",
+                    "value": "medium"
+                },
+                {
+                    "label": "Large",
+                    "value": "large"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "label_1",
+            "label": "Label 1"
+        },
+        {
+            "type": "text",
+            "id": "label_2",
+            "label": "Label 2"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Banner with text overlay"
+        },
+        {
+            "type": "richtext",
+            "id": "text",
+            "label": "Text",
+            "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>"
+        },
+        {
+            "type": "text",
+            "id": "button_label",
+            "label": "Button Shop Now"
+        },
+        {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+        },
+        {
+            "type": "text",
+            "id": "button_video",
+            "label": "Button Video"
+        },
+        {
+            "type": "url",
+            "id": "button_video_link",
+            "label": "Button video link"
+        },
+        {
+            "type": "header",
+            "content": "Custom Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "custom_color",
+            "label": "Turn on custom color",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "Heading Color"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Description Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product_popup",
+            "name": "Product popup",
+            "settings": [
+                {
+                    "type": "product",
+                    "label": "Product",
+                    "id": "product"
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_x",
+                    "label": "Coordinates x",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 10
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_y",
+                    "label": "Coordinates y",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 10
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Full width banner",
+            "category": "Banners"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,190 @@
+<div class="product_services ">
+              
+                {% if section.settings.show_contacts %}
+                    <div class="contact">
+                        <div class="image-contact">
+                            {% if section.settings.contacts_image != blank %}
+                                {{ section.settings.contacts_image | img_url: '65x65' | img_tag: block.settings.image.alt, 'image' }}
+                            {% endif %}
+                        </div>
+                        <div class="content-contact">
+                            <p class="text">{{ section.settings.contact_title }}</p>
+                            <div class="link">
+                                <a class="number-phone" href="tel:{{ section.settings.contact_phone }}">{{ section.settings.contact_phone }}</a>
+                                {% if section.settings.ask_an_expert %}
+                                <a data-toggle="modal" data-target="#ask_an_expert" href="javascript:void(0)">
+                                    {{ section.settings.ask_an_expert_title }}
+                                    {% render 'icon-chevron-right' %}
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                {% if section.settings.show_services %}
+                    <ul class="services">
+                        {% for i in (1..4) %}
+                            {% capture cap_icon %}services_icon_{{ i }}{% endcapture %}
+                            {% assign icon = section.settings[cap_icon] %}
+                            {% capture cap_title %}services_title_{{ i }}{% endcapture %}
+                            {% assign title = section.settings[cap_title] %}
+                            {% capture cap_description %}services_description_{{ i }}{% endcapture %}
+                            {% assign description = section.settings[cap_description] %}
+                            <li class="item">
+                                <div class="service-item">
+                                    <div class="icons"> 
+                                        {{ icon }}
+                                    </div>
+                                    <div class="content">
+                                        <h4 class="title">{{ title }}</h4>
+                                        <p class="description">{{ description }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+
+{% schema %}
+{
+    "name": "Product pages",
+    "settings": [
+        
+        {
+            "type": "header",
+            "content": "Contacts"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "show_contacts",
+            "label" : "Enabled Contacts",
+            "default" : true
+        },
+        {
+            "type": "image_picker",
+            "id": "contacts_image",
+            "label": "Contacts Image"
+        },
+        {
+            "type" : "text",
+            "id" : "contact_title",
+            "label" : "Contacts title",
+            "default" : "Have Questions?"
+        },
+        {
+            "type" : "text",
+            "id" : "contact_phone",
+            "label" : "Number Phone",
+            "default" : "1.800.000.6890"
+        },
+        {
+            "type": "header",
+            "content": "Ask an Expert"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "ask_an_expert",
+            "label" : "Enabled Ask an Expert",
+            "default" : true
+        },
+        {
+            "type" : "text",
+            "id" : "ask_an_expert_title",
+            "label" : "title",
+            "default" : "Ask an Experts"
+        },
+        {
+            "type": "header",
+            "content": "Services"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "show_services",
+            "label" : "Enabled Services",
+            "default" : true
+        },
+        {
+            "type": "text",
+            "id": "services_icon_1",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-check\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_1",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_1",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_2",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-phone\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_2",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_2",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_3",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-wrench\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_3",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_3",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_4",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-dice-d6\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_4",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_4",
+            "label" : "Services description",
+            "default" : "Use appropriate text"
+        }
+        
+    ]
+}
+{% endschema %}

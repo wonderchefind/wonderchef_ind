@@ -1,0 +1,37 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+ {% section 'collection-template-banner' %}
+
+
+
+<div class="container laptop">
+  {% section 'back-to-office-collection-1' %}
+  {% section 'back-to-office-collection-2' %}
+  {% section 'back-to-office-collection-3' %}
+  {% section 'back-to-office-collection-4' %}
+  
+</div>
+
+<div class="container mobile">
+  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Tea_Infuser.jpg?v=1636981995" width="100%" alt="BACKTOOFFICE">
+  {% section 'back-to-office-collection-6' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/bot.jpg?v=1636981995" width="100%" alt="BACKTOOFFICE">
+  {% section 'back-to-office-collection-7' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Tiffing_Box.jpg?v=1636981995" width="100%" alt="BACKTOOFFICE">
+  {% section 'back-to-office-collection-8' %}
+    <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Food_bot_1.jpg?v=1636984009" width="100%" alt="BACKTOOFFICE">
+  {% section 'back-to-office-collection-9' %}
+  
+</div>
+
+
+ 
+ 
+ 
+
+<!--PERZONALIZATION-START Do not modify or delete this comment--><div id="perzonalization" class="perzonalization"></div><script type='text/javascript'>var productDetailsForPrz = {{ product | json }};var basketDetailsForPrz = {{ cart | json }};var filterDetailsForPrz = {{ collection | json }};var detailsForPrz = { userId: '{{ customer.id }}', language: '{{ shop.locale }}', currency:'{{ shop.currency }}' };var searchDetailsForPrz = {{ search.results | json }};if(productDetailsForPrz) { productDetailsForPrz.collections = []; }{% for collection in product.collections %}   if(productDetailsForPrz) { productDetailsForPrz.collections.push("{{ collection.title }}") }{% endfor %}</script><!--Do not modify or delete this comment PERZONALIZATION-END-->
+<!-- schemaplus-added -->
+{% include "schemaplus.collection"%}
+<!-- endof-schemaplus-added -->

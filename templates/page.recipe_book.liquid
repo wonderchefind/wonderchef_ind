@@ -1,0 +1,115 @@
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container nutriblend_main" style="margin-top:20px;">
+  
+<div class="sixteen columns  clearfix mobile_hidden">
+  <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </span>
+    <span class="breadcrumb-divider">/</span>
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ page.url }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ page.title }}</span>
+        <meta itemprop="position" content="3" />
+      </a>
+    </span>
+  </div><br>
+</div>
+
+
+  <h1>
+    {{ page.title }}
+  </h1>
+
+  
+
+<div class="grid-container">
+  
+  {% if page.handle contains 'generic-e-recipe-book'%}
+     <div class="grid-item"><a href="https://drive.google.com/file/d/16X8_ZIiFUKgbWPCMvirJCIFgXeiiTpyV/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/28.jpg?v=1641563594"><br><h2>Cookbook by Sanjeev Kapoor</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1orpI_AgpHQ3TZAdSzjjYc1eOEraCpLHj/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/10_4a3d45b7-e45f-4c6a-8ff5-3b47500133f8.jpg?v=1641563595"><br><h2>Festive Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1nIwr4QiXLICux1XUkWXi4LBluW02_0-W/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/12_90600313-ddfc-4991-aa16-97b98e5fbb1e.jpg?v=1641563594"><br><h2>Microwave Recipe Book</h2></a></div>
+
+{% elsif page.handle contains 'nutri-blend-e-recipe-book' %}
+    <div class="grid-item"><a href="https://drive.google.com/file/d/1C9o9RvtJjtrfpiIGvSy3gZauxtIE4yzh/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/14_f924dbe9-5309-4b44-bd68-3772ce50c410.jpg?v=1641563594"><br><h2>Nutri Blend Recipe Book</h2></a></div>
+
+ {% elsif page.handle contains 'mixer-grinders-e-recipe-book' %} 
+     <div class="grid-item"><a href="https://drive.google.com/file/d/1A_P6Cko2vUjySzY_cNRwxA-CAX0DjPnK/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/13_44972a86-2afe-4d60-8ad3-2e0dd550b43e.jpg?v=1641563593"><br><h2>Mixer Grinder Recipe Book</h2></a></div>
+
+  {% elsif page.handle contains 'crimson-edge-otgs-e-recipe-book' %} 
+   <div class="grid-item"><a href="https://drive.google.com/file/d/1Iw-_-ZHbXrlbTwpGLTn-YkM6kFAfH2tV/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/4_1469e9ca-de75-45a1-800d-6a8bb165a652.jpg?v=1641563593"><br><h2>Crimson Edge OTG 9L Recipe Book</h2></a></div>
+  <div class="grid-item"><a href="https://drive.google.com/file/d/1PFPwxSJdnY_7KSti6pXhTRq_c8dkyLoQ/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/5_2a228f8c-39aa-4c8d-9c2e-185d57c5e943.jpg?v=1641563593"><br><h2>Crimson Edge OTG 19L Recipe Book</h2></a></div>
+   <div class="grid-item"><a href="https://drive.google.com/file/d/138oj0h03xzIBYav_IboEtKlQIMZg_fth/view?usp=sharing" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/6_51a647bd-a609-4be5-8028-00d42a6bfcd2.jpg?v=1641563593"><br><h2>Crimson Edge OTG 28L Recipe Book</h2></a></div>
+
+    {% elsif page.handle contains 'rice-cooker-e-recipe-book' %} 
+     <div class="grid-item"><a href="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri_cook_Rice_cooker_Final.pdf?v=1676544564" target="_blank"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/270x383.jpg?v=1676545007"><br><h2>Nutri Cook Rice Cooker with Single Bowl</h2></a></div>
+
+  {% endif %}
+    </div>
+    
+    <div class="clearfix">
+      <br>
+      <br>
+    </div>
+</div>
+<!-- schemaplus-added -->
+{% include "schemaplus.page"%}
+<!-- endof-schemaplus-added -->
+
+
+
+<style>
+.grid-container {
+  display: grid;
+  
+  grid-template-columns: 25% 25% 25% 25%;
+ 
+  padding: 10px;
+}
+.grid-item {
+  padding: 2px;
+  font-size: 30px;
+  text-align: center;
+}
+  .grid-item img{      
+    width:80%;
+    box-shadow: 5px 5px 5px grey;
+  }
+  
+   .grid-item h2{ 
+  font-family: 'gohtam-book';
+    font-size: 18px;
+    padding: 0px 30px;
+     text-align:left;
+margin-bottom:20px;
+    margin-top:10px;
+  }
+
+   @media only screen and (max-width: 600px) {
+  .grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+ 
+  }
+    .book_p{
+    text-align:left;
+    padding: 0px 20px!important;
+  }
+ .grid-item h2{ 
+  font-family: 'gohtam-book';
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding: 0px 20px;
+     text-align:left;
+  }
+  
+  .book_p{
+    text-align:left;
+    padding: 0px 30px;
+  }
+</style>

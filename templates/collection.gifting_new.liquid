@@ -1,0 +1,43 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+
+<h1 style="text-align:center;"> Gift</h1>
+
+
+<div class="container laptop">
+  {% section 'featured-collection-gift' %}
+  {% section 'featured-collection-gift2' %}
+  {% section 'featured-collection-gift3' %}
+  {% section 'featured-collection-gift4' %}
+  {% section 'featured-collection-gift5' %}
+  {% section 'featured-collection-gift6' %}
+  
+</div>
+
+<div class="container mobile">
+  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_NP_1.jpg?v=1629388700" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift7' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_NB_1.jpg?v=1629181956" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift8' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_Coffee_Brewer.jpg?v=1629176646" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift9' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_Air_Fryer.jpg?v=1629176644" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift10' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_OTG.jpg?v=1629176644" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift11' %}
+   <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rakshabandhan_Category_Banner_Soup_Maker.jpg?v=1629176644" width="100%" alt="GIFT15">
+  {% section 'featured-collection-gift12' %}
+  
+</div>
+
+
+ 
+ 
+ 
+
+<!--PERZONALIZATION-START Do not modify or delete this comment--><div id="perzonalization" class="perzonalization"></div><script type='text/javascript'>var productDetailsForPrz = {{ product | json }};var basketDetailsForPrz = {{ cart | json }};var filterDetailsForPrz = {{ collection | json }};var detailsForPrz = { userId: '{{ customer.id }}', language: '{{ shop.locale }}', currency:'{{ shop.currency }}' };var searchDetailsForPrz = {{ search.results | json }};if(productDetailsForPrz) { productDetailsForPrz.collections = []; }{% for collection in product.collections %}   if(productDetailsForPrz) { productDetailsForPrz.collections.push("{{ collection.title }}") }{% endfor %}</script><!--Do not modify or delete this comment PERZONALIZATION-END-->
+<!-- schemaplus-added -->
+{% include "schemaplus.collection"%}
+<!-- endof-schemaplus-added -->

@@ -1,0 +1,34 @@
+<div class="cart-popup-wrapper cart-popup-wrapper--hidden" role="dialog" aria-modal="true" data-cart-popup-wrapper>
+    <div class="cart-popup" data-cart-popup tabindex="-1">
+        <button class="cart-popup__close" aria-label="{{ 'general.accessibility.close_modal' | t }}" data-cart-popup-close>
+            <span aria-hidden="true">&#215;</span>
+        </button>
+        <div class="cart-popup-item">
+            <div class="cart-popup-item__image-wrapper hide" data-cart-popup-image-wrapper>
+                <div class="cart-popup-item__image-placeholder" data-cart-popup-image-placeholder>
+                    <div class="placeholder-background placeholder-background--animation"></div>
+                </div>
+            </div>
+            <div class="cart-popup-item__description">
+                <div>
+                    <div class="cart-popup-item__title" data-cart-popup-title></div>
+                    <ul class="product-details" aria-label="{{ 'cart.popup.product_details' | t }}" data-cart-popup-product-details></ul>
+                    <div class="cart-popup-desciption">{{ 'cart.popup.added_to_cart' | t }}</div>
+                </div>
+                <div class="cart-popup-item__quantity">
+                    <span class="visually-hidden" data-cart-popup-quantity-label></span>
+                    <span aria-hidden="true">{{ 'cart.popup.quantity' | t }}:</span>
+                    <span aria-hidden="true" data-cart-popup-quantity></span>
+                </div>
+            </div>
+        </div>
+        <div class="button-group">
+            <button class="cart-popup__dismiss-button text-link text-link--accent btn btn--secondary" data-cart-popup-dismiss >
+                {{ 'cart.general.continue_shopping' | t }}
+            </button>
+            <a href="{{ routes.cart_url }}" aria-label="view cart" class="cart-popup__cta-link btn btn--secondary">
+                {{ 'products.product.view_cart' | t }} <span data-cart-popup-cart-quantity></span>
+            </a>
+        </div>
+    </div>
+</div>

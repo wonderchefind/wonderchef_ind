@@ -1,0 +1,69 @@
+<div class="all-departus" style="position:relative;height: 100%;margin: 0;padding: 0;overflow: hidden;">
+  {% if section.settings.title != blank %}
+    <h2>{{ section.settings.title }}</h2>
+  {% endif %}
+  
+ <div>
+   {%comment%}
+   {% if section.settings.image != blank %}
+    {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt %}
+  {% endif %}
+ 
+   	<div id="your-pano" class="col-md-12"></div>
+     {%endcomment%}
+  </div>
+  <!--img src="{{'department.png' | asset_img_url: '' }}"-->
+</div>
+
+
+
+{% schema %}
+  {
+  	"name": "All Department Stories",
+  	"class": "video-section under-menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Upload image"
+      }
+	],
+    "presets": [{
+      "name": "All Department Stories",
+      "category": "Content",
+      "settings": {
+      }
+    }]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+
+<style>
+.all-departus h2 {
+    max-width: 50%;
+    margin: 20px auto 8px;
+    text-align: center;
+    line-height: normal;
+}
+  
+ .all-departus img {
+    max-width: 100%;
+    width: 100%;
+    height: 750px;
+    object-fit: cover;
+} 
+
+  
+</style>  

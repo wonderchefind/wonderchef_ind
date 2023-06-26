@@ -1,0 +1,168 @@
+<a name="pagecontent" id="pagecontent"></a>
+<div class="sixteen columns  clearfix mobile_hidden">
+  <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </span>
+    <span class="breadcrumb-divider">/</span>
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ page.url }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ page.title }}</span>
+        <meta itemprop="position" content="3" />
+      </a>
+    </span>
+  </div><br>
+</div>
+
+<div class="sixteen columns clearfix">
+  <div class="content-here">
+    <h1>
+      {{ page.title }}
+    </h1>
+    <div class="feature_divider"></div>
+
+    <div  class="static-page">
+      <style>
+.store .title {
+    text-transform: capitalize;
+}
+        .available_at_store {
+          margin-top: 60px;
+        }
+        .available_at_store h3 {
+          border-bottom: 2px solid #ededed;
+          display: inline-block;
+        }
+        #map-canvas, #panel { height: 600px; }
+        #panel { width: 330px; float: left; margin-right: 2px; }
+        #panel .feature-filter label {
+          font-size: 13px;
+          font-weight: 500;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          width: 100%;
+        }
+        p.attribution, p.attribution a { color: #666; }
+        .store-list .title {
+          font-size: 16px;
+          margin: 0;    text-transform: capitalize;
+        }
+        .store-list li {
+          border-bottom: 1px solid #e2e2e2;
+          list-style: outside none none;
+        }
+        @media (min-width: 100px) and (max-width: 600px) {
+          #panel{
+            width: 100%;
+            margin: auto;
+            float: none;
+          }
+          #map-canvas{
+            clear: both;
+            width: 100%;
+            margin: auto;
+          }
+          .container {
+            width: calc(100% - 6px);
+          }
+        }
+        .faqAccordion>dd {
+        	padding: 76px 0px 20px 0px !important;
+        }
+      </style>
+     
+
+<!--       <div class="clearfix"></div> -->
+
+      {% comment %}
+      Regular page content goes here.
+      {% endcomment %}
+<!--       <div class="rte static-page storelocator-panel">
+        <div id="panel"></div>
+        <div id="map-canvas"></div>
+      </div> -->
+      {{ page.content }}
+     
+      {{ 'store_1.js' | asset_url | script_tag }}
+      {{ 'store_2.js' | asset_url | script_tag }}
+      {{ 'store_3.js' | asset_url | script_tag }}
+
+
+    </div>
+    <div class="available_at_store">
+      <h3>EXCLUSIVE BRAND OUTLET</h3>
+      
+      <dl class="faqAccordion">
+        <dt class="dis_tab eight columns"><button type="button" aria-controls="panel-01" aria-expanded="true">NORTH</button></dt>
+        <dd class="dis_tab" id="panel-01" aria-hidden="false">
+          <ul class="ecom">
+            <li>WONDERCHEFSG 047, Galleria Market, DLF City, PH-IV Gurugram 8211 GURGAON-122009</li>
+            <li>WONDERCHEFStore LG 09,DLF Mall of India, Plot No. M 03, Sector 18 Noida-201301</li>
+            <li>WONDERCHEF FF-24, First Floor, The Metropolitan Mall M.G Road, Gurugram Haryana-122002</li>
+            <li>W-58/24, New Roop Nagar, Roop Nagar, Amritsar, Punjab 143006, India</li>
+            <li>Shop No. C- 8/4, Ground Floor, Sec. 7, Rohini,  Delhi -110085.</li>
+            <li>F-86, 1st Floor, VR Punjab Mall, Sahibzada Ajit Singh Nagar, Mohali - 160055.</li>
+            <li>part of Premises of 72 - 31/101, Near Moti Mahal Restarant, G.F., Hazaratganj, Lucknow, Uttarpradesh - 226001.</li>
+          </ul>
+        </dd>
+
+        <dt class="specic_tab eight columns"><button type="button" aria-controls="panel-01" aria-expanded="true">SOUTH</button></dt>
+        <dd class="specic_tab" id="panel-01" aria-hidden="false">
+          <div class="descriptions bottom" itemprop="description">
+            <ul class="ecom">
+            <li>WONDERCHEF SF-03 VR Mall No. 11B SY No. 40 9 Devasandra Industrial Area, 2nd Stage, K R Puram Hobi Bangalore-560048</li>
+            <li>WONDERCHEF No.131, Commercial Street, Opp.Comm Street Police Station.Bangalore-530001</li>
+            <li>SF - 6A, Mantri Square-1 Sampige Road, Malleshwaram,Bangalore-560003.</li>
+             <li>Sarath City Mall, 2nd Floor, Kondapur, Hyderabad, Telangana – 500084.</li>
+            </ul>
+          </div>
+        </dd>
+        <dt class="specic_tab eight columns"><button type="button" aria-controls="panel-01" aria-expanded="true">EAST </button></dt>
+        <dd class="specic_tab" id="panel-01" aria-hidden="false">
+          <div class="descriptions bottom" itemprop="description">
+            <ul class="ecom">
+              <li>WONDERCHEF Lower Ground Floor Shipra Mall Opp to Big Bazar,Indirapuram Ghaziabad-201014</li>
+              <li>Shop No. 52, 2nd Floor, Zsquare Mall, Bada Chauraha, Kanpur - 208001</li>
+              <li>Shop No. LGF. 5B, Building No. CP-1, Vikram Khand -I, Gomti Nagar,  Lucknow,  Uttarpradesh-226010</li>
+              
+            </ul>
+          </div>
+        </dd>
+     
+        <dt class="specic_tab eight columns"><button type="button" aria-controls="panel-01" aria-expanded="true">WEST</button></dt>
+        <dd class="specic_tab" id="panel-01" aria-hidden="false">
+          <div class="descriptions bottom" itemprop="description">
+            <ul class="ecom">
+              <li>WONDERCHEF 356,Ram Janaki, Next to Satguru'sLinking Road,Khar West Mumbai-400052</li>
+              <li>WONDERCHEF SHOP NO 37 SF VIVIANA MALL EASTERN EXP.HIGHWAY Mumbai-400601</li>
+              <li>WONDERCHEF Shop No. 18A SF,R-city Mall LBS Marg, Ghatkopar(W)Mumbai-400070</li>
+              <li>WONDERCHEFNo 230,INFINITY MALL 1LINK ROAD,ANDHERI WESTMumbai-400053</li>
+              <li>WONDERCHEF phoenix market city,unit no. S29 2nd floor,Survey no.207,Viman nagar road,Mumbai-411014</li>
+              <li>WONDERCHEF Seawoods Grand Central,SF-29, Second Floor,Plot No. R-1Sector-40, Seawoods Railway Station Navi Mumbai-400706</li>
+              <li>WONDERCHEF 40, Sagar Mansion GR. Floor Breach Candy B.D. Road Mumbai-400026</li>
+              <li>Opp saraswat bank next to radio bar link road, Khar West, Mumbai, Maharashtra 400052, India</li>
+              
+            </ul>
+          </div>
+        </dd>
+      </dl>
+    </div>
+    <div class="available_at_store">
+      <h3 style="margin-top:20px;">QUERIES/CONCERNS</h3>
+      <p style="background: transparent;position: relative;padding: 10px;color: #333333;border-bottom: 1px solid #ededed;text-align: left;display: block;cursor: pointer;width: 100%;outline: none;text-transform: initial;min-height: auto;height: auto;line-height: inherit;font-weight: normal;font-family: Montserrat, sans-serif;font-style: normal;box-shadow: none;border-radius: 0px;font-size: 18px;">
+        Kindly reach out to our Toll Free number on 18602660788. Our customer service representative are available from Monday to Saturday between 10am to 6pm.</p>
+    </div>
+    <script>
+      $('.product-search').click(function(e)
+                                 {
+        e.preventDefault();
+      });
+    </script>
+
+  </div>
+</div>
+
+

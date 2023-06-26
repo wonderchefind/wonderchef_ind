@@ -1,0 +1,175 @@
+<div class="search-form" data-ajax-search>
+    <div class="header-search">
+        <div class="header-search__form">
+            <form action="{{ routes.search_url }}" method="get" class="input-group search-bar" role="search">
+                <input type="hidden" name="type" value="product">
+                <input type="text" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" class="input-group-field header-search__input" aria-label="Search Site" autocomplete="off">
+                <button type="submit" class="btn-search icon-search" title="search">
+                    {% render 'icon-search' %}
+                </button>
+            </form>
+        </div>
+        <div class="quickSearchResultsWrap" style="display: none;">
+            <div class="custom-scrollbar">
+                {% if settings.enable_search_trending %}
+                    <div class="header-block header-search__trending">
+                        <h3 class="title">
+                            {{ settings.trending_search_title }}
+                        </h3>
+                        <ul class="list-tags">
+                            {% if settings.trending_search_item_1 != blank %}
+                                {% assign handle_1 = settings.trending_search_item_1 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_1}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_1 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if settings.trending_search_item_2 != blank %}
+                                {% assign handle_2 = settings.trending_search_item_2 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_2}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_2 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if settings.trending_search_item_3 != blank %}
+                                {% assign handle_3 = settings.trending_search_item_3 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_3}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_3 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if settings.trending_search_item_4 != blank %}
+                                {% assign handle_4 = settings.trending_search_item_4 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_4}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_4 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if settings.trending_search_item_5 != blank %}
+                                {% assign handle_5 = settings.trending_search_item_5 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_5}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_5 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if settings.trending_search_item_6 != blank %}
+                                {% assign handle_6 = settings.trending_search_item_6 | split: '|' | first | strip | handleize %}
+                                <li class="item-tag">
+                                    <a href="{{ routes.search_url }}?type=product&amp;q={{handle_6}}" class="highlight">
+                                        <i class="fas fa-search"></i>
+                                        {{ settings.trending_search_item_6 }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if settings.enable_search_popular_products %}
+                    <div class="header-block header-search__product">
+                        <h3 class="title">
+                            {{ settings.popular_products_search_title }}
+                        </h3>
+                        <div class="search__products">
+                            <div class="halo-row column-3">
+                                {% for product in collections[settings.popular_products_collection].products limit:settings.popular_products_limit %}
+                                    <div class="halo-item">
+                                        {% render 'product-card-grid-2' with product as product %}
+                                    </div>
+                                {% endfor %}
+                            </div>                    
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="header-search__results-wrapper"></div>          
+            </div>
+        </div>
+    </div>
+
+    {% capture search %}
+        {% raw %}{{#if is_loading}}{% endraw %}
+        <div class="header-search__results">
+            <div class="header-search__spinner-container">
+                <img src="{{ 'loading.svg' | asset_url }}" alt="">
+            </div>
+        </div>
+
+        {% raw %}{{else}}{% endraw %}
+
+        {% raw %}{{#if is_show}}{% endraw %}
+        <div class="header-search__results header-block">
+            {% raw %}
+            {{#if has_results}}
+            <h3 class="title">{% endraw %}{{ 'products.product.product_results' | t }}{% raw %}</h3>
+
+            <div class="search__products">
+                <div class="halo-row column-3">
+                    {{#each results}}
+                    <div class="halo-item">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <a href="{{url}}" class="product-link">
+                                    <img src="{{image}}" alt="{{image_alt}}">                                               
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <div class="product-vendor">{{vendor}}</div>
+                                <div class="product-title">
+                                    <a href="{{url}}">{{title}}</a>
+                                </div>
+                                {{#if on_sale}}
+                                    <div class="product-price price--on-sale">
+                                        <span class="price-item price-item--regular" data-regular-price>
+                                            {{ compare_at_price }}
+                                        </span>
+                                        <span class="price-item price-item--sale">
+                                            {{ price }}
+                                        </span>
+                                    </div>
+                                {{else}}
+                                    <div class="product-price">
+                                        <span class="price-item price-item--regular" data-regular-price>
+                                            {{ price }}
+                                        </span>
+                                    </div>
+                                {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>              
+            </div>
+            
+            <div class="text-center">            
+                <a href="{{results_url}}" class="text-results header-search__see-more" data-results-count="{{results_count}}">
+                    {{results_label}} ({{results_count}})
+                </a>
+            </div>
+            {{else}}
+
+            <p class="header-search__no-results text-results">{{ results_label }}</p>
+            {{/if}}
+            {% endraw %}
+        </div>
+        {% raw %}{{/if}}{% endraw %}
+        {% raw %}{{/if}}{% endraw %}
+    {% endcapture %} 
+
+    <script id="search-results-template" type="text/template7">
+        {{search}}
+    </script>
+</div>

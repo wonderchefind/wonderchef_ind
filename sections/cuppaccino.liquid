@@ -1,0 +1,934 @@
+{{ 'bootstrap.css' |asset_url |stylesheet_tag }}
+{{ 'jquery.min.js' | asset_url |script_tag }}
+{% unless customer.email contains 'manish.wonderchef@gmail.com'%}{%endunless%}
+{{ 'bootstrap.js' | asset_url |script_tag }}
+<style>
+  .col-md3-padd{
+  	padding-right: 0px;
+    padding-left: 0px;
+    padding-top:0px;
+  }
+</style>
+<div class="nutripot">
+  <!--header section start here-->
+  <header class="nutri_header">
+    <div class="container">
+      <div class="col-xs-7 col-sm-3 pull-left logo_nutripot">
+        {{'nutripot_header_logo.png' | file_url | img_tag | link_to:'/' | img_alt:'shop.name' }}
+      </div>
+      <div class="col-sm-6 col-md-7"></div>
+      <div class="col-xs-5 col-sm-3 col-md-2  pull-right social_logo">
+        {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
+        <style>
+          .social-links a { display: -moz-inline-stack; display: inline-block; zoom: 1; *display: inline; margin: 0; padding: 0.05em; color: #fff!important; font-size: 31px!important; }
+        </style>
+        <span class="social-links">
+          <a href="https://www.facebook.com/WonderchefLife/" title="Follow us on Facebook" target="_blank"><span class="shopify-social-icon-facebook-circle" style="color:#fff"></span></a>
+          <a href="https://www.facebook.com/WonderchefLife/" title="Follow us on Twitter" target="_blank"><span class="shopify-social-icon-twitter-circle" style="color:#fff"></span></a>
+          <a href="https://www.instagram.com/wondercheflife" title="Follow us on Instagram" target="_blank"><span class="shopify-social-icon-instagram-circle" style="color:#fff"></span></a>
+        </span>
+      </div>
+    </div>
+  </header>
+  <!--header section end here-->
+  
+    <div class="container">
+      <section class="body_part video">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe height="300px" width="100%" class="embed-responsive-item" src="https://www.youtube.com/embed/SSdKvXup5sE?rel=0&amp;loop=1&amp;autoplay=1&amp;mute=0&amp;controls=0"></iframe>
+<!--           <iframe width="100%" height="300px" src="https://www.youtube.com/embed/SSdKvXup5sE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+        </div>
+        <div class="out_of_stock">
+          <div style="    padding-bottom: 0px;
+                      text-align: center;
+                      color: #fff;">
+            <p style="    font-size: 22px;
+                      font-weight: 600;"> 
+              				The wait is over! Your most loved Cuppaccino is now back in stock! 
+            </p>
+            <p style="    font-size: 22px;
+                      font-weight: 600;"> 
+              				Don't miss out as it may be sold out soon!
+            </p>
+          </div>      
+          <!-- <div class="timer">
+<p id="demo"></p>
+</div> -->
+        </div>
+"
+      </section>
+       <section class="col-xs-12 healthy_section" style="padding-left:0px;padding-right:0px">
+         <div class="abovehealthy_banner">
+           	<h1 class="heading">CAPPUCCINO FROM INSTANT COFFEE</h1>
+           <div class="healthy_description">
+             <p>
+               	CUPPACCINO makes great frothy cappuccino for you from Instant Coffee in 3 minutes flat. <br />
+						Make hot or cold coffee as per your mood.
+             </p>
+             <p>
+              No need to beat coffee powder and sugar incessantly just to create a thin layer of foam. CUPPACCINO does it for you effortlessly, creating luscious, aromatic foam. You can pour milk, coffee and sugar altogether and have a great professional quality drink.
+             </p>
+           </div>
+           
+        
+           <button type="button" class="btn  readmore_readless collapsed" data-toggle="collapse" data-target="#collapseOne">
+             Explore it's magic! 
+           </button>
+           <div id="collapseOne" class="collapse">
+             <div class="healthy_description">
+               <p>
+                 Also makes yummy hot chocolate for your kids. You can spoil yourself too once in a while.
+               </p>
+               <p>
+                CUPPACCINO is super easy to maintain with washable metal jar that does not contain any electric circuit or motor. It works with magnetic induction that rotates the frother.
+               </p>
+             </div>
+           </div>
+         </div>
+         <img class="nutri_port_part_img" src="{{'Cuppaccino_banner_01.jpg' | file_url }}" alt="Nutripot">
+      </section>
+      <section class="touh_button col-xs-12" style="padding-top:0px;padding-left:0px;padding-right:0px">
+            <div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd" >
+              <img src="{{'1_1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'Pre-Booking_02.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'2_1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'Pre-Booking_03.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+      </section>
+        <section class="touh_button col-xs-12" style="padding-top:0px;padding-left:0px;padding-right:0px">
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'Pre-Booking_05_1.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'3_1__1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'New-Cold-coffee.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'4_1__1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+          </section>
+      <section class="touh_button col-xs-12" style="padding-top:0px;padding-left:0px;padding-right:0px">
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'5_1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'Pre-Booking_06.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'6_1.gif' | file_url }}" alt="cuppaccino">
+        	</div>
+        	<div class="col-xs-12 col-md-3 col-sm-3 col-md3-padd">
+              <img src="{{'Pre-Booking_07.jpg' | file_url }}" alt="cuppaccino">
+        	</div>
+      </section>
+      
+<div class="clearfix"></div>
+      <section class="one_touch_cooking con-xs-12">
+        <div class="one_touch_section">
+          
+         
+          {% capture current_url %}{% if social-buttons == 'article' %}{{ shop.url }}{{ article.url }}{% else %}{{ canonical_url }}{% endif %}{% endcapture %}
+
+          {% capture title %}{% if social-buttons == 'article' %}{{ article.title | truncate: 30 | url_escape }}{% else %}{{ product.title | truncate: 30 | url_escape }}{% endif %}{% endcapture %}
+          {% capture shop_name %}{{ shop.name | url_param_escape }}{% endcapture %}
+          {% capture twitter_name %}{{ settings.twitter_link | split: 'twitter.com/' | last }}{% endcapture %}
+
+
+          <div class="social_share_icons  col-sm-12">
+            <div class="share_heading">
+              <h2>
+                Discover your cuppa | Try it. Share it.
+              </h2>
+            </div>
+            <div id="fb-share-button" class="social-share">
+              <a target="_blank" class="icon-facebook-share" title="{{ 'layout.social_sharing.facebook_title' | t }}" href="https://www.facebook.com/sharer/sharer.php?u={{ current_url }}">
+                <svg class="svg-icon" viewBox="0 0 12 12" preserveAspectRatio="xMidYMid meet">
+                  <path class="svg-icon-path" d="M9.1,0.1V2H8C7.6,2,7.3,2.1,7.1,2.3C7,2.4,6.9,2.7,6.9,3v1.4H9L8.8,6.5H6.9V12H4.7V6.5H2.9V4.4h1.8V2.8 c0-0.9,0.3-1.6,0.7-2.1C6,0.2,6.6,0,7.5,0C8.2,0,8.7,0,9.1,0.1z"></path>
+                </svg>
+                <span>Facebook</span>
+              </a>
+            </div>
+            <div id="tweeter-share-button" class="social-share">
+              <a target="_blank" class="icon-twitter-share" title="{{ 'layout.social_sharing.twitter_title' | t }}" href="https://twitter.com/intent/tweet?text={{ title | replace: '&','%26' }}&url={{ current_url }}{%- if twitter_name != blank -%}&via={{ twitter_name }}{%- endif -%}">
+                <svg class="svg-icon" viewBox="0 0 20 20">
+                  <path fill="none" d="M18.258,3.266c-0.693,0.405-1.46,0.698-2.277,0.857c-0.653-0.686-1.586-1.115-2.618-1.115c-1.98,0-3.586,1.581-3.586,3.53c0,0.276,0.031,0.545,0.092,0.805C6.888,7.195,4.245,5.79,2.476,3.654C2.167,4.176,1.99,4.781,1.99,5.429c0,1.224,0.633,2.305,1.596,2.938C2.999,8.349,2.445,8.19,1.961,7.925C1.96,7.94,1.96,7.954,1.96,7.97c0,1.71,1.237,3.138,2.877,3.462c-0.301,0.08-0.617,0.123-0.945,0.123c-0.23,0-0.456-0.021-0.674-0.062c0.456,1.402,1.781,2.422,3.35,2.451c-1.228,0.947-2.773,1.512-4.454,1.512c-0.291,0-0.575-0.016-0.855-0.049c1.588,1,3.473,1.586,5.498,1.586c6.598,0,10.205-5.379,10.205-10.045c0-0.153-0.003-0.305-0.01-0.456c0.7-0.499,1.308-1.12,1.789-1.827c-0.644,0.28-1.334,0.469-2.06,0.555C17.422,4.782,17.99,4.091,18.258,3.266"></path>
+                </svg>
+                <span>Twitter</span>
+              </a>
+            </div>
+            <div id="whatsapp-share-button" class="social-share">
+              <a class="icon-whatsapp-share" target="_blank" href="whatsapp://send?text={{ shop.url | escape }}{{ product.url | escape }}">
+                <svg class="svg-icon" viewBox="0 0 90 90">
+                  <path fill="#fff" d="M90 43.84c0 24.214-19.78 43.842-44.182 43.842a44.256 44.256 0 0 1-21.357-5.455L0 90l7.975-23.522a43.38 43.38 0 0 1-6.34-22.637C1.635 19.63 21.415 0 45.818 0 70.223 0 90 19.628 90 43.84zM45.818 6.983c-20.484 0-37.146 16.535- 
+                                       37.146 36.86 0 8.064 2.63 15.533 7.076 21.61l-4.64 13.688 14.274-4.537a37.128 37.128 0 0 0 20.437 6.097c20.48 0 37.145-16.533 37.145-36.857S66.3 6.983 45.818 6.983zm22.31 46.956c-.272-.447-.993-.717-2.075-1.254-1.084-.537-6.41-3.138-7.4- 
+                                       3.495-.993-.36-1.717-.54-2.438.536-.72 1.076-2.797 3.495-3.43 4.212-.632.72-1.263.81-2.347.27-1.082-.536-4.57-1.672-8.708-5.332-3.22-2.848-5.393-6.364-6.025-7.44-.63-1.076-.066-1.657.475-2.192.488-.482 1.084-1.255 1.625-1.882.543-.628.723-1.075 
+                                       1.082-1.793.363-.718.182-1.345-.09-1.884-.27-.537-2.438-5.825-3.34-7.977-.902-2.15-1.803-1.793-2.436-1.793-.63 0-1.353-.09-2.075-.09-.722 0-1.896.27-2.89 1.344-.99 1.077-3.788 3.677-3.788 8.964 0 5.288 3.88 10.397 4.422 11.113.54.716 7.49 11.92 18.5 
+                                       16.223 11.01 4.3 11.01 2.866 12.996 2.686 1.984-.18 6.406-2.6 7.312-5.107.9-2.513.9-4.664.63-5.112z"></path>
+                </svg>
+                <span>Whatsapp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="page-footer nutripot_footer col-sm-12">
+        <div class="col-sm-12">
+          <div class="col-sm-6 col-md-6 col-lg-4 col-xs-12">
+            <div class="footer_logo">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/nutripot_footer_logo2.png?14826422254232841680" alt="">
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-8">
+            <div class="footer_links">
+              <div class="static_links">
+                <ul>
+                  <li>
+                    <a href="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/nutri_pot_pdf.pdf?15902837346986804636" target="_blank">
+                      User Manual
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/pages/about-us" target="_blank">
+                      About us
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/collections/cookware" target="_blank">
+                      cookware
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/collections/appliances" target="_blank">
+                      APPLIANCES
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/collections/offers" target="_blank">
+                      offers
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/pages/contact-us" target="_blank">
+                      contact us
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr class="col-sm-12">
+        <div class="clearfix"></div>
+        <div class="row_combile col-sm-12">
+          <div class="col-sm-8 col-md-6 col-lg-6 copyrights_section">
+            <p>
+              Copyrights © 2019 All Rights Reserved by Wonderchef
+            </p>
+          </div>
+          <div class="col-sm-4 col-md-6 col-lg-6 mailid_section">
+            <a href="mailto:marketing@wonderchef.in">marketing@wonderchef.in</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  {% assign variant = product.selected_or_first_available_variant %}
+
+  <div class="clearfix product_form init smart-payment-button--{{ show_payment_button }} {% if sca_product_variantCount > 1 or product.options.size > 1 %}product_form_options{% endif %} product_form--{{ settings.product_form_style }}"
+        id="product-form-{{ product.id }}"
+        data-money-format="{{ shop.money_format }}"
+        data-shop-currency="{{ shop.currency }}"
+        data-select-id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}"
+        data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+        data-product="{{ product | json | escape }}"
+        {% if settings.limit_quantity or settings.display_inventory_left %}
+          data-variant-inventory='[{%- for v in product.variants -%}
+{"id":{{v.id}},"inventory_quantity":{{v.inventory_quantity}},"inventory_management":"{{v.inventory_management}}","inventory_policy":"{{v.inventory_policy}}"}
+{% if forloop.last == false %},{% endif %}{%- endfor -%}]'
+        {% endif %}
+        data-product-id="{{ product.id }}"
+        >
+    {% form 'product', product %}
+
+    {% if product.options.size > 2 %}
+      <div class="select" class="hidden">
+        <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id" class="multi_select">
+          {% for v in product.variants %}
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% elsif product.options.size == 2 and sca_product_variantCount > 1 or product.options.size == 1 and product.options[0] != "Title" %}
+      <div class="select" class="hidden">
+        <label>{{ product.options[0] }}</label>
+        <select id="product-select-{{ product.id }}{{ product-form }}{{ section.id }}{{ block.id }}" name="id">
+          {% for v in product.variants %}
+            <option {% if v == variant %}selected="selected"{% endif %} value="{{ v.id }}" data-sku="{{ v.sku }}">{{ v.title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% else %}
+      <input type="hidden" name="id" value="{{ variant.id }}" />
+    {% endif %}
+
+
+	{% if product.available %}
+    <div class="purchase-details">
+      <div class="purchase-details__buttons purchase-details__spb--{{ show_payment_button }}">
+        {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+        <button type="submit" name="add" class="action_button add_to_cart {% if show_payment_button %} action_button--secondary {% endif %}" data-label={{ add_to_cart_label | json }}>
+          <p>Limited quantities only</p>
+          <span class="text">Shop Now</span>
+         
+        </button>
+       
+      </div>
+    </div>    
+	{% endif %}
+  {% endform %}
+</div>
+</div>
+
+
+
+<script type="text/javascript">if(typeof wabtn4fg==="undefined"){wabtn4fg=1;h=document.head||document.getElementsByTagName("head")[0],s=document.createElement("script");s.type="text/javascript";s.src="url/to/your/button/whatsapp-button.js";h.appendChild(s);}</script>
+<script>
+$(document).ready(function(){
+  $("#collapseTwo").on("hide.bs.collapse", function(){
+    $(".btn-white").html('<span>Know More</span>');
+  });
+  $("#collapseTwo").on("show.bs.collapse", function(){
+    $(".btn-white").html('<span>Know Less</span>');
+  });
+});
+  
+</script>
+<style>
+body {
+   font-family: 'Montserrat', sans-serif;
+   background-color: #000000 !important;
+}
+ 
+
+  span.social-links {
+    float: right;
+}
+ body.clearHeader.product-nutripot button.action_button.add_to_cart p {
+    font-size: 14px;
+    margin: 4px 0 0;
+    line-height: 20px;
+    text-transform: capitalize;
+    display: block;
+}
+  div#swym-anchor, .swym-button-bar.swym-wishlist-button-bar.swym-inject {
+    display: none!important;
+}
+ body.clearHeader.product-nutripot button.action_button.add_to_cart {
+    position: fixed;
+    top: 75%;
+    right: 0;
+       background-color: #db3736;
+    color: #fff !important;
+    font-weight: 600;
+    border: 1px solid #db3736;
+    padding: 5px 5px 55px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+   width: 14%;
+    line-height: 30px;
+}.add_to_cart.action_button {
+    min-height: 50px;
+    margin-bottom: 0;
+}
+  .out_of_stock p{
+  padding-bottom: 0px;
+    text-align: center;
+    color: #fff;
+  }
+  .one_touch_cooking .middle_section {
+    padding: 30px 40px 40px 100px;
+}
+  .why_nutri_left_section p {
+    font-size: 18px;
+    color: #fff;
+}div#accordionExample ul, div#collapseOne .card-body ul {
+        font-size: 18px;
+    color: #fff;
+    padding: 0;
+    list-style: none;
+}div#headingOne li {
+    font-size: 18px;
+    color: #fff;
+    margin: 0 0 14px;    
+    padding: 0;
+}
+  section.body_part.video {
+    margin-top: 40px;
+  }.one_touch_cooking{
+  background:#000;
+    padding:0;overflow: hidden;
+  }.why_nutripot_heading_section {
+    padding-top: 40px;
+}.one_touch_cooking .section_heading.heading {
+    color: #fff;
+}.why_nutripot_heading_section .sub_heading {
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+}
+  .product-nutripot {
+    background: #121212;
+  }
+  button.Know_more.btn-white {
+    text-transform: uppercase;
+    width: 135px;
+    font-weight: 500;
+    margin-left: 14px;
+    padding: 6px;
+    color:#fff;
+}
+  img {
+    max-width: 100%;
+  }
+  header.nutri_header {
+    height: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #121212;
+    margin: 0 0 4px;
+    padding-bottom: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+    z-index: 99;
+    padding-top: 4px;
+}
+  .social_logo {
+    padding: 0;
+}
+  
+  header.nutri_header .container {
+    padding: 0;
+}
+  
+  section.col-xs-12.healthy_section {
+    position: relative;
+    background-color: #fff;
+}
+  .abovehealthy_banner {
+    text-align: center;
+    padding: 0px 90px;
+    padding-top: 45px;
+}
+  .heading {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    color: #000;
+}
+  
+  .healthy_description p {
+    font-size: 20px;
+    color: #000;font-weight: 300;
+}
+    /* Icon when the collapsible content is shown */
+  .btn:after {
+    font-family: "Glyphicons Halflings";
+    content: "\e260";
+    float: right;
+    margin-left: 15px;
+  }
+  /* Icon when the collapsible content is hidden */
+  .btn.collapsed:after {
+    content: "\e259";
+  }
+  img.nutri_port_part_img {
+    padding-top: 20px;
+}button.btn.readmore_readless {
+   border: 0;
+    font-size: 20px;
+    background: transparent;
+    font-weight: 300;
+}
+ section.touh_button {
+    background-color: #000000;
+    padding-top: 40px;
+}
+  .animation-section_wrapper {
+    padding-top: 30px;
+}
+  .animation-section_wrapper .icon_master {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 40px;
+}.left_section_icon {
+    position: static;
+}
+.right_section_icon {
+    position: static;
+}
+.animation-section_wrapper .right_align .prepare_section_subheading, .animation-section_wrapper .right_align p.prepare_section_decription {
+    text-align: right;
+}
+p.prepare_section_decription {
+    color: #fff;
+    font-size: 20px;
+}
+.prepare_section_subheading {
+    color: #939d5e;
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+  .black_ellipse_icon {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+  img.black_ellipse {
+    transform: scaleX(-1);
+    position: absolute;
+/*     width: 150px;
+    height: 150px; */
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}.right_mess_free_img img {
+    position: absolute;
+    right: 0px;
+    width: 220px;
+    bottom: 0px;
+}
+  img.green_ellipse {
+/*     width: 150px;
+    height: 150px; */
+    position: absolute;
+    display: none;
+}
+  .middle_icon {
+    text-align: center;
+    height: 102px;
+    vertical-align: middle;
+    padding: 0px;
+    border-radius: 50%;
+    background-color: #969293;
+    width: 100px;
+    margin: 25px auto;
+}.on_hover_green:hover .green_ellipse {
+    display: block;
+}.on_hover_green:hover .middle_icon {
+    background-color: #2c8545;
+}
+  .one_touch_right img.right_one_touch_img {
+    position: absolute;
+    right: 0px;
+    width: 220px;
+    bottom: 0px;
+}
+  .left_healthy_img img {
+    position: absolute;
+    left: 0px;
+    width: 220px;
+    bottom: 0px;
+}
+  .btn.active, .btn:active{
+      box-shadow: transparent;
+  }
+    .btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+  
+ .pre_book_form_section {
+    padding: 80px 80px 60px 100px;
+    background-color: #fff;overflow:hidden;
+}
+  .form_heading_section .section_heading {
+    text-align: left;
+    line-height: 50px;
+    color: #000;
+        font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+  .form_heading_section .sub_heading {
+    color: #000;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+  .pre_book_form .field-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+  .pre_book_form .field-group .floating-label {
+    -webkit-appearance: none !important;
+}
+.pre_book_form .field-group input  {
+    font: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ededed;
+    border-radius: 0;
+    height: 50px;
+}
+  .pre_book_form .field-group textarea  {
+    font: inherit;
+    color: inherit;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ededed;
+    border-radius: 0;
+}section.booke_preform.col-xs-12 {
+    padding: 0;
+    }
+  .pre_book_form .field-group label {
+    display: inline-block;
+    left: 15px;
+    top: 46px;
+    transition: all 150ms ease-in;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 4px;
+    margin: 0;
+    background: #fff;
+    opacity: 0;
+    position: absolute;
+}
+    .pre_book_form .field-group textarea:focus,.pre_book_form .field-group input:focus {
+            outline: 0;
+            border-color: #e31e24;
+            box-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
+          }
+  .pre_book_form .floating-label:not(:placeholder-shown) ~ .field-active,.pre_book_form .Form__Textarea:not(:placeholder-shown) ~ .Form__FloatingLabel{
+      transform: translateY(-25px);
+      font-size: 0.9em;
+      color: #000;
+      text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
+      opacity: 1;
+      top: 12px;
+    }
+  input.submit.action_button{background: #e31e24;
+    color: #ffffff;
+    border: 1px solid #e31e24;
+    padding: 0 20px;
+    text-align: center;
+    cursor: pointer;
+    min-height: 40px;
+    height: 40px;
+    line-height: 1.2;
+    vertical-align: top;
+    font-family: Montserrat, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -ms-flex-pack: center;
+    transition: all 0.2s linear;
+    -webkit-appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    border-radius: 3px;
+  }
+  .social_share_icons {
+    text-align: center;
+    padding: 60px 10px;
+    background-color: #000;
+}
+  .social_share_icons .share_heading h2 {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 30px;
+}#fb-share-button {
+    background: #3b5998;
+    border-radius: 3px;
+    font-weight: 600;
+    padding: 5px 8px;
+    display: inline-block;
+    position: static;
+}#fb-share-button svg,#tweeter-share-button svg {
+    width: 18px;
+    fill: white;
+    vertical-align: middle;
+    border-radius: 2px;
+}#fb-share-button span {
+    vertical-align: middle;
+    color: white;
+    font-size: 14px;
+    padding: 0 3px;
+    font-size: 10px;
+}.svg-icon path, .svg-icon polygon, .svg-icon rect {
+    fill: #fff;
+}#tweeter-share-button {
+    background: #4691f6;
+    border-radius: 3px;
+    font-weight: 600;
+    padding: 5px 8px;
+    display: inline-block;
+    position: static;
+}#whatsapp-share-button {
+    background: #25D366;
+    border-radius: 3px;
+    font-weight: 600;
+    padding: 5px 8px;
+    display: inline-block;
+    position: static;
+}#tweeter-share-button span {
+    color: #fff;
+    font-size: 10px;
+}
+.social-share span {
+    padding: 0 3px;
+}.svg-icon path, .svg-icon polygon, .svg-icon rect {
+    fill: #fff;
+}.svg-icon {
+    width: 1em;
+    height: 1em;
+}#whatsapp-share-button svg.svg-icon {
+    position: relative;
+    top: 2px;
+}#whatsapp-share-button span {
+    color: #fff;
+    font-size: 10px;
+}
+  footer.page-footer.nutripot_footer {
+    padding: 20px 60px;
+    background-color: #ececec;
+}.footer_logo {
+    padding-left: 60px;
+    padding-top: 15px;
+}.footer_logo img {
+    width: 220px;
+}.footer_links ul {
+    list-style-type: none;
+    padding-left: 0;
+    float: right;
+    margin-bottom: 0;
+    margin-top: 30px;
+}.footer_links ul li {
+    float: left;
+    padding: 0 10px;
+}.footer_links ul li a {
+    font-size: 14px;
+    color: #4b4b4b;
+    text-transform: uppercase;
+    font-weight: 400;
+    text-decoration: none;
+}.copyrights_section p {
+    padding-left: 60px;
+    font-size: 14px;
+    color: #4b4b4b;
+    font-weight: 400;
+}.mailid_section a {
+    font-size: 14px;
+    color: #4b4b4b;
+    font-weight: 400;
+    float: right;
+    padding-right: 15px;
+}
+  footer.page-footer.nutripot_footer hr {
+    border-color: #d4d4d4;
+}
+  @media(max-width: 767px){
+    .social-links a{
+      font-size: 24px!important;
+      line-height: 32px!important;
+    }
+    .abovehealthy_banner {
+      padding: 0!important;
+      padding-top: 20px!important;
+    }
+    .nutripot .container {
+      padding: 0!important;
+    }
+    .heading{
+      font-size: 18px;
+    }
+    .healthy_description p {
+      font-size: 16px;
+    }
+    .social_logo {
+      padding-right: 12px;
+    }
+    .animation-section_wrapper .right_align .prepare_section_subheading, .animation-section_wrapper .right_align p.prepare_section_decription {
+      text-align: center !important;
+      font-size: 16px;
+    }
+    img.black_ellipse {
+      width: 90px;
+    }
+    img.green_ellipse {
+      width: 90px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+    }
+    .middle_icon {
+      width: 70px;
+      height: 72px;
+      margin: 10px auto;
+    }
+    .one_touch_right img.right_one_touch_img {
+      width: 140px;
+      right: 0;
+    }
+    .right_section_icon {
+      order: -1;
+      text-align: center;
+    }
+    p.prepare_section_decription {
+      font-size: 12px !important;
+      text-align: center !important;
+    }.right_mess_free_img img {
+      bottom: 0;
+    }.right_mess_free_img img {
+      width: 140px;
+      bottom: 0px;
+      right: 0;
+    }
+    .pre_book_form_section{
+      padding: 30px 0;
+    }
+    .section_heading.header {
+      font-size: 20px;
+    }.form_heading_section .sub_heading{
+      margin-bottom: 4px!important;
+    }
+    .animation-section_wrapper .icon_master {
+      margin: 0;
+      padding-bottom: 130px!important;
+    }
+    .why_nutripot_heading_section .sub_heading {
+      font-size: 12px;padding: 0 12px;
+    }.why_nutripot_section .middle_section {
+      display: flex;
+      flex-direction: column;
+    }.why_nutripot_section .middle_section .first_section {
+      order: -3;
+    }.why_nutri_left_section p {
+      font-size: 12px !important;
+    }div#accordionExample ul {
+      font-size: 12px;
+    }
+    .one_touch_cooking .middle_section {
+      padding: 0 12px;
+    }
+    div#headingOne li {
+    font-size: 13px;
+    margin: 0 0 6px;
+}.footer_logo {
+    text-align: center;
+       padding: 0;
+}.footer_links ul li {
+    padding-left: 0;
+    width: 50%;
+}.footer_links ul li a {
+    font-size: 10px;
+}.copyrights_section p {
+    font-size: 10px !important;
+    text-align: center !important;    padding: 0;
+}.mailid_section {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+}footer.page-footer.nutripot_footer {
+    padding: 20px 12px;
+    background-color: #ececec;
+}button.Know_more.btn-white {
+    margin-top: 20px;
+}body.clearHeader.product-nutripot button.action_button.add_to_cart p{
+    font-size: 8px;
+    margin: 0px 0 0;
+    line-height: 14px;
+}body.clearHeader.product-nutripot button.action_button.add_to_cart{
+  font-size: 12px;
+  width: 34%;
+  line-height: 20px;
+}
+    
+  }
+.swym-button-bar.swym-wishlist-button-bar.swym-inject {
+    display: none;
+}
+/*===============*/
+  @media (max-width: 900px){
+.why_nutripot_section .middle_section.row {
+    padding-bottom: 40px;
+}
+  }
+@media (max-width: 1100px){
+.why_nutripot_section .middle_section.row {
+    padding: 30px 20px 100px;
+}
+}
+    @media (min-width: 768px & max-width: 1366px){
+    body.clearHeader.product-nutripot button.action_button.add_to_cart{
+      width: 26%;
+    }
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Product",
+  "class": "product-template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Product font family"
+    },
+	 {
+        "type": "font_picker",
+        "id": "logo__font",
+        "label": "Font",
+        "default": "open_sans_n4"
+      }
+   
+  ],
+  "blocks": [
+    
+    
+  ],
+  "default": {
+    "settings": {
+
+    }
+  }
+}
+
+{% endschema %}

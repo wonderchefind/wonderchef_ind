@@ -1,0 +1,49 @@
+{% if collection.image %}
+    {%- assign collection_image = collection.image -%}
+{% elsif collection.products.first and collection.products.first.images != empty %}
+    {%- assign collection_image = collection.products.first.featured_image -%}
+{% else %}
+    {% assign collection_image = blank %}
+{% endif %}
+
+<div class="collection-grid-item">
+    <div class="collection-grid-image">
+        <a href="{% if collection.products == empty %}#{% else %}{{ collection.url }}{% endif %}" class="collection-grid-item__link" aria-label="link">
+            {% unless collection_image == blank %}
+                <img class="lazyload" data-src="{{ collection_image | img_url: '280x280' }}" alt="">
+            {% else %}
+                {% if collection == empty %}
+                    {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+                    <span class="recommended_size">280x280</span>
+                    {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                {% else %}
+                    <img class="lazyload" data-src="{{ collection_image | img_url: '280x280' }}" alt="">
+                {% endif %}
+            {% endunless %}
+        </a>
+    </div>
+    <div class="collection-grid-content">
+        <div class="title-wrapper">
+            <h4 class="title">
+                <a href="{{ collection.url }}" aria-label="title">
+                    {% if collection.title == blank %}
+                        {{ 'homepage.onboarding.collection_title' | t }}
+                    {% else %}
+                        {{ collection.title }}
+                    {% endif %}
+                </a>
+            </h4>
+            <span class="count-products">
+                {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+            </span>
+        </div>
+        <div class="descriptions">
+            {{ collection.description | strip_html | truncatewords: 27 }}
+        </div>
+        <div class="product-action">
+            <a href="{{ collection.url }}" aria-label="link" class="btn product-btn">
+                {{ 'collections.general.shop_now' | t }}
+            </a>
+        </div>
+    </div>
+</div>

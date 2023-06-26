@@ -1,0 +1,13 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+{% section 'collection-template-banner' %}
+    
+{% if collection.description != blank %}
+            <div class="container collection-description" style="margin-top:50px;">
+                {{ collection.description }}
+            </div>
+        {% endif %}
+
+
+{% section 'collection-spare-parts' %}

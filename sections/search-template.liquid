@@ -1,0 +1,112 @@
+{% comment %}
+    Each result template, based on the grid_layout variable above
+{% endcomment %}
+
+{% case section.settings.column %}
+    {% when 1 %}
+        {%- assign column = '1' -%}
+    {% when 2 %}
+        {%- assign column = '2' -%}
+    {% when 3 %}
+        {%- assign column = '3' -%}
+    {% when 4 %}
+        {%- assign column = '4' -%}
+    {% when 5 %}
+        {%- assign column = '5' -%}
+{% endcase %}
+
+{% if section.settings.layout == 'grid' %}
+    {%- assign limit = section.settings.column | times: section.settings.rows -%}
+{% else %}
+    {%- assign limit = 12 -%}
+{% endif %}
+
+
+{% paginate search.results by limit %}
+
+{% if search.performed %}
+    {% if search.results_count != 0 %}
+        <div class="halo-column halo-column-product column-{{ column }}">
+            {% for item in search.results %}
+                {% unless item.object_type == 'article' %}
+                    <div class="halo-item">
+                        {% if item.object_type == 'product' %}
+                            {% render 'product-card-grid-2', product: item %}
+                        {% endif %}
+                    </div>
+                {% else %}
+                    <div class="halo-item">
+                        <div class="article">
+                            {% if item.image %}
+                                <div class="article-image">
+                                    <div class="image-wrapper">
+                                        <div class="image-container">
+                                            <img class="article__grid-image2" src="{{ item.image | img_url: '370x' }}" alt="">
+                                        </div>
+                                    </div>
+                                    <a href="{{ item.url }}"></a>
+                                </div>
+                            {% endif %}
+                            <div class="article-content">
+                                <h3 class="title">
+                                    <a href="{{ item.url }}">{{ item.title }}</a>
+                                </h3>
+                                <div class="excerpt">
+                                    {{ item.content | strip_html | truncatewords: 150 | highlight: search.terms }}
+                                </div>
+                                <a href="{{ item.url }}" class="btn btn--tertiary btn--small">
+                                    <span class="text">{{ 'blogs.article.read_more' | t }}</span> {% render 'icon-chevron-right' %}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endunless %}
+            {% endfor %}
+        </div>
+        {% if paginate.pages > 1 %}
+            {% render 'pagination', paginate: paginate %}
+        {% endif %}
+    {% else %}
+        <h3 class="text-center">{{ 'general.search.title' | t }}</h2>
+        <div class="header-search__form mt-5">
+            <form action="/search" method="get" class="search-bar" role="search">
+                <input type="hidden" name="type" value="product">
+                <input type="search" name="q"
+                    placeholder="{{ 'general.search.placeholder' | t }}"
+                    class="input-group-field header-search__input" aria-label="Search Site" autocomplete="off">
+                <button type="submit" class="btn-search icon-search" title="search">
+                    {% render 'icon-search' %}
+                </button>
+            </form>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% endpaginate %}
+
+{% schema %}
+{
+    "name": "Search pages",
+    "class": "page-content",
+    "settings": [
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Products per row (grid only)",
+            "default": 4,
+            "min": 2,
+            "max": 5,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "rows",
+            "label": "Rows per page (grid only)",
+            "default": 2,
+            "min": 2,
+            "max": 8,
+            "step": 1
+        }
+    ]
+}
+{% endschema %}

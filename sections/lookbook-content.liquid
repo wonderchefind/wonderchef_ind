@@ -1,0 +1,251 @@
+{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
+{%- assign fontsize_tab = fontsize_tab | default: section.settings.fontsize_tab -%}
+
+<div class="lookbook-tab
+    {% case title_layout %}
+        {% when 'left' %} tab-left
+        {% when 'center' %} tab-center
+        {% when 'right' %} tab-right
+    {% endcase %}">
+    <ul class="nav nav-tabs {% if fontsize_tab == 'large' %}nav-tabs-large{% endif %}" role="tablist">
+        {% for block in section.blocks %}
+            <li class="nav-item tab">
+                <a href="#{{ block.id }}" class="nav-link {% if forloop.first %}active show{% endif %}" role="tab" data-toggle="tab" aria-controls="{{ block.id }}">{{ block.settings.lookbook_tab }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content">
+        {% for block in section.blocks %}
+            <div id="{{ block.id }}" class="tab-pane fade {% if forloop.first %}active show{% endif %}" role="tabpanel">
+                <div class="lookbook-image-wrapper {% if block.settings.lookbook_image == blank %}lookbook-image-default{% endif %}">
+                    {%- assign img_url = block.settings.lookbook_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    {% if block.settings.lookbook_image == blank %}
+                        <div class="placeholder-background">
+                            <span class="recommended_size">1170x680</span>
+                            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                        </div>
+                    {% else %}
+                        <img class="image-background lazyload"
+                            src="{{ block.settings.lookbook_image | img_url: '300x300' }}"
+                            data-src="{{ img_url }}"
+                            data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                            data-aspectratio="{{ block.settings.lookbook_image.aspect_ratio }}"
+                            data-sizes="auto"
+                            alt="">
+                    {% endif %}
+                    {% for i in (1..3) %}
+                        {% capture cap_product %}product_{{ i }}{% endcapture %}
+                        {% assign product_id = block.settings[cap_product] %}
+                        {% assign product = all_products[product_id] %}
+                        {% capture cap_coordinates_y %}coordinates_y_{{ i }}{% endcapture %}
+                        {% assign coordinates_y = block.settings[cap_coordinates_y] %}
+                        {% capture cap_coordinates_x %}coordinates_x_{{ i }}{% endcapture %}
+                        {% assign coordinates_x = block.settings[cap_coordinates_x] %}
+                        {% if product != blank %}
+                        <div class="points_popup" style="top: {{ coordinates_y }}%; left: {{ coordinates_x }}%;">
+                            <div class="point"> + </div>
+                            <div class="custom-product-card">
+                                <a href="javascript:void(0)" title="Close" class="close">&#215;</a>
+                                {% render 'product-card-grid-2', product: product %}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% if section.settings.display_share %}
+                    <div class="lookbook-social-share">
+                        {% if block.settings.lookbook_image_text %}
+                            <div class="text_image">{{ block.settings.lookbook_image_text }}</div>
+                        {% endif %}
+                        {% render 'share' with block %}
+                    </div>
+                {% endif %}
+                {% if section.settings.display_btn %}
+                <div class="mt-5 text-center">
+                    <a class="btn btn--secondary btn--big" href="{{ section.settings.btn_link }}">{{ section.settings.btn_text }}</a>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Lookbook Content",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Tabs Style"
+        },
+        {
+            "type": "select",
+            "id": "fontsize_tab",
+            "label": "Font size tabs",
+            "default": "large",
+            "options": [
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "title_layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "social share"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_share",
+            "label": "Enable Social Share?",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Button Go To Shop"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_btn",
+            "label": "Enable Button?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text",
+            "default": "Shop LookBook"
+        },
+        {
+            "type": "url",
+            "id": "btn_link",
+            "label": "Button Link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "lookbook_item",
+            "name": "Lookbook Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "lookbook_tab",
+                    "label": "Title",
+                    "default": "lookbook"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "lookbook_image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "lookbook_image_text",
+                    "label": "Image title"
+                },
+                {
+                    "type": "product",
+                    "label": "Product 1",
+                    "id": "product_1"
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_x_1",
+                    "label": "Coordinates x",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 10
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_y_1",
+                    "label": "Coordinates y",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 10,
+                    "info"  : "=============="
+                },
+                {
+                    "type": "product",
+                    "label": "Product 2",
+                    "id": "product_2"
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_x_2",
+                    "label": "Coordinates x",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 20
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_y_2",
+                    "label": "Coordinates y",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 20,
+                    "info"  : "=============="
+                },
+                {
+                    "type": "product",
+                    "label": "Product 3",
+                    "id": "product_3"
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_x_3",
+                    "label": "Coordinates x",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 30
+                },
+                {
+                    "type": "range",
+                    "id": "coordinates_y_3",
+                    "label": "Coordinates y",
+                    "max": 100,
+                    "min": 0,
+                    "step": 5,
+                    "unit": "%",
+                    "default": 30
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

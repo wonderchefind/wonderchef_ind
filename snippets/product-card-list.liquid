@@ -1,0 +1,115 @@
+{%- assign img_url = product.featured_image | img_url: '270x270' -%}
+{%- assign img_url_1 = product.images[0].src | img_url: '270x270' -%}
+{%- assign img_url_2 = product.images[1].src | img_url: '270x270' -%}
+{%- assign show_image_swap = show_image_swap | default: settings.image_swap -%}
+{%- assign show_product_compare = show_product_compare | default: settings.show_product_compare -%}
+{%- assign show_product_compare_mb = show_product_compare_mb | default: settings.show_product_compare_mb -%}
+{%- assign show_product_quickview = show_product_quickview | default: settings.show_product_quickview -%}
+{%- assign show_product_vendor = show_product_vendor | default: settings.show_product_vendor -%}
+{%- assign show_product_title = show_product_title | default: settings.show_product_title -%}
+{%- assign show_product_reviews = show_product_reviews | default: settings.show_product_reviews -%}
+{%- assign show_product_price = show_product_price | default: settings.show_product_price -%}
+{%- assign show_product_button = show_product_button | default: settings.show_product_button -%}
+
+<div class="product-card {% unless product.available %} product-card--sold-out{% endunless %}" data-product-card data-product-id="product-{{ product.id }}" data-id="{{ product.id }}">
+    <div class="product-image">
+        {% render 'product_badges' with product as product %}
+        <a class="product-link {% if product.images.size > 1 and show_image_swap %}image-swap{% endif %}" href="{{ product.url | within: collection }}" aria-label="link">
+            {% if product.images.size > 1 and show_image_swap %}
+                <img class="image-one lazyload"
+                    src="{{ 'loading.svg' | asset_url }}"
+                    data-src="{{ img_url_1 }}"
+                    data-sizes="auto" alt="{{ product.images[0].alt }}" data-image>
+                <img class="image-two lazyload"
+                    src="{{ 'loading.svg' | asset_url }}"
+                    data-src="{{ img_url_2 }}"
+                    data-sizes="auto" alt="{{ product.images[1].alt }}" data-image>
+            {% else %}
+                <img class="lazyload"
+                    src="{{ 'loading.svg' | asset_url }}"
+                    data-src="{{ img_url }}"
+                    data-sizes="auto" alt="{{ product.featured_image.alt }}" data-image>
+            {% endif %}
+        </a>
+        {% if show_product_quickview %}
+            <a class="product-quickview" aria-label="quickview" href="javascript:void(0)" id="{{ product.handle }}" data-quickview>
+                {{ 'products.product.quick_view' | t }}
+            </a>
+        {% endif %}
+        {% if settings.display_countdown %}
+            <div class="product-countdown-wrapper countdown">
+                {% if product.metafields.halo['countdown'] %}
+                    <div id="product-countdown-{{ product.id }}" class="product-countdown" data-countdown data-countdown-value="{{ product.metafields.halo['countdown'] }}"></div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="product-content">
+        <div class="product-detail">
+            {% if show_product_vendor %}
+                <div class="product-vendor">
+                    {{ product.vendor | link_to_vendor }}
+                </div>
+            {% endif %}
+            {% if show_product_title %}
+                <h4 class="product-title">
+                    <a href="{{ product.url | within: collection }}" aria-label="title">{{ product.title }}</a>
+                </h4>
+            {% endif %}
+               <div class="product-reviews">
+                    {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: false, product: product %}
+                    
+                </div>
+           
+            {% if show_product_reviews %}
+                <div class="product-reviews">
+                    <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+                    {% if show_product_compare %}
+                        {% render 'compare-product' with product as product %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if show_product_price %}
+ 
+       
+                {% render 'product-price' with product as product, variant: product.selected_or_first_available_variant %}
+                  {% endif %}
+            <div class="hide">
+                <div class="sku-product">
+                    <span class="value">{{ product.variants.first.sku }}</span>
+                </div>
+                <div class="collection-product">
+                    {% for collection in product.collections %}
+                        <span class="value">{{ collection.title }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="product-description">
+                {{ product.description | strip_html | replace: '&nbsp;', ' ' | truncatewords: 24 }}
+            </div>
+          <!-- <div>
+       <div style="display:flex;margin: 0px 0px;">
+        {% if product.price >= 250000%}   
+<img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/pngwing.com.png?v=1668666647" width="20px" height="20px;" >{% endif %}
+                 <p id="agent_commission_model" >{% if product.price >= 250000 and product.price < 400000 %}Extra<b><span style="color:#b20000"> 10%</span></b> Off with <b>WINTER10</b> {% endif %}
+                   {% if product.price >= 400000 %}Extra<b><span style="color:#b20000"> 15%</span></b> Off with <b>WINTER15</b> {% endif %}
+                 </p>
+            </div>-->
+           
+            {% if show_product_button %}
+                {% render 'add-to-cart-btn' with product as product, id: 'list-product-form', variant: product.selected_or_first_available_variant %}
+            {% endif %}
+        </div>
+        <div class="product-actions">
+            {% if show_product_button %}
+                {% render 'add-to-cart-btn' with product as product, id: 'list-product-form', variant: product.selected_or_first_available_variant %}
+            {% endif %}
+            {% if settings.show_wishlist %}
+                <button class="wishlist btn product-btn {% if settings.show_wishlist_mb %}wishlist_mb{% endif %}" data-icon-wishlist data-product-handle="{{ product.handle }}" data-id="{{ product.id }}">
+                    <span class="add">{{ 'wishlist.general.add_to_wishlist' | t }}</span>
+                    <span class="remove">{{ 'wishlist.general.remove_wishlist' | t }}</span>
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</div>

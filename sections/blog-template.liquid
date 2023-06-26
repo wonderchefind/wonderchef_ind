@@ -1,0 +1,108 @@
+<div class="sidebar_mobile_wrapper">
+    <div class="item item-iconSidebar text-left">
+        <div class="sidebar_mobile">
+            <span class='text'>{{ 'collections.sidebar.title' | t }}:</span>
+            {% render 'icon-sidebar' %}
+        </div>
+    </div>
+</div>
+
+{% paginate blog.articles by 3 %}
+
+{% for article in blog.articles %}
+    <article class="blog">
+        <div class="blog-post-header">
+            <div class="blog-header">
+                <h2 class="blog-title">{{ article.title }}</h2>
+                <p class="blog-date">
+                    {% if blog.comments_enabled? and article.comments_count > 0 %}
+                        <a href="{{ article.url }}#comments" class="article__comment-count">
+                            {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                        </a>
+                    {% endif %}
+                    {% if section.settings.blog_show_date %}
+                        <span class="article__date"> {{ 'blogs.article.posted_in' | t }} {{ article.published_at | time_tag: format: 'date' }}</span>
+                    {% endif %}
+                    {% if section.settings.blog_show_author %}
+                        <span class="article__author">{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% if article.image %}
+            <div class="blog-post-figure">
+                <div class="blog-thumbnail">
+                    <a href="{{ article.url }}">
+                        <img id="{{ img_id }}"
+                            class="lazyload"
+                                src="{{ article.image | img_url: '770x500' }}"
+                                data-src="{{ img_url }}"
+                                data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                                data-aspectratio="{{ article.image.aspect_ratio }}"
+                                data-sizes="auto"
+                                alt="">
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+        <div class="blog-post-body">
+            <div class="blog-post">
+                {% if article.excerpt.size > 0 %}
+                    {{ article.excerpt }}
+                {% else %}
+                    {{ article.content | strip_html | truncate: 150 }}
+                {% endif %}
+            </div>
+            <div class="button-group">
+                <a href="{{ article.url }}" class="btn btn--secondary" aria-label="{{ 'blogs.article.read_more_title' | t: title: article.title }}" {% if settings.enable_multilang %}data-translate="blogs.article.read_more"{% endif %}>
+                    {{ 'blogs.article.read_more' | t }}
+                </a>
+            </div>
+            {% if section.settings.blog_show_tag %}
+                {% if article.tags.size > 0 %}
+                    <ul class="tags">
+                        {{ 'blogs.article.posted_in' | t }}
+                        {% for tag in article.tags %}
+                            <li class="tag">
+                                <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </div>
+    </article>
+{% endfor %}
+
+{% if paginate.pages > 1 %}
+    {% render 'pagination', paginate: paginate %}
+{% endif %}
+
+{% endpaginate %}
+
+{% schema %}
+{
+    "name": "Blog pages",
+    "class": "page-content",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "blog_show_date",
+            "label": "Show date",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_author",
+            "label": "Show author",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "blog_show_tag",
+            "label": "Show tags",
+            "default": false
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,309 @@
+{% comment %}
+** Banner page - custom view **
+- Page template
+{% endcomment %}
+
+{% if section.settings.show_banner %}
+
+<section id="banner-{{section.id}}" class="banner page_banner">
+  {% if section.settings.image != nil %}
+  
+  <div class="hidden_xs">
+      {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+    </div>
+    <div class="visible_xs ">
+      
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Paris_mobile_landing_page_banner_11zon_c88500ed-ac5e-4355-9553-c3a0b385ed4b.jpg?v=1662630630" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+    </div>
+  {% else %}
+  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+  {% endif %}
+  {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+  {% if section.settings.button1_link != blank %}
+  <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+    {{ section.settings.button1 }}
+  </a>
+  {% endif %}
+  {% if section.settings.button2_link != blank %}
+  <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+    {{ section.settings.button2 }}
+  </a>
+  {% endif %}
+  {% endunless %}
+  {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+  <div class="position-{{ section.settings.text_position }} caption js-caption">
+    <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+      {% if section.settings.pretext != blank %}
+      <div class="pretext">
+        {{ section.settings.pretext }}
+      </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+      <h1 class="headline">
+        {{ section.settings.title }}
+      </h1>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <div class="subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      {% endif %}
+      {% if section.settings.button1 != blank %}
+      <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+        {{ section.settings.button1 }}
+      </a>
+      {% endif %}
+      {% if section.settings.button2 != blank %}
+      <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+        {{ section.settings.button2 }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endunless %}
+</section>
+
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content" style="margine:0px 0px;width:100%!important">
+  <div class="page clearfix">
+    {% unless section.settings.show_banner %}
+    <h1>
+      {{ page.title }}
+    </h1>
+    <div class="feature_divider"></div>
+    {% endunless %}
+   <div  class="static-page">
+    <div class ="tncwonderchef">
+      
+      <div class=" normaltext container">
+        <p style="font-size: 20px;line-height: initial;">Buy any Wonderchef product. Fill out the form below to register your purchase. And you could win a trip to Paris. It's that simple! 
+Hurry, the offer is only valid until October 31, 2022.</p>
+        <br><br>
+        <h3 style="text-align:center"><b>Purchase Registration Form</b></h3>
+        
+      
+ <div style="margin:0 auto;" class="pxFormGenerator" id="M-TXS1h9OIGkxruEwX_lBA"></div>
+       <div class="tnc">
+       <h4><strong>Terms and Conditions</strong></h4>
+<p>The term <strong>“Wonderchef”</strong> shall mean Wonderchef Home Appliances Private Limited with its registered office at Unit No.303, 3rd Floor, B Wing, Supreme Business Park, Supreme City, Hiranandani Gardens, Powai Mumbai - 400076. </p>
+<p> “Customer” / “You” shall mean a purchaser of a product sold by Wonderchef.</p>
+<p>These terms and conditions (<strong>“Terms”</strong>) herein are applicable only to purchases made by the Customer from September 10, 2022 to October 31, 2022 (inclusive of both dates) (<strong>“Offer Period”</strong>) through Wonderchef’s all sales channels including but not limited to brand website, general trade, modern trade, online marketplaces, canteens, direct-to-home, provided that post the purchase of the product, the Customer and the purchase are registered on: www.wonderchef.com (<strong>“Offer”</strong>).</p>
+<p> </p>
+<h5><strong>General Terms</strong></h5>
+<ol>
+<li>1. By availing the Offer, the Customer shall have deemed to agree and accept all terms and conditions provided herein. Participation in the Offer is a confirmation that the Customer has read the Offer and these Terms.</li>
+<li>2. This Offer may not be combined with any other special offers launched by Wonderchef.</li>
+<li>3. This Offer shall be available to only one natural person.</li>
+<li>4. Wonderchef reserves, at its absolute discretion, the right, to modify, or withdraw, the Offer at any time without prior notice, or to provide any other benefit as it deems fit. Wonderchef’s decision regarding the same shall be final and binding on all eligible Customers. The Customer shall continue to be bound by such changes to the terms and conditions.</li>
+<li>5. All incidental and applicable costs, taxes, levies, etc. related to the Offer (if any) shall be borne by the Customer only.</li>
+<li>6. All benefits under the Offer are non-encashable, non-refundable, non-negotiable and non-transferable. </li>
+<li>7. Wonderchef may require the Customer to provide adequate proof regarding the Customer’s age and other representations, and any other details, in order to initiate the process of the Offer. If such requirements are not provided within the time period stipulated by Wonderchef, Wonderchef has the right to withdraw the Offer.</li>
+<li>8. The Customer hereby gives their consent to Wonderchef to use and/or process, transfer or retain any of their personal information that they have provided or which Wonderchef has obtained in connection with this Offer.</li>
+<li>9. The Customer participating in this Offer, would deemed to have been waived the ‘Do Not Disturb’ status (“DND”) on his/her registered mobile number. By participating in this Offer, the Customer also agrees to receive details and information (if any) about this Offer on his/her registered mobile number, through SMS or voice calls.</li>
+<li>10. Any issue, dispute and/or differences arising out of and/ or in relation to this Agreement raised by any of the parties hereto shall be resolved amicably at the first instance. In the event such issue, dispute and/or reference is not resolved amicably within 30 (Thirty) days from the date of written notice of dispute by a Party, then it shall be resolved by arbitration in accordance with (Indian) Arbitration and Conciliation Act, 1996, and rules made thereunder as amended from time to time. Wonderchef shall appoint a single arbitrator. Such arbitration shall be conducted in English and with the seat and venue of arbitration in Mumbai, India. The award rendered by the arbitrator shall be final, conclusive and binding, and shall be subject to forced execution in any court of competent jurisdiction. The award rendered by the arbitrator shall, in addition to dealing with the merits of the case, fix the costs of the arbitration and the party who shall bear the same. Subject to the aforementioned, the courts in Mumbai shall have exclusive jurisdiction over all matters arising pursuant to this Agreement. </li>
+<li>11. The Customer who wins the lucky draw according to these Terms is eligible for claiming the prize only once. The right to claim the prize by the Customer is for the sole benefit of that particular Customer, and the same is non-assignable. </li>
+<li>12. Any attempt(s) by a Customer to breach the conditions set forth herein shall be punished and Wonderchef also reserves the right to withdraw the said Offer against such Customer.</li>
+<li>13. These Terms shall be governed by the laws of India.</li>
+<li>14. Notwithstanding anything contained herein, the decision of Wonderchef shall be final and conclusively binding.</li>
+<li>15. Wonderchef reserves the right to alter the provisions of these Terms for any reason and at any point in time. Any such alterations shall be read part and parcel of these Terms, and shall form an integral part of it. It shall be the responsibility of the Customer to update itself of all the changes.</li>
+<li>16. In the event that any circumstance outside the reasonable control of Wonderchef prevents it from performing its obligations under these Terms, Wonderchef shall not be liable for any such failure to perform its obligations for the period in which such force majeure circumstances may continue.</li>
+<li>17. The Terms herein are subject to specific state laws and regulations over which Wonderchef has no control. </li>
+</ol>
+<p>&nbsp;</p>
+<h5><strong>Specific Terms</strong></h5>
+<ol start="14">
+<li>1. The winner of the lucky draw wins a trip to Paris in France. Wonderchef shall bear expenses of: economy class airfare in an airline chosen by Wonderchef, accommodation as chosen by Wonderchef, travel insurance as chosen by Wonderchef, standard local conveyance as chosen by Wonderchef, standard meals as chosen by Wonderchef and sight-seeing as per Wonderchef’s itinerary. Any other expenses incurred other than those mentioned above shall be borne by the winning Customer.
+</li><li>2. The Customer must have registered on Wonderchef’s website: <a href="https://www.wonderchef.com/">https://www.wonderchef.com/</a> at the time of participating in the lucky-draw and correctly answered the question posed by Wonderchef at the time of registration.
+</li><li>3. The Customer must have purchased a product sold by Wonderchef and such purchase must have been registered on: <a href="https://www.wonderchef.com/">www.wonderchef.com</a> during the Offer Period.  Such product that was purchased should not have been returned to Wonderchef. It is hereby clarified that gift cards and similar items would not be considered as products.
+</li><li>4. Any further information or amendment to the Offer may be provided by Wonderchef in the ‘Consumer Offer Registration’ section in Wonderchef’s website<a href="https://www.wonderchef.com/pages/consumer-offer-registration"> https://www.wonderchef.com/pages/consumer-offer-registration</a> , or sent via e-mail, or may be published in any other forms at the sole discretion of Wonderchef, without prior notice. Should there be any discrepancies or inconsistencies between such information or amendment and the Terms stipulated herein, the rules mentioned on the website shall take precedence.
+</li><li>5. The Customer has a place of residence within the territory of India.
+</li><li>6. The Customer is competent to contract. The Customer entering into and participating in the Offer, is not prohibited by Indian or international law.
+</li><li>7. There shall be a total of up to 3 (three) winners of the Offer, which shall be determined and announced at the sole discretion of Wonderchef.
+</li><li>8. The travel dates and itinerary for the aforementioned trip for the winners of the lucky draw shall be at the discretion of Wonderchef. No requests to change any aspect of such dates or itinerary shall be entertained by Wonderchef, except at Wonderchef’s sole discretion. If such requests to any change in itinerary is entertained by Wonderchef, all additional expenses relating to such change shall be borne by the winning Customer.
+</li><li>9. The winning Customer shall have a valid Indian passport that does not expire within 6 (six) months (or within such applicable timelines as provided by law) of the date of the flight to Paris as informed by Wonderchef.
+</li><li>10. The visuals, pictures, etc. shown in relation to this Offer or any related promotional material are only indicative and may not be actual place, itinerary etc. 
+</li><li>11. Any delay in acceptance of the Offer by the winning Customer beyond the stipulated time-period shall be construed to be a waiver of claim to the prize.
+</li><li>12. Wonderchef reserves its right to demand from the Customer, access to any receipt, bill, document or information issued by Wonderchef to the Customer as proof of purchase, residence, etc., and verify its authenticity for the purposes of the Offer subject to these Terms.
+</li><li>13. Wonderchef shall not be responsible for visa related applications and receipt of visa approval.
+</li><li>14. Subject to clause 9 of Specific Terms, after the winning Customer has confirmed its acceptance to the Offer, if the winning Customer wishes to cancel its acceptance of the Offer, the Customer shall do so prior to 60 (sixty) days from the date of the flight to Paris. 
+</li><li>15. In the event the winning Customer does not submit the required documents to Wonderchef within 10 (ten) days of request by Wonderchef, the prize of the Offer shall stand automatically forfeited / renounced.
+</li><li>16. In the event the winning Customer requests for a change in schedule or dates of the Trip, post the booking of the flight tickets by Wonderchef, the winning customer would either need to pay the differential amount of the tickets, if any, or forfeit/ renounce the prize. 
+</li><li>17. The winning Customer shall take part in promotional activities that Wonderchef may request in relation to this Offer. 
+</li><li>18. The winning Customer shall not make any public announcements or publications, directly or indirectly regarding the Offer, unless the winning Customer has acquired the prior written permission of Wonderchef.
+</li><li>19. Wonderchef shall not indemnify or compensate or pay any penalty whatsoever, if any, for the winning Customer’s dissatisfaction or issue with the trip to Paris or any such related matters.
+</li><li>20. The Customer agrees and Wonderchef shall assume no responsibility for and shall not be liable for any refund, personal injury, property damage or other loss, accident, delay, inconvenience or irregularity which may be caused by inter alia: (i) any defaults, wrongful or negligent acts or omissions of the Customer; (ii) any wrongful or negligent acts or omissions on the part of any other party or event, not under Wonderchef's control.
+</li><li>21. It is the Customer’s choice to avail of this Offer and customers to note that the products sold by Wonderchef would be available for purchase during the Offer Period, even if the customers choose to not take part in the Offer. 
+</li><li>22. These Terms enter into force on 10th September, 2022.</li>
+</ol>
+<p> </p>
+<h5><strong>Customer Representation and Warranties</strong></h5>
+<ol start="24">
+<li>By agreeing (or having deemed to agree and accept) to avail the benefits under the Offer, you hereby represent, warrant and covenant that: </li>
+</ol>
+<ul>
+<li>a. you are a person above 18 years of age, competent to enter into this contract with Wonderchef and further agree to transact in legally acceptable currency as per the laws in India; </li>
+<li>b. you have read and understood the terms herein and accept to be bound by the same unconditionally.</li>
+</ul>
+<ol start="25">
+<li>The Customer agrees to keep Wonderchef, its directors, employees and agents, indemnified from and against all losses caused due to inter alia any breach by the Customer of its representations and warranties provided, fraud, omission, commission, negligence or misconduct of/by the Customer.</li>
+</ol>
+<p> </p>
+<p> </p>
+<p> </p> </div>
+      </div>
+      <div class="clearfix"></div>
+     
+      
+   
+    </div>
+  </div>
+  </div>
+</div>
+
+
+{% schema %}
+
+{
+"name": "Page | banner",
+"class": "banner-template-section",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_banner",
+"label": "Show banner",
+"default": true
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image",
+"info": "1800 x 1000px recommended"
+},
+{
+"type": "richtext",
+"id": "pretext",
+"label": "Preheading"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "subtitle",
+"label": "Subheading"
+},
+{
+"type": "checkbox",
+"id": "caption_background",
+"label": "Display solid text background",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "caption_background_transparency",
+"label": "Enable background transparency"
+},
+{
+"type": "select",
+"id": "text_position",
+"label": "Text position",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "select",
+"id": "text_align",
+"label": "Text alignment",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "text",
+"id": "button1",
+"label": "First button label"
+},
+{
+"type": "url",
+"id": "button1_link",
+"label": "First button link"
+},
+{
+"type": "checkbox",
+"id": "button1_highlight",
+"label": "Highlight first button"
+},
+{
+"type": "text",
+"id": "button2",
+"label": "Second button label"
+},
+{
+"type": "url",
+"id": "button2_link",
+"label": "Second button link"
+},
+{
+"type": "checkbox",
+"id": "button2_highlight",
+"label": "Highlight second button"
+}
+],
+"default": {
+"settings": {
+"title": "Page Banner Template",
+"subtitle": "<p>Create an amazing page with a full-width banner</p>",
+"text_position": "center",
+"text_align": "center"
+}
+}
+}
+
+{% endschema %}
+<style>
+
+.tnc p{
+
+  font-size:15px;
+}
+
+  .tnc li{
+     font-size:15px;
+  }
+  h5, .h5 {
+    font-size: 1.5em!important;
+}
+  
+</style>
+
+
+
+

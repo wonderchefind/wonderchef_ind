@@ -1,0 +1,87 @@
+
+{% assign smartechConfig = shop.metafields.smartech_config.smartech_config %}
+
+<script type='text/javascript' src='//cdnt.netcoresmartech.com/smartechclient.js'></script>
+
+<script type='text/javascript'>
+  (function(SmartechApp){
+  SmartechApp.searchProduct = {
+    			Currency: Shopify.currency.active,
+    			items: []
+    		};
+        
+    		SmartechApp.pageTitle = '{{ page_title }}';
+  SmartechApp.template = '{{ template }}';
+  SmartechApp.pageUrl = '{{ canonical_url }}';
+  SmartechApp.config = JSON.parse(atob('{{ smartechConfig }}'));
+  SmartechApp.cartUrl = {
+                list: '{{ routes.cart_url }}',
+  add: '{{ routes.cart_add_url }}',
+  clear: '{{ routes.cart_clear_url }}',
+  update: '{{ routes.cart_change_url }}',
+  change: '{{ routes.cart_change_url }}',
+  }                                             
+    
+    		localStorage.setItem("SmartechApp", JSON.stringify(SmartechApp));{% if template contains 'search' %}
+    {% for item in search.results %}
+      {% if item.object_type == 'product' %}
+        SmartechApp.searchProduct.items.push({
+        SKUCode: '{{ item.variants[0].sku }}',
+        prid: parseInt('{{ item.variants[0].id }}'),
+        brand: '{{ item.type }}',
+        prname: '{{ item.title }}',
+        Price: parseFloat((parseInt('{{ item.price }}') / 100).toFixed(2)),
+        });
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+
+  smartech('create', SmartechApp.config.trackingid);
+  smartech('register', SmartechApp.config.siteid);
+
+  {% if customer %}
+    if (SmartechApp.config.identify == 'customer_mobile' || SmartechApp.config.identify == 'mobile') {
+          
+    var mobile = '';
+
+     // Url for the request 
+    var url = SmartechApp.config.smartech_app_url+'?customer={{ customer.id }}&shop={{ shop.domain }}';
+  
+    // Making our request 
+    fetch(url, { method: 'GET' })
+        .then(Result => Result.json())
+        .then(response => {
+  
+            mobile = response.phone;
+            SmartechApp.customer = {
+              id: '{{ customer.id }}',
+              email: '{{ customer.email }}',
+              phone: mobile,
+              city: '{{ customer.default_address.city }}',
+              firstName: '{{ customer.first_name }}',
+              lastName: '{{ customer.last_name }}',
+            };
+            smartech('identify', mobile);
+                  
+            })
+            .catch(errorMsg => { console.log(errorMsg); });
+
+           } else {
+             SmartechApp.customer = {
+             id: '{{ customer.id }}',
+             email: '{{ customer.email }}',
+             phone: '{{ customer.phone }}',
+             city: '{{ customer.default_address.city }}',
+             firstName: '{{ customer.first_name }}',
+             lastName: '{{ customer.last_name }}',
+        };
+           if (SmartechApp.config.identify == 'customer_id' || SmartechApp.config.identify == 'custid') {
+          smartech('identify', '{{ customer.id }}');
+        } else if (SmartechApp.config.identify == 'customer_email' || SmartechApp.config.identify == 'email') {
+          smartech('identify', '{{ customer.email }}');
+        } 
+            }
+    
+    {% endif %}
+  })(window.SmartechApp = {});
+</script>

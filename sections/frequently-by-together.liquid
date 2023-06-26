@@ -1,0 +1,290 @@
+{% if section.settings.dpl_grouped_product %}
+{% if product.metafields.halo['Grouped Sub Product'] %}
+
+{% include 'setting-spacing' %}
+{%- assign border = border | default: section.settings.border -%}
+
+{%- assign handle_metafields =  product.metafields.halo['Grouped Sub Product'] | split: ',' -%}
+{%- assign handle_size =  handle_metafields | size -%}
+
+<div class="frequently-bought-together-block {{ padding_top }} {{ padding_bottom }}">
+    {% if section.settings.title != blank %}
+        <div class="section-header">
+            <h2>{% render 'multilang' with section.settings.title %}</h2>
+        </div>
+    {% endif %}
+    <div class="frequently-bought-together-content {% if border %}borders{% endif %}">
+        {% form 'product', product, class: 'frequently-bought-together_form' %}
+        <div class="col-left">
+            <div class="products-grouped-info halo-row column-3"
+                data-slick='{
+                    "rows": 0,
+                    "dots": true,
+                    "arrows": false,
+                    "infinite": false,
+                    "adaptiveHeight": true,
+                    "slidesToShow": 2,
+                    "slidesToScroll": 2,
+                    "mobileFirst": true,
+                    "prevArrow": "<div class=&apos;slick-prev slick-arrow&apos;><svg id=&apos;arrow-left&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 370.814 370.814&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>", 
+                    "nextArrow": "<div class=&apos;slick-next slick-arrow&apos;><svg id=&apos;arrow-right&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 478.448 478.448&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>",
+                    "responsive": [
+                        {
+                            "breakpoint": 1100,
+                            "settings": {
+                                "slidesToScroll": 3,
+                                "slidesToShow": 3,
+                                "dots": false,
+                                "arrows": true
+                            }
+                        },
+                        {
+                            "breakpoint": 992,
+                            "settings": {
+                                "slidesToScroll": 4,
+                                "slidesToShow": 4
+                            }
+                        },
+                        {
+                            "breakpoint": 551,
+                            "settings": {
+                                "slidesToScroll": 3,
+                                "slidesToShow": 3
+                            }
+                        }
+                    ]
+                }'>
+                <div class="halo-item">
+                    <script>
+                        window.productVariants = window.productVariants || {};
+                        window.productVariants[{{ product.id }}] = {{ product.variants | json }};
+                    </script>
+                    <div class="product-card layout-2 fbt-item isChecked" data-bundle-product-id="{{ product.id }}" data-collections-related="/collections/{{collection.handle}}?view=related">
+                        {% assign variantCount = product.variants | size %}
+                        <div class="product-image">
+                            <a href="{{ product.url | within: collection }}" class="product-link">
+                                <img class="lazyload" src="{{ 'loading.svg' | asset_url }}"
+                                    data-src="{{ product.featured_image.src | product_img_url: 'compact' }}"
+                                    alt="{{ product.featured_image.alt | escape }}" data-image>
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h4 class="product-title fbt-checkbox fbt-checkbox-disable">
+                                {% assign title = product.title %}
+                                <input type="checkbox" id="fpt-product-{{ product.id }}" value="{{ title | split: '|' | first | handleize }}" checked autocomplete="off"/>
+                                <label class="title" for="fpt-product-{{ product.id }}">
+                                    <span>{{ title | split: '|' | first }}</span>
+                                </label>
+                            </h4>
+                            {% if product.variants[0].compare_at_price > product.variants[0].price %}
+                                <div class="product-price price--on-sale">
+                                    <span class="price-item price-item--regular">
+                                        {{ product.variants[0].compare_at_price | money }}
+                                    </span>
+                                    <span class="price-item price-item--sale" data-fbt-price-change data-price="{{ product.variants[0].price }}">
+                                        {{ product.variants[0].price | money }}
+                                    </span>
+                                </div>
+                            {% else %}
+                                <div class="product-price">
+                                    <span class="price-item price-item--regular" data-fbt-price-change data-price="{{ product.variants[0].price }}">
+                                        {{ product.variants[0].price | money }}
+                                    </span>
+                                    <span class="price-item price-item--sale" data-sale-price></span>
+                                </div>
+                            {% endif %}
+                            {% if product.available  %}  
+                                {% if variantCount > 1 %}
+                                    <div class="product-action">
+                                        <a class="btn product-btn fbt-toogle-options" href="javascript:void(0)">
+                                            {{ 'products.product.select_options' | t }}
+                                        </a>
+                                    </div>
+                                {% else %}
+                                    <input type="hidden" name="group_id" value="{{ product.variants[0].id }}" />
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        {% if variantCount > 1 %}
+                        <div class="product-variant">
+                            <a href="javascript:void(0)" class="close-options" tabindex="0"> &#215; </a>
+                            {% render 'product-variants-fbt' %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% for handle in handle_metafields limit:10 %}
+                    {%- assign a = handle | strip -%}
+                    {%- assign pro = all_products[a] -%}
+                    {% if pro.available %}
+                    <div class="halo-item">
+                        <div class="product-card layout-2 fbt-item isChecked" data-grouped-product-item data-bundle-product-id="{{ pro.id }}">
+                            {% assign variantCount = pro.variants | size %}
+                            <div class="product-image">
+                                <a href="{{ pro.url | within: collection }}" class="product-link">
+                                    <img class="lazyload" src="{{ 'loading.svg' | asset_url }}"
+                                        data-src="{{ pro.featured_image.src | product_img_url: 'compact' }}"
+                                        alt="{{ pro.featured_image.alt | escape }}" data-image>
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h4 class="product-title fbt-checkbox">
+                                    {% assign title = pro.title %}
+                                    <input type="checkbox" id="fpt-product-{{ pro.id }}" value="{{ title | split: '|' | first | handleize }}" checked autocomplete="off"/>
+                                    <label class="title" for="fpt-product-{{ pro.id }}">
+                                        <span>{{ title | split: '|' | first }}</span>
+                                    </label>
+                                </h4>
+                                {% if pro.variants[0].compare_at_price > pro.variants[0].price %}
+                                    <div class="product-price price--on-sale">
+                                        <span class="price-item price-item--regular">
+                                            {{ pro.variants[0].compare_at_price | money }}
+                                        </span>
+                                        <span class="price-item price-item--sale" data-fbt-price-change data-price="{{ pro.variants[0].price }}">
+                                            {{ pro.variants[0].price | money }}
+                                        </span>
+                                    </div>
+                                {% else %}
+                                    <div class="product-price">
+                                        <span class="price-item price-item--regular" data-fbt-price-change data-price="{{ pro.variants[0].price }}">
+                                            {{ pro.variants[0].price | money }}
+                                        </span>
+                                        <span class="price-item price-item--sale" data-sale-price></span>
+                                    </div>
+                                {% endif %}
+                                {% if pro.available  %}  
+                                    {% if variantCount > 1 %}
+                                          <div class="product-action">
+                                              <a class="btn product-btn fbt-toogle-options" href="javascript:void(0)">
+                                                  {{ 'products.product.select_options' | t }}
+                                              </a>
+                                          </div>
+                                    {% else %}
+                                            <input type="hidden" name="group_id" value="{{ pro.variants[0].id }}" />
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            {% if variantCount > 1 %}
+                                <div class="product-variant">
+                                    <a href="javascript:void(0)" class="close-options" tabindex="0"> &#215; </a>
+                                    {% render 'product-variants-fbt', product: pro %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-right">
+            {% if section.settings.enable_bundle_discount %}
+                {% assign bundle_discount_rate = product.metafields.halo['Bundle Discount Rate'] | plus:0 | divided_by:100.00 %}
+            {% endif %}
+            <div class="products-grouped-action">
+                <div class="total">
+                    <div class="label">
+                        {{ 'cart.label.total' | t }}:
+                    </div>
+                    {% if bundle_discount_rate > 0 %}
+                        <div class="product-price price--on-sale">
+                            <span class="price-item price-item--sale bundle-price" data-regular-price data-fbt-price-change="" data-discount-rate="{{ bundle_discount_rate }}">
+                                {% assign compensation  = 1 | minus: bundle_discount_rate %}
+                                {{ cart.total_price | times: compensation | money }}
+                            </span>
+                            <span class="price-item price-item--regular old-price">
+                                {{ cart.total_price | money }}
+                            </span>
+                        </div>
+                    {% else %}
+                    <div class="product-price">
+                        <span class="price-item price-item--regular price">
+                            {{ cart.total_price | money }}
+                        </span>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="btn-action">
+                    <button type="submit" name="add"
+                        aria-label="{{ 'products.product.add_to_cart' | t }}"
+                        class="btn btn--primary btn-bundle"
+                        data-bundle-addToCart>
+                        <span data-add-to-cart-text>{{ 'products.product.add_to_cart' | t }}</span>
+                        <span class="hide" data-loader>{% render 'icon-spinner' %}</span>
+                    </button>
+                </div>
+                {% if bundle_discount_rate > 0 %}
+                    <p class="discount-text">{% render 'multilang' with section.settings.bundle_discount_text %}</p>
+                {% endif %}
+            </div>
+        </div>
+        {% endform %}
+    </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% schema %}
+{
+    "name": "Product Bundle",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "dpl_grouped_product",
+            "label" : "Display Grouped Product",
+            "default" : true
+        },
+        {
+            "type": "checkbox",
+            "id": "border",
+            "label": "show border",
+            "default": true
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Frequently Bought Together"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_bundle_discount",
+            "label": "Enable Bundle Discount",
+            "default": true
+        },
+        {
+            "type": "textarea",
+            "id": "bundle_discount_text",
+            "label": "Bundle Discount Text",
+            "default": "Get a [discount]% discount buying these products together",
+            "info":"Use [discount] to show discount rate"
+        }
+    ]
+}
+{% endschema %}

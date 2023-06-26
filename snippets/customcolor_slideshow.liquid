@@ -1,0 +1,40 @@
+<style>
+    [data-section-id='{{ section.id }}'] .slide-heading {
+        color: {{ section.settings.color_heading }}
+    }
+
+    [data-section-id='{{ section.id }}'] .slide-text {
+        color: {{ section.settings.color_text }}
+    }
+
+    [data-section-id='{{ section.id }}'] .slide-button {
+        color: {{ section.settings.color_button_text }};
+        border-color: {{ section.settings.color_button_border }};
+        background-color: {{ section.settings.color_button_bg }};
+    }
+
+    [data-section-id='{{ section.id }}'] .slide-button:hover {
+        color: {{ section.settings.color_button_text_hover }};
+        border-color: {{ section.settings.color_button_border_hover }};
+        background-color: {{ section.settings.color_button_bg_hover }};
+    }
+
+    [data-section-id='{{ section.id }}'] .slick-arrow {
+        border-color: {{ section.settings.color_arrow_border }} !important;
+    }
+
+    [data-section-id='{{ section.id }}'] .slick-arrow svg {
+        fill: {{ section.settings.color_arrow }} !important;
+    }
+
+    [data-section-id='{{ section.id }}'] .slick-dots li button {
+        border-color: {{ section.settings.color_dot_border }};
+        background-color: {{ section.settings.color_dot }};
+    }
+
+    [data-section-id='{{ section.id }}'] .slick-dots li.slick-active button {
+        background-color: transparent;
+        border-color: {{ section.settings.color_dot_border }};
+    }
+
+</style>

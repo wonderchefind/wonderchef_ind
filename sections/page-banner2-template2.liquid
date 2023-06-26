@@ -1,0 +1,487 @@
+{% comment %}
+** Banner page - custom view **
+- Page template
+{% endcomment %}
+
+{% if section.settings.show_banner %}
+
+<section id="banner-{{section.id}}" class="banner page_banner">
+  {% if section.settings.image != nil %}
+  
+  <div class="hidden_xs">
+      {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+    </div>
+    <div class="visible_xs ">
+      
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/720X360_copy.jpg?v=1648734506" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+    </div>
+  {% else %}
+  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+  {% endif %}
+  {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+  {% if section.settings.button1_link != blank %}
+  <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+    {{ section.settings.button1 }}
+  </a>
+  {% endif %}
+  {% if section.settings.button2_link != blank %}
+  <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+    {{ section.settings.button2 }}
+  </a>
+  {% endif %}
+  {% endunless %}
+  {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+  <div class="position-{{ section.settings.text_position }} caption js-caption">
+    <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+      {% if section.settings.pretext != blank %}
+      <div class="pretext">
+        {{ section.settings.pretext }}
+      </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+      <h1 class="headline">
+        {{ section.settings.title }}
+      </h1>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <div class="subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      {% endif %}
+      {% if section.settings.button1 != blank %}
+      <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+        {{ section.settings.button1 }}
+      </a>
+      {% endif %}
+      {% if section.settings.button2 != blank %}
+      <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+        {{ section.settings.button2 }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endunless %}
+</section>
+
+{% endif %}
+
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content" style="margine:0px 0px;width:100%!important">
+  <div class="page clearfix">
+    {% unless section.settings.show_banner %}
+    <h1>
+      {{ page.title }}
+    </h1>
+    <div class="feature_divider"></div>
+    {% endunless %}
+   <div  class="static-page">
+    <div class ="tncwonderchef">
+      
+      <div class=" normaltext container">
+        
+  <div style="margin:0 auto;" class="pxFormGenerator" id="SCYUVnSrr8Q3SA9eVGXrGQ"></div>   
+      
+      </div>
+     
+      
+         
+    
+      <div class="clearfix"></div>
+      
+   
+    </div>
+      <div class="rte">
+	      	{{ page.content }}
+	    </div>
+  </div>
+  </div>
+</div>
+
+<style>
+  {% if section.settings.show_banner %}
+  .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
+    padding: 0;
+  }
+  @media only screen and (max-width: 479px) {
+    div.content {
+      padding-top: 0;
+    }
+  }
+  {% endif %}
+</style>
+
+
+{% schema %}
+
+{
+"name": "Page | banner",
+"class": "banner-template-section",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_banner",
+"label": "Show banner",
+"default": true
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image",
+"info": "1800 x 1000px recommended"
+},
+{
+"type": "richtext",
+"id": "pretext",
+"label": "Preheading"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "subtitle",
+"label": "Subheading"
+},
+{
+"type": "checkbox",
+"id": "caption_background",
+"label": "Display solid text background",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "caption_background_transparency",
+"label": "Enable background transparency"
+},
+{
+"type": "select",
+"id": "text_position",
+"label": "Text position",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "select",
+"id": "text_align",
+"label": "Text alignment",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "text",
+"id": "button1",
+"label": "First button label"
+},
+{
+"type": "url",
+"id": "button1_link",
+"label": "First button link"
+},
+{
+"type": "checkbox",
+"id": "button1_highlight",
+"label": "Highlight first button"
+},
+{
+"type": "text",
+"id": "button2",
+"label": "Second button label"
+},
+{
+"type": "url",
+"id": "button2_link",
+"label": "Second button link"
+},
+{
+"type": "checkbox",
+"id": "button2_highlight",
+"label": "Highlight second button"
+}
+],
+"default": {
+"settings": {
+"title": "Page Banner Template",
+"subtitle": "<p>Create an amazing page with a full-width banner</p>",
+"text_position": "center",
+"text_align": "center"
+}
+}
+}
+
+{% endschema %}
+
+<style>
+.grid-container {
+  display: grid;
+  grid: auto/ auto auto;
+  grid-gap: 10px;
+  
+  padding: 10px;
+}
+  .grid-container1 {
+  display: grid;
+  grid: auto/ auto auto auto auto auto;
+  grid-gap: 10px;
+  
+  padding: 10px;
+}
+
+.grid-container > div {
+  
+  text-align: center;
+  padding: 0px 0;
+  font-size: 20px;
+}
+</style>
+
+
+
+
+
+<style>
+  .imageone{
+    margin-bottom:15px;
+  }
+  button#reward_readmore {
+    text-transform: none;
+    background: transparent;
+    color: #2626fd;
+    font-size: 26px;
+    border: 0;
+    outline:none;
+  }
+  img.imageone.wpwork {
+    position: relative;
+    top: 22px;
+  }
+  .second_stagechanges p {
+    line-height: 30px;
+    margin: 0;
+}
+  h3.headingreward {
+    letter-spacing: -1.2px!important;
+    line-height: 40px!important;
+    margin-bottom: 20px!important;
+  }
+  .first_stagechanges p {
+    margin-bottom: 0;
+  }
+  .first_stagechanges p input#btAnimate {
+    min-height: 30px;
+    height: 30px;
+  }
+  .sixteen.column.normaltext.liability {
+    text-align: left;
+}
+  .wonderarrow{
+    margin:6px 0px 0px 6px;
+  }
+  .icon-up-arrow{
+    margin:6px 0px 0px 6px;
+    font-size:15px;
+  }
+  .second_stagechanges h3.headingreward.hidden_xs {
+    margin-bottom: 0px!important;
+}
+  .centerText{
+    text-align:center;
+  }#more {display: none;}
+  .tncwonderchef p {
+    font-size: 25px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+  .sixteen.column.normaltext.liability h3 {
+    color: #e33237;
+    margin: 30px 0 10px;
+    text-align: center;
+    text-transform: none;
+
+  }
+ 
+  .first_stagechanges p img.imageone {
+    margin: 0;
+    top: 4px;
+    width: 25px;
+  }
+  img.first_stage_image {
+    width: 80%;
+    float: right;
+  }
+  .padding_top.main.content {
+    padding: 0;
+}
+  img.imageone.firts-step-pointers {
+    width: 60px;
+  }
+ p img.imageone {
+    top: 6px;
+    position: relative;
+    margin: 0;
+}
+  .tncwonderchef h3 {
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 20px;
+    letter-spacing: 0;
+    color: #4e4e4e;
+  }
+  .tncwonderchef #divAnim input {
+    padding: 0 6px;
+    border: solid 1px #5d6bc4;
+    background: #606ec6;
+    color: #FFF;
+    cursor: pointer;
+    height: 40px;
+    line-height: 26px!important;
+    min-height: 40px;
+    font-weight: 600;
+  }
+  .centerText h1 {
+    color:#e31e24;
+    margin: 0px 0px 0px 0px;
+    text-transform: none;
+    font-size: 20px;
+    letter-spacing: -1.2px;
+    line-height: 10px;
+  }
+  .margintop{
+    margin-top:60px;
+  }
+  .margintop h3{
+    text-transform:none;
+  } 
+
+  .tncwonderchef .imageone{
+    width:5%;
+  }
+  .centerimg{
+    padding:40% 0px 0px 0px;
+  }
+  .righttoleft{
+    direction: rtl;
+  }
+  .mainbanner img {
+    width: 100%;
+  }
+  .pointer_rewards {
+    display: block;
+    clear: both;
+    padding-top: 40px;
+  }
+  img.imageone.wpwork.headingwonderpoint {
+    position: relative;
+    top: 18px;
+}
+  .pointer_rewards p {
+    margin-bottom: 26px;
+  }.termsplicy-reward {
+    background: #eaeaea;
+   
+  }
+
+  .termsplicy-reward h3 {
+    color: #e21e24;
+    text-transform: none;
+    
+  }
+  @media (max-width: 600px){
+    .tncwonderchef h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+    .tncwonderchef p {
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    .tncwonderchef span#divAnim {
+      display: inline-block;
+    }
+    .tncwonderchef #divAnim input{
+      min-height: 30px;
+      height: 30px;
+    }
+    .tncwonderchef .imageone {
+      width: 10%;
+    }
+    .margintop {
+      margin-top: 0;
+    }
+    .centerimg {
+      padding: 10% 0 0;
+    }
+    .tncwonderchef {
+      margin-top: 40px;
+    }
+    img.imageone.firts-step-pointers {
+    width: 50px;
+}.tncwonderchef h3 {
+    font-size: 30px;
+    text-align: center;
+    line-height: 34px!important;
+}
+    img.first_stage_image {
+    width: 100%;
+    float: none;
+}
+     h3.visible_xs.headingreward {
+    margin-bottom: 0px!important;
+}
+    .pointer_rewards p {
+    text-align: left;
+}
+  }
+  
+  @media (max-width: 600px){
+.tncwonderchef p {
+    font-size: 15px!important;
+    line-height: 15px!important;
+    text-align: center;
+}
+  }
+  h2{
+  font-size:14px!important; 
+  }
+
+  
+  .p2{
+    font-size: 14px!important;
+    font-weight: 500!important;
+    color: #ffffff!important;
+    line-height: 30px!important;
+    letter-spacing: -0.5px!important;
+    
+  }
+</style>

@@ -1,0 +1,36 @@
+<div class="wishlist_table_wrapper">
+    <table class="wishlist_table" data-wishlist-content>
+        <thead>
+            <tr class="wishlist_row">
+                <th class="wishlist_col wishlist_image text-center">
+                    <span class="text">{{ 'wishlist.general.product_image' | t }}</span>
+                </th>
+                <th class="wishlist_col wishlist_name text-left">
+                    <span class="text">{{ 'wishlist.general.product_name' | t }}</span>
+                </th>
+                <th class="wishlist_col wishlist_price text-center">
+                    <span class="text">{{ 'wishlist.general.unit_price' | t }}</span>
+                </th>
+                <th class="wishlist_col wishlist_remove text-center">
+                    <span class="text">{{ 'wishlist.general.remove' | t }}</span>
+                </th>
+                <th class="wishlist_col wishlist_add text-center">
+                    <span class="text">{{ 'products.product.add_to_cart' | t }}</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody data-wishlist-container>
+        </tbody>
+    </table>
+</div>
+<div class="wishlist-footer">
+    <div class="button-share">
+        <a class="share" href="mailto:?subject= {{ page.title | strip_html }}&amp;body=">
+            <i class="far fa-envelope"></i>
+            <span>{{ 'wishlist.general.share_wishlist' | t }}</span>
+        </a>
+    </div>
+    <div class="wishlist_pagination">
+        <ul id="wishlist_pagination" class="pagination"></ul>
+    </div>
+</div>

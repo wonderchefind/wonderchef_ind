@@ -1,0 +1,27 @@
+<ul class="dropdown-category-list navPages-level-2">
+    {% for link_child_item in linklists[link].links %}
+        <li class="navPage-subMenu-item">
+            {% if linklists[link_child_item.handle] == empty %}
+                <p class="navPages-action-wrapper">
+                    <a href="{{ link_child_item.url }}" aria-label="link">{{ link_child_item.title }}</a>
+                </p>
+            {% else %}
+                <p class="navPages-action-wrapper">
+                    <a class="navPages-action navPage-subMenu-action has-subMenu" href="{{ link_child_item.url }}" aria-label="link">{{ link_child_item.title }}</a>
+                    <span class="icon-arrow">
+                        {% render 'icon-chevron-right' %}
+                    </span>
+                </p>
+                <ul class="dropdown-category-list navPages-level-3">
+                    {% for n in linklists[link_child_item.handle].links %}
+                        <li class="navPage-subMenu-item">
+                            <p class="navPages-action-wrapper">
+                                <a href="{{ n.url }}" aria-label="link">{{ n.title }}</a>
+                            </p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

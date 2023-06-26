@@ -1,0 +1,195 @@
+<!--wonderpoints  -->
+{% unless template contains 'cart'or template contains 'page' or template contains 'account' or template contains 'login'  or template contains 'register'   %} 
+  <div class="wquiz_button_holder">
+    <a id="apphub_wonderquiz_button" style="display:none;color:#fff" >Play WonderQuiz</a>
+  </div>
+  <div id="wonderquiz_modal" class="cust_modal page-contact">
+    <div id="contact_form" class="cust_modal-content wquiz_game_container">
+      <span  class="cust_modal_close wquiz_modal_close">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 384.97 384.97" style="enable-background:new 0 0 384.97 384.97;" xml:space="preserve">
+          <g><g id="Cancel">
+            <path d="M192.485,0C86.173,0,0,86.173,0,192.485c0,106.3,86.173,192.485,192.485,192.485c106.3,0,192.485-86.173,192.485-192.485
+                     S298.785,0,192.485,0z M192.485,360.909c-93.018,0-168.424-75.406-168.424-168.424S99.467,24.061,192.485,24.061
+                     s168.424,75.406,168.424,168.424S285.503,360.909,192.485,360.909z"/>
+            <path d="M273.437,255.897l-63.376-63.388l63.015-62.497c4.752-4.704,4.752-12.319,0-17.011c-4.74-4.692-12.439-4.692-17.179,0
+                     l-62.931,62.413l-63.869-63.881c-4.74-4.764-12.439-4.764-17.179,0c-4.74,4.752-4.74,12.475,0,17.227l63.773,63.785
+                     l-64.134,63.604c-4.74,4.704-4.74,12.319,0,17.011c4.74,4.704,12.439,4.704,17.191,0l64.049-63.52l63.472,63.472
+                     c4.74,4.764,12.439,4.764,17.179,0C278.177,268.372,278.177,260.661,273.437,255.897z"/></g><g></g><g></g><g></g><g></g><g></g><g></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>
+      </span>
+      <h3 style="text-decoration:underline;text-align: center;color:#fff; font-size: 24px;text-transform: uppercase; font-weight: bold;">WONDERQUIZ</h3>
+      <div class="cust_modal_segment">
+        <p id="wonder_question_holder"></p>
+        <div id="wquiz_validation"></div>
+        <div id="wquiz_verify_answer" ></div>
+      </div>
+    </div>
+  </div>
+
+  {% include 'wondertnc-product'%}
+  <style>
+    #wquiz_verify_answer{
+      color:#fff!important;
+      margin-left:15px;
+      margin-right:15px;
+    }
+    .wquiz_modal_close{
+      color: #fff;
+      right: 2px;
+      font-size: 22px;
+      letter-spacing: 0;
+      border: none!important;
+      background: #fff;
+      width: 40px;
+      height: 40px;
+      padding: 2px;
+      position: absolute;
+      z-index: 9;
+      top: 2px;
+    }
+    div#allfields {
+      color: #000;
+    }.AnswerLabel:focus {
+      background: #e31e24;
+      border-color: #881216;
+    }.pointth strong {
+      color: goldenrod;
+    }
+    .submit-button.sixteen.columns {
+      text-align: center;
+    }.cust_modal_segment{
+      background: rgba(0, 0, 0, 0.62);
+    }
+    div#allfields input:active{
+      color:#000;
+    }
+    p#wonder_question_holder {
+
+      padding: 10px;
+      counter-reset: my-sec-counter;
+    }
+    .AnswerLabel::before {
+      content: "" counter(my-sec-counter) ". ";
+      counter-increment: my-sec-counter;
+    }
+    .QuestionLabel {
+      font-size: 25px!important;
+      line-height: 30px!important;
+      margin-bottom: 20px;
+    }
+    .AnswerLabel {
+      padding: 20px;
+      border: 1px solid #fff;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .wquiz_button_holder{
+      position: fixed;
+      z-index: 111;
+      bottom: 0;
+      background: #e63439;
+      color: #fff;
+      padding: 10px 10px;
+      font-size: 14px;
+      line-height: 18px;
+      right: 0;
+      border-radius: 6px 6px 0px 0px;
+      left: 5%;
+      width: 150px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow:0 2px 10px #888;
+    }
+    .wquiz_options{
+      font-size: 14px;
+      padding: 15px;
+      padding-left:5px;
+    }
+
+
+    .wonderpointsforuse a{color:#e31e24 !important}
+    .rewardhoverpoints{
+      background: #fff;
+      color: #000;
+      font-size: 18px;
+      padding:10px;
+      display:none;
+    }
+    .cust_modal-content {
+      width: 600px!important;
+      height: 600px!important;
+      min-height: 300px!important;
+      max-height: 600px!important;
+      top: 20%;
+      position: relative;
+      border: 20px solid #fff;
+      border-radius: 4px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.175);
+      transition: all .5s ease-in-out;
+      transform: scale(1);
+      background-image: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Edited1.jpeg?50042)!important;
+    }
+
+
+    div#leadformbox {
+      padding: 10px 40px;
+    }
+    .cust_modal_segment .thanksWonder {
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 24px;
+    }
+    .wonderth{
+      padding-bottom :17px;
+      color: #fff;
+    }
+    .pointth{
+      font-size:18px;
+    }
+    @media (max-width: 768px) {
+      .wquiz_button_holder {
+        width: 46%;
+        transform: rotate(-90deg);
+        left: 75%;
+        bottom: 16%;
+        font-size: 14px;
+        line-height: 4px;
+        padding: 14px 10px 22px;
+      }
+      .pointth{
+        font-size:14px;
+      }div#leadformbox {
+        padding: 10px 10px;
+      }
+      .cust_modal-content {
+        width: 318px!important;
+        top: 10%!important;
+        border-width: 4px;
+        height: 520px!important;
+        padding:2px;
+      }
+      .QuestionLabel{
+        font-size: 16px!important;
+        line-height: 20px!important;
+      }
+      .AnswerLabel {
+        padding: 10px 10px;    font-size: 14px;
+      }
+    }
+  </style>
+{% endunless %} 
+
+<!--=================Reward ====================-->
+
+<link rel="stylesheet" href="https://rewards.wonderchef.com/shopify/reward_styles.css"/>
+<script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script type="text/javascript" async src="https://platform.twitter.com/widgets.js" ></script>
+<script type="text/javascript" src="https://rewards.wonderchef.com/shopify/reward_globals.js?v=2" ></script>
+<script type="text/javascript" src="https://rewards.wonderchef.com/shopify/product_share.js?v=2"></script>
+<script type="text/javascript" src="https://rewards.wonderchef.com/shopify/wonderquiz.js?v=1"></script>
+
+<!--=================Reward End here ====================-->
+
+<!--wonderpoints  -->

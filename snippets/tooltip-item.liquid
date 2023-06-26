@@ -1,0 +1,42 @@
+
+<li class="tooltip-item" id="tooltip{{ block_number }}-{{ block_id }}">
+  <div class="toggleBtn tooltipHitCount" data-count="0">
+    <a href="{{ block_section_url }}" target="_blank" class="tooltip-button"
+            type="button" 
+            value="{{ block_id }}"
+            aria-describedby="tooltip-overlay-{{ block_id }}" 
+            aria-label="{{ forloop_index }}, {{ block_section_title }}" 
+            aria-expanded="true" 
+            {{ block_attribute }} >
+      <strong class="tooltip-title" role="none">{{ block_section_title }}</strong>
+    </a>
+    <aside  class="tooltip-overlay" id="tooltip-overlay-{{ block_id }}" data-tooltip-overlay>
+      <strong class="tooltip-header"><a href="{{ block_section_url }}" target="_blank">{{ block_section_title }}</a></strong>
+    </aside>
+  </div>
+</li>
+
+<script>
+
+  if (screen.width <= 991) { 
+    $(document).ready(function(){ 
+      $(".tooltipHitCount").click(function(event){ 
+        let clickCount =  $(this).attr("data-count");
+        if(clickCount == 0)
+        {
+          $(this).attr("data-count", "1");
+          event.preventDefault();
+        }
+        else
+        {
+          var href = $(this).find('a').attr('href');
+			// window.location.href = href;
+        }
+      });                    
+    });  
+  }
+
+
+
+
+</script>  

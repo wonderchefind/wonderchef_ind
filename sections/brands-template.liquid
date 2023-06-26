@@ -1,0 +1,58 @@
+
+<ul class="azbrandstable">
+    <li class="all-brand">
+        <a class="active readonly" href="javascript:void(0)">All</a>
+    </li>
+    
+    {% assign array = "A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|#" | split: "|" %}
+
+    {% for item in array %} 
+    <li class="vendor-letter">
+        <a href="javascript:void(0)">
+            {{ item }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>  
+
+<div class="brands-list" data-brands-list>
+    {% assign curr = "" %} 
+    
+    {% for vendor in shop.vendors %}
+    {% assign first = vendor | strip_html | downcase | truncate: 1, '' %}
+    
+    <div class="brand{% unless first == curr %} brand-{{ first }}{% endunless %}"{% if first == curr %} style="display:none"{% endif %}>
+        <div class="wrapper">
+            {% unless first == curr %}   
+            <div class="azbrands-title">
+                {% if first == '1' or first == '2' or first == '3' or first == '4' or first == '5' or first == '6' or first == '7' or first == '8' or first == '9' or first == '0' %}
+                <h3>#</h3>
+                {% else %}
+                <h3>
+                    {{ first }}
+                </h3>
+                {% endif %}
+            </div>
+            {% endunless %}
+            
+            {% assign curr = first %}
+            <ul class='brand-grid'>
+                <li class='brand-item'>
+                    {{ vendor | link_to_vendor }}
+                </li>      
+            </ul>
+        </div>
+    </div>
+    {% endfor %}  
+</div>
+
+
+{% schema %}
+    {
+        "name": "Brands Page",
+        "settings": []
+    }
+{% endschema %}
+
+
+

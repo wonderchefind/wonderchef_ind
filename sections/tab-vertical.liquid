@@ -1,0 +1,170 @@
+{% if section.settings.display_product_detail_description or section.settings.display_product_reviews %}
+
+    {% if section.settings.display_product_detail_description == false and section.settings.display_product_reviews == true %}
+        {% assign tab2_active = true %}
+    {% endif %}
+    <div class="productView-description">
+        <div class="tab-vertical">
+            {% if section.settings.display_product_detail_description %}
+                <div class="toggle-title">
+                    <a class="toggleLink" data-toggle="collapse" href="#tab1_mobile">
+                        <span class="page-heading">{% render 'multilang' with section.settings.product_description_title %}</span>
+                        {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                <div class="toggle-content toggle-description collapse show" id="tab1_mobile">
+                    {% assign des = product.description %}
+                    <div>
+                        {{ des }}
+                    </div>
+                    <div class="description_showmore">
+                        <div class="showmore show">
+                            <span class="btn btn--secondary" {% if settings.enable_multilang %}data-translate="general.filters.show_more"{% endif %}>{{ 'general.filters.show_more' | t }}</span>
+                        </div>
+                        <div class="showless hide">
+                            <span class="btn btn--secondary" {% if settings.enable_multilang %}data-translate="general.filters.show_less"{% endif %}>{{ 'general.filters.show_less' | t }}</span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% if section.settings.display_product_reviews %}
+                <div class="toggle-title toggle_reviews">
+                    <a class="toggleLink collapsed" data-toggle="collapse" href="#tab2_mobile">
+                        <span class="page-heading">{% render 'multilang' with section.settings.product_review_title %}</span>
+                        {% render 'icon-chevron-up' %}
+                    </a>
+                </div>
+                <div class="toggle-content collapse" id="tab2_mobile">
+                  {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, product: product %}
+                    <div id="shopify-product-reviews" data-id="{{product.id}}">
+                        {{ product.metafields.spr.reviews }}
+                    </div>
+                </div>
+            {% endif %}
+            {% for block in section.blocks %}
+                {% if block.settings.type_tab == 'custom' %}
+                    {% assign content = block.settings.product_tab_content_2 %}
+                    {% if product.metafields.halo[content] != blank %}
+                        <div class="toggle-title">
+                            <a class="toggleLink collapsed" data-toggle="collapse" href="#{{ block.id }}_mobile">
+                                <span class="page-heading">{% render 'multilang' with block.settings.product_tab_title %}</span>
+                                {% render 'icon-chevron-up' %}
+                            </a>
+                        </div>
+                        <div class="toggle-content collapse" id="{{ block.id }}_mobile">
+                            {% assign des2 = product.metafields.halo[content] %}
+                            <div>
+                                {{ des2 }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% else %}
+                    <div class="toggle-title">
+                        <a class="toggleLink collapsed" data-toggle="collapse" href="#{{ block.id }}_mobile">
+                            <span class="page-heading">{% render 'multilang' with block.settings.product_tab_title %}</span>
+                            {% render 'icon-chevron-up' %}
+                        </a>
+                    </div>
+                    <div class="toggle-content collapse" id="{{ block.id }}_mobile">
+                        {% assign des3 = block.settings.product_tab_content %}
+                        <div>
+                            {{ des3 }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
+
+
+{% schema %}
+{
+    "name": "Product Tabs",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Product Tab Vertical"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_detail_description",
+            "label": "Enable Product Description?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "product_description_title",
+            "label": "Product Description Title",
+            "default": "Description",
+            "info": "This is the CarosTheme's default tab"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_reviews",
+            "label": "Enable Product Reviews?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "product_review_title",
+            "label": "Product Reviews Title",
+            "default": "Customer Reviews",
+            "info": "This is the CarosTheme's default tab"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_shipping_returns",
+            "label": "Enable Shipping Returns?",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product_tab",
+            "name": "Another Product Tab",
+            "settings": [
+                {
+                    "type": "header",
+                    "content": "Product Tab"
+                },
+                {
+                    "type": "select",
+                    "id": "type_tab",
+                    "label": "Type Tab",
+                    "default": "all",
+                    "options": [
+                        {
+                            "value": "all",
+                            "label": "Show For All Product"
+                        },
+                        {
+                            "value": "custom",
+                            "label": "Only Show For This Product"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "product_tab_title",
+                    "label": "Product Tab Title",
+                    "default": "Product Tab"
+                },
+                {
+                    "type": "html",
+                    "id": "product_tab_content",
+                    "label": "Product Tab Content",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>",
+                    "info": "Show For All Product"
+                },
+                {
+                    "type": "text",
+                    "id": "product_tab_content_2",
+                    "label": "Product Tab Content 2",
+                    "info": "Only Show For This Product - Please install app Metafields Guru and setting like Document"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

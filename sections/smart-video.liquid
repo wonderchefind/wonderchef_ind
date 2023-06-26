@@ -1,0 +1,206 @@
+<header class="hero1" style="transform: scale(1);">
+  <div class="hero1__top">
+    <div class="filler filler-white"></div>
+    <div class="hero1__illustration">
+      <div class="filler filler-white"></div>
+      <div class="hero1-icon"></div>
+      <div class="filler filler-white"></div>
+    </div>
+    <div class="filler filler-white"></div>
+  </div>
+  
+</header>
+
+<div class="trailer">
+  <div class="video-wrapper"> {% comment %} 
+ <video  autoplay muted  loop controls style="width:100%;">
+  <source src="https://cdn.shopify.com/videos/c/o/v/78e450cc9b5742b8aac99915878563e1.mp4" type="video/mp4">
+
+</video>
+  {% endcomment %}
+<img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/video-2.gif?v=1684909812">
+  
+  </div>
+</div>
+
+<main class="content">
+ <!-- <section class="section"><h2>Really</h2></section>
+  <section class="section"><h2>sweet</h2></section>
+  <section class="section"><h2>scroll</h2></section>
+  <section class="section">
+    <h2>effect.</h2>
+    <p>Inspired by Framer's homepage.</p>
+  </section>-->
+</main>
+
+<style>
+
+.hero1 {
+ width:100%;
+  
+  position: fixed;
+  z-index: 2000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.hero1__top {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.hero1__bottom {
+  width: 100%;
+  background: rgb(0,28,38);
+background: linear-gradient(90deg, rgba(0,28,38,1) 0%, rgba(0,57,84,1) 50%, rgba(0,28,38,1) 100%);
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: center;
+}
+.hero1__top .filler {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.filler-white {
+   background: rgb(0,28,38);
+background: linear-gradient(90deg, rgba(0,28,38,1) 0%, rgba(0,57,84,1) 50%, rgba(0,28,38,1) 100%);
+}
+.hero1__illustration {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.hero1__illustration .filler:first-child {
+  padding-top: 0px;
+}
+.hero1-icon {
+  width: 400px;
+  height: 600px;
+  
+  background: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/video_layer_3.png?v=1684912725) no-repeat;
+}
+
+.hero1 h1 {
+  font-size: 120px;
+  font-weight: lighter;
+  margin: 0;
+  opacity: 1;
+}
+
+.trailer {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  z-index: var(--trailer-z-index);
+  background: rgb(0,28,38);
+background: linear-gradient(90deg, rgba(0,28,38,1) 0%, rgba(0,57,84,1) 50%, rgba(0,28,38,1) 100%);
+}
+.video-wrapper {
+  
+  width: 100%;
+  position: initial;
+  top: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+}
+.video {
+  height: 100vh;
+  width: 100%;
+  background: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/video-2.gif?v=1684909812) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.past-threshold .trailer {
+  position: absolute;
+  height: 200vh;
+}
+.past-threshold .video-wrapper {
+  margin-top: 100vh;
+}
+
+.content {
+  /* pushs content below header hero1 & trailer (should equal trailer height after threshold) */
+  padding-top: 200vh;
+}
+.section {
+  height: 75vh;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+.section:nth-child(2n) {
+   background: rgb(0,28,38);
+background: linear-gradient(90deg, rgba(0,28,38,1) 0%, rgba(0,57,84,1) 50%, rgba(0,28,38,1) 100%);
+  color: #fff;
+  font-weight: bold;
+}
+.section h2 {
+  font-size: 80px;
+  font-weight: lighter;
+}
+
+@media (max-width: 1000px) {
+  .hero1 h1 {
+    font-size: 90px;
+  }
+}
+@media (max-width: 760px) {
+  .hero1 h1 {
+    font-size: 60px;
+  }
+}
+@media (max-width: 510px) {
+  .hero1 h1 {
+    font-size: 40px;
+  }
+}
+
+	</style>
+<script>
+	const hero1 = document.querySelector('.hero1');
+
+// Y value at which trailer switches to absolute positioning and scrolls up
+const threshold = window.innerHeight;
+
+window.addEventListener('scroll', function() {
+  // scale up hero1 section until scale is 20x
+  // and fade out hero1 title
+  let scale = 1 + window.scrollY / 25;
+  let opacity = 100 - (window.scrollY * 1.5);
+  if (scale < 20) {
+    hero1.style.transform = `scale(${scale})`;
+    
+  }
+  
+  // toggle threshold class at threshold value
+  window.scrollY > threshold ?
+    document.body.classList.add('past-threshold') :
+    document.body.classList.remove('past-threshold');
+});
+</script>
+	

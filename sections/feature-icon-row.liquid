@@ -1,0 +1,161 @@
+{% include 'setting-spacing' %}
+
+{% if section.settings.custom_color %}
+    {% render 'customcolor_feature-icon-row' %}
+{% endif %}
+
+<div class="halo-section halo-feature-icon-section {{ padding_top }} {{ padding_bottom }}" data-section-id="{{ section.id }}">
+    <div class="container">
+        {% if section.blocks.size > 0 %}
+            <div class="halo-row halo-row-icon text-center">
+                {% for block in section.blocks %}
+                    <div class="halo-item" {{ block.shopify_attributes }}>
+                        <div class="halo-feature-icon {% if section.settings.icon_layout == 'layout 2' %}layout-2{% endif %}">
+                            {% if block.settings.icon != blank %}
+                                <div class="icon">
+                                    {{ block.settings.icon }}
+                                </div>
+                            {% endif %}
+                            <div class="content">
+                                {% if block.settings.title != blank %}
+                                    <h3 class="title">{% render 'multilang' with block.settings.title %}</h3>
+                                {% endif %}
+                                {% if block.settings.description != blank %}
+                                    <p class="description">{% render 'multilang' with block.settings.description %}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Policy Block 1",
+    "max_blocks": 4,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Item Style"
+        },
+        {
+            "type": "select",
+            "id": "icon_layout",
+            "label": "Icon Layout",
+            "default": "layout 2",
+            "options": [
+                {
+                    "value": "layout 1",
+                    "label": "Layout 1"
+                },
+                {
+                    "value": "layout 2",
+                    "label": "Layout 2"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Custom Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "custom_color",
+            "label": "Turn on custom color",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_icon",
+            "label": "Icon Color"
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "Heading Color"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Description Color"
+        },
+        {
+            "type": "color",
+            "id": "color_background",
+            "label": "Background Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "icon_text",
+            "name": "Icon with text",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "icon",
+                    "label": "Icon",
+                    "default": "<i class=\'fas fa-info-circle\'></i>",
+                    "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Heading"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description",
+                    "default": "Dinterdum pretium an dapboe dan mauris lorem de condimentus."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Policy Block 1",
+            "category": "Policy Block",
+            "blocks": [
+                {
+                    "type": "icon_text"
+                },
+                {
+                    "type": "icon_text"
+                },
+                {
+                    "type": "icon_text"
+                },
+                {
+                    "type": "icon_text"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

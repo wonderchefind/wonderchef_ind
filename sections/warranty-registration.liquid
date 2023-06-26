@@ -1,0 +1,33 @@
+<div class="static-page sixteen columns">
+  {% include 'page-multi-column', content: page.content %}
+  <div class="before-form-content">
+    <h3>{{ section.settings.warranty_header }}</h3>
+    <p>{{ section.settings.warranty_text }}</p>
+  </div>
+</div>
+<div class="static-page sixteen columns">
+  <div class="eight column"> 
+    <div style="margin:0 auto;" class="pxFormGenerator" id="RHotj9qUuYHyOYSLhiimBA"></div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Warranty Registration",
+    "settings": [
+	  {
+      "type": "header",
+      "content": "Banner image"
+      },
+      {
+        "type": "text",
+        "id": "warranty_header",
+        "label": "Page Header"
+      },
+	  {
+        "type": "richtext",
+        "id": "warranty_text",
+        "label": "Page Header"
+      }
+    ]
+  }
+{% endschema %}

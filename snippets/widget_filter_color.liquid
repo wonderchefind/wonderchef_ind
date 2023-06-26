@@ -1,0 +1,39 @@
+<div class="sidebarBlock sidebarBlock_filter">
+    <h5 class="sidebarBlock-heading" data-toggle="collapse" data-target="#{{ block.id }}">
+        <span class="arrow">{% render 'icon-chevron-up' %}</span>
+        <span>{{ block.settings.title }}</span>
+        <a href="javascript:void(0)" class="clear text-hover" {% if has_refined == false %}style="display:none"{% endif %}>
+            {{ 'collections.filters.clear' | t }}
+        </a>
+    </h5>
+    <div class="sidebarBlock-content filter-color collapse show" id="{{ block.id }}">
+        <ul class="list-tags content">
+            {% for i in (1..20) %}
+                {% capture color_text %}color_text_{{ i }}{% endcapture %}
+                {% capture color_img %}color_img_{{ i }}{% endcapture %}
+
+                {% if color_img != blank %}
+                    {%- assign img_url = block.settings[color_img] | img_url: '30x30' -%}
+                {% endif %}
+
+                {% if color_text != blank %}
+                    {% assign tag = block.settings[color_text] | strip %}
+                    {% if collection.tags contains tag %} 
+                        <li>
+                            {% assign tag_value = tag | handleize %}
+                            <input type="checkbox" value="{{ tag_value }}" {% if current_tags contains tag %}checked{% endif %}/>
+                            {% if  block.settings[color_img] != blank %}
+                                <a href="javascript:void(0)" {% if current_tags contains tag %}class="active"{% endif %} title="{{tag}}">
+                                    <img src="{{ img_url }}" alt="">
+                                </a>
+                            {% else %}
+                                <a href="javascript:void(0)" {% if current_tags contains tag %}class="active"{% endif %} title="{{tag}}" style="background-color: {{ block.settings[color_text] }}">
+                                </a>
+                            {% endif %}
+                        </li>
+                    {% endif %}
+                {% endif %}      
+            {% endfor %}
+        </ul>
+    </div>
+</div>

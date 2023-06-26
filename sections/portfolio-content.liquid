@@ -1,0 +1,326 @@
+{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
+{%- assign fontsize_tab = fontsize_tab | default: section.settings.fontsize_tab -%}
+<div class="portfolio-tab
+    {% case title_layout %}
+        {% when 'left' %} tab-left
+        {% when 'center' %} tab-center
+        {% when 'right' %} tab-right
+    {% endcase %}">
+<ul class="nav nav-tabs {% if fontsize_tab == 'large' %}nav-tabs-large{% endif %}" role="tablist">
+    {% for block in section.blocks %}
+        <li class="nav-item tab">
+            <a href="#{{ block.id }}" class="nav-link {% if forloop.first %}active show{% endif %}" role="tab" data-toggle="tab" aria-controls="{{ block.id }}">{{ block.settings.portfolio_tab }}</a>
+        </li>
+    {% endfor %}
+</ul>
+<div class="tab-content">
+    {% for block in section.blocks %}
+        <div id="{{ block.id }}" class="tab-pane fade {% if forloop.first %}active show{% endif %}" role="tabpanel">
+            <div class="portfolio-col column-3">
+                {% for i in (1..12) %}
+                    {% capture cap_portfolio_image %}portfolio_image_{{ i }}{% endcapture %}
+                    {% assign portfolio_image = block.settings[cap_portfolio_image] %}
+                    {% capture cap_portfolio_title %}portfolio_title_{{ i }}{% endcapture %}
+                    {% assign portfolio_title = block.settings[cap_portfolio_title] %}
+                    {% capture cap_portfolio_des %}portfolio_des_{{ i }}{% endcapture %}
+                    {% assign portfolio_des = block.settings[cap_portfolio_des] %}
+                    {% if portfolio_image != blank %}
+                    <div class="item">
+                        <div class="portfolio_wrapper" data-fancybox="images-{{ block.id }}" href="{{ portfolio_image | img_url: 'original' }}">
+                            <div class="image">
+                                <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ portfolio_image | img_url: '370x' }}" alt="" data-image>
+                            </div>
+                            <div class="icon-wrapper">
+                                <svg viewBox="0 0 551.13 551.13" class="icon icon-zoom"><path d="m223.896 103.337h-34.446v86.114h-86.114v34.446h86.114v86.114h34.446v-86.114h86.114v-34.446h-86.114z"/><path d="m364.345 339.991c30.506-36.023 49.003-82.523 49.003-133.317 0-113.967-92.708-206.674-206.674-206.674s-206.674 92.707-206.674 206.674 92.707 206.674 206.674 206.674c50.794 0 97.294-18.497 133.317-49.003l186.785 186.785 24.354-24.354s-186.785-186.785-186.785-186.785zm-157.671 38.911c-94.961 0-172.228-77.267-172.228-172.228s77.267-172.228 172.228-172.228 172.228 77.267 172.228 172.228-77.267 172.228-172.228 172.228z"/></svg>
+                            </div>
+                            <div class="content">
+                                <h3 class="title">{{ portfolio_title }}</h3>
+                                <p class="description">{{ portfolio_des }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+</div>
+
+{% schema %}
+{
+    "name": "Portfolio Content",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Tabs Style"
+        },
+        {
+            "type": "select",
+            "id": "fontsize_tab",
+            "label": "Font size tabs",
+            "default": "large",
+            "options": [
+                {
+                    "value": "large",
+                    "label": "Large"
+                },
+                {
+                    "value": "medium",
+                    "label": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "select",
+            "id": "title_layout",
+            "label": "Layout",
+            "default": "left",
+            "options": [
+                {
+                    "value": "left",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "right",
+                    "label": "Right"
+                }
+            ]
+        }
+    ],
+    "blocks": [
+        {
+            "type": "portfolio_item",
+            "name": "Portfolio Tab",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "portfolio_tab",
+                    "label": "Title",
+                    "default": "portfolio tab",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_1",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_1",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_1",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_2",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_2",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_2",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_3",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_3",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_3",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_4",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_4",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_4",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_5",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_5",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_5",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_6",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_6",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_6",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_7",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_7",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_7",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_8",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_8",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_8",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_9",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_9",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_9",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_10",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_10",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_10",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_11",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_11",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_11",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand",
+                    "info"  : "=============="
+                },
+                {
+                    "type": "image_picker",
+                    "id": "portfolio_image_12",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_title_12",
+                    "label": "Title",
+                    "default": "Portfolio"
+                },
+                {
+                    "type": "text",
+                    "id": "portfolio_des_12",
+                    "label": "Description",
+                    "default": "Use overlay text to give your customers insight into your brand"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

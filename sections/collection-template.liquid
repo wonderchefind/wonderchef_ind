@@ -1,0 +1,225 @@
+{% case section.settings.column %}
+    {% when 1 %}
+        {%- assign column = '1' -%}
+    {% when 2 %}
+        {%- assign column = '2' -%}
+    {% when 3 %}
+        {%- assign column = '3' -%}
+    {% when 4 %}
+        {%- assign column = '4' -%}
+    {% when 5 %}
+        {%- assign column = '5' -%}
+{% endcase %}
+
+
+{% if cart.attributes.pagination != blank and cart.attributes.pagination %}
+    {% assign limit = cart.attributes.pagination %}
+{% else %}
+    {% assign limit = section.settings.rows %}
+{% endif %}
+
+{% paginate collection.products by limit %}
+
+<div id="collection-page" class="{% if section.settings.layout == 'grid' %}productGrid--maxCol{{ column }}{% else %}productGrid--maxCol1{% endif %}" data-section-id="{{ section.id }}" data-section-type="collection-template">
+
+    {%- assign is_vendor_or_type_collection = false -%}
+    {%- if collection.current_type != blank or collection.current_vendor != blank -%}
+        {%- assign is_vendor_or_type_collection = true -%}
+    {%- endif -%}
+
+    {% if section.settings.sort_enable %}
+        <div class="filters-toolbar-wrapper">
+            <div class="filters-toolbar">
+                <div class="filters-toolbar__item-wrapper one sidebar_mobile_wrapper">
+                    <div class="filters-toolbar__item-child item-iconSidebar">
+                        <div class="sidebar_mobile">
+                            <label class='filters-toolbar__label'>{{ 'collections.sidebar.title' | t }}</label>
+                            {% render 'icon-sidebar' %}
+                        </div>
+                    </div>
+                </div>
+            <div class="filters-toolbar__item-wrapper two">
+                    <div class="filters-toolbar__item-child">
+                        <div class="view-as-group">
+                            <label class="filters-toolbar__label">{{ 'collections.view.title' | t }}</label>
+                            <div class="view-as-btn">
+                                <a href="javascript:void(0);" id="list-view" data-layout="productGrid--maxCol1" title="List View"></a>
+                                <a href="javascript:void(0);" id="grid-view-2" data-layout="productGrid--maxCol2" title="Grid View 2"></a>
+                                <a href="javascript:void(0);" id="grid-view-3" data-layout="productGrid--maxCol3" title="Grid View 3"></a>
+                                <a href="javascript:void(0);" id="grid-view-4" data-layout="productGrid--maxCol4" title="Grid View 4"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="filters-toolbar__item-wrapper three ">
+                  <!-- <div class="filters-toolbar__item-child" data-limited-view>
+                        <label class="filters-toolbar__label select-label" for="showPagination">{{ 'general.filters.show' | t }}</label>
+                        <div class="filters-toolbar__input-wrapper select-group">
+                            <select name="paginateBy" id="showPagination" class="filters-toolbar__input">
+                                {%- assign view_length_handles = '6|12|18|24|30|36|42' | split: '|' -%}
+                                {%- for i in view_length_handles -%}
+                                    {% assign v = i | plus: 0 %}
+                                    <option value="{{ v }}" 
+                                    {% if cart.attributes.pagination != blank %}
+                                        {% if cart.attributes.pagination == i %}selected{% endif %}
+                                    {% else %}
+                                        {% if limit == v %}selected{% endif %}
+                                    {% endif %}> {{ i }} {{ 'general.pagination.item_per_page' | t }}</option>
+                                {% endfor %} 
+                            </select>
+                            {% render 'icon-chevron-down' %}
+                        </div>
+                    </div>-->
+                    {% if section.settings.sort_enable %}
+                        <div class="filters-toolbar__item-child" data-select="SortBy">
+                            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                            <label class="filters-toolbar__label select-label" for="SortBy">{{ 'collections.sorting.title' | t }}</label>
+                            <div class="filters-toolbar__input-wrapper select-group">
+                                <select name="sort_by" id="SortBy"
+                                    class="filters-toolbar__input"
+                                    aria-describedby="a11y-refresh-page-message a11y-selection-message"
+                                    data-default-sortby="{{ collection.default_sort_by }}"
+                                >
+                                    {%- for option in collection.sort_options -%}
+                                        <option value="{{ option.value }}" {% if option.value == sort_by %}selected="selected"{% endif %}>{{ option.name }}</option>
+                                    {%- endfor -%}
+                                </select>
+                                {% render 'icon-chevron-down' %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div id="Collection">
+        {% if section.settings.layout == 'grid' %}
+            <div class="halo-column halo-column-product">
+                {% for product in collection.products %}
+                    <div class="halo-item">
+                        {% render 'product-card-list', product: product, max_height: max_height %}
+                    </div>
+                {% else %}
+                    {% if collection.handle == 'all' and collection.all_vendors.size == 0 and collection.all_types.size == 0 %}
+                        {% for i in (1..limit) %}
+                            <div class="halo-item">
+                                <div class="product-card">
+                                    <div class="product-image">
+                                        <a class="product-link" href="#">
+                                            {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                                            {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                                        </a>
+                                    </div>
+                                    <div class="product-content">
+                                        <h4 class="product-title">{{ 'homepage.onboarding.product_title' | t }}</h4>
+                                      {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
+                                        <div class="product-reviews">{% render 'product-price', variant: nil %}</div>
+                                        <div class="product-price ">
+                                            <span class="price-item price-item--regular" >$19.99</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {%- assign is_empty_collection = true -%}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="halo-column halo-column-product">
+                {% for product in collection.products %}
+                    <div class="halo-item">
+                        {% render 'product-card-list', product: product %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if is_empty_collection %}
+            <div class="halo-column">
+                <div class="halo-item">
+                    <p class="text-center">{{ 'collections.general.no_matches' | t }}</p>
+                </div>
+            </div>
+        {% endif %}
+{% if collection.title != 'Wonderent'%}
+        {% if paginate.next.is_link %}
+            <div class="infinite-scrolling text-center">
+                <a class="btn btn--secondary-accent btn--big" href="{{ paginate.next.url }}">
+                    <svg id="icon-refresh" class="icon icon--big" viewBox="0 0 16 16">
+                        <path d="M2.083,9H0.062H0v5l1.481-1.361C2.932,14.673,5.311,16,8,16c4.08,0,7.446-3.054,7.938-7h-2.021 c-0.476,2.838-2.944,5-5.917,5c-2.106,0-3.96-1.086-5.03-2.729L5.441,9H2.083z" />
+                        <path d="M8,0C3.92,0,0.554,3.054,0.062,7h2.021C2.559,4.162,5.027,2,8,2c2.169,0,4.07,1.151,5.124,2.876 L11,7h2h0.917h2.021H16V2l-1.432,1.432C13.123,1.357,10.72,0,8,0z" />
+                    </svg>
+                    {{ 'collections.general.show_more' | t}}
+                </a>
+            </div>
+        {% endif %}
+{% endif %}
+        {% if paginate.pages > 1 %}
+            {% render 'pagination-2', paginate: paginate %}
+        {% endif %}
+    </div>
+</div>
+
+{% endpaginate %}
+
+<div class="compare-link {% if settings.show_product_compare_mb %}compare-btn-mb{% endif %}">
+    <a class="btn btn-compare" href="javascript:void(0)" data-toggle="modal" data-target="#compare" data-compare-selected>
+        <span class="compare-text">{{ 'general.compare.title' | t }}</span>
+        <span class="countPill countPill--positive countPill--alt" data-compare-count></span>
+    </a>
+</div>
+
+{% render 'popup_modal_conpare' %}
+
+
+{% schema %}
+{
+    "name": "Collection pages",
+    "class": "page-content",
+    "settings": [
+        {
+            "type": "select",
+            "id": "layout",
+            "label": "Layout",
+            "default": "grid",
+            "options": [
+                {
+                    "value": "grid",
+                    "label": "Grid"
+                },
+                {
+                    "value": "list",
+                    "label": "List"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Products per row (grid only)",
+            "default": 4,
+            "min": 2,
+            "max": 4,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "rows",
+            "label": "Limits product per page",
+            "default": 12,
+            "min": 6,
+            "max": 42,
+            "step": 6
+        },
+        {
+            "type": "checkbox",
+            "id": "sort_enable",
+            "label": "Enable sorting",
+            "default": true
+        }
+    ]
+}
+{% endschema %}

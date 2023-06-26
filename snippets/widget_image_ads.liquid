@@ -1,0 +1,20 @@
+<div class="sidebarBlock custom">
+    <div class="advertisement-image">
+        {% if block.settings.link != blank %}
+            <a class="img" href="{{ block.settings.link }}">
+        {% else %}
+            <div class="img">
+        {% endif %}
+            {% if block.settings.image != blank %}
+                {{ block.settings.image | img_url: '225x' | img_tag: block.settings.image.alt, 'image-text-overlay' }}
+            {% else %}
+                <span class="recommended_size">225x225</span>
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+        {% if block.settings.link != blank %}
+            </a>
+        {% else %}
+            </div>
+        {% endif %}
+    </div>
+</div>

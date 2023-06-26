@@ -1,0 +1,25 @@
+{%- if product -%} 
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{% if product.tags contains settings.rentity_tag_value %}
+    <div
+      id="rentity-variant-{{ current_variant.id }}-capsule"
+      class="rentity-capsule"
+      data-product-id="{{ product.id | json }}"
+      data-product-variant-id="{{ current_variant.id | json }}"
+      style="margin-bottom:10px"
+         
+         >
+      <span
+        title="Available on Rent from Rentity"
+        class="label"
+      >
+        <img
+          style="display:inline-block"
+          src="data:image/png;base64,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"
+          width="22px"
+        />
+        <span class="rental-option">...</span>
+      </span>
+    </div>
+  {% endif%} 
+{%- endif -%}

@@ -1,0 +1,13 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+
+{% if settings.product_layout == "layout-2" %} 
+    {% include 'product-layout-2' %}
+{% elsif settings.product_layout == "layout-3" %}
+    {% include 'product-layout-3' %}
+{% else %}
+    {% include 'product-layout-1' %}
+{% endif %}
+{% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, auto_install: true, product: product %}

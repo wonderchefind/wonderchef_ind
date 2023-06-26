@@ -1,0 +1,160 @@
+<div>
+ 
+   
+             <h2 class="heading_description" style="text-align:center;">Frequently Asked Questions</h2>
+        
+        </div>
+
+
+<dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1">What is the use of a stand mixer?</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block">A stand mixer can be used for various applications like mixing, whisking, whipping, and dough making.
+</div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2">What does a stand mixer do?</a></dt>
+    <dd class="acc_container">
+        <div class="block">A Stand Mixer is your ideal partner for making dough for pizzas, rotis, bread, biscuits and whipping up lip-smacking mixes for cakes and pastries, and more. </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle3">How does the stand mixer work?</a></dt>
+    <dd class="acc_container">
+        <div class="block">A stand mixer works similar to a handheld mixer, with the difference that a stainless steel bowl is attached to it and the users do not have to hold the mixer. The preferred attachment can be attached and the desired speed setting can be selected. The Wonderchef stand </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle4">Does the Wonderchef stand mixer have metal gears? </a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, Wonderchef understands the needs of their customers, and as a result, Wonderchef stand mixer has metal gears to give the best results.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle5">Can I make a roti dough every day in a stand mixer?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, you can make roti dough every day in the Wonderchef stand mixer.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle6">Does the bowl also rotate?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes. The unique moving head and rotating bowl create a planetary motion effect for the right consistency.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle7">Does the stand mixer have variable speed?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes. The Wonderchef stand mixer has multi (5 to 6) speed settings with pulse control for quick settings and easy operations.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle8">Which accessories will I get along with the stand mixer?</a></dt>
+    <dd class="acc_container">
+        <div class="block">You will get one unit of a beater, one unit of dough hook, one unit of egg whisk, along with one unit of a stainless steel bowl. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle9">What is the planetary mixing action in the Wonderchef stand mixer?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Rotating head and rotating bowl create planetary motion effect to give right consistency to the dough. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle10">What does the warranty cover?</a></dt>
+    <dd class="acc_container">
+        <div class="block">The 2-year (1-year in case of commercial use) standard warranty is applicable on the entire product. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle11">How do I avail the service?</a></dt>
+    <dd class="acc_container">
+        <div class="block">You can raise a request to avail the service by simply visiting the website woderchef.com or calling on 1800 220 506 or by sending a WhatsApp ‘Hi’ on 7070595959.</div>
+    </dd>
+   
+   
+  
+</div>
+</dl>
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

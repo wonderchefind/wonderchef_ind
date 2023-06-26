@@ -1,0 +1,72 @@
+{% assign new_badge = false %}
+{% assign sale_badge = false %}
+{% assign soldOut_badge = true %}
+{% assign bestSellers_badge = false %}
+{% assign custom_badge = false %}
+{%- assign show_product_price = show_product_price | default: settings.show_product_price -%}
+
+{% if product.compare_at_price_min > product.price_min %}
+    {% assign sale_badge = true %}
+{% endif %}
+
+{% if product.available  %}
+    {% assign soldOut_badge = false %}
+{% endif %}
+
+{% for tag in product.tags %}
+    {% assign tag_handle = tag | handle %}
+
+    {% if tag_handle == 'new' %}
+        {% assign new_badge = true %}
+    {% endif %}
+
+    {% if tag_handle == 'best_sellers' %}
+        {% assign bestSellers_badge = true %}
+    {% endif %}
+
+    {% if tag_handle == 'badge' %}
+        {% assign custom_badge = true %}
+    {% endif %}
+{% if tag_handle == 'rentity' %}
+        {% assign rentity_badge = true %}
+    {% endif %}
+{% endfor %}
+
+<div class="product_badges">
+  {% if product.title contains "Forza" %}<div class="productlable prodyctemp"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/image.png?v=1641997796" style="width:20%;float:right;"></div>{% endif %}
+
+    {% if new_badge %}
+        <div class="badge new-badge">{{ 'products.product.new' | t }}</div>
+    {% endif %}
+  <!--  {% if sale_badge %}
+        <div class="badge sale-badge">{{ 'products.product.on_sale' | t }}</div>
+    {% endif %}-->
+    {% if soldOut_badge %}
+        <div class="badge soldOut-badge">{{ 'products.product.sold_out' | t }}</div>
+    {% endif %}
+    {% if bestSellers_badge %}
+        <div class="badge bestSellers-badge">{{ 'products.product.best_sellers' | t }}</div>
+    {% endif %}
+    {% if custom_badge %}
+        <div class="badge custom-badge">{{ 'products.product.custom_badge' | t }}</div>
+    {% endif %}
+     {% if template == 'product'%}
+      {% if rentity_badge %}
+        <div class=" custom-badge">{% render 'rentity-product-capsule', product: product %}</div>
+    {% endif %}
+  
+    {% endif %}
+<div class="product_rentbadges ">
+  </div>
+
+ 
+  
+</div>
+
+<style>
+
+  .coupon_badges{
+    background: #dfa649;
+    padding: 5px;
+  }
+</style>

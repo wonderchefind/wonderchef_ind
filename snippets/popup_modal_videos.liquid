@@ -1,0 +1,12 @@
+{% if section.settings.video_product and product.metafields.halo['video'] != blank %}
+    <div class="modal fade halo_modal" id="video_product" role="dialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-video">
+            <div class="modal-content">
+                <a data-dismiss="modal" class="close close-modal" href="javascript:void(0)">&#215;</a>
+                <div class="popup-video" data-video-gallery>
+                    {{ product.metafields.halo['video'] }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}

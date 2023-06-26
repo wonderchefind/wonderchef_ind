@@ -1,0 +1,624 @@
+ {% comment %}
+** Circular image - homepage partial **
+- Draggable section
+- Uses blocks
+{% endcomment %}
+
+<!-- <a href="https://www.instagram.com/p/CSj3XwQD0XT/"><h2 class="title center blog">
+   {% if section.settings.title != blank %}
+        {{ section.settings.title | escape }}
+   {% endif %}
+    
+   </h2></a> -->
+
+<div class="page-width feature-row">
+ 
+
+  <div class="feature-row">
+   
+    <div class="feature-row__item feature-row__text title center blog feature-row__text--{{ section.settings.layout }}">
+      
+      {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+        <h2><a href="{{ section.settings.button_link }}" class="btn">
+          {{ section.settings.button_label | escape }}
+          </a></h2>
+      {% endif %}
+    </div>
+
+   
+  </div>
+</div>
+ {% if block.settings.link != blank %}
+              <a href="{{ block.settings.link }}">
+            {% endif %}
+               {% comment %}                
+<div class="bgsec withMinheight">
+	<div class="container">
+	<div class="row">
+       <div class="plugin-instgrams">
+        
+		<div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+          <img src="{{'left.png' | asset_img_url: '' }}" class="leftmobiScreen">
+        <img src="{{'top.png' | asset_img_url: '' }}" class="topmobiScreen"> 
+          <div class="MultiCarousel-inner nextinner">
+              {% comment %}
+                  {% if section.blocks.size > 0 %}
+                      {% for block in section.blocks %}
+                        <div class="item">
+                            <div class="pad15">
+                          {% if block.settings.link != blank %}
+                            <a href="{{ block.settings.link }}">
+                          {% endif %}
+                          {% if block.settings.image != blank %}
+                            {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}
+                          {% endif %}
+                          {% if block.settings.link != blank %}
+                            </a>
+                          {% endif %}
+                          </div>
+                        </div>
+                      {% endfor %}
+                  {% endif %}
+               {% endcomment %}
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta1.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta2.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta3.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta1.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta2.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta3.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta1.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+                <div class="item">
+                    <div class="pad15">
+                       <a href=""><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lazy3.png?v=1625672387" data-src="{{'insta2.png' | asset_img_url: '' }}" class="merox-lazy instImages blur-up lazyloaded"> </a>
+                    </div>
+          		</div>
+              
+            </div>
+           <button class="btn btn-primary leftLst"> <img src="{{'rightArrow.png' | asset_img_url: '' }}"> </button>
+            <button class="btn btn-primary rightLst"><img src="{{'leftArrow.png' | asset_img_url: '' }}"></button>
+             <img src="{{'bottom.png' | asset_img_url: '' }}" class="bottommobiScreen">
+         <img src="{{'right.png' | asset_img_url: '' }}" class="rightmobiScreen">
+        </div>
+     
+     
+<!--         <div class="vw-instagram-slider-feed" data-id="32673d78d79a4e8083e9b16b4cd56221"></div> -->
+        
+      </div>  
+	</div>
+</div>
+</div> 
+                {% endcomment %}
+                
+                
+                
+                
+<div class="bgsec withMinheight">
+	<div class="container">
+	<div class="row">
+      <div class="plugin-instgram">
+               <div class="border-style--none text-align--left">
+
+          <div class=" related-products related-products--slider js-insta-post-slider">
+
+            {% assign limit = limit | plus: 0 %}        
+            {% assign loop_limit = limit | plus: 1 %}
+
+
+            <div class="slider-gallery products-slider products-length-15"
+                 data-products-per-slide="5"
+                 data-products-limit="15"
+                 data-products-available="15">
+
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXIjrCYoQgl/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                              src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'1.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>    
+ 
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXFuiXCK8Rm/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'2.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXEDWWAPHoR/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'3.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div> 
+
+
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXGDHdGLsGB/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'4.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>    
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CW-RH84Ljrv/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'5.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>   
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXLMDBXvSP3/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'6.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXBcxPIqTNk/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'7.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div> 
+
+
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CWQJ0LXt3Pk/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'8.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>    
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href=" https://www.instagram.com/p/CWu0yi-BU3g/?utm_source=ig_web_copy_link" itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'9.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+
+                </div>
+              </div>   
+
+              <div class="gallery-cell thumbnail visible-5">
+                <div class="product-wrap">
+                  <div class="relative product_image">
+                    <a href="https://www.instagram.com/p/CXDNi33IJoD/?utm_source=ig_web_copy_link " itemprop="url" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          <img class="merox-lazy" alt="test"
+                               src="//cdn.shopify.com/s/files/1/0104/9211/7092/files/2_6c02a313-3c76-4064-9132-126b8c869570.jpg?v=1650392560" data-src="{{'10.jpg' | asset_img_url: '300x' }}"/>
+                        </div>
+                      </div>
+                    </a>
+
+
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div>                      
+          </div>        
+
+        </div>  
+      </div>  
+	</div>
+</div>
+</div>                 
+                
+                
+                
+
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+  	"name": "Instagram Posts",
+    "class": "instagram-image-list-section",
+    "max_blocks": 20,
+    "settings": [
+     
+          {
+        "type": "text",
+        "id": "button_label",
+        "label": "Heading"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": " link"
+      }
+	],
+    "blocks": [
+      {
+        "type": "instagram_image",
+        "name": "Instagram Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Upload instagram image"
+          },
+          {
+            "type": "url",
+            "id": "link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram Post slider",
+        "category": "Image",
+        "blocks": [
+          {
+            "type": "instagram_image"
+          },
+          {
+            "type": "instagram_image"
+          },
+          {
+            "type": "instagram_image"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+  
+  <style>
+     .plugin-instgram .product-wrap .relative.product_image {
+    border: 0!important;
+}
+    
+    .plugin-instgram  .list-collections .thumbnail, .plugin-instgram  .product-list .thumbnail, .plugin-instgram  .slider-gallery .thumbnail {
+    background-color: transparent!important;
+}
+    
+    
+    .plugin-instgram .blog-main-items img {
+    max-width: 90%!important;
+    width: 100%!important;
+    height: 80%;
+    max-height: 82%!important;
+    margin: auto;
+}
+    .plugin-instgram .js-insta-post-slider .gallery-cell {
+    background: transparent!important;
+}
+  .bgsec {
+    background-image: url(//cdn.shopify.com/s/files/1/0579/7173/6733/t/2/assets/bg-blog.png?v=1632996…);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 40px 0 18px;
+}
+  
+ h2.title.center.blog.text-dark {
+    color: #000!important;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 80px;
+} 
+  h2.title.center.blog.text-dark a {
+    color: #000!important;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 80px;
+}
+ 
+/*   .MultiCarousel {
+    float: left;
+    overflow: hidden;
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    padding-top: 157px;
+    height: 786px;
+}
+    .MultiCarousel .nextinner { transition: 1s ease all; float: left; }
+        .MultiCarousel .nextinner .item { float: left;}
+   .MultiCarousel .leftLst, .MultiCarousel .rightLst {
+    position: absolute;
+    border-radius: 100%;
+    top: calc(50% - 20px);
+    width: 40px!important;
+    height: 40px!important;
+}
+    .MultiCarousel .leftLst img, .MultiCarousel .rightLst img {
+    width: 20px;
+    height: 20px;
+}
+    .MultiCarousel .leftLst { left:0; }
+    .MultiCarousel .rightLst { right:0; }
+    
+        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }
+img.mobiScreen {
+    position: absolute;
+    left: 0;
+    margin: auto;
+    right: 0;
+    width: 400px;
+    top: 0;
+} */
+  .withMinheight {min-height:715px;}
+/*   img.instImages {
+    max-width: 360px;
+    height: 437px;
+    object-fit: cover;
+    object-position: center;
+} */
+/*   .MultiCarousel .nextinner .item > div {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+    .MultiCarousel .nextinner .item:first-child {
+    width: 270px!important;
+} */
+/*   .MultiCarousel .MultiCarousel-inner.addlef {
+    transform: translateX(-117px)!important;
+} */
+    .plugin-instgram{position:relative;}
+    
+    
+    .plugin-instgram {
+    position: relative;
+    padding-top: 80px;
+}
+    
+img.leftmobiScreen {
+    position: absolute;
+    left: -295px;
+    right: 0;
+    margin: auto;
+    z-index: 9;
+    width: 21px;
+    top: 65px;
+    height: 357px;
+}
+ img.rightmobiScreen {
+    position: absolute;
+    left: 0;
+    right: -300px;
+    margin: auto;
+    z-index: 9;
+    width: 23px;
+    top: 65px;
+    height: 357px;
+}
+    
+ img.bottommobiScreen {
+    position: absolute;
+    left: 4px;
+    right: 0;
+    margin: auto;
+    width: 315px;
+    bottom: -123px;
+}
+    img.topmobiScreen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 318px;
+    top: -68px;
+}
+img.mobiScreen {
+    position: absolute;
+    left: 0;
+    margin: auto;
+    right: 0;
+    width: 325px;
+    top: -65px;
+}
+  .plugin-instgram .slick-slide {
+    min-height: 360px!important;
+}
+    .plugin-instgram .slick-slide .ig-slider-feed-element-image {
+    min-height: 360px;
+    background-repeat: no-repeat;
+    background-size: cover!important;
+}
+    @media only screen and (min-width: 320px) and (max-width: 667px) {
+     body .bgsec.withMinheight {
+    padding: 30px 0 4px!important;
+    min-height: 390px!important;
+}
+     
+    .bgsec {
+    background-image: url(//cdn.shopify.com/s/files/1/0579/7173/6733/t/2/assets/mobile-blog.png);
+    background-size: 100% 100%;
+    padding: 2px 0 0px!important;
+}
+
+      .plugin-instgram .slick-slide .ig-slider-feed-element-image {
+    	min-height: 240px;
+    	background-repeat: no-repeat;
+    	background-size: cover!important;
+	}
+       .plugin-instgram .slick-slide {
+    	min-height: 1px!important;
+	}
+      img.mobiScreen {
+    width: 237px!important;
+    padding: 9px!important;
+    top: -56px!important;
+}
+    }
+    @media only screen and (max-width: 1440px){
+.bgsec.withMinheight {
+    min-height: 715px;
+    padding: 75px 0 10px!important;
+}
+
+      
+    }
+    
+.bgsec.withMinheight {
+    min-height: 715px;
+    padding: 107px 0 10px;
+}
+    
+    @media only screen and (max-width: 1366px){
+    .bgsec.withMinheight {
+    padding: 60px 0 10px!important;
+    min-height: 530px!important;
+}
+    
+    
+     @media only screen and (min-width: 1500px){
+    .plugin-instgram .slider-gallery .gallery-cell img {
+    max-width: 300px!important;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+    }
+        .plugin-instgram .image-element__wrap {
+    background: #e5e5e5!important;
+}
+   .plugin-instgram .slider-gallery .gallery-cell {
+    background: #e4e4e4;
+}
+ 
+</style>
+  <script>
+    
+
+  </script>  

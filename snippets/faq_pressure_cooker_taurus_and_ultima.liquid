@@ -1,0 +1,166 @@
+<div>
+ 
+   
+             <h2 class="heading_description" style="text-align:center;">Frequently Asked Questions</h2>
+        
+        </div>
+
+
+<dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1">What is pressure cooker?</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block">The process of cooking food under high pressure steam, in a sealed vessel is known as a pressure cooking. The sealed vessel used is known a pressure cooker. 
+      </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2">How does a Pressure Cooker Work?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Inside the tightly sealed pressure cooker, the water is heated and eventually boils into steam. Since the steam cannot escape, it gets accumulated around the food, there by cooking the food. All those trapped water molecules increase the pressure inside the cooker and cooking the food hence the name pressure cooker. 
+      </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle3">Which Material is used in pressure cooker?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef range of Pressure Cookers are made of the sturdy hard anodized aluminium body and Mirror-finish pure grade virgin aluminium body which provides an elegant look to your kitchen.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle4">What are the sizes in Pressure Cooker?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef Taurus pressure cookware range comes in 3ltrs, 5ltrs and 8ltrs and the Ultima pressure cookware outer lid range comes in 3ltrs, 5ltrs and 7.7ltrs and the Ultima inner lid range comes in 2ltrs, 3ltrs, 5ltrs and 6.5ltrs. 
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle5">How do I know if my pressure cooker is safe?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Please follow the pointers below to check of your pressure cooker is safe to use 
+      <ul>
+        <li>Before cooking, always check the rubber gasket (the ring of rubber that lines the lid of the cooker) to make sure it isn't dried out or cracked. All our pressure cookers come with safety valve and gasket release system for enhanced protection       </li>
+         <li>Don't overfill the cooker</li>
+         <li>Use enough water </li>
+         <li>Once food is cooked and it’s time to open the lid, release pressure slowly </li>
+         <li>Clean the cooker properly</li>
+          </ul></div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle6">How do you check your pressure cooker?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Place the pressure cooker on the stove and bring the water to a boil over high heat. As the water boils, steam is produced. Lower the burner heat to simmer. The pressure cooker is now cooking under pressure, which is when you start to clock the cooking time.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle7">What do you do when you Pressure cooker doesn’t whistle?</a></dt>
+    <dd class="acc_container">
+        <div class="block">If your pressure cooker isn't whistling, position the lid and gasket correctly. Clean the pressure valve and lock the lid properly. Tighten loose handles and replace the gasket if worn out. Keep the amount of liquid and food in the cooker to prescribed levels and give it the right amount of heat.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle8">Why does Pressure cookers leak?</a></dt>
+    <dd class="acc_container">
+        <div class="block">When the pressure cooker lid is not placed correctly on the cooking pot and in case of some structural damage to the pressure cookers it is likely to leak.  
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle9">How Long Should a Pressure Cooker Last?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Depending on the usage condition and product quality it is advisable to use pressure cooker for up to 3 years. 
+      </div>
+    </dd>
+  
+  
+  
+</div>
+</dl>
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

@@ -1,0 +1,29 @@
+{% if page_title contains "Payment" %}
+<script>
+  $(document).on('page:load page:change', function() {
+    function checkGateway(){
+       var checkedVal = $( '.input-radio[name="checkout[payment_gateway]"]:checked' ).val();
+        if (checkedVal == "21037252708"){
+          $('button.step__footer__continue-btn .btn__content').text("Complete Order");
+        }
+        else{
+          $('button.step__footer__continue-btn .btn__content').text("Pay Now");
+        }
+    };
+    $( '.input-radio[name="checkout[payment_gateway]"]' ).change(function(){
+      checkGateway();
+    });
+    checkGateway();
+//  Paypal tnc
+      $(".radio-wrapper.content-box__row[data-select-gateway='30612258916'] .radio__label.payment-method-wrapper label.radio__label__primary.content-box__emphasis img.offsite-payment-gateway-logo,span[data-brand-icons-for-gateway='30612258916']").remove();
+  $(".radio-wrapper.content-box__row[data-select-gateway='30612258916'] .radio__label.payment-method-wrapper label.radio__label__primary.content-box__emphasis").prepend('Credit Card / Debit Card / Net Banking / UPI / Paylater / 0% EMI  ');
+    $(".radio-wrapper.content-box__row[data-select-gateway='30612258916'] .radio__label.payment-method-wrapper .radio__label__accessory").prepend('<img class="paytmlogo" src="{{'paytmimg.png' | file_img_url: '30x'}}" alt="PayTm" /> ')
+   $(".product-table span.product__description__property.order-summary__small-text").addClass('hidden');
+  });
+</script>
+{% endif %}
+<script>
+  $(document).ready(function(){
+    $(".product-table span.product__description__property.order-summary__small-text").addClass('hidden');
+  });
+</script>

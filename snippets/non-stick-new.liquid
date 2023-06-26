@@ -1,0 +1,194 @@
+{% comment %}Check if image is progressive (does not support transparent pngs){% endcomment %}
+{% if progressive %}
+  {%- capture srcset -%}
+    {{ image | img_url: '5000x', format: 'pjpg' }} 5000w,
+    {{ image | img_url: '4500x', format: 'pjpg' }} 4500w,
+    {{ image | img_url: '4000x', format: 'pjpg' }} 4000w,
+    {{ image | img_url: '3500x', format: 'pjpg' }} 3500w,
+    {{ image | img_url: '3000x', format: 'pjpg' }} 3000w,
+    {{ image | img_url: '2500x', format: 'pjpg' }} 2500w,
+    {{ image | img_url: '2000x', format: 'pjpg' }} 2000w,
+    {{ image | img_url: '1800x', format: 'pjpg' }} 1800w,
+    {{ image | img_url: '1600x', format: 'pjpg' }} 1600w,
+    {{ image | img_url: '1400x', format: 'pjpg' }} 1400w,
+    {{ image | img_url: '1200x', format: 'pjpg' }} 1200w,
+    {{ image | img_url: '1000x', format: 'pjpg' }} 1000w,
+    {{ image | img_url: '800x', format: 'pjpg' }} 800w,
+    {{ image | img_url: '600x', format: 'pjpg' }} 600w,
+    {{ image | img_url: '400x', format: 'pjpg' }} 400w,
+    {{ image | img_url: '200x', format: 'pjpg' }} 200w
+  {%- endcapture -%}
+{% else %}
+  {%- capture srcset -%}
+    {{ image | img_url: '5000x' }} 5000w,
+    {{ image | img_url: '4500x' }} 4500w,
+    {{ image | img_url: '4000x' }} 4000w,
+    {{ image | img_url: '3500x' }} 3500w,
+    {{ image | img_url: '3000x' }} 3000w,
+    {{ image | img_url: '2500x' }} 2500w,
+    {{ image | img_url: '2000x' }} 2000w,
+    {{ image | img_url: '1800x' }} 1800w,
+    {{ image | img_url: '1600x' }} 1600w,
+    {{ image | img_url: '1400x' }} 1400w,
+    {{ image | img_url: '1200x' }} 1200w,
+    {{ image | img_url: '1000x' }} 1000w,
+    {{ image | img_url: '800x' }} 800w,
+    {{ image | img_url: '600x' }} 600w,
+    {{ image | img_url: '400x' }} 400w,
+    {{ image | img_url: '200x' }} 200w
+  {%- endcapture -%}
+{% endif %}
+
+
+{% comment %}Loading style{% endcomment %}
+{% if settings.image_loading_style == 'blur-up' %}
+  {% comment %}Low quality image loads first{% endcomment %}
+  {% assign low_quality_image = image | img_url: '100x' %}
+{% elsif settings.image_loading_style == 'color' %}
+  {% comment %}Dominant image color loads first{% endcomment %}
+  {% assign dominant_color_image = image | img_url: '1x' %}
+  {% if object_fit == true %}
+    {% capture crop_to_aspect_ratio %}
+        max-height: {{ max_height }}px; width: calc({{ image.width }} /  {{ image.height }} * {{ max_height }}px);
+    {% endcapture %}
+  {% endif %}
+
+  {% capture background_color %}
+    background: url({{ dominant_color_image }});
+  {% endcapture %}
+{% endif %}
+<div id="nonstick" class="non-stick animated fadeInDown">
+  <div class="parallax-banner parallax-slide">
+  
+    <div class="bcg skrollable  skrollable-between one-column" >
+      <h2>What makes Wonderchef Non-Stick Cookware so good?</h2>
+      <div class="non-stick_pans  fadeInDown">
+    The answer lies in the quality of materials used and the advanced technology deployed in manufacturing our cookware.
+    </div>
+     <br>
+      <iframe width="100%" height="400px" src="https://www.youtube.com/embed/7RfPIodrJGM" title="Why are Wonderchef cookware best?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+     <!-- <img class="transition--blur-up lazyautosizes lazyloaded " src="{{'non-stick-bg.jpg' | file_url }}" alt="Why are Wonderchef non-stick pans better?"> -->
+    </div>
+     
+    <div class="non-stick_pans  fadeInDown">
+      This is because of the quality of materials we use and
+      the processes we follow with diligence and precision.
+      <p>World-class manufacturing machines help us
+      put all this together. Let us share with you
+        some of our secret recipes. </p>
+    </div>
+     
+  </div>
+  <div id="bio2" class="content-aplus">
+  <div class="step-section view-content2" id="view-content2">
+    <div class="vergin-step margin_btm">
+      <h2 class="main_heading_step">1. Virgin aluminium</h2> 
+      <div class="row">
+
+        <div class="eight columns omega content_stick  fadeInDown">
+          <p>It all begins with the right quality
+            of base metal i.e. aluminium.
+            Cold-rolled sheets, made from
+            new, virgin aluminium are used to
+            cut the disc that would go on to
+            become a world-class pan. We
+            never use re-processed metal
+            since it is invariably mixed with
+            certain impurities that cannot be
+            completely extracted. This leads
+            to chemical reactions when the
+            pan is heated over fire. The gases
+            produced as a result rise up and
+            puncture the non-stick surface
+            creating micro-holes. The coating
+            begins to tear precisely from these
+            holes. </p> 
+        </div>
+      </div>
+    </div>
+    <div class="shaping-step margin_btm">
+      <h2 class="main_heading_step">2. Shaping on precision moulds</h2> 
+      <div class="row">
+        <div class="eight columns alpha content_stick  fadeInDown">
+          <h3>Forged: </h3>
+          <p>Heavy machines up to 10,000 tons are used to give precise shape to your pans over highly designed moulds. The right shape is critical not only to give a great look but also provide stability & performance to the pans. </p> 
+        </div>
+
+      </div>
+      <div class="row visible_xs">
+         <div class="eight columns content_stick  fadeInDown">
+          <h3>Die-cast: </h3>
+          <p>
+            Pans made form this technology
+            acquire unique strength and heat retention properties. They never get deformed. The process entails pouring pure molten aluminium in finely cut steel moulds to give world-class cookware.  </p>
+        </div>
+
+       
+        
+      </div>
+      <div class="row hidden_xs">
+
+        <div class="eight columns omega content_stick  fadeInDown">
+          <h3>Die-cast: </h3>
+          <p>
+            Pans made form this technology
+            acquire unique strength and heat retention properties. They never get deformed. The process entails pouring pure molten aluminium in finely cut steel moulds to give world-class cookware.  </p>
+        </div>
+      
+      </div>
+    </div>
+    <div class="sand-step margin_btm">
+      <h2 class="main_heading_step">3. Sand-blasting</h2> 
+      <div class="row  fadeInDown"><p>This is a very special process that Wonderchef uses to ensure that the non-stick coating stays on the pan for the longest time. Every pan is bombarded by millions of particles of a specialised compound creating the same effect that is achieved by using the sand paper on a wall before painting it. The surface not only is rid of unwanted oils but also becomes amenable to absorbing the layers of coating and ensuring it sticks properly. Only a few leading brands of the world invest in this process. </p></div>
+         </div>
+
+    <div class="multistage-step margin_btm">
+      <h2 class="main_heading_step">4. Multi-stage Cleaning</h2> 
+      <div class="row">
+        <div class="eight columns omega  fadeInDown content_stick"><p>Every pan is subjected to a 5-step cleaning process with repeated high pressure blasts of hot water, acids and hot air. The pan comes out of this process bathed and cleaned, very ready for the next step of applying coatings. This is extremely important since any oil or impurity or dust particle remaining on the pan will lead to the coating tearing off from there.</p></div></div>
+    </div>
+
+    <div class="nonstickcoating-step margin_btm">
+      <h2 class="main_heading_step">5. Non-stick Coating</h2>
+      <div class="row">
+        <div class="eight columns alpha content_stick  fadeInDown">
+          <p>This is the most sensitive step of the entire process. Smooth, even coating is critical for good performance. This is controlled precisely via automated machines to ensure that every part of the pan is evenly coated.  The first layer of coating is the Primer. The primer holds the surface of the pan and forms the base of the final non-stick coating. 2-3 layers of non-stick coating are now applied over it. The beautiful colours that you find in our pans are applied at this stage. At times, further sprays are done to give the beautiful marble and stone finish to the pans.</p> 
+        </div>
+
+      </div>
+    </div>
+    <div class="sand-step baking margin_btm">
+      <h2 class="main_heading_step">6. Baking</h2> 
+      <div class="row  fadeInDown"><p>This is perhaps the most essential step in the making of the pan which lesser brands often tend to ignore. Wonderchef uses a 120 foot long oven, precision-maintained at precisely 350 degree centigrade. This gives the coating enough time to get baked and stick to the surface. No wonder, Wonderchef pans perform better, have better release properties and their coating lasts longer.</p></div>
+     </div>
+    <div class="finishing-step  margin_btm">
+      <h2 class="main_heading_step">7. Finishing</h2>
+      <div class="row">
+      
+        <div class="eight columns omega content_stick  fadeInDown">
+          <p>The pans are now given the final touch with beautiful outer coating, second round of baking, fixing of handles and safety packaging in designer gift boxes.  </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="qc-section margin_btm">
+    <div class="qcheading row  fadeInDown">
+      <p><b>Quality Control:</b> Pans from every batch are subjected to rigorous testing for quality. Our abrasion tests ensure that the coating should last through at least 5000 cycles. Handles are tested to carry load over 5 years of use. </p>
+    </div>
+   <div class="row  fadeInDown">
+      <p><b>Certifications and Standards of Wonderchef pans</b></p>
+      <p>- LFGB Certified</p>
+      <p>- Abrasion resistant up to 5000 cycles for META TUFF & 10000 cycles for META TUFF PRO</p>
+      <p>- PFOA, PFOS, PAH free</p>
+      <p>- Better food release properties</p>
+      <p>- Specific Migration of chromium and heavy metals well within limits</p>
+      <p>- Specific Migration of primary aromatic amines well within limits</p>
+      <p>- Passed analytical tolerance of aqueous & fatty food stimulants</p>
+      <p>- Sensorial examination - odor & taste well within limits</p>
+  	<p>All parameters In accordance with German Food, Articles of Daily Use and Feed Code of September 1,  2005(LFGB), Section 30 and 31 with amendments, European Commission Regulation(EU)No. 10/2011 with amendments and BFR recommendations.</p>
+    </div>
+  </div>
+  </div>
+ 
+</div>

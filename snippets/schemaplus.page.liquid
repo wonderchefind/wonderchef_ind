@@ -1,0 +1,35 @@
+<!-- SchemaPlus v{{ shop.metafields.schemaplus['snippet_version'] }}, learn more at https://schemaplus.io
+     https://schema.org/version/3.4 -->    
+<script type="application/ld+json">
+  { "@context":"http://schema.org",
+    "@type":"WebPage",
+    "@id": "{{ shop.url }}{{page.url}}",
+    "author": {
+      "@type": "Person",      
+      "name": "{{ page.author }}"
+    },
+    "creator":[
+      "{{ page.author }}"
+    ],
+    "dateCreated":"{{ page.published_at | date : '%Y-%m-%dT%H:%M:%SZ' }}",
+    "dateModified":"{{ page.published_at | date: '%Y-%m-%dT%H:%M:%SZ' }}",
+    "datePublished":"{{ page.published_at | date: '%Y-%m-%dT%H:%M:%SZ'}}",
+    "headline":"{{ page.title | strip_html |  strip_newlines | escape}}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "url": "{{ shop.url }}{{ page.url }}"         
+    },
+    "publisher": {
+      "@type": "Organization",
+      {% if settings.logo %}
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https:{{ settings.logo | img_url | img_tag: shop.name }}",
+      },
+      {% endif %}
+      "name": "{{ shop.name }}"
+    },
+    "text": "{{ page.content | strip_newlines | strip_html | escape }}",
+    "url":"{{ shop.url }}{{page.url}}"
+  }
+</script>

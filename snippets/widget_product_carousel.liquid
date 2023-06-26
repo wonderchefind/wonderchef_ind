@@ -1,0 +1,24 @@
+<div class="sidebarBlock">
+    <h5 class="sidebarBlock-heading"><span>{{ block.settings.title }}</span></h5>
+    <div class="sidebarBlock-content" data-product-carousel-sidebar>
+        {% if block.settings.collection != blank %}
+            <div class="productCarousel"
+                data-slick='{
+                    "arrows": true,
+                    "dots": false,
+                    "autoplay": true,
+                    "infinite": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1,
+                    "prevArrow": "<div class=&apos;slick-prev slick-arrow&apos;><svg id=&apos;arrow-left&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 370.814 370.814&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>", 
+                    "nextArrow": "<div class=&apos;slick-next slick-arrow&apos;><svg id=&apos;arrow-right&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 478.448 478.448&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>"
+                }'>
+                {% for product in collections[block.settings.collection].products limit : block.settings.number %}
+                <div class="productCarousel-slide">
+                    {% render 'widget_product', product: product %}
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>

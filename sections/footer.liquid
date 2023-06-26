@@ -1,0 +1,554 @@
+{% include 'setting-spacing' %}
+
+{% for block in section.blocks %}
+    {%- assign halo = block.settings -%}
+    {% case block.type %}
+        {% when 'contact_owner' %}
+            {% capture contact_owner %}
+                <div class="footer-owner">{% render 'multilang' with halo.contact_description %}</div>
+            {% endcapture %}
+        {% when 'captions' %}
+            {% capture captions %}
+                {% render 'multilang' with halo.caption_description %}
+            {% endcapture %}
+        {% when 'geotrust_ssl' %}
+            {% capture geotrust_ssl %}
+                <div class="geotrust_ssl--image">
+                    <ul>
+                        {% assign geotrust_ssl_array = '1,2,3,4,5' %}
+                        {% assign geotrust_ssl_list = geotrust_ssl_array | split: ',' %}
+                        {% for geotrust_ssl_item in geotrust_ssl_list %}
+                            {%- assign current_geotrust_ssl = geotrust_ssl_item | prepend: 'geotrust_ssl_image_' -%}
+                            {% if halo[current_geotrust_ssl] %}
+                                <li>
+                                    <img class="geotrust_ssl_image lazyload" 
+                                        src="{{ 'loading.svg' | asset_url }}"
+                                        data-src="{{ halo[current_geotrust_ssl] | img_url:'master' }}"
+                                        alt="" data-image>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endcapture %}
+        {% when 'copyright' %}
+            {% capture copyright %}
+                <div class="footer-copyright">
+                    <small class="copyright-content">
+                        {% render 'multilang' with halo.copyright_1 %}
+                    </small>
+                </div>
+                <div class="footer-copyright">
+                    <small class="copyright-content">
+                        {% render 'multilang' with halo.copyright_2 %}
+                    </small>
+                </div>
+            {% endcapture %}
+        {% when 'payment_methods' %}
+            {% capture payment_methods %}
+                <ul class="payment-methods">
+                    {% assign payment_string = '1,2,3,4,5,6,7,8,9,10' %}
+                    {% assign methods = payment_string | split: ',' %}
+                    {% for method in methods %}
+                        {%- assign current_method_icon = method | prepend: 'payment_image_' -%}
+                        {% if halo[current_method_icon] != blank %}
+                        <li>
+                            <img class="payment-image lazyload"
+                                src="{{ 'loading.svg' | asset_url }}"
+                                data-src="{{ halo[current_method_icon] | img_url: 'x32', format: 'jpg' }}"
+                                alt="" data-image>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            {% endcapture %}
+    {% endcase %}
+{% endfor %}
+
+<div class="halo-section halo-feature-icon-footer {{ padding_top }} {{ padding_bottom }}">
+    <div class="container">
+        {% if section.settings.enable_icon_list %}
+            <div class="halo-row halo-row-icon text-center">
+            {% for i in (1..3) %}
+                {% capture cap_icon %}icon_{{ i }}{% endcapture %}
+                {% assign icon = section.settings[cap_icon] %}
+                {% capture cap_title %}title_{{ i }}{% endcapture %}
+                {% assign title = section.settings[cap_title] %}
+                <div class="halo-item">
+                    <div class="halo-feature-icon">
+                        {% if icon != blank %}
+                            <div class="icon">
+                                {{ icon }}
+                            </div>
+                        {% endif %}
+                        <div class="content">
+                            {% if title != blank %}
+                                <h3 class="title">{% render 'multilang' with title %}</h3>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<footer class="site-footer halo_footer-default" data-section-type="footer">
+    <div class="halo_footer-top">
+        <div class="container">
+            {% if contact_owner %}
+                {{ contact_owner }}
+            {% endif %}
+            <div class="footer-info footer-row-flex">
+                {% for block in section.blocks %}
+                    {%- assign halo = block.settings -%}
+                    {% case block.type %}
+                        {% when 'newsletter' %}
+                            <div class="footer-col">
+                                {% if halo.title %}
+                                <h5 class="footer-info-heading">
+                                    <span>{% render 'multilang' with halo.title %}</span>
+                                </h5>
+                                {% endif %}
+                                <p>{% render 'multilang' with halo.description %}</p>
+                                <div class="newsletterSubscription">
+                                    {% render 'newsletter-form-2' %}
+                                </div>
+                                <div class="social_list">
+                                    {% render 'social-media' %}
+                                </div>
+                            </div>
+                        {% when 'link_list' %}
+                            <div class="footer-col footer-col--small footer-col--mobile">
+                                {%- assign footer_infolist = halo.menu -%}
+                                {% if halo.title %}
+                                    <h5 class="footer-info-heading">
+                                        <span>{% render 'multilang' with halo.title %}</span>
+                                    </h5>
+                                {% endif %}
+                                <ul class="footer-info-list">
+                                    {% for link in linklists[footer_infolist].links %}
+                                        <li class="footer-info-item">
+                                            <a href="{{ link.url }}" {% if link.current %} aria-current="page"{% endif %}>
+                                                {{ link.title | escape }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% when 'info_store' %}
+                            <div class="footer-col footer-col--small footer-col--mobile">
+                                {% if halo.title %}
+                                    <h5 class="footer-info-heading">
+                                        <span>{% render 'multilang' with halo.title %}</span>
+                                    </h5>
+                                {% endif %}
+                                <ul class="footer-info-list">
+                                    <li class="store-address">
+                                        <span class="icon">
+                                            {{ halo.info_icon_1 }}
+                                        </span>
+                                        <div class="text">
+                                            {% render 'multilang' with halo.info_text_1 %}
+                                        </div>
+                                    </li>
+                                    <li class="store-phone">
+                                        {% if halo.info_icon_2 != blank %}
+                                        <span class="icon">
+                                            {{ halo.info_icon_2 }}
+                                        </span>
+                                        {% endif %}
+                                        <div class="text">
+                                            <p>{% render 'multilang' with halo.info_text_2 %}</p>
+                                            <p>{% render 'multilang' with halo.info_text_2_2 %}</p>
+                                        </div>
+                                    </li>
+                                    <li class="ask-an-expert">
+                                        <a class="text" data-toggle="modal" data-target="#ask_an_expert" href="javascript:void(0)">{% render 'multilang' with halo.ask_an_expert_title %}</a>
+                                    </li>
+                                    <li class="store-email">
+                                        {% if halo.info_icon_3 != blank %}
+                                        <span class="icon">
+                                            {{ halo.info_icon_3 }}
+                                        </span>
+                                        {% endif %}
+                                        <div class="text">
+                                            {% render 'multilang' with halo.info_text_3 %}
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                    {% endcase %}
+                {% endfor %}
+            </div>
+            <div class="footer-info footer-row-flex">
+                {% if captions %}
+                    <div class="footer-col footer-col--big">
+                        {{ captions }}
+                    </div>
+                {% endif %}
+                {% if geotrust_ssl %}
+                    <div class="footer-col footer-col--big">
+                        {{ geotrust_ssl }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="halo_footer-bottom layout-1">
+        <div class="container">
+            {% if copyright %}
+                <div class="item">
+                    {{ copyright }}
+                </div>
+            {% endif %}
+            {% if payment_methods %}
+                <div class="item">
+                    {{ payment_methods }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</footer>
+
+{% if settings.enable_backtotop %}
+    <div id="back-to-top">
+        <a href="javascript:void(0)">{% render 'icon-chevron-up' %}</a>
+    </div>
+{% endif %}
+
+{% schema %}
+    {
+        "name": "footer",
+        "settings": [
+            {
+                "type": "header",
+                "content": "Section Icon List"
+            },
+            {
+                "type": "checkbox",
+                "id": "enable_icon_list",
+                "label": "Enable Section Icon List",
+                "default": true
+            },
+            {
+                "type": "range",
+                "id": "padding-top",
+                "label": "Spacing Top",
+                "default": 3,
+                "min": 0,
+                "max": 10,
+                "step": 1
+            },
+            {
+                "type": "range",
+                "id": "padding-bottom",
+                "label": "Spacing bottom",
+                "default": 3,
+                "min": 0,
+                "max": 10,
+                "step": 1
+            },
+            {
+                "type": "header",
+                "content": "Icon Item 1"
+            },
+            {
+                "type": "text",
+                "id": "icon_1",
+                "label": "Icon",
+                "default": "<i class=\'fas fa-info-circle\'></i>",
+                "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+            },
+            {
+                "type": "text",
+                "id": "title_1",
+                "label": "Title",
+                "default": "Heading"
+            },
+            {
+                "type": "header",
+                "content": "Icon Item 2"
+            },
+            {
+                "type": "text",
+                "id": "icon_2",
+                "label": "Icon",
+                "default": "<i class=\'fas fa-info-circle\'></i>",
+                "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+            },
+            {
+                "type": "text",
+                "id": "title_2",
+                "label": "Title",
+                "default": "Heading"
+            },
+            {
+                "type": "header",
+                "content": "Icon Item 3"
+            },
+            {
+                "type": "text",
+                "id": "icon_3",
+                "label": "Icon",
+                "default": "<i class=\'fas fa-info-circle\'></i>",
+                "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+            },
+            {
+                "type": "text",
+                "id": "title_3",
+                "label": "Title",
+                "default": "Heading"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "contact_owner",
+                "name": "Contact Owner",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "textarea",
+                        "id": "contact_description",
+                        "label": "description",
+                        "default": "Need help? Call our award-winning support team 24/7 at +1.800.000.8809"
+                    }
+                ]
+            },
+            {
+                "type": "link_list",
+                "name": "Menu Vertical",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Heading",
+                        "default": "Quick links"
+                    },
+                    {
+                        "type": "link_list",
+                        "id": "menu",
+                        "label": "Menu",
+                        "default": "footer"
+                    }
+                ]
+            },
+            {
+                "type": "info_store",
+                "name": "Store Location",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Heading",
+                        "default": "Contact"
+                    },
+                    {
+                        "type" : "text",
+                        "id": "info_icon_1",
+                        "label" : "Icon 1",
+                        "default": "<i class=\'fas fa-map-marker-alt\' aria-hidden=\'true\'></i>",
+                        "info": "[Find your Icon](https://fontawesome.com/icons?d=gallery)."
+                    },
+                    {
+                        "type" : "textarea",
+                        "id" : "info_text_1",
+                        "label" : "Text 1",
+                        "default": "9087S Divamus Faucibus Str., City name, CA 90896, United States."
+                    },
+                    {
+                        "type" : "text",
+                        "id": "info_icon_2",
+                        "label" : "Icon 2",
+                        "default": "<i class=\'fas fa-phone\' aria-hidden=\'true\'></i>",
+                        "info": "[Find your Icon](https://fontawesome.com/icons?d=gallery)."
+                    },
+                    {
+                        "type" : "textarea",
+                        "id" : "info_text_2",
+                        "label" : "Text 2",
+                        "default": "Toll-free: +1.800.000.8809"
+                    },
+                    {
+                        "type" : "textarea",
+                        "id" : "info_text_2_2",
+                        "label" : "Text 2",
+                        "default": "International: +1.900.880.8809"
+                    },
+                    {
+                        "type" : "text",
+                        "id": "ask_an_expert_title",
+                        "label" : "Ask an expert title",
+                        "default": "Ask an expert"
+                    },
+                    {
+                        "type" : "text",
+                        "id": "info_icon_3",
+                        "label" : "Icon 3",
+                        "default": "<i class=\'fas fa-at\' aria-hidden=\'true\'></i>",
+                        "info": "[Find your Icon](https://fontawesome.com/icons?d=gallery)."
+                    },
+                    {
+                        "type" : "textarea",
+                        "id" : "info_text_3",
+                        "label" : "Text 3",
+                        "default": "Email: sales@halothemes.com"
+                    }
+                ]
+            },
+            {
+                "type": "newsletter",
+                "name": "Newsletter signup",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "title",
+                        "label": "Heading",
+                        "info": "Subscribers will be added to your “accepts marketing” [customer list.](/admin/customers?query=&accepts_marketing=1)",
+                        "default": "Newsletter"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "description",
+                        "label": "Description",
+                        "default": "Get the latest updates on new products and upcoming sales"
+                    }
+                ]
+            },
+            {
+                "type": "captions",
+                "name": "Captions",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "html",
+                        "id": "caption_description",
+                        "label": "description",
+                        "default": "<span><i>Please note: All manufacturer names, symbols, and descriptions, used in our images & text are used solely for identification purposes only. It is neither inferred nor implied that any item sold by Speedo Demo is a product authorized by or in any way connected with any vehicle manufacturers displayed on this page.</i></span>"
+                    }
+                ]
+            },
+            {
+                "type": "geotrust_ssl",
+                "name": "Geotrust SSL",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type" : "header",
+                        "content" : "Geotrust SSL Image",
+                        "info": "Recommended Image: Width x Height (80 x 45)px"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "geotrust_ssl_image_1",
+                        "label": "image 1"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "geotrust_ssl_image_2",
+                        "label": "image 2"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "geotrust_ssl_image_3",
+                        "label": "image 3"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "geotrust_ssl_image_4",
+                        "label": "image 4"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "geotrust_ssl_image_5",
+                        "label": "image 5"
+                    }
+                ]
+            },
+            {
+                "type": "copyright",
+                "name": "Copyright",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "copyright_1",
+                        "label": "Copyright 1",
+                        "default": "© 2019 Caros Demo. All Rights Reserved. Powered by Shopify."
+                    },
+                    {
+                        "type": "text",
+                        "id": "copyright_2",
+                        "label": "Copyright 2",
+                        "default": "Shopify Themes & Templates by HaloThemes.com"
+                    }
+                ]
+            },
+            {
+                "type": "payment_methods",
+                "name": "Payments methods",
+                "limit": 1,
+                "settings": [
+                    {
+                        "type" : "header",
+                        "content" : "Payments Image",
+                        "info": "Recommended Image: Width x Height (32 x 32)px"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_1",
+                        "label": "Payment methods 1"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_2",
+                        "label": "Payment methods 2"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_3",
+                        "label": "Payment methods 3"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_4",
+                        "label": "Payment methods 4"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_5",
+                        "label": "Payment methods 5"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_6",
+                        "label": "Payment methods 6"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_7",
+                        "label": "Payment methods 7"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_8",
+                        "label": "Payment methods 8"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_9",
+                        "label": "Payment methods 9"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "payment_image_10",
+                        "label": "Payment methods 10"
+                    }
+                ]
+            }
+        ]
+    }
+{% endschema %}

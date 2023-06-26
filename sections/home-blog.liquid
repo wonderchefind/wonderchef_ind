@@ -1,0 +1,570 @@
+{% comment %}
+** Custom Home Blogs
+{% endcomment %}
+<style>
+
+ 
+   
+</style>
+
+
+<div class="m-sec-blg">
+  <div class="container">
+    <div class="cust-blog">
+      <div class="one-third column text-column">
+        <div class="border-style--none text-align--left darkgrey-bg">
+          <h3 class="regular_text">{{ section.settings.title }}</h3>
+          <div class="rte-setting">
+            <p>{{ section.settings.content }} </p>
+            <a target="_blank" href="https://blog.wonderchef.com/" title="" class="action_button continue-button">View All</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ten medium-down--one-whole  columns equal-columns--outside-trim equal-columns--clear" >
+        <div class="border-style--none text-align--left">
+          <div class="related-products related-products--slider js-blog-post-slider">
+            
+            {% comment %}            
+            {% assign limit = limit | plus: 0 %}        
+            {% assign loop_limit = limit | plus: 1 %}
+            <div class="slider-gallery products-slider products-length-{{ products_length }} "
+                 data-products-per-slide="2"
+                 data-products-limit="{{ limit }}"
+                 data-products-available="30">
+              {% for link in linklists.footer.links %}
+                {% assign blog = link.object %}
+                {% for article in blog.articles limit:100 %}              
+                  <div class="gallery-cell thumbnail visible-2">
+                    <div class="product-wrap">
+                      <div class="relative product_image fixHeight">
+                        
+                        {% if article.image %}
+                          <a target="_blank" href="{{ article.url }}" title="{{ article.title | escape }}" class="blog-main-items">
+                            <div class="image__container">
+                              <div class="image-element__wrap">
+	                            {% include 'image-element', image: article.image, alt: image.alt %}                                
+                                <h4>{{ article.title }}</h4>
+                              </div>
+                            </div>                            
+                          </a>
+                        {% endif %}                        
+
+                        <a href="{{ article.url }}" title="{{ article.title }}" class="action_button continue-button">Read More</a>
+                      </div>
+                    </div>
+                  </div>    
+                {% endfor %}
+              {% endfor %}              
+              
+            </div> 
+            {% endcomment %}
+
+            <div class="slider-gallery products-slider products-length-{{ blocks.size }} "
+                 data-products-per-slide="2"
+                 data-products-limit="16"
+                 data-products-available="16">
+              {% if section.blocks.size > 0 %}
+              	{% for block in section.blocks %}
+              		{% if block.settings.blog_title != blank and block.settings.image != blank and block.settings.link != blank%}              
+                      <div class="gallery-cell thumbnail visible-2">
+                        <div class="product-wrap">
+                          <div class="relative product_image fixHeight">
+
+                            <a target="_blank" href="{{ block.settings.link }}" title="{{ block.settings.blog_title | escape }}" class="blog-main-items">
+                              <div class="image__container">
+                                <div class="image-element__wrap">
+                                  {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}                                
+                                  <h4>{{ block.settings.blog_title }}</h4>
+                                </div>
+                              </div>                            
+                            </a>
+                            <a href="{{ block.settings.link }}" title="{{ block.settings.blog_title }}" class="action_button continue-button">Read More</a>
+                          </div>
+                        </div>
+                      </div>  
+	              	{% endif %}                    
+              	{% endfor %}
+              {% endif %}              
+
+              
+            </div>      
+          </div>      
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="cust-blog-mobile">
+      <div class="sixteen column text-column">
+        <div class="border-style--none text-align--left darkgrey-bg">
+          <h3 class="regular_text" >{{ section.settings.title }}</h3>
+          <div class="rte-setting" >
+            <p>&nbsp;</p>
+          </div>
+        </div>
+        <div class="blog-m-section">
+          {% if section.blocks.size > 0 %}
+          	{% for block in section.blocks %}
+          		{% if block.settings.blog_title != blank and block.settings.image != blank and block.settings.link != blank%}              
+                  <div class="relative product_image listing fixHeight">
+                    <a target="_blank" href="{{ block.settings.link }}" title="{{ block.settings.title | escape }}" class="blog-main-items">
+                      <div class="image__container">
+                        <div class="image-element__wrap">
+                          {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}                                
+                          <h4>{{ block.settings.blog_title }}</h4>
+                        </div>
+                      </div>                            
+                    </a>
+                    <a href="{{ block.settings.link }}" title="{{ block.settings.blog_title }}" class="action_button continue-button">Read More</a>                                                                              
+                  </div>          
+          		{% endif %}                    
+          	{% endfor %}
+          {% endif %}           
+          <a title="" target="_blank" id="load_more" class="action_button continue-button">View More</a>
+          
+          {% comment %}
+          {% for link in linklists.footer.links %}
+            {% assign blog = link.object %}
+          	{% for article in blog.articles limit:100 %}              
+              <div class="relative product_image listing fixHeight">
+                {% if article.image %}
+                <a target="_blank" href="{{ article.url }}" title="{{ article.title | escape }}" class="blog-main-items">
+                  <div class="image__container">
+                    <div class="image-element__wrap">
+                      {% include 'image-element', image: article.image, alt: image.alt %}                                
+                      <h4>{{ article.title }}</h4>
+                    </div>
+                  </div>                            
+                </a>
+                {% endif %}                    
+                <a href="{{ article.url }}" title="{{ article.title }}" class="action_button continue-button">Read More</a>                                                                              
+              </div>
+          	{% endfor %}
+          {% endfor %}           
+          {% endcomment %}
+          
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+
+
+
+
+<style>
+
+  .m-sec-blg {
+    background: linear-gradient(
+      180deg, rgba(255,255,255,1) 16%, rgba(209,213,217,1) 0%, rgba(209,213,217,1) 38%, rgba(209,213,217,1) 50%);
+  }
+  .cust-blog-mobile {display:none!important;}
+  .cust-blog {
+    background: #d1d5d9;
+    width: 100%;
+    display: block;
+    padding: 20px;
+    clear: both;
+    position: relative;
+    height: 615px;
+    top: 40px;
+    margin-bottom: 80px;
+    margin-top: 75px;
+  }
+  .blog-items {
+    float: left;
+    max-width: 50%;
+    padding: 20px;
+  }
+  a.blog-main-items {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .blog-items h4 {
+    text-align: center;
+    font-size: 18px;
+  }
+  .darkgrey-bg h3.regular_text {
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 700;
+    font-family: 'Gohtam-bold';
+    line-height: normal;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    margin: 18px 0px;
+  }
+  .darkgrey-bg p {
+    margin-bottom: 0;
+    font-size: 16px;
+    padding: 45px 10px 20px;
+    color: #fff;
+  }
+  .darkgrey-bg a.action_button.continue-button {
+    background: #e31e24;
+    color: #fff;
+    border: 0;
+    margin-left: 9px;
+    margin-top: 0;
+  }
+  .darkgrey-bg {
+    background: #747677;
+    padding: 40px 20px;
+    border-radius: 3px;
+    height: 100%;
+    min-height: 635px;
+    margin-top: -100px;
+  }
+  .cust-blog .related-products.related-products--slider.js-blog-post-slider .slider-gallery .flickity-prev-next-button {
+    top: 37%;
+    background: #e5dfdfc7!important;
+    opacity: 1;
+    border-radius: 100%;
+    width: 25px!important;
+    height: 25px!important;
+  }
+  .blog-main-items img {
+    max-width: 96%!important;
+    width: 100%!important;
+    height: 90%;
+    max-height: 90%!important;
+    margin: auto;
+  }
+  .cust-blog .gallery-cell {
+    background: transparent!important;
+    border: 0!important;
+  }
+  .relative.product_image {
+    border: 0 none!important;
+  }
+
+  .blog-main-items h4 {
+    font-size: 16px;
+    font-weight: 800;
+    font-family: 'Gohtam-bold';
+    color: #000;
+    max-width: 85%;
+    margin: 10px auto 0;
+    text-transform: uppercase;
+  }  
+  .cust-blog .product_image a.action_button.continue-button {
+    margin: 0 auto;
+    display: table;
+    line-height: 37px;
+  }
+  .cust-blog .ten {
+    margin-left: 50px;
+  }
+  .cust-blog .flickity-enabled {
+    position: relative;
+    overflow: hidden;
+    width: 90%!important;
+    padding-top: 35px;
+  }        
+   .fixHeight .image-element__wrap 
+  {
+    max-width: 100%!important;
+    min-width: 100%!important;
+  }
+.fixHeight .image-element__wrap img {
+    height: 400px;
+    width: 100%!important;
+    max-width: 400px!important;
+    min-width: 400px!important;
+    object-position: center;
+    object-fit: cover;
+}
+    .blog-main-items h4 {
+      font-size: 15px;
+      font-weight: 800;
+      font-family: 'Gohtam-bold';
+      margin-top: 4px;
+      color: #000;
+      text-transform: uppercase;
+        display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+   padding: 0!important;
+    margin-bottom: 10px;
+          height: 42px;
+    }
+  @media only screen and (max-width: 1440px) {
+   .fixHeight .image-element__wrap img {
+    max-height: 300px!important;
+    object-fit: cover!important;
+    min-height: 300px!important;
+    height: 100%;
+    width: 100%;
+    max-width: 100%!important;
+    min-width: 100%!important;
+    object-position: center;
+}
+    .cust-blog {
+      height: 513px;
+      top: 40px;
+    }
+    .cust-blog .flickity-enabled {
+      position: relative;
+      overflow: hidden;
+      width: 90%!important;
+      padding-top: 35px;
+    }
+    .darkgrey-bg {
+      background: #747677;
+      padding: 60px 20px;
+      border-radius: 3px;
+      height: 100%;
+      min-height: 580px;
+      margin-top: -100px;
+    }
+    .blog-main-items h4 {
+      font-size: 15px;
+      max-width: 90%;
+      margin: 10px auto 0;
+    }
+
+
+  }    
+
+  @media only screen and (max-width: 1366px) {
+   .blog-main-items h4 {
+    font-size: 14px;
+    font-weight: 800;
+    font-family: 'Gohtam-bold';
+    margin-top: 4px;
+    color: #000;
+    text-transform: uppercase;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.5;
+}
+    .cust-blog .product_image a.action_button.continue-button {
+    margin: 0 auto;
+    display: table;
+    line-height: 30px;
+    min-height: 25px;
+    height: 25px;
+    max-height: 25px;
+    margin-top: 2px;
+}
+    .darkgrey-bg {
+      background: #747677;
+      padding: 14px 20px 45px;
+      border-radius: 3px;
+      height: 100%;
+      min-height: 551px;
+      margin-top: -100px;
+    } 
+
+
+
+  }
+
+
+  @media only screen and (max-width: 991px) { 
+    .m-sec-blg {
+      background: none;
+    }
+    .cust-blog-mobile .darkgrey-bg {
+      background: #747677;
+      padding: 7px 20px;
+      border-radius: 3px;
+      height: 100%;
+      min-height: 11px;
+      text-align: center;
+      width: 85%;
+      margin: -66px auto 15px;
+    } 
+    .cust-blog-mobile .darkgrey-bg h3.regular_text {
+      padding: 0px 9px 0;
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      font-family: 'Gohtam-bold';
+      line-height: normal;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      margin: 18px 0px 0;
+    }
+    .cust-blog-mobile .darkgrey-bg p {
+      margin-bottom: 0;
+      font-size: 13px;
+      padding: 9px 0px 0px;
+      color: #fff;
+    }
+    .cust-blog-mobile .darkgrey-bg a.action_button.continue-button {
+      background: #fff;
+      color: #000;
+      border: 0;
+      margin: 14px 6px 8px;
+      padding: 8px 20px!important;
+      height: auto;
+    }
+    .blog-m-section {
+      text-align: center;
+      margin: auto;
+      width: 86%;
+      display: block;
+    }
+    .blog-m-section .blog-main-items h4 {
+      font-size: 11px;
+      font-weight: 800;
+      font-family: 'Gohtam-bold';
+      margin-top: 0px;
+      color: #000;
+      padding-top: 0!important;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      padding-bottom: 0;
+      margin-bottom: 5px;
+      margin-top:5px;
+    }
+    .blog-m-section .relative.product_image {
+      max-width: 50%;
+      width: 100%;
+      float: left;
+    }
+    .blog-m-section .relative.product_image a.action_button.continue-button {
+      padding: 6px;
+      margin: 0 auto 30px;
+      display: table;
+      height: auto!important;
+      min-height: auto;
+      font-size: 12px!important;
+    }
+    .cust-blog-mobile {
+      background: #d1d5d9;
+      margin: 75px 18px 30px;
+      height: 100%;
+      float:left;
+    }
+    .cust-blog {
+      display: none!important;
+    }
+    .cust-blog-mobile {
+      display: block!important;
+    }
+    
+   @media only screen and (max-width:500px)
+      {
+       .fixHeight .image-element__wrap img {
+    max-height: 135px!important;
+    object-fit: contain!important;
+    min-height: 135px!important;
+}
+        .blog-main-items h4
+        {
+            min-height:40px;
+           max-height:40px;
+        }
+        .blog-m-section .relative.product_image {
+    max-width: 50%;
+    width: 100%;
+    float: left;
+    padding: 0px 3px;
+}
+      }
+        @media only screen and (max-width:800px)
+      {
+   
+        .blog-main-items h4
+        {
+            min-height:30px;
+           max-height:30px;
+        }
+      }
+    
+    @media only screen and (max-width: 500px)
+      {
+.blog-m-section .blog-main-items h4 {
+    font-size: 11px;
+    font-weight: 800;
+    font-family: 'Gohtam-bold';
+    margin-top: 0px;
+    color: #000;
+    padding-top: 0!important;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+  }
+
+</style>  
+
+<script>
+
+$(document).ready(function(){   
+  //show more option
+    var size_item = $('.listing').length;
+    var v=4;
+    $('.listing').hide(); // hide all divs with class `listing`
+    $('.listing:lt('+v+')').show();
+    $('#load_more').click(function () {
+        v= (v+4 <= size_item) ? v+4 : size_item;
+        $('.listing:lt('+v+')').show();
+        // hide load more button if all items are visible
+        if($(".listing:visible").length >= size_item ){ $("#load_more").hide(); }
+    });
+});
+
+
+</script>
+
+
+{% schema %}
+
+{
+  "name": "Home Blogs",
+  "class": "blog-section",
+  "max_blocks": 16,
+  "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "Content"
+      }
+  ],
+  "blocks": [
+  {
+    "type": "blog_image",
+    "name": "Blog",
+    "settings": [
+	    {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Upload blog image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "text",
+          "id": "blog_title",
+          "label": "Title"
+        }
+      ]
+  	}
+  ]
+}
+
+{% endschema %}

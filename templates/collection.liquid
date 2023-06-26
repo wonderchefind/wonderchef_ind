@@ -1,0 +1,55 @@
+{% assign collectionDescription = collection.description | split: '<!-- split -->' %}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+{% section 'collection-template-banner' %}
+{% section 'collection-header' %}
+<div class="container">
+    <div class="page page-collections">
+      
+     {%if collection.title == 'Gifting' %}
+      {% section 'collection_gift_static_layout' %}
+      {% endif %}
+      
+      {% if collection.title contains 'Home & Living' %}
+      <div class="homeware-highlights">
+      {%section 'brand-carousel'%}
+      {%section 'brand-carousel1'%}
+          </div>
+      {% endif %}
+       
+       {% if collection.description != blank %}
+      <div class="collection-description desc ">
+        {{ collectionDescription[0] }}
+      </div>
+    {% endif %}
+      
+        {% section 'sidebar-collection' %}
+        
+     
+        {% section 'collection-template' %}
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% section 'collection_customHtml' %}
+{% if collection.description != blank %}
+  <div class="collection-description container desc">
+    {{ collectionDescription[1] }}
+  </div>
+{% endif %}
+{% section 'reviews' %}
+{% section 'recently-viewed-products' %}
+{% section 'brand-grid' %}
+<style>
+    .desc{
+
+      padding:20px 15 px;
+    }
+
+    .desc p{
+
+      font-size: 14px;
+  }
+    }
+</style>

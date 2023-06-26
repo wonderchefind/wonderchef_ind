@@ -1,0 +1,73 @@
+<div class="sticky_form" data-sticky-add-to-cart>
+    <div class="container">
+        <div class="sticky-add-to-cart">
+            {% form 'product', product, id: "form-sticky" %}
+                {% if section.settings.display_countdown %}
+                    <div class="item countdown-wrapper">
+                        <div class="countdown">
+                            {% if product.metafields.halo['countdown'] %}
+                                <div id="product-countdown-2" class="product-countdown" data-countdown data-countdown-value="{{ product.metafields.halo['countdown'] }}"></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="item product-wrapper">
+                    <div class="product-on-cart">
+                        <div class="product-image">
+                            <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ product.featured_image.src  | product_img_url: 'compact' }}" alt="" data-image>
+                        </div>
+                        <div class="product-details">
+                            <div class="product-name">{% render 'multilang' with product.title %}</div>
+                        </div>
+                    </div>
+                </div>
+                {% assign variantCount = product.variants | size %}
+                {% if variantCount > 1 and product.available %}
+                    <div class="item variants-wrapper">
+                        <div class="pr-selectors">
+                            {% render 'icon-chevron-down' %}
+                            <a href="javascript:void(0)" class="pr-active" data-value="{{ product.variants[0].id }}">
+                                {{ product.variants[0].title }} - {{ product.variants[0].price | money }}
+                            </a>
+
+                            <ul>
+                                {% for variant in product.variants %}
+                                    <li>
+                                        <a data-title="{{ variant.title }}" {% if variant.image != null %} data-img="{{ variant.image.src | product_img_url: 'compact' }}"{% else %} data-img="{{ product.featured_image.src | product_img_url: 'compact' }}"{% endif %} data-value="{{ variant.id }}" class="pr-swatch {% if variant.available == false %}sold-out{% endif %}" {% if variant.available == false %}disabled="disabled"{% endif %} href="javascript:void(0)" data-title="{{ variant.title }}" >
+                                            {{ variant.title }} - {{ variant.price | money }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if section.settings.show_quantity_selector %}
+                    <div class="item quantity">
+                        <div class="qty-group">
+                            <a href="#" data-qtt data-minus-qtt class="minus button"> {% render 'icon-chevron-down' %} </a>
+                            <input type="text" id="Quantity2-{{ section.id }}" name="quantity" value="1" min="1" pattern="[0-9]*" data-quantity-input data-qtt-id="quantity__{{ product.id }}">
+                            <a href="#" data-qtt data-plus-qtt class="plus button"> {% render 'icon-chevron-up' %}</a>
+                        </div>
+                    </div>
+                {% endif %}
+                <div class="item action-wrapper">
+                    {% if product.selected_or_first_available_variant.available %}
+                        <input type="hidden" name="id" value="{{ product.variants[0].id }}" /> 
+                        <input data-sticky-btn-addToCart type="submit" name="add" class="btn btn--primary btn-sticky-add-to-cart" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %} value="{{ 'products.product.add_to_cart' | t }}">          
+                    {% else %} 
+                     {% section 'product-template-au-coffee-prebook' %}
+                        <input type="submit" name="add" class="btn btn--secondary-accent btn-sticky-add-to-cart" disabled {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %} value="{{ 'products.product.sold_out' | t }}">          
+                    {% endif %}
+                    {% comment %}
+  {% render 'rentity-product-capsule', product: product %}
+  {% endcomment %}
+              <div style="   float: right;">
+  {% render 'rentity-add-to-rent-cart-btn', product: product %}
+              </div>
+                </div>
+            {% endform %}
+        </div>
+    </div>
+</div>

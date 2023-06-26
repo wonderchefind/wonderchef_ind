@@ -1,0 +1,55 @@
+{%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- assign img_url_1 = product.images[0].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- assign img_url_2 = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- assign show_image_swap = show_image_swap | default: settings.image_swap -%}
+{%- assign show_product_vendor = show_product_vendor | default: settings.show_product_vendor -%}
+{%- assign show_product_title = show_product_title | default: settings.show_product_title -%}
+{%- assign show_product_reviews = show_product_reviews | default: settings.show_product_reviews -%}
+{%- assign show_product_price = show_product_price | default: settings.show_product_price -%}
+{%- assign show_product_button = show_product_button | default: settings.show_product_button -%}
+
+<div class="product-card {% unless product.available %} product-card--sold-out{% endunless %}" data-product-card>
+    <div class="product-image">
+        {% render 'product_badges' with product as product %}
+        <a class="product-link {% if product.images.size > 1 and show_image_swap %}image-swap{% endif %}" href="{{ product.url | within: collection }}">
+            {% if product.images.size > 1 and show_image_swap %}
+                <img class="image-one lazyload"
+                    data-src="{{ img_url_1 }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-sizes="auto" alt="{{ product.images[0].alt }}" data-image>
+                <img class="image-two lazyload"
+                    data-src="{{ img_url_2 }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-sizes="auto" alt="{{ product.images[1].alt }}" data-image>
+            {% else %}
+                <img class="lazyload"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                    data-sizes="auto" alt="{{ product.featured_image.alt }}" data-image>
+            {% endif %}
+        </a>
+    </div>
+    <div class="product-content">
+        {% if show_product_vendor %}
+            <div class="product-vendor">
+                {{ product.vendor | link_to_vendor }}
+            </div>
+        {% endif %}
+        {% if show_product_title %}
+            <h4 class="product-title">
+                <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+            </h4>
+        {% endif %}
+        {% if show_product_reviews %}
+            <div class="product-reviews">
+                <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            </div>
+        {% endif %}
+        {% if show_product_price %}
+            {% render 'product-price' with product as product, variant: product.selected_or_first_available_variant %}
+        {% endif %}
+        {% if show_product_button %}
+            {% render 'add-to-cart-btn' with product as product, id: 'list-product-form', variant: product.selected_or_first_available_variant %}
+        {% endif %}
+    </div>
+</div>

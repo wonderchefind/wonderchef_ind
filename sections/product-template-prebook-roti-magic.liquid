@@ -1,0 +1,714 @@
+<script>
+$(document).ready(function(){
+	var maxLength = 300;
+	$(".show-read-more").each(function(){
+		var myStr = $(this).text();
+		if($.trim(myStr).length > maxLength){
+			var newStr = myStr.substring(0, maxLength);
+			var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
+			$(this).empty().html(newStr);
+			$(this).append(' <a href="#tab1" class="read-more">read more...</a>');
+			$(this).append('<span class="more-text">'+ removedStr +'</span>');
+		}
+      
+	});
+	
+});
+</script>
+
+
+<style>
+    .show-read-more .more-text{
+        display: none;
+    }
+</style>
+
+
+<div class="product_template" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+    {% comment %}
+        Get first variant, or deep linked one
+    {% endcomment %}
+  {% assign productDescription = product.description | split:"<!-- split -->"%}
+    {%- assign current_variant = product.selected_or_first_available_variant -%}
+    {%- assign product_image_zoom_size = '1024x1024' -%}
+    {%- assign product_image_scale = '2' -%}
+    {%- assign enable_zoom = section.settings.enable_zoom -%}
+    {%- assign enable_fancybox = section.settings.enable_fancybox -%}
+    {%- assign compare_at_price = current_variant.compare_at_price -%}
+    {%- assign price = current_variant.price -%}
+
+       
+
+      
+      
+        <div class="product_shop">
+ 
+         
+            	<div class="product_form_wrapper">
+                {% capture "form_classes" -%}
+                    product-form product-form-{{ section.id }}{% if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
+                {%- endcapture %}
+
+                {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
+                 
+                 
+                  
+                    {% render 'product-variants', product: product %}
+   
+                
+
+                    <div class="button-group layout-1">
+                     
+                       {% if section.settings.enable_payment_button %}
+                  
+                
+      
+      
+                                         
+                        {% endif %}
+                   
+                                  
+                    </div>
+          
+          <div class="custom-buy__now shopify-payment-button">
+          <button type="button" style="{% unless current_variant.available %}display:none;{% endunless %} font-size: 25px!important;" class="shopify-payment-button__button buy-now shopify-payment-button__button--unbranded" onClick="instantBuy(event,this)"><span>BUY NOW</span></button>
+        </div>
+                    <!-- <input required type="text" id="monogram" name="properties[Note]" data-error="Please enter a Note."> -->
+                {% endform %}
+      
+       
+ 
+                {%- comment -%}
+                    Live region for announcing updated price and availability to screen readers
+                {%- endcomment -%}
+                <p class="visually-hidden" data-product-status aria-live="polite" role="status"></p>
+
+                {%- comment -%}
+                    Live region for announcing that the product form has been submitted and the
+                    product is in the process being added to the cart
+                {%- endcomment -%}
+            
+           
+      
+         
+      
+
+          
+
+           
+        </div>
+  
+  
+ 
+  
+    </div>
+</div>
+
+
+
+{% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+        {{ product | json }}
+    </script>
+{% endunless %}
+
+
+{% schema %}
+{
+    "name": "Product pages",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Product Image"
+        },
+        {
+            "type": "select",
+            "id": "thumnail_image_position",
+            "label": "Position Thumnail",
+            "default": "position_left",
+            "options": [
+                {
+                    "value": "position_left",
+                    "label": "Thumnail Left"
+                },
+                {
+                    "value": "position_right",
+                    "label": "Thumnail Right"
+                }
+            ]
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_zoom",
+            "label": "Enable image zoom",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_fancybox",
+            "label": "Enable image gallery popup",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Video Product"
+        },
+        {
+            "type": "checkbox",
+            "id": "video_product",
+            "label": "Enable Video Product",
+            "default": false,
+            "info": "Please install app Metafields Guru and setting like Document"
+        },
+        {
+            "type": "select",
+            "id": "video_icon_type",
+            "label": "Video Icon Type",
+            "options": [
+                {
+                    "value": "font",
+                    "label": "Icon Font Awesome"
+                },
+                {
+                    "value": "image",
+                    "label": "Icon image"
+                }
+            ],
+            "default": "font"
+        },
+        {
+            "type": "text",
+            "id": "video_icon",
+            "label": "Font Awesome icon",
+            "default": "<i class=\'far fa-play-circle\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type": "image_picker",
+            "id": "video_image",
+            "label": "Image Icon"
+        },
+        {
+            "type" : "text",
+            "id" : "video_header",
+            "label" : "Title",
+            "default" : "Video"
+            
+        },
+        {
+            "type": "header",
+            "content": "Instruction Product"
+        },
+        {
+            "type": "checkbox",
+            "id": "instruction_product",
+            "label": "Enable Instruction Product",
+            "default": false,
+            "info": "Please install app Metafields Guru and setting like Document"
+        },
+        {
+            "type": "select",
+            "id": "instruction_icon_type",
+            "label": "Instruction Icon Type",
+            "options": [
+                {
+                    "value": "font",
+                    "label": "Icon Font Awesome"
+                },
+                {
+                    "value": "image",
+                    "label": "Icon image"
+                }
+            ],
+            "default": "font"
+        },
+        {
+            "type": "text",
+            "id": "instruction_icon",
+            "label": "Font Awesome icon",
+            "default": "<i class=\'fas fa-book\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type": "image_picker",
+            "id": "instruction_image",
+            "label": "Image Icon"
+        },
+        {
+            "type" : "text",
+            "id" : "instruction_header",
+            "label" : "Title",
+            "default" : "Instruction"
+            
+        },
+        {
+            "type": "header",
+            "content": "Warranty Product"
+        },
+        {
+            "type": "checkbox",
+            "id": "warranty_product",
+            "label": "Enable Warranty Product",
+            "default": false,
+            "info": "Please install app Metafields Guru and setting like Document"
+        },
+        {
+            "type": "select",
+            "id": "warranty_icon_type",
+            "label": "Warranty Icon Type",
+            "options": [
+                {
+                    "value": "font",
+                    "label": "Icon Font Awesome"
+                },
+                {
+                    "value": "image",
+                    "label": "Icon image"
+                }
+            ],
+            "default": "font"
+        },
+        {
+            "type": "text",
+            "id": "warranty_icon",
+            "label": "Font Awesome icon",
+            "default": "<i class=\'fas fa-shield-alt\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type": "image_picker",
+            "id": "warranty_image",
+            "label": "Image Icon"
+        },
+        {
+            "type" : "text",
+            "id" : "warranty_header",
+            "label" : "Title",
+            "default" : "Warranty"
+            
+        },
+        {
+            "type": "header",
+            "content": "Contacts"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "show_contacts",
+            "label" : "Enabled Contacts",
+            "default" : true
+        },
+        {
+            "type": "image_picker",
+            "id": "contacts_image",
+            "label": "Contacts Image"
+        },
+        {
+            "type" : "text",
+            "id" : "contact_title",
+            "label" : "Contacts title",
+            "default" : "Have Questions?"
+        },
+        {
+            "type" : "text",
+            "id" : "contact_phone",
+            "label" : "Number Phone",
+            "default" : "1.800.000.6890"
+        },
+        {
+            "type": "header",
+            "content": "Ask an Expert"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "ask_an_expert",
+            "label" : "Enabled Ask an Expert",
+            "default" : true
+        },
+        {
+            "type" : "text",
+            "id" : "ask_an_expert_title",
+            "label" : "title",
+            "default" : "Ask an Experts"
+        },
+        {
+            "type": "header",
+            "content": "Services"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "show_services",
+            "label" : "Enabled Services",
+            "default" : true
+        },
+        {
+            "type": "text",
+            "id": "services_icon_1",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-check\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_1",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_1",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_2",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-phone\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_2",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_2",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_3",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-wrench\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_3",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_3",
+            "label" : "Services description",
+            "default" : "Use appropriate text",
+            "info": "======================"
+        },
+        {
+            "type": "text",
+            "id": "services_icon_4",
+            "label": "Services Icon",
+            "default": "<i class=\'fas fa-dice-d6\'></i>",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type" : "text",
+            "id" : "services_title_4",
+            "label" : "Services title",
+            "default" : "Services"
+        },
+        {
+            "type" : "text",
+            "id" : "services_description_4",
+            "label" : "Services description",
+            "default" : "Use appropriate text"
+        },
+        {
+            "type" : "header",
+            "content" : "products review"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_reviews",
+            "label": "Enable Product Reviews?",
+            "default": true
+        },
+        {
+            "type" : "header",
+            "content" : "products has been sold"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "show_sold_in",
+            "label" : "Enabled",
+            "default" : true
+        },
+        {
+            "type" : "textarea",
+            "id" : "item_prd",
+            "label" : "The number of products",
+            "default" : "3,5,6,7,8,10,12,15"
+        },
+        {
+            "type" : "text",
+            "id" : "item_prds",
+            "label" : "Text Sold in",
+            "default" : "sold in last"
+        },
+        {
+            "type" : "textarea",
+            "id" : "hours_prs",
+            "label" : "Hours",
+            "default" : "10,15,16,17,18,20,25,35"
+        },
+        {
+            "type" : "text",
+            "id" : "item_hours",
+            "label" : "Text Hours",
+            "default" : "hours"
+        },
+        {
+            "type": "header",
+            "content": "Product vendor"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_vendor",
+            "label": "Enable Vendor?",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Product SKU"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_sku",
+            "label": "Enable Product SKU?",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Product Availability"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_availability",
+            "label": "Enable Availability?",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Product Type"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_type",
+            "label": "Enable Product Type?",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Countdown"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_countdown",
+            "label": "Enable Countdown?",
+            "default": true,
+            "info": "Please install app Metafields Guru and setting like Document"
+        },
+        {
+            "type": "header",
+            "content": "Product Price"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_price",
+            "label": "Enable Price?",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "display_subtotal",
+            "label": "Enable Subtotal?",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": "Show quantity selector",
+            "default": true
+        },
+        {
+            "type": "header",
+            "content": "Product Short Description"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_short_description",
+            "label": "Enable Short description?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "number_words",
+            "label": "Number Words",
+            "default": "16"
+        },
+        {
+            "type": "header",
+            "content": "Product Size Chart"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_size_chart",
+            "label": "Enable Size Chart?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "display_size_chart_at",
+            "label": "Show Size Chart At Option (Use for swatch)",
+            "default": "Size"
+        },
+        {
+            "type": "text",
+            "id": "size_guide_text",
+            "label": "Size Guide Text",
+            "default": "Size Guide"
+        },
+        {
+            "type": "text",
+            "id": "custom_size_chart_header",
+            "label": "Header",
+            "default": "Size Chart"
+        },
+        {
+            "type": "select",
+            "id": "size_chart",
+            "label": "Using different size charts for products by following",
+            "options": [
+            {
+                "value": "none",
+                "label": "All Product"
+            },
+            {
+                "value": "product_vendor",
+                "label": "Product Vendor"
+            },
+            {
+                "value": "product_type",
+                "label": "Product Type"
+            },
+            {
+                "value": "different",
+                "label": "Each of size chart for each of product"
+            }],
+            "default": "none",
+            "info": "Default Value: All Products"
+        },
+        {
+            "type": "image_picker",
+            "id": "custom_size_chart",
+            "label": "Size Chart Image",
+            "info": "Select Image if you would like to show the same Size Chart for All Products"
+        },
+        {
+            "type": "header",
+            "content": "dynamic checkout button"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_payment_button",
+            "label": "Show dynamic checkout button",
+            "info": "Lets customers check out directly using a familiar payment method. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+            "default": true
+        },
+        {
+            "type" : "header",
+            "content" : "Customers viewing"
+        },
+        {
+            "type" : "checkbox",
+            "id" : "dpl_customers_view",
+            "label" : "Enable Customers viewing",
+            "default" : true
+        },
+        {
+            "type" : "text",
+            "id" : "title_view",
+            "label" : "Title",
+            "default" : "customers are viewing this product"
+        },
+        {
+            "type" : "textarea",
+            "id" : "number_view",
+            "label" : "Number of customers viewing",
+            "default" : "283, 100, 59, 11, 14, 185, 193, 165, 50, 38, 99, 112, 46, 10, 125, 200, 250, 18",
+            "info" : "Please enter the number"
+        },
+        {
+            "type": "header",
+            "content": "Product Share"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_product_detail_share",
+            "label": "Enable Product Share?",
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "share_text",
+            "label": "Share Text",
+            "default": "Share"
+        },
+        {
+            "type": "header",
+            "content": "Product Trust Image"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_trust_img",
+            "label": "Enable Trust Image?",
+            "default": true
+        },
+        {
+            "type": "image_picker",
+            "id": "img_trust",
+            "label": "Image Trust"
+        },
+        {
+            "type": "header",
+            "content": "Sticky Add To Cart"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_sticky_atc",
+            "label": "Enable Sticky Add To Cart",
+            "default": true
+        }
+    ]
+}
+{% endschema %}
+
+<script>
+  function instantBuy(event,data){
+    event.preventDefault();
+    var $ = jQuery;
+    var formParams =$(data).closest('form').serialize();
+    $(data).find('span').html("Adding...");
+    $(data).attr("disabled",true);
+    $.ajax({
+      url: "/cart/add.js",
+      type: "post",
+      dataType :'JSON',
+      data: formParams,
+      success: function(){
+        window.location.href = "/checkout";
+        $(data).find('span').html('BUY NOW');
+      },
+      error: function(){
+        $(data).removeAttr("disabled");
+        $(data).find('span').html('BUY NOW');
+      }
+    })
+  }
+</script>

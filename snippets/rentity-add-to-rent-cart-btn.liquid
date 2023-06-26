@@ -1,0 +1,45 @@
+{%- if product -%} 
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{% if product.tags contains settings.rentity_tag_value %}
+<div 
+     id="rentity-variant-{{ current_variant.id }}-addToRentBtn"
+     rentity-product-{{product.id | json}}" 
+     class="rentity-add-to-rent-cart-btn">
+    <div class="action-buttons">
+    	<button 
+                type="button" 
+                name="addToRentCart" 
+                aria-label="Add to rent cart" 
+                class="addToRentCartBtn btn--primary"
+                data-rental-quantity="1",
+                data-rental-tenure=""
+                data-product-id="{{product.id | json}}" 
+                data-product-variant-id="{{product.selected_or_first_available_variant.id}}" 
+                data-product-variant-image="{{product.featured_image | product_img_url: '160x'}}"
+                data-product-variant-url="{{product.url}}"
+                data-product-title="{{product.title | escape }}"
+				style="display:none" >
+                                    <span class="rentCartIcon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32; width:24px;height:24px;padding-top:3px;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#E47066;}
+</style>
+<path class="st0" d="M25.3,8h-2.7c0-3.7-3-6.7-6.7-6.7S9.3,4.3,9.3,8H6.7C5.2,8,4,9.2,4,10.7v16c0,1.5,1.2,2.7,2.7,2.7h18.7
+	c1.5,0,2.7-1.2,2.7-2.7v-16C28,9.2,26.8,8,25.3,8z M16,4c2.2,0,4,1.8,4,4h-8C12,5.8,13.8,4,16,4z M25.3,26.7H6.7v-16h18.7V26.7z"/>
+</svg></span>
+                                    <span style="display:inline-block;vertical-align:middle;"> Add to rent cart</span>
+                            <span class="loader" style="display:none">
+                                <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg>
+                            </span>
+        </button>
+    </div>
+    <div class="info-bar" style="position:relative">
+    	<span class="rental-option">...</span>
+       <span style="text-align: right;position: absolute;right: 44px;top: 0;font-size: 9px;font-style: italic;">
+        By 
+      </span>
+      <img style="width: 42px;position: absolute;right: 0px;top: 6px;" src="data:image/png;base64,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" style="width: 42px;">
+    </div>
+</div>
+{% endif%} 
+{%- endif -%}

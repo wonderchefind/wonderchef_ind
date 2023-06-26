@@ -1,0 +1,1070 @@
+{% comment %}
+** Collection list - default view **
+- Template
+- Uses blocks
+- This template can be viewed by going to /collections of the shop.
+{% endcomment %}
+
+<header class="banner center page_banner ">
+  {% if collection.image %}
+  {% assign image = collection.image %}
+  {%- elsif section.settings.image -%}
+  {% assign image = section.settings.image %}
+  {%- else %}
+  {% assign image = collection.products.first.featured_image %}
+  {% endif %}
+  <div class="hidden_xs">
+      {% include 'image-element', image: image, alt: 'Spares & Accessories' %}
+    </div>
+    <div class="visible_xs ">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Spare_parts_offer_Mobile.jpg?v=1668426803" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+    </div>
+  </hr>
+</header>
+
+
+<a name="pagecontent" id="pagecontent"></a>
+<h1 style="text-align:center;">Spare Parts</h1>
+<div class="container nutriblend_main">
+  <div class="section clearfix">
+    <div class="eight columns"></div>
+    {% if section.settings.display_collection_title %}
+    <div class="heading_titlee clearfix">
+      <h1 class="headline">{{ collection.title }}</h1>
+      <div class="sixteen columns">
+        <div class="feature_divider"></div>
+      </div>
+      {% if collection.description != blank %}
+      <div class="coll_des">{{ collection.description }}</div>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  
+  <div class="list-collections clearfix equal-columns--clear equal-columns--outside-trim">
+    
+    
+      <div class="product-wrap center nutriblend">
+        <div class="four columns">
+        <a class="collection-info__caption " href="/collections/choppers2" itemprop="url">
+          <div class="enlarge_pane_contain" >
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'Turbo_Chopper_1st_Image.jpg' | file_url }}" srcset="{{'Turbo_Chopper_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+                <p>CHOPPERS</p>
+              </div>
+            </div>
+          </div>
+        </a>
+ 
+        </div>
+       
+          <div class="four columns">
+             <a class="collection-info__caption " href="/collections/nutriblend-spare-parts" itemprop="url">
+          <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'Nutri_Blend_1st_Image.jpg' | file_url }}" srcset="{{'Nutri_Blend_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+                               <p>NUTRI-BLEND</p>
+              </div>
+            </div>
+          </div>
+       
+        </a>
+       </div>
+         <div class="four columns">
+             <a class="collection-info__caption " href="/collections/nutri-blend-thunder-spare-parts" itemprop="url">
+          <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'NB_Thunder_Category_First_Images.jpg' | file_url }}" srcset="{{'NB_Thunder_Category_First_Images.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+                               <p>NUTRI-BLEND THUNDER </p>
+              </div>
+            </div>
+          </div>
+       
+        </a>
+       </div>
+        <div class="four columns">
+             <a class="collection-info__caption " href="/collections/nutri-blend-bolt-spare-parts" itemprop="url">
+          <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'NB_Bolt_Category_First_Images.jpg' | file_url }}" srcset="{{'NB_Bolt_Category_First_Images.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+                               <p>NUTRI-BLEND BOLT </p>
+              </div>
+            </div>
+          </div>
+       
+        </a>
+       </div>
+      
+          
+      </div>
+       
+          
+        
+     <div class="product-wrap center nutriblend">
+       <div class="four columns">
+              <a class="collection-info__caption " href="/collections/nutri-pot-spare-parts" itemprop="url">
+          <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'Nutri-pot_1st_Image.jpg' | file_url }}" srcset="{{'Nutri-pot_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+              <p>NUTRI-POT</p>
+              </div>
+            </div>
+          </div>
+                 </a>
+          </div>
+       <div class="four columns">
+             <a class="collection-info__caption " href="/collections/otg-spares-accessories" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'OTG_s_1st_Image.jpg' | file_url }}" srcset="{{'OTG_s_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>OTGs</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+        <div class="four columns">
+             <a class="collection-info__caption " href="/collections/egg-boiler-spare-parts" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'Egg_Boiler_1st_Image.jpg' | file_url }}" srcset="{{'Egg_Boiler_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>EGG BOILER</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+       
+          <div class="four columns">
+             <a class="collection-info__caption " href="/collections/pressure-cooker-spare-parts" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'pressure_cooker_1st_Image.jpg' | file_url }}" srcset="{{'pressure_cooker_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>PRESSURE COOKERS</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+       
+       
+    </div>
+    <div class="product-wrap center nutriblend">
+      
+         <div class="four columns">
+             <a class="collection-info__caption " href="/collections/ultima-3-burner-cooktop" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'cooktop_1st_Image.jpg' | file_url }}" srcset="{{'cooktop_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>COOKTOPS</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+    <div class="four columns">
+             <a class="collection-info__caption " href="/collections/lids" itemprop="url">
+		 <div class="enlarge_pane_contain">
+            <div class="enlarge_pane">
+              <div class="enlarge">
+                <div class="enlarge_contain">
+                  <img src="{{'Lids_1st_Image.jpg' | file_url }}" srcset="{{'Lids_1st_Image.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                </div>
+               <p>COOKWARE LIDS</p>
+              </div>
+            </div>
+          </div> 
+        
+        </a>
+      </div>
+      
+    </div>
+   
+    
+    <div class="clearfix">
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+  </br>
+  <hr>
+   </br>
+
+Many people take their cookware for granted. But what happens when something goes wrong? When a pot handle breaks or a lid shatters, it can be frustrating to have to replace the entire piece of cookware. That's where spare parts come in. From handles and lids to bases and legs, we have got you covered.  
+</br></br>
+<h3><b>Tips for Storing and Using Spare Parts</b></h3>
+
+If you have extra cookware components, it's crucial to keep them properly so they are accessible when you need them. Here are some tips for storing and using spare parts:
+</br></br>
+- Store spare parts in a cool, dry place.</br>
+- Label each part clearly, so you know what it is and where it goes.</br>
+- Check the condition of the parts regularly and discard any damaged or worn.</br>
+- Make sure that the parts are compatible with your cookware before using them.</br>
+- Only use genuine replacement parts from the manufacturer to avoid voiding your warranty.
+</br></br>
+<h3><b>Spare Parts For Cookware</b></h3>
+
+<b>chopper</b>
+</br>
+Having the proper spare parts for your chopper is crucial. Choppers are a necessary tool in any kitchen, and having the right spare parts can make all the difference in how well they work. When selecting the appropriate spare parts for your chopper, there are a few factors to keep in mind. You should consider the type of chopper you own. There are many different types of choppers on the market, and each one uses different parts. Once you know what type of chopper you have, you need to choose the right spare parts. Depending on the type of chopper, there are different types of blades and other attachments that you'll need. Make sure to get the right size and style of blade for your particular model. Finally, you must ensure that the spare parts you choose are compatible with your chopper. Choppers come in different sizes and styles, so it's important to get parts that will fit yours correctly. It's also important to get parts made from high-quality materials so they last long and don't break easily. 
+</br></br>
+<b>Nutri blend</b>
+</br>
+Spare parts for Nutri blend cookware can be hard to come by. The good news is we've got you covered! Our selection of spare parts includes everything you need to keep your Nutri blend cookware in top condition. From replacement lids to new blades, we have the spare part you need to make sure your Nutri blend is always ready for action.
+</br></br>
+<b>OTGs</b>
+</br>
+Here are some tips on how to use them to keep your grill running like new.</br>
+1. First, check the manufacturer's website or owner's manual for a list of recommended spare parts. This will help you identify which parts will most likely wear out or break over time.</br>
+2. Buy the required parts, and consider purchasing them from a reputable dealer or online.</br>
+3. Make sure to regularly inspect and clean all of your grill's parts, including the burners, grates, and flavorizer bars. By taking these simple steps, you can extend the life of your grill and keep it cooking like new for years to come!</br>
+</br>
+<b>Nutri Pot</b>
+</br>
+It is always a good idea to have spare parts on hand for your cookware in case something should break or becomes worn out. For Nutri Pot cookware, we have a variety of spare parts available so that you can keep your pots and pans in good working order. We have lids and handles, as well as replacement seals and gaskets. If you need any help finding the right spare part for your Nutri Pot, please don't hesitate to contact us. We are always happy to help!
+</br></br>
+<b>Egg Boiler</b>
+</br>
+If your egg boiler is in need of a new part or two, never fear! We are here to find the spare part for your egg boiler. Have you misplaced or damaged the parts of the egg boiler and now wondering how your egg boiler will work? Don't worry; we have got you covered. We have a measurement cup, an egg holder attachment, and a lid to cover your egg as they boil. 
+</br></br>
+<b>Pressure Cooker</b>
+</br>
+A pressure cooker is a versatile cookware used in every household almost daily. it's essential to have spare parts handy in case something goes wrong. The most important spare part for a pressure cooker is the gasket. The gasket seals the pressure cooker's lid to create the pressure necessary for cooking. If your gasket is damaged or worn out, it must be replaced. It would be best to have a few spare sealing rings handy. The sealing ring goes between the lid and the pressure cooker's pot and helps create an airtight seal. These can wear out over time, so it's a good idea to have a few extras. Finally, you'll need a few extra screws and bolts. These are used to secure the lid of the pressure cooker to the pot and shouldn't need to be replaced very often, but it's always good to have spares, just in case.
+</br></br>
+<b>Cooktops</b>
+</br>
+There are many different spare parts for cooktops that you may need to purchase at some point. Here is a list of the most common spare parts for cooktops:</br>
+1. Burners: These are the most important part of your cooktop, and you will need to replace them if they become damaged.</br>
+2. Control knobs: The control knobs allow you to adjust the heat of your burners. You may need to replace them if they become worn out or broken.</br>
+3. Drip pans: Drip pans catch any food or liquid that may spill while cooking. They can be made of aluminium, stainless steel, or porcelain and can be purchased at most hardware stores.</br>
+4. Grates: Grates cover the burner area and help protect it from spills. They can be made of cast iron, stainless steel, or porcelain and can be purchased at most hardware stores.</br>
+</br>
+<b>Lids</b>
+</br>
+If you're looking for spare parts for your cookware lids, you've come to the right place. Here at Cookware Spares, we stock a wide range of cookware replacement lids for saucepans, cast iron Kadai, frying pans and casseroles. We know how frustrating it can be when a lid gets damaged or goes missing, so we're here to help you get back up and cooking in no time. 
+</br></br>
+<h2><b>FAQs</b></h2>
+
+<b>Q. Where can I get spare parts for the Wonderchef cooktop?</b>
+</br>
+Ans. You can find any spare part for the cooktop on the official website of Wonderchef. You can find pan support, burners, grates, etc. 
+</br></br>
+<b>Q. How often should I replace parts on my pressure cooker?</b>
+</br>
+Ans. The gasket and safety plug should be changed in every 12 months, no matter how often the cooker is used.
+</br></br>
+<b>Q. How to identify the correct spare part for Nutri blender?</b>
+</br>
+Ans. To check the correct spare part of the Nutri blender, see the bottom of the Nutri blender to identify the model number if the model number starts with B order for part 'B'. If the model number begins with K, then select spare part 'premier'. If you have an old model that starts with A1, then call the Wonderchef helpline number. 
+</br></br>
+<b>Q. I have a Wonderchef string chopper; the lid is misplaced; what can I do?</b>
+</br>
+Ans. If the string is damaged or misplaced, then you can get a lid with string on the official website of Wonderchef. 
+</br></br>
+<b>Q. What spare parts are available for OTG?</b>
+</br>
+Ans. For OTG, you can get a baking tray, tray handle, wire rack, and crumb tray. 
+</div>
+  </br></br>
+
+{% schema %}
+
+{
+  "name": "Collection",
+  "class": "collection-template-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_row",
+      "label": "Products per row",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "pagination_limit",
+      "label": "Products per page",
+      "min": 2,
+      "max": 50,
+      "step": 1,
+      "default": 48
+    },
+    {
+      "type": "checkbox",
+      "id": "display_collection_title",
+      "label": "Show collection title"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_breadcrumb",
+      "label": "Show breadcrumb links",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_tags",
+      "label": "Enable filtering by product tag"
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_sort",
+      "label": "Enable collection sorting"
+    },
+    {
+      "type": "header",
+      "content": "Banner image"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_collection_image",
+      "label": "Show top banner image",
+      "info": "The collection's featured image will be used by default. Optionally upload a banner image as a fallback."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner image",
+      "info": "1800 x 1000px recommended"
+    },
+    {
+      "type": "checkbox",
+      "id": "image_darken",
+      "label": "Darken banner image",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "paragraph",
+      "content": "Create a sidebar by adding content blocks."
+    },
+    {
+      "type": "checkbox",
+      "id": "toggle",
+      "label": "Toggle sidebar content",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "filter_by_collection",
+      "name": "Collection list",
+      "limit": 1
+    },
+    {
+      "type": "menu",
+      "name": "Menu",
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "custom_menu_linklist",
+          "label": "Menu"
+        }
+      ]
+    },
+    {
+      "type": "page",
+      "name": "Page",
+      "settings": [
+        {
+          "type": "page",
+          "id": "content_page",
+          "label": "Page"
+        }
+      ]
+    },
+    {
+      "type": "recently_viewed",
+      "name": "Recently viewed products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
+        },
+        {
+          "type": "text",
+          "id": "sidebar_rv_title",
+          "label": "Title",
+          "default": "Recently Viewed"
+        },
+        {
+          "type": "range",
+          "id": "sidebar_rv_per",
+          "label": "Products limit",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        }
+      ]
+    },
+    {
+      "type": "filter",
+      "name": "Tag filter",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "filter_name",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "filter_tags",
+          "label": "Filter tags",
+          "info": "Add a comma-separated list of product tags. Only the tags found in the collection will be displayed as filters ([?](https://help.outofthesandbox.com/hc/en-us/articles/115008642047))"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_filter_swatches",
+          "label": "Display color swatches"
+        }
+      ]
+    },
+    {
+      "type": "filter_by_tag",
+      "name": "Tag list",
+      "limit": 1
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Heading"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Text area can be used for special announcements or general information.</p>"
+        }
+      ]
+    },
+    {
+      "type": "filter_by_type",
+      "name": "Type list",
+      "limit": 1
+    },
+    {
+      "type": "filter_by_vendor",
+      "name": "Vendor list",
+      "limit": 1
+    }
+  ]
+}
+
+{% endschema %}
+
+<script>
+  // DOM-ready auto-init of plugins.
+// Many plugins bind to an "enhance" event to init themselves on dom ready, or when new markup is inserted into the DOM
+(function( $ ){
+	$( function(){
+		$(".enlarge.inline-demo").data("options", {
+			button: true,
+			hoverZoomWithoutClick: true,
+			delay: 200,
+			flyout: {
+				width: 200,
+				height: 200
+			},
+			placement: "inline",
+			magnification: 3
+		});
+
+
+		$( document ).bind( "enhance", function(){
+			$( "body" ).addClass( "enhanced" );
+		});
+
+		$( document ).trigger( "enhance" );
+	});
+}( jQuery ));
+
+  
+//   Js don't touch this file
+;(function( w ){
+	var enlarge = function(){
+		var $ = w.jQuery;
+		var pluginName = "enlarge";
+		$.fn[ pluginName ] = function( options ){
+
+			var pluginArgs = arguments;
+
+			// options
+			var o = $(this).data("options") || {
+				button: true,
+				hoverZoomWithoutClick: true,
+				delay: 300,
+				flyout: {
+					width: 300,
+					height: 300
+				},
+				placement: "flyoutloupe",
+				magnification: 3
+			};
+
+			if( typeof options !== "string" ) {
+				// extend with passed options
+				o = $.extend( o, options );
+				$(this).data("options", o);
+			}
+
+			var internalResult;
+
+			var result = this.each(function(){
+				var $element = $(this);
+
+				var self = this;
+				var testimg = w.document.createElement( "img" );
+				var srcsetSupported = "srcset" in testimg;
+				var srcsetSizesSupported = srcsetSupported && "sizes" in testimg;
+				var $anchor = $( this ).find( "a" );
+
+				if( !$anchor.length ){
+					throw new Error(pluginName + ": requires an anchor element with `href` for the enlarged image source");
+				}
+
+				// find image within container
+				var initialImg = $element.find( "img" )[ 0 ];
+				var targetImg = initialImg;
+				var imgOriginalSrc = targetImg.src;
+				var srcset = $( targetImg ).attr( "srcset" );
+				var imgOriginalSizes = $( targetImg ).attr( "sizes" );
+				var imgZoomSrc = $anchor[ 0 ].href;
+				var initialText = $anchor[ 0 ].innerText;
+				var zoomClass = pluginName + "-zoomed";
+				var delayClass = pluginName + "-delay";
+				var $contain = $( targetImg ).closest( ".enlarge_contain" );
+				var $zoomContain = $contain;
+				var $parentPane = $( targetImg ).closest( ".enlarge_pane" ) || $element;
+
+				var $zoomParent = $(this).data("zoomParent") || $parentPane;
+				$(this).data("zoomParent", $zoomParent);
+
+				var zoomed = $element.data("zoomed") || false;
+				$element.data("zoomed", zoomed);
+
+				$element.data("lockedZoom", $element.data("lockedZoom") || false);
+
+				var lockZoomClass = pluginName + "-locked";
+
+				if( !$contain.length ){
+					throw new Error(pluginName + ": requires an element above the image marked with the class `enlarge_contain`");
+				}
+
+				// this allows for methods and changing options in subsequent calls to the plugin
+				if( typeof options === "string" ) {
+					var args = Array.prototype.slice.call(pluginArgs, 1);
+
+					switch(options){
+					case "in":
+						if( !$element.data("zoomed") ){
+							standardToggleZoom();
+						}
+						break;
+					case "out":
+						if( $element.data("zoomed") ){
+							standardToggleZoom();
+						}
+						break;
+					case "isZoomed":
+						internalResult = $element.data("zoomed");
+						break;
+					case "updateOptions":
+						$element.data( "updateOptions" )( args[ 0 ] );
+						break;
+					}
+					return;
+				}
+
+				// to toggle between inline and flyout modes, we change the elements that
+				// the targetImg, zoomParent, and zoomContain vars refer to
+				function updatePlacement(){
+					if( o.placement === "inline" ){
+						targetImg = initialImg;
+						$zoomParent = $parentPane;
+						$element.data("zoomParent", $zoomParent);
+						$zoomContain = $contain;
+					} else {
+						targetImg = $flyout.find( "img" )[ 0 ];
+						$zoomParent = $zoomContain = $flyout;
+						$element.data("zoomParent", $zoomParent);
+					}
+				}
+
+				// this positions the loupe or side flyout element either according to mouse/touch coordinates
+				// or the sides of the viewer specified
+				function positionFlyout(){
+
+					// set flyout width and height
+					$flyout.css({
+						"width": o.flyout.width + "px",
+						"height": o.flyout.height + "px",
+						top: "",
+						left: "",
+						"margin-left": "",
+						"margin-top": ""
+					});
+
+					// set negative left or right value to match width
+					var flyoutSide = o.placement.match( /left|right/ );
+
+					if( flyoutSide ){
+						$flyout.css( flyoutSide[ 0 ], -o.flyout.width + "px" );
+					}
+					// if loupe mode, center offset
+					var loupe = o.placement.match( /loupe/ );
+
+					if( loupe ) {
+						// loupe
+						$flyout.css({
+							"margin-left": ( -o.flyout.width / 2 ) + "px",
+							"margin-top": ( -o.flyout.height / 2 ) + "px"
+						});
+					}
+
+					// add class to specify positioning spot for static css to apply
+					$flyout[ 0 ].className = $flyout[ 0 ].className.replace( /enlarge_flyout\-[^$\s]+/, ' ' );
+					$flyout.addClass( "enlarge_flyout-" +	 o.placement );
+				}
+
+				function disable(){
+					if(o.disabled){
+						$element.addClass("enlarge_disabled");
+					} else {
+						$element.removeClass("enlarge_disabled");
+					}
+				}
+
+				disable();
+
+				// this allows for subsequent calls to the plugin to pass an updateOptions method and object,
+				// which will pass through to the existing viewer on that element
+				$element.data( "updateOptions", function( opts ){
+					o = $.extend( o, opts );
+					$(this).data("options", o);
+
+					updatePlacement();
+					positionFlyout();
+					hoverEnabled = o.hoverZoomWithoutClick;
+					if( o.image && o.image.sizes ){
+						imgOriginalSizes = o.image.sizes;
+						toggleImgSrc();
+					}
+
+					disable();
+
+					if( o.disabled && $element.data("zoomed") ) {
+						standardToggleZoom();
+					}
+				});
+
+				// loader div holds a new image while its new source is loading
+				// we insert this into the dom so that srcset/sizes can calculate a best source
+				function addLoader(){
+					$contain.append( '<i class="enlarge_loader"><i></i></i>' );
+				}
+
+				// zoom state toggle boolean
+				function toggleZoomState(){
+					zoomed = !$element.data("zoomed");
+					$element.data("zoomed", zoomed);
+				}
+
+				// toggle the image source bigger or smaller
+				// ideally, this toggles the sizes attribute and allows the browser to select a new source from srcset
+				// if srcset isn't supported or sizes attribute is not provided, the link href is used for the larger source
+				function toggleImgSrc(after){
+					after = after || function(){};
+
+					if( !zoomed ){
+						targetImg.sizes = imgOriginalSizes;
+						if( !srcsetSizesSupported ){
+							targetImg.src = imgOriginalSrc;
+						}
+						after();
+					} else {
+						// if the zooming is disabled do not replace with the larger source
+						// NOTE we don't prevent switching to the original source because we
+						// always want to allow the plugin to back out of the zoomed state
+						// when disabled
+						if( o.disabled ) { after(); return false; }
+
+						var zoomimg = new Image();
+						zoomimg.className = "enlarge_img-loading";
+						zoomimg.onload = function(){
+							targetImg.sizes = zoomimg.sizes;
+							if( !srcsetSizesSupported || !srcset ){
+								targetImg.src = imgZoomSrc;
+							}
+							$( zoomimg ).remove();
+
+							after();
+						};
+
+						zoomimg.sizes = imgZoomWidth() + "px";
+
+						if( !srcsetSizesSupported || !srcset ){
+							zoomimg.src = imgZoomSrc;
+						} else if (srcset) {
+							zoomimg.srcset = srcset;
+						}
+
+						$( zoomimg ).insertBefore( targetImg );
+					}
+				}
+
+				// scroll to the center of the zoomed image
+				function scrollToCenter(){
+					var pw = $zoomContain.width();
+					var ph = $zoomContain.height();
+					var w = targetImg.offsetWidth;
+					var h = targetImg.offsetHeight;
+					$zoomContain[ 0 ].scrollLeft = ( w / 2 ) - ( pw / 2 );
+					$zoomContain[ 0 ].scrollTop = ( h / 2 ) - ( ph / 2 );
+				}
+
+				// lock zoom mode allows for scrolling around normally without a cursor-follow behavior
+				function toggleLockZoom(){
+					if( !$element.data("lockedZoom") ){
+						// NOTE we allow the image to zoom out if functionality gets disabled
+						// when it's in a zoomed state
+						if(o.disabled) { return false; }
+
+						$parentPane.add( $zoomParent ).addClass( lockZoomClass );
+						$element.data("lockedZoom", lockedZoom = true);
+						$zoomContain.attr( "tabindex", "0" );
+						$zoomContain[ 0 ].focus();
+					}
+					else {
+						$parentPane.add( $zoomParent ).removeClass( lockZoomClass );
+						$element.data("lockedZoom", lockedZoom = false);
+						$zoomContain.removeAttr( "tabindex" );
+					}
+				}
+
+				function imgZoomWidth(){
+					return $parentPane[0].offsetWidth * o.magnification;
+				}
+
+				// toggle magnification of image
+				function toggleImgZoom(){
+					if( $element.data("zoomed") ){
+						// NOTE we allow the image to zoom out if functionality gets disabled
+						// when it's in a zoomed state
+						if(o.disabled) { return false; }
+
+						if( o.placement === "inline" ){
+							$contain.add( $parentPane ).css( { "width": $parentPane[0].offsetWidth + "px", "height": parseFloat( getComputedStyle( $parentPane[0] ).height ) + "px" } );
+						}
+						$zoomParent.addClass( zoomClass );
+						$( targetImg ).css( "width", imgZoomWidth() + "px" );
+
+						$(self).trigger( pluginName + ".after-zoom-in");
+					}
+					else{
+						$zoomParent.removeClass( zoomClass );
+						if( o.placement === "inline" ){
+							$contain.add( $parentPane ).css( { "width": "", "height": "" } );
+						}
+						$( targetImg ).css( "width", "" );
+
+						$(self).trigger( pluginName + ".after-zoom-out");
+					}
+				}
+
+				function forceInlineMode(){
+					var oldO = o.placement;
+					if( oldO !== "inline" ){
+						function resetPlacement(){
+							o.placement = oldO;
+							updatePlacement();
+							$(self).unbind( pluginName + ".after-zoom-out", resetPlacement );
+						}
+						$(self).bind( pluginName + ".after-zoom-out", resetPlacement );
+						o.placement = "inline";
+						updatePlacement();
+					}
+				}
+
+				// lock zoom mode toggle
+				function standardToggleZoom(){
+					// NOTE if the current is zoomed out and it's disabled prevent toggling
+					if(o.disabled && !$element.data("zoomed")) { return false; }
+					toggleZoomState();
+					toggleImgSrc(function(){
+						toggleLockZoom();
+						toggleImgZoom();
+						scrollToCenter();
+					});
+				}
+
+				var trackingOn;
+				var trackingTimer;
+				var mouseEntered;
+				var touchStarted;
+				var hoverEnabled = o.hoverZoomWithoutClick;
+
+				// mouseenter or touchstart handler for dragging image
+				function startTrackingDelay(e){
+					if( e.type === "touchstart" ){
+						touchStarted = true;
+					}
+					if( touchStarted && e.type === "mouseenter" ||
+							e.type === "mouseenter" && !touchStarted && !hoverEnabled ||
+							$element.data("lockedZoom") ||
+							mouseEntered ){
+								return;
+							}
+					mouseEntered = true;
+					$contain.addClass( delayClass );
+					trackingTimer = setTimeout( function(){
+						$contain.removeClass( delayClass );
+						toggleZoomState();
+						toggleImgSrc(function(){
+							toggleImgZoom();
+							trackingOn = true;
+							scrollWithMouse(e);
+						});
+					}, o.delay );
+				}
+
+				// mouseleave or touchend after a drag
+				function stopTrackingDelay( e ){
+					$contain.removeClass( delayClass );
+					clearTimeout( trackingTimer );
+					trackingOn = false;
+					if( o.hoverZoomWithoutClick === false && !touchStarted ){
+						hoverEnabled = false;
+					}
+					if( touchStarted && e.type === "mouseleave" ){
+						touchStarted = false;
+					}
+				}
+
+				// mousemove or touch-drag image placement
+				function scrollWithMouse( e ){
+					// if tracking's not on yet, ignore. This allows the delay to work
+					if( trackingOn ){
+						// if the move was touch-started, and the event is mousemove, it can be ignored
+						// (mouse events fire along with touch events and we just want the touch)
+						if( touchStarted && e.type === "mousemove" ){
+							return;
+						}
+						// normalize ev to touch or mouse
+						var oe = e.originalEvent || e;
+						var ev = oe.touches ? oe.touches[ 0 ] : oe;
+						e.preventDefault();
+						var x = ev.clientX - $contain[ 0 ].getBoundingClientRect().left;
+						var y = ev.clientY - $contain[ 0 ].getBoundingClientRect().top;
+
+						if( o.placement.match( /loupe/ ) ) {
+							// offset the loupe a little differently for touch so that it's not directly beneath a finger
+							var mLeft = ( oe.touches ? -o.flyout.width / 1.3 : -o.flyout.width / 2 ) + "px";
+							var mTop = ( oe.touches ? -o.flyout.height / 1.3 : -o.flyout.height / 2 ) + "px";
+							requestAnimationFrame(function(){
+								$flyout.css( {
+									top: y + "px",
+									left: x + "px",
+									"margin-left": mLeft,
+									"margin-top": mTop
+								} );
+							});
+						}
+
+						var containWidth = $contain[ 0 ].offsetWidth;
+						var containHeight = $contain[ 0 ].offsetHeight;
+						var containScrollWidth =	targetImg.offsetWidth;
+						var containScrollHeight = targetImg.offsetHeight;
+						var zoomContainWidth = $zoomContain[ 0 ].offsetWidth;
+						var zoomContainHeight = $zoomContain[ 0 ].offsetHeight;
+						var widthFactor = containWidth / zoomContainWidth;
+						var heightFactor = containWidth / zoomContainHeight;
+
+						$zoomContain[ 0 ].scrollLeft = (( x / containWidth ) * ( containScrollWidth - zoomContainWidth ));
+						$zoomContain[ 0 ].scrollTop = (( y / containHeight ) * ( containScrollHeight - zoomContainHeight )) ;
+					}
+				}
+
+				// add flyout for flyout and loupe modes
+				// flyout is always present, yet hidden when inline mode is active
+				var $flyout = $( '<div class="enlarge_flyout"></div>' ).append( $contain.clone() );
+				$flyout.insertAfter( $parentPane );
+
+				// add loader div
+				addLoader();
+				updatePlacement();
+				positionFlyout();
+
+				// clicking the magnify anchor toggles lock-zoom mode
+				$anchor
+					.bind( "keydown", function(e){
+						if( e.keyCode === 13 || e.keyCode === 32 ){
+							forceInlineMode();
+						}
+						// spacebar triggers click too
+						if( e.keyCode === 32 ){
+							e.preventDefault(); // don't scroll the new focused area
+							$( this ).trigger( "click" );
+						}
+					})
+					.bind( "click", function( e ){
+						e.preventDefault();
+						standardToggleZoom();
+					});
+
+				// on resize, if in lock zoom mode, un zoom
+				$( w )
+					.bind( "resize", function( e ){
+						if( $element.data("lockedZoom") ){
+							standardToggleZoom();
+						}
+					});
+
+				// on click-out on the page, if in locked zoom mode, zoom out
+				$( w.document )
+					.bind( "mouseup", function( e ){
+						if( $element.data("lockedZoom") && !$( e.target ).closest( $parentPane ).length ){
+							standardToggleZoom();
+						}
+					});
+
+				// mouse hover and touch-drag gestures for a cursor-tracked zoom behavior
+				$( initialImg )
+					.bind( "mouseenter touchstart", startTrackingDelay )
+					.bind( "mousemove touchmove", scrollWithMouse )
+					.bind( "mouseleave touchend", function( e ){
+						mouseEntered = false;
+						if( zoomed && !$element.data("lockedZoom") ){
+							toggleZoomState();
+							toggleImgSrc(function(){
+								toggleImgZoom();
+							});
+						}
+						stopTrackingDelay( e );
+					})
+				// tapping the image should trigger a lock zoom
+				// click will not fire after a touch-drag so it works as a tap for our needs here
+					.bind( "click", function( e ){
+						e.preventDefault();
+						// if the click was started with a touchstart event,
+						// and placement is inline
+						// toggle the locked zoom mode
+						if( touchStarted && o.placement === "inline" ){
+							standardToggleZoom();
+						}
+
+						if( o.hoverZoomWithoutClick === false && !touchStarted ){
+							hoverEnabled = !hoverEnabled;
+							if( hoverEnabled ){
+								$( this ).trigger( "mouseenter" );
+							}
+							else {
+								$( this ).trigger( "mouseleave" );
+							}
+						}
+					} );
+
+				// keyboard handling for arrows in zoom mode
+				$(this).bind( "keydown keyup", function( e ){
+					if( e.keyCode === 37 ||
+							e.keyCode === 38 ||
+							e.keyCode === 39 ||
+							e.keyCode === 40 ){
+								e.stopImmediatePropagation();
+								if( !$element.data("lockedZoom") ){
+									e.preventDefault();
+								}
+							} else if( e.type === "keyup" && $(this).data("lockedZoom") && e.keyCode === 27 ){ //esc or backspace closes zoom
+								standardToggleZoom();
+								$anchor[0].focus();
+								e.stopImmediatePropagation();
+							}
+				});
+
+				// on scroll, zoom out
+				$parentPane.bind( "scroll", function(){
+					if( $element.data("zoomed") ){
+						toggleZoomState();
+						toggleImgSrc(function(){
+							if( $element.data("lockedZoom") ){
+								toggleLockZoom();
+							}
+							toggleImgZoom();
+						});
+					}
+				});
+			});
+
+			return internalResult !== undefined ? internalResult : result;
+		};
+	};
+
+	if( typeof module !== "undefined" ){
+		module.exports = enlarge;
+	} else {
+		enlarge();
+	}
+}( typeof global !== "undefined" ? global : this ));
+
+  
+//   new js for the same
+  
+
+(function( $, window, undefined ) {
+
+	var pluginName = "enlarge",
+		initSelector = "." + pluginName;
+
+	// auto-init on enhance (which is called on domready)
+	$( document ).bind( "enhance", function( e ){
+		$( initSelector, e.target ).each(function(){
+			$(this)[ pluginName ]();
+		});
+	});
+
+}( jQuery, this ));
+  
+</script>

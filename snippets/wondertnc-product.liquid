@@ -1,0 +1,588 @@
+<div data-pop="pop-in" id="popup1" >
+  <div class="reward-popup">
+    <div class="popupcontrols">
+      <span id="popupclose1">×</span>
+    </div>
+    <div class="popupcontent">
+
+      <div class="reward-procondition">
+
+        {% include 'reward-tnc'%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="overlay" class="show"></div>
+
+
+<script>
+  $(document).ready(function () {
+    $('#btAnimate').click(function () {
+      // Animate the div element. A duration is set to 500 milliseconds.
+      $("#divAnim").animate(500);
+      $("#divAnim").addClass("reward-progress");
+      $('#divC').show();          
+    });
+
+    // Reverse animate.
+    $('#btHide').click(function () {
+      $("#divAnim").removeClass("reward-progress");
+      $('#divC').hide();         
+    });
+    //  tnv popup
+    // Initialize Variables
+    var closePopup = document.getElementById("popupclose1");
+    var overlay = document.getElementById("overlay");
+    var popup = document.getElementById("popup1");
+    var button1 = document.getElementById("wonderbutton");
+    // Close Popup Event
+    overlay.onclick = function() {
+      overlay.className = '';
+      popup.className = '';
+    };
+    // Close Popup Event
+    closePopup.onclick = function() {
+      overlay.className = '';
+      popup.className = '';
+    };
+    // Show Overlay and Popup
+    button1.onclick = function() {
+      overlay.className = 'show';
+      popup.className = 'show';
+    }
+  });
+</script>
+<style>
+  .reward-progress {
+    height: auto!important;
+    width: 100%!important;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    background-color: #fff;
+    position: absolute!important;
+  }
+  div#reward-prog {
+    float: right;
+    position: relative;
+    width: 50%;
+  }
+  .reward-progress div#divC {
+    width: 100%;
+    top: 41px;
+    background: #fff;
+    box-shadow: 0px 10px 10px rgb(107, 106, 106);
+    text-align: center;
+  }
+  button#fb_custom_sharer a.icon-facebook-share {
+    border: 1px solid #49659d;
+    border-radius: 100%;
+    padding: 8px 8px 8px;
+    font-size: 25px;
+    margin: 0 0 0 10px;
+
+  }
+  button#twitter_custom_sharer a.icon-twitter-share {
+    border: 1px solid #09aeec;
+    border-radius: 100%;
+    padding: 8px 8px 8px;
+    font-size: 25px;
+    margin: 0 0 0 10px;
+  }
+  button#twitter_custom_sharer{
+    background: #09aeec;
+    border: 1px solid #09aeec;
+    width: 44%;
+    margin-top: 10px;
+  }
+  p.tnc-desc-share a {
+    display: inline-block;
+    color: #e31e24;
+  }
+  p.tnc-desc-share a span {
+    color: #e31e24;
+  }
+  button#fb_custom_sharer {
+    background: #49659D;
+    border-color: #49659D;
+    color: #fff;
+    height: auto!important;
+    width: 44%;
+    margin-top: 10px;
+    font-size: 13px !important;
+    margin-left: 4px!important;
+  }
+  span#login_for_rewards a#customer_login_link {
+    font-weight: 600;
+    color: #e31e24;
+  }
+  input#btAnimate {
+    width: 100%;
+    margin: 0!important;
+  }
+  .cust_modal_segment ol li {
+    list-style: lower-roman;
+  }
+  #divAnim {
+
+    position: relative;
+    width: auto;
+    height: 30px;
+    padding: 0;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    display: inline-block;
+    float: right;
+    z-index: 11;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+  }
+  .login-done p{
+    margin-bottom: 8px;
+  }
+  .cust_modal_segment ol {
+    margin-right: 0;
+    margin-left: 0;
+    padding-right: 0;
+    padding-left: 20px;
+  }
+  input#btHide {
+    position: absolute!important;
+    top: -26px!important;
+    right: -24px!important;
+    border-radius: 100%!important;
+    font-size: 40px!important;
+    line-height: 30px!important;
+    padding: 0px 2px!important;
+    background: #fff!important;
+    color: #e31e24!important;
+    width: 30px;
+    height: 30px!important;
+    font-weight: 400!important;
+    border-color:#e31e24!important;
+  }
+  p.cust_modal_title3 {
+    margin-bottom: 0px;
+  }
+  h4.cust_modal_title2 {
+    margin-bottom: 0;
+  }
+  #divAnim label {
+    width:100%; 
+    color:#009872; 
+    font-size:14px; 
+    padding:10px; 
+  }
+  #button.hidden_xs {
+    display: inline-block;
+  }
+  div#product_reward_share_box p {
+    font-size: 15px;
+    padding: 0 12px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center;
+    padding-bottom: 6px;
+  }
+  #divAnim input {
+    padding: 0 6px;
+    border: solid 1px #5d6bc4;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    background: #606ec6;
+    color: #FFF;
+    cursor: pointer;
+    height: 40px;
+    line-height: 26px!important;
+    min-height: 28px;
+    float: right;
+    margin: 6px;
+    font-weight: 600;
+  }
+  #divAnim #divC {
+    display:none; 
+    padding:0px;
+  }
+  #divAnim li {
+    margin:0 2px 0 0;
+    display:inline;
+    font-size:0.7em;
+    font-style:normal;
+    padding:2px 0 2px 2px;
+    vertical-align:middle;
+  }
+
+  #login_for_rewards {
+    border: 0px solid #ddd!important;
+    padding: 0px 0px 0!important;
+    display: inline-block;
+    float: none;
+    width: auto;
+    margin: 0 0 8px;
+    line-height: 0;
+  }
+  #popup1 {
+    position: fixed;
+    top: 10%;
+    left: 0;
+    background: #fff;
+    width: 70%;
+    height: auto;
+    margin: 0;
+    z-index: -1;
+    visibility: hidden;
+    right: 0;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  #popupclose1 {
+    color: #c11616;
+    float: right;
+    font-size: 50px;
+    font-weight: 400;
+    border: 1px solid #e32c2b;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    padding: 4px 4px 4px 5px;
+    line-height: 32px;
+    letter-spacing: 6px;
+    top: 0;
+    position: fixed;
+    right: 0;
+    cursor: pointer;
+    z-index: 999999999999;
+    background: #fff;
+  }
+  .popupcontent {
+    padding: 10px;
+  }
+  .login-before p.tnc-desc-share {
+    margin-top: 0!important;
+  }
+
+  span#login_for_rewards p {
+    margin: 6px 0 0;
+    line-height: 22px;
+  }
+  #button {
+    cursor: pointer;
+    color:#E31E24;
+  }
+  @-webkit-keyframes pop-swirl {
+    0% {
+      transform: scale(0) rotate(360deg);
+    }
+
+    60% {
+      transform: scale(0.8) rotate(-10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @-moz-keyframes pop-swirl {
+    0% {
+      transform: scale(0) rotate(360deg);
+    }
+
+    60% {
+      transform: scale(0.8) rotate(-10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @-ms-keyframes pop-swirl {
+    0% {
+      transform: scale(0) rotate(360deg);
+    }
+
+    60% {
+      transform: scale(0.8) rotate(-10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @-o-keyframes pop-swirl {
+    0% {
+      transform: scale(0) rotate(360deg);
+    }
+
+    60% {
+      transform: scale(0.8) rotate(-10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @keyframes pop-swirl {
+    0% {
+      transform: scale(0) rotate(360deg);
+    }
+
+    60% {
+      transform: scale(0.8) rotate(-10deg);
+    }
+
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  @-webkit-keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  @-moz-keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  @-ms-keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  @-o-keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  @keyframes anvil {
+    0% {
+      transform: scale(5) rotate(0);
+      opacity: 0;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    50% {
+      transform: scale(1) rotate(-0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 0 rgba(241, 241, 241, 0.5);
+    }
+
+    75% {
+      transform: scale(1) rotate(0.2deg);
+      opacity: 1;
+      box-shadow: 0 0 250px rgba(241, 241, 241, 0.5);
+    }
+
+    100% {
+      transform: scale(1) rotate(0);
+      opacity: 1;
+      box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+  }
+  #popup1[data-pop="slide-down"] {
+    top: -50%;
+    transition: all .5s ease-in-out;
+  }
+  #popup1[data-pop="slide-down"].show {
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+    top: 50%;
+  }
+  #popup1[data-pop="slide-down"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  #popup1[data-pop="pop-in"] {
+    transform: scale(0);
+  }
+  #popup1[data-pop="pop-in"].show {
+    transform: scale(1);
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.175);
+    transition: all .5s ease-in-out;
+  }
+  #popup1[data-pop="pop-in"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  .reward-popup {
+    overflow: scroll;
+    height: 600px;
+    position: relative;
+  }
+  #popup1[data-pop="pop-swirl"] {
+    transform: scale(0);
+    transition: all .5s ease-in-out;
+  }
+  #popup1[data-pop="pop-swirl"].show {
+    -webkit-animation: pop-swirl 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+  }
+  #popup1[data-pop="pop-swirl"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  #popup1[data-pop="anvil"] {
+    transition: all .5s ease-in-out;
+  }
+  #popup1[data-pop="anvil"].show {
+    -webkit-animation: anvil 1s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
+    visibility: visible;
+    z-index: 200;
+    opacity: 1;
+  }
+  #popup1[data-pop="anvil"].show ~ #overlay {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+  }
+  @media (max-width: 600px){
+    .reward-progress {
+      width: 100%!important;
+    }
+    #divAnim{
+      display: block;
+      float: none;
+
+    }
+    #divAnim input{
+      margin: 0px 0 10px!important;
+      font-size: 19px!important;
+    }
+    #divAnim.reward-progress input{
+      margin: 0px!important;
+
+    }
+    input#btHide{
+      width: 40px!important;
+      top: -40px!important;
+      right: -16px!important;
+      font-size: 44px!important;
+      font-weight: 400;
+      height: 40px!important;
+    }
+    #login_for_rewards{
+      width: 100%;
+      margin: 8px 0 8px;
+    }
+    button#fb_custom_sharer{
+      width: 47%;
+      margin-left: 6px;
+      font-size: 16px!important;
+    }
+    button#twitter_custom_sharer {
+      width: 48%;
+      margin-left: 0px;
+      font-size: 16px!important;
+    }
+    #button.visible_xs {
+      display: inline-block!important;
+    }
+    #popup1{
+      width: 100%;
+      padding:6px;
+    }
+    p.tnc-desc-share {
+      text-align: center!important;
+      font-size: 14px!important;
+    }
+    div#reward-prog {
+      width: 100%;
+    }
+    span#login_for_rewards p{
+      margin:0;
+    }
+  }
+
+</style>

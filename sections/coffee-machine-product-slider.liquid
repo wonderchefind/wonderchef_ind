@@ -1,0 +1,329 @@
+<html>
+<head>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+           <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js'></script> 
+
+  <style class="INLINE_PEN_STYLESHEET_ID">
+    body {
+  margin: 0;
+  padding: 0;
+}
+section {
+  padding: 40px 0;
+}
+.section_title {
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+ @media (max-width: 600px){
+.reviews {
+	background-color: #2c3351;
+	color: #fff;
+  padding: 40px 0;
+  margin-bottom:50px;
+}
+ }
+     @media (min-width: 601px){
+.reviews {
+	background-color: #2c3351;
+	color: #fff;
+  padding: 80px 0;
+  margin-bottom:50px;
+}
+ }
+
+.reviews .slick-slider {
+	z-index: 9;
+}
+
+.reviews .sin-testiImage img {
+	transform: scale(1, 1);
+	transition: all 1s;
+	border-radius: 50%;
+	cursor: pointer;
+	display: block;
+	margin: 15px auto;
+  opacity:.3;
+}
+
+.reviews .sin-testiImage.slick-current img {
+	transform: scale(1.8, 1.8);
+	transition: all 1s;
+    opacity:1;
+}
+
+.reviews .reviews-slider {
+	position: relative;
+}
+
+.fa-angle-left,
+.fa-angle-right {
+	position: absolute;
+	top: 40%;
+}
+
+.fa-angle-left:hover,
+.fa-angle-right:hover {
+	background-color: #ccc;
+	color: #fff;
+}
+
+.fa-angle-left {
+	left: -30px;
+    z-index: 999;
+    padding: 8px 16px;
+    background-color: transperent;
+    border-radius: 50px;
+}
+
+ .fa-angle-right {
+	right: -30px;
+    z-index: 999;
+    padding: 8px 16px;
+    background-color: transperent;
+    border-radius: 50px;
+}
+
+.reviews .reviews-text-slider h2 {
+	color: #ffffff;
+	font-family: MyriadPro-Bold;
+}
+
+.reviews .reviews-text-slider {
+	margin: auto;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	z-index: 9;
+}
+
+.reviews .sin-testiText {
+	outline: none;
+	text-align: center;
+}
+
+.reviews .sin-testiText p {
+	margin-top: 22px;
+	color: #fff;
+	line-height: 24px;
+	font-family: MyriadPro-Regular;
+}
+
+.reviews .grid-padding-x > .cell:nth-child(2) {
+	position: relative;
+}
+
+.reviews .grid-padding-x > .cell:nth-child(2) .quotes {
+	position: absolute;
+	width: 100%;
+}
+
+.reviews .grid-padding-x > .cell:nth-child(2) .quotes::after,
+.reviews .grid-padding-x > .cell:nth-child(2) .quotes::before {
+	content: ',,';
+	position: absolute;
+	font-size: 56px;
+	color: #ff3d74;
+	font-family: century gothic,sans-serif;
+ serif;
+	font-weight: 700;
+	line-height: 0;
+	transform: rotate(180deg);
+	display: block;
+	z-index: 999;
+}
+
+.reviews .grid-padding-x > .cell:nth-child(2) .quotes::before {
+	top: 70px;
+	left: -10px;
+}
+
+.reviews .grid-padding-x > .cell:nth-child(2) .quotes::after {
+	top: 132px;
+	right: 20px;
+	transform: rotate(0);
+}
+
+    .sin-testiImage p{
+      text-align:center;
+      margin-top:-30px;
+      opacity:.3;
+      color:#fff !important;
+      text-transform: capitalize;
+      font-weight:400;
+    }
+
+    .sin-testiImage.slick-current p{
+      margin-top:30px;
+      opacity:1;
+    }
+
+    @media (max-width: 450px){
+    .fa-angle-left {
+    left: 0px;
+    }
+       .fa-angle-right {
+    right: 0px;
+    }
+    }
+
+  </style>
+
+  
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-7549a40147ccd0ba0a6b5373d87e770e49bb4689f1c2dc30cccc7463f207f997.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-5e03f34e38152f20eb79c96b0b89c2d99c5085e9ae9386dc71e2f0b3c30bf513.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+</head>
+
+    <body>
+
+  <section class="reviews">
+    <div class="grid-container">
+      <div class="grid-x grid-padding-x align-center">
+        <div class="cell small-12">
+          <h2 class="laptop" style="letter-spacing:4px; color:#fff;"><strong>1 MACHINE, 11 BREWING CHOICES</strong></h2>
+           <h2 class="mobile" style="letter-spacing:2px; color:#fff;"><strong>1 MACHINE, <br>11 BREWING CHOICES</strong></h2>
+          <p class="pfont" style="text-transform: initial; color:#fff !important;">Enjoy your favourite coffee at the touch of a button.</p>
+          <div class="reviews-slider slider-nav">
+              <div class="sin-testiImage">
+                <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/cappuccino.png?v=1663328394">
+                 <p>cappuccino</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/americano.png?v=1663328394" alt="">
+                 <p>americano</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/latte.png?v=1663328394" alt="">
+                 <p>latte</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/espresso.png?v=1663328394" alt="">
+                 <p>espresso</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/lungo.png?v=1663328394" alt="">
+                 <p>lungo</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/latte_macchiatto.png?v=1663328394" alt="">
+                 <p>latte macchiato</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/milk_foam.png?v=1663328394" alt="">
+                 <p>milk foam</p>
+              </div>
+            <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/warm_milk.png?v=1663328394" alt="">
+                 <p>warm milk</p>
+              </div>
+          <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/macchiatto.png?v=1663328394" alt="">
+                 <p>macchiato</p>
+              </div>
+             <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/FLAT_WHITE.png?v=1663656619" alt="">
+                 <p>Flate white</p>
+              </div>
+             <div class="sin-testiImage">
+              <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/HOT_WATER.png?v=1663656617" alt="">
+                 <p>Hot water</p>
+              </div>
+          </div>
+        </div>
+<div class="cell medium-10 small-12">
+     <div class="reviews-text-slider slider-for">
+
+       </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+      <script>
+          
+jQuery(document).ready(function ($) {
+
+ $(".regular").slick({
+        dots: true,
+  //       infinite: true,
+  //       slidesToShow: 1,
+  //       slidesToScroll: 1,
+		// autoplay: false,
+  //       arrows: true,
+  //       mobileFirst: true,
+  //       easing: 'easeOutElastic',
+  //       speed: 800,
+        autoplay: true,
+        autoplaySpeed:9000,
+        speed:700,
+        mobileFirst: true,
+        slidesToShow:1,
+        slidesToScroll:1,
+        pauseOnHover:false,
+        respondTo:'min',
+        cssEase:'linear',
+        prevArrow: '<i class="fa fa-angle-left" style="font-size:24px"></i>',
+        nextArrow: '<i class="fa fa-angle-right" style="font-size:24px"></i>'
+      });
+
+$('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        draggable: false,
+        fade: true,
+        asNavFor: '.slider-nav'
+    });
+$('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        dots: false,
+        arrows: true,
+        centerMode: true,
+        focusOnSelect: true,
+        centerPadding: '10px',
+        prevArrow: '<i class="fa fa-angle-left" style="font-size:24px"></i>',
+        nextArrow: '<i class="fa fa-angle-right" style="font-size:24px"></i>',
+
+        responsive: [
+            {
+              breakpoint: 450,
+              settings: {
+                autoplay: false,
+                dots: false,
+                slidesToShow: 3, 
+                slidesToScroll: 1,
+                centerMode: true,
+                }
+            },
+            {
+              breakpoint: 420,
+              settings: {
+                autoplay: false,
+                dots: false,
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                centerMode: true,
+                }
+            }
+        ]
+    });
+
+ });	  
+      </script>
+  
+      
+  </body>
+        
+</html>
+

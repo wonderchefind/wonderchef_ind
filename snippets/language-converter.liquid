@@ -1,0 +1,90 @@
+<script type="text/javascript">
+    function setupLanguageSwitcher() {
+        var languages = buildLanguageList();
+        var shopDomain = 'https://{{shop.domain}}';
+        var primaryLanguage = languages.find(function (x) { return x.primary; });
+        var logoLanguage = languages.find(function (x) { return x.logo; });
+        var defaultLocale = primaryLanguage ? primaryLanguage.iso_code : 'en';
+        var currentLocale = findCurrentLocale(languages, defaultLocale);
+        var containers = document.querySelectorAll('[data-language-switcher]');
+        if (containers && containers.length) {
+            containers.forEach(createDropdown(defaultLocale, currentLocale, shopDomain, languages, logoLanguage));
+        }
+    }
+
+    function buildLanguageList() {
+        return [
+            {%- for locale in shop.published_locales %}
+                {
+                    name: '{{ locale.name }}',
+                    endonym_name: '{{ locale.endonym_name }}',
+                    iso_code: '{{ locale.iso_code }}',
+                    primary: {{ locale.primary }},
+                    {% for i in (1..5) %}
+                        {% capture lang_unit %}lange_{{ i }}{% endcapture %}
+                        {% capture lang_icon %}lange_{{ i }}_icon{% endcapture %}
+                        {% assign lang_unit_downcase = settings[lang_unit] | downcase %}
+                        {% if lang_unit_downcase == locale.iso_code %}
+                            logo: '{{ settings[lang_icon] }}',
+                        {% endif %}
+                    {% endfor %}
+                }
+                {% unless forloop.last %},{% endunless -%}
+          
+            {%- endfor %}
+        ];
+    }
+
+    function findCurrentLocale(languages, defaultLocale) {
+        var p = window.location.pathname.split('/').filter(function (x) { return x; });
+        if (p && p.length > 0 && languages.find(function (x) { return x.iso_code === p[0]; })) {
+          return p[0];
+        } else {
+          return defaultLocale;
+        }
+    }
+
+    function createDropdown(t, i, s, l, logo) {
+        return function (container) {
+            if (l && l.length > 1) {
+                var select = $('#lang-switcher');
+                l.forEach(function(lang) {
+                    if (lang.logo == undefined) {
+                        var option = '<a class="dropdown-item" href="javascript:void(0)" data-value="' + lang.iso_code + '" aria-label="link"><span class="text">' + lang.iso_code + '</span><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down icon-arrow" viewBox="0 0 498.98 284.49"><defs></defs><path class="cls-1" d="M80.93 271.76A35 35 0 0 1 140.68 247l189.74 189.75L520.16 247a35 35 0 1 1 49.5 49.5L355.17 511a35 35 0 0 1-49.5 0L91.18 296.5a34.89 34.89 0 0 1-10.25-24.74z" transform="translate(-80.93 -236.76)"/></svg></a>';
+                    } else {
+                        var option = '<a class="dropdown-item" href="javascript:void(0)" data-value="' + lang.iso_code + '" aria-label="link"><span class="icon">' + lang.logo + '</span><span class="text">' + lang.iso_code + '</span><svg aria-hidden="true" focusable="false" role="presentation" class="icon icon--wide icon-chevron-down icon-arrow" viewBox="0 0 498.98 284.49"><defs></defs><path class="cls-1" d="M80.93 271.76A35 35 0 0 1 140.68 247l189.74 189.75L520.16 247a35 35 0 1 1 49.5 49.5L355.17 511a35 35 0 0 1-49.5 0L91.18 296.5a34.89 34.89 0 0 1-10.25-24.74z" transform="translate(-80.93 -236.76)"/></svg></a>';
+                    }
+                    $(option).appendTo(select);
+
+                    if (i === lang.iso_code)
+                        $('#lang-switcher [data-value="' + i + '"]').addClass('active');
+                    
+                });
+                if (select.find('.dropdown-item.active')) {
+                    var html = select.find('.dropdown-item.active').html();
+                    $('[data-language-label]').html(html);
+                }
+                $('#lang-switcher [data-value]').on('click', function() {
+                    var e = $(this).find('.text').text().replace(' ','');
+                    var n = window.location.pathname;
+                    if (e === t) {
+                        var o = '' + s + n.replace('/' + i, '');
+                        window.location.assign(o)
+                    } else if (t === i) {
+                        var r = s + '/' + e + n;
+                        window.location.assign(r)
+                    } else {
+                        var a = s + '/' + n.replace('/' + i, e);
+                        window.location.assign(a)
+                    }
+                });    
+            }
+        };
+    }
+
+    if (window.attachEvent) {
+        window.attachEvent('onload', setupLanguageSwitcher);
+    } else {
+        window.addEventListener('load', setupLanguageSwitcher, false);
+    }
+</script>

@@ -1,0 +1,15 @@
+<div class="sidebarBlock">
+    <h5 class="sidebarBlock-heading"><span>{{ 'blogs.article.sidebar_title' | t }}</span></h5>
+    <div class="sidebarBlock-content">
+        <div class="recentPosts_List recentPosts--col1">
+            {% for article in blog.articles limit : block.settings.number %}
+                <div class="item">
+                    <div class="recentPost-sidebar">
+                        <h5 class="title"><a href="{{ article.url }}">{{ article.title }}</a></h5>
+                        <p class="date">{{ article.published_at | date: "%B %d, %Y" }}</em>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

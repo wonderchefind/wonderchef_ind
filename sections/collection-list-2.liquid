@@ -1,0 +1,276 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+
+{% case section.settings.column %}
+    {% when 1 %}
+        {%- assign column = '1' -%}
+    {% when 2 %}
+        {%- assign column = '2' -%}
+    {% when 3 %}
+        {%- assign column = '3' -%}
+    {% when 4 %}
+        {%- assign column = '4' -%}
+    {% when 5 %}
+        {%- assign column = '5' -%}
+{% endcase %}
+
+{%- assign carousel = carousel | default: section.settings.collection_layout -%}
+{%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
+{%- assign dots = dots | default: section.settings.carousel-dots -%}
+{%- assign layout = layout | default: section.settings.item_layout -%}
+{%- assign border = border | default: section.settings.title_border -%}
+{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
+
+<div class="halo-section {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-type="collection-list">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <div class="section-header
+                {% case title_layout %}
+                    {% when 'left' %} text-left
+                    {% when 'center' %} text-center
+                {% endcase %}">
+                <h2>{% render 'multilang' with section.settings.title %}</h2>
+                {% if section.settings.text_link != blank %}
+                    <a class="text-link" href="{{ section.settings.custom_link }}">
+                        {% render 'multilang' with section.settings.text_link %}
+                    </a>
+                {% endif %}
+                {% if border %}
+                <div class="title-border"></div>
+                {% endif %}
+                {% if section.settings.description != blank %}
+                    <p>{% render 'multilang' with section.settings.description %}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        <div class="halo-row halo-row-custom column-{{ column }} {%if carousel %}collection-carousel{% endif %}"
+            {% if carousel == 'carousel' %}
+                data-slick='{
+                    "dots": {{ dots }},
+                    "arrows": {{ arrows }},
+                    "infinite": true,
+                    "adaptiveHeight": true,
+                    "slidesToShow": {{ column }},
+                    "slidesToScroll": {{ column }},
+                    "prevArrow": "<div class=&apos;slick-prev slick-arrow&apos;><svg id=&apos;arrow-left&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 370.814 370.814&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>", 
+                    "nextArrow": "<div class=&apos;slick-next slick-arrow&apos;><svg id=&apos;arrow-right&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 478.448 478.448&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>"
+                }'
+            {% endif %}>
+            {% for block in section.blocks limit: section.blocks.size %}
+                {%- assign collection = collections[block.settings.collection] -%}
+
+                {% if block.settings.image != blank %}
+                    {%- assign collection_image = block.settings.image -%}
+                {% elsif collection.image %}
+                    {%- assign collection_image = collection.image -%}
+                {% else %}
+                    {% assign collection_image = blank %}
+                {% endif %}
+                <div class="halo-item" {{ block.shopify_attributes }}>
+                    <div class="collection-card layout-2">
+                        <div class="image">
+                            {% if collection_image == blank %}
+                                <span class="recommended_size">170x170</span>
+                                {{ 'collection-6' | placeholder_svg_tag: 'placeholder-svg' }}
+                            {% else %}
+                                <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ collection_image | img_url: '170x' }}" alt="" data-image>
+                            {% endif %}
+                            <a class="link" href="{{ collection.url }}"></a>
+                        </div>
+                        <div class="content">
+                            <h3 class="title">
+                                {% if collection.title == blank %}
+                                    {{ 'homepage.onboarding.collection_title' | t }}
+                                {% else %}
+                                    {{ collection.title }}
+                                {% endif %}
+                            </h3>
+                            <ul class="sub-collection">
+                                {%- assign collection_handle = collection.handle -%}
+                                {% for link in linklists[collection_handle].links %}
+                                    <li>{% render 'icon-chevron-right' %}<a href="{{ link.url }}">{{ link.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                            <a class="shop-now" href="{{ collection.url }}" {% if settings.enable_multilang %}data-translate="collections.general.shop_now"{% endif %}>{{ 'collections.general.shop_now' | t }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if section.blocks.size == 0 %}
+            {% render 'no-blocks' %}
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Featured collection 2",
+    "max_blocks": 12,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Featured collection"
+        },
+        {
+            "type": "text",
+            "id": "text_link",
+            "label": "Text Link"
+        },
+        {
+            "type": "url",
+            "id": "custom_link",
+            "label": "Link (Optional)"
+        },
+        {
+            "type": "checkbox",
+            "id": "title_border",
+            "label": "Title Border",
+            "default": false
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "title_layout",
+            "label": "Title Layout",
+            "default": "left",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Collection Layout"
+        },
+        {
+            "type": "select",
+            "id": "collection_layout",
+            "label": "Layout",
+            "default": "carousel",
+            "options": [
+                {
+                    "value": "grid",
+                    "label": "Grid"
+                },
+                {
+                    "value": "carousel",
+                    "label": "Carousel"
+                }
+            ]
+        },
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Column",
+            "min": 1,
+            "max": 5,
+            "step": 1,
+            "default": 3
+        },
+        {
+            "type": "checkbox",
+            "id": "carousel-arrows",
+            "label": "show arrows (Layout carousel)",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "carousel-dots",
+            "label": "show dots (Layout carousel)",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "type": "featured_collection",
+            "name": "Collection",
+            "settings": [
+                {
+                    "label": "Collection",
+                    "id": "collection",
+                    "type": "link_list"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Featured collection 2",
+            "category": "Collection",
+            "blocks": [
+                {
+                    "type": "featured_collection"
+                },
+                {
+                    "type": "featured_collection"
+                },
+                {
+                    "type": "featured_collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

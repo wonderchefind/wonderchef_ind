@@ -1,0 +1,131 @@
+{% comment %}
+    This page template is a requirement if you are submitting your theme to the Shopify Theme Store.
+    Be sure to select page.contact as the template from the admin page to have this template take effect.
+
+    For information on adding more fields, visit:
+        - http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
+{% endcomment %}
+
+{% comment %}
+    Google Map
+{% endcomment %}
+
+{% if section.settings.display_google_map %}
+    <div class="map">
+        {% if section.settings.google_map_code != blank %}
+            {{ section.settings.google_map_code }}
+        {% endif %}
+    </div>
+{% endif %}
+
+<div class="container">
+    {% render 'breadcrumb' %}
+    <div class="page page-contact">
+        <div class="contact-row">
+            <div class="item-1">
+                <div class="contact-form form-vertical">
+                    {% if page.content.size > 0 %}
+                        {{ page.content }}
+                    {% endif %}
+
+                    {%- assign formId = 'ContactForm' -%}
+                    {% form 'contact', id: formId %}
+                        {% render 'form-status', form_id: formId %}
+
+                        <label for="{{ formId }}-name" class="form-label">{{ 'contact.form.name' | t }}</label>
+                        <input type="text" id="{{ formId }}-name" name="contact[name]" value="{% if form[name] %}{{ form[name] }}{% elsif customer %}{{ customer.name }}{% endif %}" class="form-control">
+
+                        <label for="{{ formId }}-phone" class="form-label">{{ 'contact.form.phone' | t }}</label>
+                        <input type="tel" id="{{ formId }}-phone" name="contact[phone]" pattern="[0-9\-]*" value="{% if form[phone] %}{{ form[phone] }}{% elsif customer %}{{ customer.phone }}{% endif %}" class="form-control">
+
+                        <label for="{{ formId }}-email" class="form-label">{{ 'contact.form.email' | t }} <em>*</em></label>
+                        <input
+                            type="email"
+                            id="{{ formId }}-email" class="form-control"
+                            name="contact[email]"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+                            aria-required="true"
+                            {%- if form.errors contains 'email' -%}
+                                class="input--error"
+                                aria-invalid="true"
+                                aria-describedby="{{ formId }}-email-error"
+                            {%- endif -%}
+                            >
+                        {%- if form.errors contains 'email' -%}
+                            <span id="{{ formId}}-email-error" class="input-error-message">{% render 'icon-error' %} {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+                        {%- endif -%}
+
+                        <label for="{{ formId }}-message" class="form-label">{{ 'contact.form.message' | t }} <em>*</em></label>
+                        <textarea rows="4" id="{{ formId }}-message" name="contact[body]" class="form-control">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+                        <input type="submit" class="btn btn--secondary-accent btn--big mt-3 mb-0" value="{{ 'contact.form.submit' | t }}">
+
+                    {% endform %}
+                </div>
+            </div>
+            <div class="item-2">
+                <div class="contact-infomation">
+                    {% for block in section.blocks %}
+                        <div class="item" {{ block.shopify_attributes }}>
+                            {% if block.settings.title != blank %}
+                                <h3 class="title">{{ block.settings.title }}</h3>
+                            {% endif %}
+                            {% if block.settings.description != blank %}
+                                {{ block.settings.description }}
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+      
+      
+      
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Contact Page",
+    "max_blocks": 3,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Google map"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_google_map",
+            "label": "Display Google Map?",
+            "default": true
+        },
+        {
+            "type": "textarea",
+            "id": "google_map_code",
+            "label": "Google Map Code"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "contact_infomation",
+            "name": "Contact Infomation",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Heading"
+                },
+                {
+                    "type": "richtext",
+                    "id": "description",
+                    "label": "description",
+                    "default": "<p>Use overlay text to give your customers insight into your brand. Select image and text that relates to your style and story.</p>"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

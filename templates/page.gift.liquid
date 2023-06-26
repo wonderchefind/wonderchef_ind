@@ -1,0 +1,37 @@
+<a name="pagecontent" id="pagecontent"></a>
+<div class="center">
+<img width="100%" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/about_us_banner_66ca5ca9-1beb-4c58-9a4c-253c74e5a2df_1600x.jpg?v=1550225090" alt="About Us">
+</div>
+<div class="sixteen columns  clearfix mobile_hidden">
+  <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </span>
+    <span class="breadcrumb-divider">/</span>
+    <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+      <a href="{{ page.url }}" itemprop="item" class="breadcrumb_link">
+        <span itemprop="name">{{ page.title }}</span>
+        <meta itemprop="position" content="3" />
+      </a>
+    </span>
+  </div><br>
+</div>
+
+<div class="sixteen columns clearfix">
+
+  <h1>
+    {{ page.title }}
+  </h1>
+  <div class="feature_divider"></div>
+
+  <div  class="static-page">
+    {% include 'page-multi-column', content: page.content %}
+  </div>
+</div>
+
+<!-- schemaplus-added -->
+{% include "schemaplus.page"%}
+<!-- endof-schemaplus-added -->

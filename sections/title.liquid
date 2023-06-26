@@ -1,0 +1,149 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+
+
+
+<div class="halo-section bbcr  {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-type="collection" >
+    <div class="container" data-carousel>
+
+        {% if section.settings.title != blank %}
+            <div class="section-header text-center" {% if section.settings.custom-color %}style="color: {{ section.settings.color_heading_custom }}"{% endif %} style="margin-bottom:0px;">
+                {{ section.settings.icon }}
+                <h2>{% render 'multilang' with section.settings.title %}</h2>
+                {% if carousel == 'carousel' and arrows and section.settings.rows > 1 %}
+                <div class="arrow-on-heading">
+                    <div class="btn-arrow btn-arrow-prev">{% render 'icon-chevron-left' %}</div>
+                    <div class="btn-arrow btn-arrow-next">{% render 'icon-chevron-right' %}</div>
+                </div>
+                {% endif %}
+                {% if title_border %}<hr class="section-header-border" aria-hidden="true" />{% endif %}
+                {% if carousel == 'carousel' and arrows %}
+                    <div class="wrapper-link-description">
+                {% endif %}
+                {% if section.settings.text_link != blank %}
+                    <a class="text-link" href="{{ section.settings.custom_link }}">
+                        {% render 'multilang' with section.settings.text_link %}
+                    </a>
+                {% endif %}
+                {% if section.settings.description != blank %}
+                    <p class="description">{% render 'multilang' with section.settings.description %}</p>
+                {% endif %}
+                {% if carousel == 'carousel' and arrows %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+      
+</div>
+
+      </div>
+
+
+{% schema %}
+{
+    "name": "Heading",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "icon",
+            "label": "Icon",
+            "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Collection"
+        },
+      {
+          "type": "select",
+            "id": "title_layout",
+            "label": "Heading Layout",
+            "default": "center",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ]
+        },
+        {
+            "type": "text",
+            "id": "text_link",
+            "label": "Text Link"
+        },
+      
+        {
+            "type": "checkbox",
+            "id": "title_border",
+            "label": "Heading underline",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "custom-color",
+            "label": "custom color heading",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_heading_custom",
+            "label": "Heading Color"
+        }     
+    ],
+    "presets": [
+        {
+            "name": "Heading",
+            "category": "Products"
+        }
+    ]
+}
+{% endschema %}

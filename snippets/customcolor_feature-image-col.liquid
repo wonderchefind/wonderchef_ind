@@ -1,0 +1,34 @@
+<style>
+    [data-section-id='{{ section.id }}'] .card-text-overlay .content .title {
+        color: {{ section.settings.color_heading }}
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .content .title:before {
+        background-color: {{ section.settings.color_heading }}
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .content .title:hover {
+        color: {{ section.settings.color_heading_hover }}
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .content .title:hover:before {
+        background-color: {{ section.settings.color_heading_hover }}
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .content .description {
+        color: {{ section.settings.color_text }}
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .btn {
+        color: {{ section.settings.color_button_text }};
+        border-color: {{ section.settings.color_button_border }};
+        background-color: {{ section.settings.color_button_bg }};
+    }
+
+    [data-section-id='{{ section.id }}'] .card-text-overlay .btn:hover {
+        color: {{ section.settings.color_button_text_hover }};
+        border-color: {{ section.settings.color_button_border_hover }};
+        background-color: {{ section.settings.color_button_bg_hover }};
+    }
+
+</style>

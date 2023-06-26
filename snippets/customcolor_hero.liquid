@@ -1,0 +1,16 @@
+<style>
+    [data-section-id='{{ section.id }}'] .hero .hero-content .title {
+        color: {{ section.settings.color_heading }}
+    }
+
+    [data-section-id='{{ section.id }}'] .hero .hero-content .description,
+    [data-section-id='{{ section.id }}'] .hero .hero-content .description p > a,
+    [data-section-id='{{ section.id }}'] .hero .hero-content .description > a {
+        color: {{ section.settings.color_text }}
+    }
+
+    [data-section-id='{{ section.id }}'] .hero .hero-content .description p > a:after,
+    [data-section-id='{{ section.id }}'] .hero .hero-content .description > a:after {
+    	background-color: {{ section.settings.color_text }};
+    }
+</style>

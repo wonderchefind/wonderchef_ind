@@ -1,0 +1,160 @@
+<div>
+ 
+   
+             <h2 class="heading_description" style="text-align:center;">Frequently Asked Questions</h2>
+        
+        </div>
+
+
+<dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1">What can I use the peeler for?</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block">Peeler is used to peel fruits and vegetables finely without any harm to fingers. You can peel different fruits, vegetables, even chocolates for some tasty delicacies.
+      </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2">Where do the skin of the vegetable or fruit get collected?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef Smart Fruits and Vegetable Peeler has a container attached to the peeler in which skin gets collected so you don’t need to clean the kitchen platform post peeling.
+      </div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle3">How easy it is to clean the peeler?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef Smart Peeler makes the job very easy and comfortable. Just run the peeler over fruits and vegetables and see all the skin getting collected in the container. Dispose of peelings without soiling your hands.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle4">Are the blades made of stainless steel?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, the blades of Smart Fruits and Vegetable Peeler is made of high quality stainless steel and remain sharp for many years.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle5">Is the container made of plastic?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, the container of the Smart Peeler is transparent and it is made of food grade plastic material. 
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle6">How safe is it to use the peeler?</a></dt>
+    <dd class="acc_container">
+        <div class="block">The Smart Peeler from Wonderchef is very safe to use. It has a long groovy handle for a strong grip so that you can peel with ease. It is designed aesthetically that there are no sharp edges except the blade itself, and there are no chances of getting any cuts while peeling vegetables.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle7">How many carrots can I peel at once?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Depending on the size of carrot/s you can peel 2 to 3 carrots at once.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle8">Can I use only 1 vegetable with the peeler at once?</a></dt>
+    <dd class="acc_container">
+        <div class="block">You can peel 1 or 2 vegetables of small size at once using Wonderchef Smart Fruits and Vegetables Peeler.
+      </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle9">Can I use more than 1 potato in the peeler at the same time?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, you can use 1 or 2 potato of small to medium size.
+      </div>
+    </dd>
+   
+
+  
+</div>
+</dl>
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

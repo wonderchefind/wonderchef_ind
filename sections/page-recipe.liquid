@@ -1,0 +1,342 @@
+{% comment %}
+** Details page - custom view **
+- Page template
+- Uses blocks
+{% endcomment %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="detail-sections">
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    <div {{ block.shopify_attributes }} class="block__{{ block.type }} block__{{ block.id }}
+    {% if block.type == "image_with_text_overlay" and block.settings.wide_display %}
+      under-menu
+    {% elsif block.type == "featured_video" and block.settings.wide_display %}
+      under-menu
+    {% elsif block.type == "featured_collection" %}
+      featured-collection-section
+    {% endif %}
+    ">
+
+      {% if block.type == "blog_posts" %}
+        <!-- Blog posts -->
+        {% include 'include-featured-blog', type: 'block' %}
+
+      {% elsif block.type == "contact_form" %}
+        <!-- Contact form -->
+        {% include 'include-contact-form', type: 'block' %}
+
+      {% elsif block.type == "featured_video" %}
+        <!-- Featured video -->
+        {% include 'include-video', type: 'block' %}
+
+      {% elsif block.type == 'image_gallery' %}
+        <!-- Image gallery -->
+        {% include 'include-gallery', type: 'block' %}
+
+      {% elsif block.type == "image_with_text" %}
+        <!-- Image with text -->
+        {% if block.settings.layout == false %}
+          <div class="container standard--width">
+        {% endif %}
+        <div class="image-with-text
+          featured_collections
+          clearfix across-1 image-align--{{ block.settings.frontpage_image_position }}">
+          <section class="featured-link--section featured-link--image section-{{ forloop.index }}">
+            <div class="featured-link--half featured-link--image {% if block.settings.layout == false %}featured-link--margin{% endif %} image-crop--{{ block.settings.image_crop }}">
+              <div class="featured-link--wrap">
+                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} title="{{ block.settings.title }}">
+                  {% if block.settings.image %}
+                    {% include 'image-element', image: block.settings.image, alt: block.settings.image.alt %}
+                  {% else %}
+                    {% capture i %}{% cycle "1", "2", "3", "4", "5", "6" %}{% endcapture %}
+                    {{ 'collection-' | append: i | placeholder_svg_tag: 'placeholder-svg placeholder-svg--promotions' }}
+                  {% endif %}
+                </a>
+              </div>
+            </div>
+            <div class="featured-link--half">
+              <div class="info text-align--{{block.settings.frontpage_text_align}}">
+                <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="collection_title">
+                  {{ block.settings.title }}
+                </a>
+                {% if block.settings.text != blank %}
+                  <div class="description">{{ block.settings.text }}</div>
+                {% endif %}
+                {% if block.settings.button_label != blank %}
+                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="button">
+                    {{ block.settings.button_label }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </section>
+        </div>
+        {% if block.settings.layout == false %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.layout == false %}
+          <style>
+            #shopify-section-{{ section.id }} .featured-link--section {
+              margin-bottom: 3%;
+            }
+            @media only screen and (max-width: 480px) {
+              #shopify-section-{{ section.id }} .featured-link--section {
+                margin-bottom: 10%;
+              }
+            }
+
+            .standard--width .featured-link--margin {
+              margin-left: 0%;
+              margin-right: 3%;
+            }
+
+            .standard--width .image-align--right .featured-link--margin {
+              margin-left: 3%;
+              margin-right: 0%;
+            }
+
+            .standard--width .featured-link--half {
+              width: 45%;
+            }
+          </style>
+        {% endif %}
+
+      {% elsif block.type == 'map' %}
+        <!-- Map -->
+        {% include 'include-map', type: 'block' %}
+
+      {% elsif block.type == "page" %}
+        <!-- Page -->
+        {% include 'include-content-page', type: 'block' %}
+
+      {% elsif block.type == 'quote' %}
+        <!-- Quote -->
+        {% include 'include-quote', type: 'block' %}
+
+      {% elsif block.type == "rich_text_and_image" %}
+        <!-- Rich text and image -->
+        {% include 'include-featured-text', type: 'block' %}
+
+      {% elsif block.type == "featured_collection" %}
+        <!-- Featured collection -->
+        {% include 'include-featured-collection', type: 'block' %}
+
+      {% elsif block.type == "image_with_text_overlay" %}
+        <!-- Image with text overlay -->
+        {% include 'include-image-with-text-overlay', type: 'block' %}
+
+      {% elsif block.type == "recently_viewed_products" %}
+        <!-- Related Products -->
+        {% include 'include-recently-viewed', type: 'block' %}
+
+      {% endif %}
+    </div>
+  {% endfor %}
+{% endif %}
+</div>
+
+{% schema %}
+
+{
+  "name": "Page | details",
+  "class": "page-details-section",
+  "max_blocks": 10,
+  "blocks": [
+    {
+      "type": "blog_posts",
+      "name": "Blog posts",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Blog posts"
+        },
+        {
+          "type": "blog",
+          "id": "blog_widget_select",
+          "label": "Blog"
+        },
+        {
+          "type": "range",
+          "id": "home_page_articles",
+          "label": "Posts",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 3
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_tags",
+          "label": "Show blog post tags"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_author",
+          "label": "Show author"
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_date",
+          "label": "Show date",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "blog_comment_count",
+          "label": "Show comment count",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "read_more_link",
+          "label": "Show continue reading link for blog post excerpts",
+          "default": true
+        }
+      ]
+    },
+   
+    {
+      "type": "image_with_text_overlay",
+      "name": "Image with text overlay",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "wide_display",
+          "label": "Wide display",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "1800 x 1000px recommended"
+        },
+       
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Your headline"
+        },
+        
+        {
+          "type": "select",
+          "id": "text_position",
+          "label": "Text position",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_align",
+          "label": "Text alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+      ]
+    },
+    
+    {
+      "type": "recently_viewed_products",
+      "name": "Recently viewed products",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "To test the recently viewed products, view your online store outside of the Editor and visit multiple product pages ([?](https:\/\/help.outofthesandbox.com\/hc\/en-us\/articles\/115008765228))"
+        },
+        {
+          "type": "text",
+          "id": "rv_title",
+          "label": "Heading",
+          "default": "Recently viewed products"
+        },
+        {
+          "type": "radio",
+          "id": "rv_products_style",
+          "label": "Layout",
+          "default": "grid",
+          "options": [
+            {
+              "value": "slider",
+              "label": "Slider"
+            },
+            {
+              "value": "grid",
+              "label": "Grid"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "rv_max_display",
+          "label": "Products limit",
+          "min": 3,
+          "max": 12,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "range",
+          "id": "rv_per",
+          "label": "Products per row",
+          "min": 3,
+          "max": 5,
+          "step": 1,
+          "default": 4
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "image_with_text_overlay",
+        "settings": {
+          "title": "Page Details Template",
+          "text_position": "center",
+          "text_align": "center"
+        }
+      },
+      
+      {
+        "type": "blog_posts",
+        "settings": {
+        }
+      }
+      
+		]
+      }
+   
+}
+
+{% endschema %}

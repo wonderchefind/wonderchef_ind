@@ -1,0 +1,93 @@
+{% if settings.show_shipping_calculator %}
+<div id="shipping-calculator" class="mt-5">
+    <div class="box-title text-center mb-4">
+        <h3 class="title">{% render 'multilang' with settings.shipping_calculator_heading %}</h3>
+    </div>
+        
+    <div id="shipping-calculator-form-wrapper">   
+        <div class="form-group" id="address_country_container">
+            <label for="address_country" class="form-label">
+                {{ 'customer.addresses.country' | t }}
+            </label>
+            <div style="position: relative;">
+                <select id="address_country" class="special-select form-control" name="address[country]" data-default="{% if shop.customer_accounts_enabled and customer %}{{ customer.default_address.country }}{% elsif settings.shipping_calculator_default_country != '' %}{{ settings.shipping_calculator_default_country }}{% endif %}">{{ all_country_option_tags }}</select>
+            </div>
+        </div>
+
+        <div class="form-group" id="address_province_container" style="display:none;">
+            <label for="address_province" id="address_province_label" class="form-label">
+                {{ 'customer.addresses.province' | t }}
+            </label>
+            <div style="position: relative;">
+                <select id="address_province" class="address_form special-select form-control" name="address[province]" data-default="{% if shop.customer_accounts_enabled and customer and customer.default_address.province != '' %}{{ customer.default_address.province }}{% endif %}"></select>
+            </div>
+        </div> 
+
+        <div class="form-group" id="address_zip_container">
+            <label for="address_zip" class="form-label">
+                {{ 'customer.addresses.zip' | t }}
+            </label>
+            <input type="text" id="address_zip" class="styled-input form-control" name="address[zip]"{% if shop.customer_accounts_enabled and customer %} value="{{ customer.default_address.zip }}"{% endif %} />
+        </div>
+
+        <div id="get-rates-container" class="mt-4">
+            <input type="submit" id="get-rates-submit" class="get-rates styled-submit btn btn--secondary-accent" value="{{ 'cart.general.shipping_calculator_button' | t }}"/>      
+        </div>        
+    </div>
+
+    <div id="wrapper-response" class="mt-3"></div>  
+</div>
+
+
+<script id="shipping-calculator-response-template" type="text/x-jquery-tmpl">
+    {% raw %}
+    <p id="shipping-rates-feedback" class="{{if success}}success{{else}}error{{/if}} mb-2">
+        {{if success}}
+            {{if rates.length > 1}}
+                {% endraw %}{{'cart.general.shipping_calculator_success_many_rates.there_are' | t}}{% raw %} ${rates.length} 
+                {% endraw %}{{'cart.general.shipping_calculator_success_many_rates.shipping_rates_available_for' |t}}{% raw %} ${address}
+                {% endraw %}{{'cart.general.shipping_calculator_success_many_rates.starting_at' | t}}{%raw%} 
+                {{html Shopify.Cart.ShippingCalculator.formatRate(rates[0].price)}}.
+            {{else}}
+                {{if rates.length == 1}}
+                    {% endraw %}{{'cart.general.shipping_calculator_success_one_rate' | t}}{% raw %} ${address}.
+                {{else}}
+                    {% endraw %}{{'cart.general.shipping_calculator_success_no_rate' | t}}{% raw %}
+                {{/if}}
+            {{/if}}
+        {{else}}
+            ${errorFeedback}
+        {{/if}}
+    </p>
+    <ul id="shipping-rates">
+        {{each( index, rate ) rates}}
+        <li>
+            <span>${rate.name} </span>
+            <span>{% endraw %}{{'cart.general.shipping_calculator_success_at' | t}}{% raw %} </span>
+            <span>{{html Shopify.Cart.ShippingCalculator.formatRate(rate.price)}}</span>
+        </li>
+        {{/each}}
+    </ul>
+    {% endraw %} 
+</script>
+
+{{ '/services/javascripts/countries.js' | script_tag }}
+{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+{{ 'jquery.cart.min.js' | asset_url | script_tag }} 
+
+<script>
+    setTimeout(function() {
+        var submitButton = "{{'cart.general.shipping_calculator_button' | t}}";
+        var submitButtonDisabled = "{{'cart.general.shipping_calculator_calculating' | t}}" ;
+        Shopify.Cart.ShippingCalculator.show({
+            submitButton: submitButton,
+            submitButtonDisabled: submitButtonDisabled,
+            {% if shop.customer_accounts_enabled and customer %}
+            customerIsLoggedIn: true,
+            {% endif %}
+            moneyFormat: {{ shop.money_format | json }}
+        });
+    }, 500);
+
+</script>
+{% endif %}

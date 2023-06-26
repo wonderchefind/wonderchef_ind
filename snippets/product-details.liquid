@@ -1,0 +1,33 @@
+{% assign collection_handles = product.collections | map: 'handle' %}
+<div class="thumbnail-overlay">
+  <a href="{{ product.url | within: collection }}" itemprop="url" class="hidden-product-link">{{ product.title }}</a>
+  <div class="info">
+    {% if settings.thumbnail_hover_enabled and settings.quick_shop_enabled %}
+      {% include "product-info" %}
+      {% include 'quick-shop-button' %}
+    {% elsif settings.thumbnail_hover_enabled %}
+      {% include "product-info" %}
+    {% elsif settings.quick_shop_enabled %}
+      {% include 'quick-shop-button' %}
+    {% endif %}
+  </div>
+</div>
+<div class="banner_holder">
+  
+  {% if collection_handles contains 'new' %}
+    <div class="new_banner thumbnail_banner">{{ 'collections.general.new' | t }}</div>
+  {% endif %}
+  {% if collection_handles contains 'pre-order' %}
+    <div class="preorder_banner thumbnail_banner">{{ 'collections.general.pre_order' | t }}</div>
+  {% endif %}
+</div>
+{%comment%}
+<div id="wishlistheart" class="wishlist_heart">
+  <a class="grey" href="javascript:void(0);" title="Add to Wishlist"><img src="{{'heart-like_1.svg' | file_url}}" alt="Wishlist"></a>
+  <a style="display:none;" class="red" href="javascript:void(0);" title="Add to Wishlist"><img src="{{'heart-like_2.svg' | file_url}}" alt="Wishlist"></a>
+</div>
+{%endcomment%}
+{% capture the_snippet_fave_icon %}{% include 'ssw-widget-faveicon' with product.id %}{% endcapture %}
+{% unless the_snippet_fave_icon contains 'Liquid error' %}
+    {{ the_snippet_fave_icon }}
+{% endunless %}

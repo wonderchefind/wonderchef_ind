@@ -1,0 +1,84 @@
+{% comment %}
+    Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% unless template == 'index' %}
+{% if collection %}
+{% assign product_collection = collection %}
+{% else %}
+{% assign product_collection = product.collections.first %}
+{% endif %}
+
+
+{% if section.settings.show_collection_image %}
+    {% for block in section.blocks %}
+        {% assign collection_id = collections[block.settings.collection_id] %}
+        {% if collection_id.handle == collection.handle %}
+            {% if block.settings.image != blank %}
+            <div class="collection-hero">
+                <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: '2048x600' }}" alt="" data-image>
+            </div>
+            {% else %}
+            <div class="collection-hero">
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            {% endif%}
+        {% endif%}
+    {% endfor %}
+{% endif %}
+{% if settings.enable_multilevel_categories %}
+<div class="home-category-filter-sections">
+    {% include 'multi-level-category' %}
+</div>
+{% endif %}
+<div class="container">
+    <div class="breadcrumb-wrapper">
+        <ul class="breadcrumb">
+            <li class="item">
+                <a href="/">{{ 'general.breadcrumbs.home' | t }}</a>  
+                {% render 'icon-chevron-right' %}
+            </li>
+            <li class="item is-active">
+                {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+                <a href="{{ url }}" title="{{ collection.title }}">{% render 'multilang' with collection.title %}</a>
+                {% render 'icon-chevron-right' %}
+            </li>
+        </ul>
+      
+           </div>
+</div>
+{% endunless %}
+
+{% schema %}
+{
+    "name": "Collection banner",
+    "class": "collection-banner",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "show_collection_image",
+            "label": "Show collection banner",
+            "default": true
+        }
+    ],
+    "blocks": [
+        {
+            "type": "collection",
+            "name": "Collection",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "Recommended Image: Width x Height (2048 x 600)px"
+                },
+                {
+                    "label": "Collection",
+                    "id": "collection_id",
+                    "type": "collection"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

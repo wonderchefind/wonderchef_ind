@@ -1,0 +1,70 @@
+<div id="rent-cart-dropdown" class="rent-cart-dropdown"> 
+ <div id="cart-rent" class="cart_tabcontent">
+    <div class="no-rent-items">
+        <p class="cart_empty">
+            Your rent cart is currently empty.
+        </p>
+        <div class="text-continue">
+            <a class="btn btn--primary" aria-label="button" href="{{ routes.all_products_collection_url }}">
+                {{ 'cart.general.continue_shopping' | t }}
+            </a>
+        </div>
+    </div>
+    <div class="has-rent-items">
+        <div class="rent-products-list">  
+          Loading...
+        </div>
+
+        <div class="rent-summary">                
+            <span class="label">
+                {{ 'cart.label.total' | t }}:
+            </span>
+            <span class="price">
+                
+            </span>
+        </div>
+
+        <div class="actions">
+            <a class="btn btn--secondary btn--viewCart btn--viewRentCart" aria-label="view cart" href="https://wonderchef.com/cart/?view=rentity">
+                View rent cart
+            </a>
+            {% if settings.terms_conditions %}
+                <div class="terms_conditions_wrapper mb-3">
+                    <input type="checkbox" id="terms-conditions-dropdowncart" value=""/>
+                    <label class="title" for="terms-conditions-dropdowncart">
+                        {{ settings.terms_conditions_text }}
+                    </label>
+                </div>
+            {% endif %}
+            <!--<a class="btn btn--primary btn--checkoutRentCart" href="https://bff2-183-82-121-175.ngrok.io/proceed-to-checkout">
+                {{ 'cart.general.checkout' | t }}
+            </a>-->
+          <div class="btn-actions">
+            <form id="rentityCheckoutDrpdownForm" action="" method="post" novalidate>
+              <input type="hidden" id="rentityCartDropdownCheckoutId" name="checkoutId"/>
+              <input type="submit" name="checkout" class="btn btn--primary cart__submit cart__submit-control" value="{{ 'cart.general.checkout_two' | t }}">
+            </form>
+          </div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+      <span style="font-size: 9px;font-style: italic;">
+        Powered by 
+      </span>
+      <img style="width: 52px;" src="data:image/png;base64,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" style="width: 42px;">
+    </div>
+  </div>
+
+</div>
+
+<!--style>
+/* Style the tab content */
+.cart_tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  padding-top:30px;
+}
+</style-->
+

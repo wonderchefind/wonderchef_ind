@@ -1,0 +1,88 @@
+<!-- SchemaPlus v{{ shop.metafields.schemaplus['snippet_version'] }}, learn more at https://schemaplus.io
+     https://schema.org/version/3.4 -->    
+<script type="application/ld+json">
+  { "@context":"http://schema.org",
+    "@type":"OfferCatalog",
+    "@id": "{{ shop.url }}{{page.url}}#offercatalog",
+    "description": " {{collection.description | strip_html | strip_newlines | escape}}",
+    "name": "{{ collection.title | strip_html |  strip_newlines | escape}}",
+    "url":"{{ shop.url }}{{collection.url}}",
+    {% if collection.image %}"image": "https:{{ collection.image | img_url: 'medium' }}",{% endif %}
+    "numberOfItems": "{{collection.all_products_count}}",
+    "itemListElement": [{% for product in collection.products %} {% assign current_selected = product.selected_or_first_available_variant %}
+      {% case current_selected.weight_unit %} {% when 'g' %}{% assign weight_unit = "GRM" %} {% when 'kg' %}{% assign weight_unit = "KGM" %}
+      {% when 'oz' %}{% assign weight_unit = "ONZ" %} {% else %} {% assign weight_unit = "LBR" %} {% endcase %}
+      {% assign product_reviews = product.metafields.spr.reviews %}
+      {% assign best_rating = product_reviews | split:'itemprop="bestRating" content="' | last | split:'"' | first %}
+      {% assign worst_rating = product_reviews | split:'itemprop="worstRating" content="' | last | split:'"' | first %}
+      {% assign rating_value = product_reviews | split:'itemprop="ratingValue" content="' | last | split:'"' | first %}
+      {% assign review_count = product_reviews | split:'itemprop="reviewCount" content="' | last | split:'"' | first %}
+      {% assign item_reviewed = product_reviews | split:'itemprop="itemreviewed" content="' | last | split:'"' | first %}
+      { "@type": "Product",
+        "@id": "#{{ product.id }}",
+        "additionalProperty": [ {% for option in product.options_with_values %}
+          {"@type": "PropertyValue",
+           "name" : "{{ option.name }}",
+           "value": [ {% for value in option.values %}
+                      "{{ value | strip_html | strip_newlines | escape }}"{% if forloop.last == false %},{% endif %}
+                      {% endfor %}]
+          }{% if forloop.last == false %},{% endif %}{% endfor %}
+        ],{% if product_reviews != blank %} "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingCount": "{{ review_count }}",
+          "ratingValue": "{{ rating_value }}",
+          "bestRating": "{{ best_rating }}",
+          "worstRating": "{{ worst_rating }}"      
+        },{% elsif product.metafields.yotpo.reviews_count and product.metafields.yotpo.reviews_count %} 
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingCount": "{{ product.metafields.yotpo.reviews_count }}",
+          "ratingValue": "{{ product.metafields.yotpo.reviews_average }}",
+        },{% endif %}   
+        "brand": {"@type": "Organization",
+          "name": "{{ product.vendor }}"
+        },"category":" {{ product.type }}",
+        "offers" : [{% for item in product.variants %}
+          { "@type" : "Offer",
+            {% if item.available %} "availability": "http://schema.org/InStock", {% else %} "availability": "http://schema.org/OutOfStock", {% endif %}
+            "name" : "{{ item.title | strip_html | strip_newlines | escape }}",
+            "image": "https:{{ item.image | img_url: 'grande' }}",
+            "inventoryLevel": { "@type": "QuantitativeValue", "value": "{{ item.inventory_quantity }}"
+            },
+            "price" : "{{ item.price | money_without_currency | plus: .00  }}",
+            "priceCurrency" : "{{ shop.currency }}",
+            "seller": { "@type": "Organization", "name": "{{ shop.name }}" },
+            "sku": "{{ item.sku | escape }}",
+            "priceValidUntil": "2099-10-10",
+                {% if item.variants.first.barcode.size == 12 %}
+      "gtin12": {{ item.variants.first.barcode }},
+    {% endif %}
+    {% if item.variants.first.barcode.size == 13 %}
+      "gtin13": {{ item.variants.first.barcode }}{{variant.barcode}},
+    {% endif %}
+    {% if item.variants.first.barcode.size == 14 %}
+      "gtin14": {{ item.variants.first.barcode }},
+    {% endif %}
+            "url": "{{ shop.url }}{{ item.url }}"
+          }{% if forloop.last == false %},{% endif %}
+          {% endfor %}
+        ],
+        "productID":"#{{ product.id }}",
+        "sku": "{{ current_selected.sku }}",
+        "weight": {
+          "@type": "QuantitativeValue",
+          "unitCode": "{{ weight_unit }}",
+          "value": "{{ current_selected.weight_in_unit }}"
+        },
+        "description":"{{ product.description | strip_html | strip_newlines | escape }}",
+        "image": [{% if product.featured_image %}{% assign image_size = product.featured_image.width | append: 'x' %}
+          "https:{{ product.featured_image | img_url: image_size }}" {% else %}{% for item in product.images %}
+          "https:{{ item | img_url: 'grande' }}"{% if forloop.last == false %},{% endif %}
+          {% endfor %} {% endif %}
+        ],
+        "name":"{{ product.title | strip_html | strip_newlines | escape }}",
+        "url":"{{ shop.url }}{{ product.url }}"
+      }{% if forloop.last == false %},{% endif %}
+      {% endfor %}]
+  }
+</script>

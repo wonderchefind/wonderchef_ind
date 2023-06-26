@@ -1,0 +1,570 @@
+{% comment %}
+** Banner page - custom view **
+- Page template
+{% endcomment %}
+
+{% if section.settings.show_banner %}
+
+<section id="banner-{{section.id}}" class="banner page_banner">
+  {% if section.settings.image != nil %}
+  
+  <div class="hidden_xs">
+      {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+    </div>
+    <div class="visible_xs ">
+      
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Website_LP_-_Mobile_2.jpg?v=1647865041" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+    </div>
+  {% else %}
+  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+  {% endif %}
+  {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+  {% if section.settings.button1_link != blank %}
+  <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+    {{ section.settings.button1 }}
+  </a>
+  {% endif %}
+  {% if section.settings.button2_link != blank %}
+  <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+    {{ section.settings.button2 }}
+  </a>
+  {% endif %}
+  {% endunless %}
+  {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+  <div class="position-{{ section.settings.text_position }} caption js-caption">
+    <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+      {% if section.settings.pretext != blank %}
+      <div class="pretext">
+        {{ section.settings.pretext }}
+      </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+      <h1 class="headline">
+        {{ section.settings.title }}
+      </h1>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <div class="subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      {% endif %}
+      {% if section.settings.button1 != blank %}
+      <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+        {{ section.settings.button1 }}
+      </a>
+      {% endif %}
+      {% if section.settings.button2 != blank %}
+      <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+        {{ section.settings.button2 }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endunless %}
+</section>
+
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content" style="margine:0px 0px;width:100%!important">
+  <div class="page clearfix">
+    {% unless section.settings.show_banner %}
+    <h1>
+      {{ page.title }}
+    </h1>
+    <div class="feature_divider"></div>
+    {% endunless %}
+   <div  class="static-page">
+    <div class ="tncwonderchef">
+      
+      <div class=" normaltext container">
+        <p style="text-align:left;">Wonderchef is India's one of the most prestigious and widely acclaimed cookware and kitchen appliance brands. With over 800 high-quality, innovative products designed with health, taste, and convenience in mind, Wonderchef is the ideal gifting option, be it corporate gifting, rewards & recognition, trade schemes, or customised offers for any occasion.</p>
+          <div class=" ">
+      <b><p style="color:#000;text-align:left;">Reach out to Mr. Nimish Talsania via a call (<u><a href="tell:+919820904280">+91-9820904280</a></u>) or an email (<u><a href="mailto:enquiries@wonderchef.in">enquiries@wonderchef.in</a></u>) for a custom proposal of all your needs today.</p>
+       
+        </b> 
+      </div>
+        <br><br>
+        <br>  <p style="color:#000;text-align:center;"><b>Welcome to the Corporate Gifting Program.<br> Enter your details to unlock an exclusive offer:</b></p>
+      
+  <div style="margin: 0 auto;" class="pxFormGenerator" id="H02KBfEbMHLPFALwcjFoJQ"></div>
+       
+      
+      </div>
+      
+      
+      <div class="centerText normaltext" style="background:#cd3a3e;">
+         <p style="color: #fff; font-size: 29px!important; line-height: 32px!important; padding: 20px; padding-bottom: 0px;">
+           Corporate gifting options ready to roll out for</p>
+        <!-- first step Start-->
+        <div class="normaltext ">
+         <div class="grid-container1">
+           <div class="item1"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/11.png?v=1647868199"><br><p class="p2">Employees</p></a></div>
+  <div class="item2"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/12.png?v=1647868199"><br><p class="p2">Trade Partners</p></a></div>
+  <div class="item3"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/13.png?v=1647868199"><br><p class="p2">Chanel Partners</p></a></div>  
+  <div class="item4"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/14.png?v=1647868199"><br><p class="p2">Customers</p></a></div>
+  <div class="item5"><a href="#"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/15.png?v=1647868199"><br><p class="p2">Clients</p></a></div>
+ </div>
+        </div>
+       
+       
+        <!-- first step complete-->
+        <div class="clearfix"></div>
+        <!-- second step Start-->
+
+  
+      
+      
+        <!-- fourth step complete-->
+        
+      </div>
+      
+      
+      
+      <!-- <div class="mainbanner">
+        <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/2_4286aa94-f99c-40f4-a0d6-d05146ef7db2.jpg?v=1647671403" width="100%" alt="TNC banner" s/>
+        <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/2_4286aa94-f99c-40f4-a0d6-d05146ef7db2.jpg?v=1647671403" width="100%" alt="TNC banner" s/>
+      </div>--><br>
+       <div class=" normaltext container" style="padding-bottom:30px;">
+        <p >Wonderchef products are sure to be loved by all as the kitchen is where the heart is! With customized gifting assortment, co-branding opportunities & faster turnarond time for large orders, Wonderchef is trusted by 3,000+ corporates.</p>
+         
+      </div>
+      
+     
+      <div class="termsplicy-reward margintop"> <div class="container"> <div class=" normaltext centerText"> 
+        <h2 style="color:#000;font-size: 29px!important; padding:20px;">MOST GIFTED PRODUCTS BY CORPORATES</h2>  
+      </div></div></div>
+     
+      
+      <div class="centerText normaltext container">
+        <!-- first step Start-->
+        <div class="normaltext ">
+         <div class="grid-container">
+           <div class="item1"><a href="https://www.wonderchef.com/collections/nutri-blend"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/3_2548f7e2-3050-44e6-879b-40c8fcc91966.jpg?v=1647671403"><br><p>Nutri-blend</p></a></div>
+  <div class="item2"><a href="https://www.wonderchef.com/collections/nutripot"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/4_739ba881-5ccc-4905-81c1-5b36e94bbb26.jpg?v=1647671403"><br><p>Nutri-Pot</p></a></div>
+  <div class="item3"><a href="https://www.wonderchef.com/collections/air-fryers"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/5_87ddd120-835e-4b7a-a1f0-1e308aae294a.jpg?v=1647671403"><br><p>Prato Air Fryer</p></a></div>  
+  <div class="item4"><a href="https://www.wonderchef.com/collections/royal-velvet"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/6_4083575b-1010-4c37-9016-79e0630cd225.jpg?v=1647671403"><br><p>Royal Velvet Blue</p></a></div>
+  <div class="item5"><a href="https://www.wonderchef.com/collections/otgs"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/7_f86f825d-a866-4c00-ba68-678cd1b72b39.jpg?v=1647671403"><br><p>Crimson Edge OTG</p></a></div>
+  <div class="item6"><a href="https://www.wonderchef.com/collections/flasks-bottles"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/8_61863788-ec06-4bb3-bc3e-a0e7ff878dcd.jpg?v=1647671403"><br><p>Flask & Bottles</p></a></div>
+   <div class="item7"><a href="https://www.wonderchef.com/collections/casseroles/casseroles"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/9_16f25a8f-10c9-431b-99f9-8e14ab44c59e.jpg?v=1647671403"><br><p>Granite Casserole Set</p></a></div>
+   <div class="item8"><a href="https://www.wonderchef.com/collections/sanjeev-kapoor-tandoor"><img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/10_e8695532-482b-484e-83d4-7db2222f7b9f.jpg?v=1647671403"><br><p>Sanjeev Kapoor Tandoor (SKT)</p></a></div>
+</div>
+        </div>
+       
+       
+        <!-- first step complete-->
+        <div class="clearfix"></div>
+        <!-- second step Start-->
+
+  
+      
+      
+        <!-- fourth step complete-->
+        
+      </div>
+      
+      <div class="clearfix"></div>
+      
+    
+     
+
+      <div class="clearfix"></div>
+      
+   
+    </div>
+  </div>
+  </div>
+</div>
+
+<style>
+  {% if section.settings.show_banner %}
+  .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
+    padding: 0;
+  }
+  @media only screen and (max-width: 479px) {
+    div.content {
+      padding-top: 0;
+    }
+  }
+  {% endif %}
+</style>
+
+{% schema %}
+
+{
+"name": "Page | banner",
+"class": "banner-template-section",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_banner",
+"label": "Show banner",
+"default": true
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image",
+"info": "1800 x 1000px recommended"
+},
+{
+"type": "richtext",
+"id": "pretext",
+"label": "Preheading"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "subtitle",
+"label": "Subheading"
+},
+{
+"type": "checkbox",
+"id": "caption_background",
+"label": "Display solid text background",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "caption_background_transparency",
+"label": "Enable background transparency"
+},
+{
+"type": "select",
+"id": "text_position",
+"label": "Text position",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "select",
+"id": "text_align",
+"label": "Text alignment",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "text",
+"id": "button1",
+"label": "First button label"
+},
+{
+"type": "url",
+"id": "button1_link",
+"label": "First button link"
+},
+{
+"type": "checkbox",
+"id": "button1_highlight",
+"label": "Highlight first button"
+},
+{
+"type": "text",
+"id": "button2",
+"label": "Second button label"
+},
+{
+"type": "url",
+"id": "button2_link",
+"label": "Second button link"
+},
+{
+"type": "checkbox",
+"id": "button2_highlight",
+"label": "Highlight second button"
+}
+],
+"default": {
+"settings": {
+"title": "Page Banner Template",
+"subtitle": "<p>Create an amazing page with a full-width banner</p>",
+"text_position": "center",
+"text_align": "center"
+}
+}
+}
+
+{% endschema %}
+
+<style>
+.grid-container,.grid-container1 {
+  padding: 10px;
+}
+.grid-container1 > div {
+  text-align: center;
+  padding: 0px 0;
+  font-size: 20px;
+  width: fit-content;
+    margin: 0 20px 20px;
+    display: inline-flex;
+}
+  
+.grid-container > div {
+  
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  width: 25%;
+    float:left;
+}
+</style>
+
+
+
+
+
+<style>
+  .imageone{
+    margin-bottom:15px;
+  }
+  button#reward_readmore {
+    text-transform: none;
+    background: transparent;
+    color: #2626fd;
+    font-size: 26px;
+    border: 0;
+    outline:none;
+  }
+  img.imageone.wpwork {
+    position: relative;
+    top: 22px;
+  }
+  .second_stagechanges p {
+    line-height: 30px;
+    margin: 0;
+}
+  h3.headingreward {
+    letter-spacing: -1.2px!important;
+    line-height: 40px!important;
+    margin-bottom: 20px!important;
+  }
+  .first_stagechanges p {
+    margin-bottom: 0;
+  }
+  .first_stagechanges p input#btAnimate {
+    min-height: 30px;
+    height: 30px;
+  }
+  .sixteen.column.normaltext.liability {
+    text-align: left;
+}
+  .wonderarrow{
+    margin:6px 0px 0px 6px;
+  }
+  .icon-up-arrow{
+    margin:6px 0px 0px 6px;
+    font-size:15px;
+  }
+  .second_stagechanges h3.headingreward.hidden_xs {
+    margin-bottom: 0px!important;
+}
+  .centerText{
+    text-align:center;
+  }#more {display: none;}
+  .tncwonderchef p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+  .sixteen.column.normaltext.liability h3 {
+    color: #e33237;
+    margin: 30px 0 10px;
+    text-align: center;
+    text-transform: none;
+
+  }
+ 
+  .first_stagechanges p img.imageone {
+    margin: 0;
+    top: 4px;
+    width: 25px;
+  }
+  img.first_stage_image {
+    width: 80%;
+    float: right;
+  }
+  .padding_top.main.content {
+    padding: 0;
+}
+  img.imageone.firts-step-pointers {
+    width: 60px;
+  }
+ p img.imageone {
+    top: 6px;
+    position: relative;
+    margin: 0;
+}
+  .tncwonderchef h3 {
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 20px;
+    letter-spacing: 0;
+    color: #4e4e4e;
+  }
+  .tncwonderchef #divAnim input {
+    padding: 0 6px;
+    border: solid 1px #5d6bc4;
+    background: #606ec6;
+    color: #FFF;
+    cursor: pointer;
+    height: 40px;
+    line-height: 26px!important;
+    min-height: 40px;
+    font-weight: 600;
+  }
+  .centerText h1 {
+    color:#e31e24;
+    margin: 0px 0px 0px 0px;
+    text-transform: none;
+    font-size: 20px;
+    letter-spacing: -1.2px;
+    line-height: 10px;
+  }
+  .margintop{
+    margin-top:60px;
+  }
+  .margintop h3{
+    text-transform:none;
+  } 
+
+  .tncwonderchef .imageone{
+    width:5%;
+  }
+  .centerimg{
+    padding:40% 0px 0px 0px;
+  }
+  .righttoleft{
+    direction: rtl;
+  }
+  .mainbanner img {
+    width: 100%;
+  }
+  .pointer_rewards {
+    display: block;
+    clear: both;
+    padding-top: 40px;
+  }
+  img.imageone.wpwork.headingwonderpoint {
+    position: relative;
+    top: 18px;
+}
+  .pointer_rewards p {
+    margin-bottom: 26px;
+  }.termsplicy-reward {
+    background: #eaeaea;
+   
+  }
+
+  .termsplicy-reward h3 {
+    color: #e21e24;
+    text-transform: none;
+    
+  }
+  @media (max-width: 600px){
+    .tncwonderchef h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+    .tncwonderchef p {
+      font-size: 20px;
+      line-height: 26px;
+      text-align: center;
+    }
+
+    .tncwonderchef span#divAnim {
+      display: inline-block;
+    }
+    .tncwonderchef #divAnim input{
+      min-height: 30px;
+      height: 30px;
+    }
+    .tncwonderchef .imageone {
+      width: 10%;
+    }
+    .margintop {
+      margin-top: 0;
+    }
+    .centerimg {
+      padding: 10% 0 0;
+    }
+    .tncwonderchef {
+      margin-top: 40px;
+    }
+    img.imageone.firts-step-pointers {
+    width: 50px;
+}.tncwonderchef h3 {
+    font-size: 30px;
+    text-align: center;
+    line-height: 34px!important;
+}
+    img.first_stage_image {
+    width: 100%;
+    float: none;
+}
+     h3.visible_xs.headingreward {
+    margin-bottom: 0px!important;
+}
+    .pointer_rewards p {
+    text-align: left;
+}
+    .grid-container > div{
+      width: 50%;
+    padding: 10px;
+    }
+     .grid-container1 > div{
+    margin: 0 10px 10px;
+    }
+  }
+  
+  @media (max-width: 600px){
+.tncwonderchef p {
+    font-size: 15px!important;
+    line-height: 20px!important;
+    text-align: center;
+}
+  }
+  h2{
+  font-size:14px!important; 
+  }
+
+  
+  .p2{
+    font-size: 18px!important;
+    font-weight: 500!important;
+    color: #ffffff!important;
+    line-height: 30px!important;
+    letter-spacing: -0.5px!important;
+    
+  }
+</style>

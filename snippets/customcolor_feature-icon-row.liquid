@@ -1,0 +1,21 @@
+<style>
+    [data-section-id='{{ section.id }}'] .halo-feature-icon .icon {
+        color: {{ section.settings.color_icon }};
+    }
+
+    [data-section-id='{{ section.id }}'] .halo-feature-icon.layout-2 .icon i {
+        border-color: {{ section.settings.color_icon }};
+    }
+
+    [data-section-id='{{ section.id }}'] .halo-feature-icon .title {
+        color: {{ section.settings.color_heading }};
+    }
+
+    [data-section-id='{{ section.id }}'] .halo-feature-icon .description {
+        color: {{ section.settings.color_text }};
+    }
+
+    [data-section-id='{{ section.id }}'].halo-feature-icon-section   {
+    	background-color: {{ section.settings.color_background }};
+    }
+</style>

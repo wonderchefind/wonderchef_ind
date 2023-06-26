@@ -1,0 +1,305 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+
+{% case section.settings.column %}
+    {% when 1 %}
+        {%- assign column = '1' -%}
+    {% when 2 %}
+        {%- assign column = '2' -%}
+    {% when 3 %}
+        {%- assign column = '3' -%}
+    {% when 4 %}
+        {%- assign column = '4' -%}
+    {% when 5 %}
+        {%- assign column = '5' -%}
+{% endcase %}
+
+{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
+{%- assign carousel = carousel | default: section.settings.layout -%}
+{%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
+{%- assign dots = dots | default: section.settings.carousel-dots -%}
+
+{% if section.settings.custom_color %}
+    {% render 'customcolor_feature-image-row' %}
+{% endif %}
+
+<div class="halo-section  {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-id="{{ section.id }}" data-section-type="banner block 2">
+    <div class="container">
+        {% if section.settings.title != blank %}
+            <div class="section-header
+                {% case title_layout %}
+                    {% when 'left' %} text-left
+                    {% when 'center' %} text-center
+                {% endcase %}">
+                <h2>{% render 'multilang' with section.settings.title %}</h2>
+                {% if section.settings.text_link != blank %}
+                    <a class="text-link" href="{{ section.settings.custom_link }}">
+                        {% render 'multilang' with section.settings.text_link %}
+                    </a>
+                {% endif %}
+                {% if section.settings.description != blank %}
+                    <p>{% render 'multilang' with section.settings.description %}</p>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+            <div class="halo-column column-{{ column }}">
+                {% for block in section.blocks %}
+                    <div class="halo-item">
+                        <div class="card-text-overlay layout-2 card-text-overlay--{{ section.settings.overlay }}">
+                            <div class="image ">
+                                {% if block.settings.link != blank %}
+                                    <a class="img" href="{{ block.settings.link }}">
+                                {% else %}
+                                    <div class="img ">
+                                {% endif %}
+                                    {% if block.settings.image != blank %}
+                                        <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: 'master'  }}" alt="" data-image>
+                                    {% else %}
+                                        <span class="recommended_size">570x110</span>
+                                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                                    {% endif %}
+                                {% if block.settings.link != blank %}
+                                    </a>
+                                {% else %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="content">
+                                {% if block.settings.title != blank %}
+                                    {% if block.settings.link != blank %}
+                                        <a class="title" href="{{ block.settings.link }}">
+                                    {% else %}
+                                        <h3 class="title">
+                                    {% endif %}
+                                        {% render 'multilang' with block.settings.title %}
+                                    {% if block.settings.link != blank %}
+                                        </a>
+                                    {% else %}
+                                        </h3>
+                                    {% endif %}
+                                {% endif %}
+                                {% if block.settings.description != blank %}
+                                    <p class="description">{% render 'multilang' with block.settings.description %}</p>
+                                {% endif %}
+                            </div>
+                            {% if block.settings.button != blank %}
+                                <div class="button-wrapper">
+                                    {% if block.settings.link != blank %}
+                                        <a class="btn btn--primary" href="{{ block.settings.link }}">
+                                    {% else %}
+                                        <span class="btn btn--primary">
+                                    {% endif %}
+                                        {% render 'multilang' with block.settings.button %}
+                                    {% if block.settings.link != blank %}
+                                        </a>
+                                    {% else %}
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Banner Block 2",
+    "max_blocks": 12,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Banner Block 2"
+        },
+        {
+            "type": "text",
+            "id": "text_link",
+            "label": "Text Link"
+        },
+        {
+            "type": "url",
+            "id": "custom_link",
+            "label": "Link (Optional)"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "title_layout",
+            "label": "Title Layout",
+            "default": "left",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Layout Column"
+        },
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Column",
+            "default": 2,
+            "min": 1,
+            "max": 3,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Block Style"
+        },
+        {
+            "type": "select",
+            "id": "overlay",
+            "label": "Overlays",
+            "default": "dark",
+            "options": [
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                },
+                {
+                    "label": "Light",
+                    "value": "light"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Custom Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "custom_color",
+            "label": "Turn on custom color",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "Heading Color"
+        },
+        {
+            "type": "color",
+            "id": "color_heading_hover",
+            "label": "Heading Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Description Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "banner_block",
+            "name": "Another Block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link (Optional)"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description",
+                    "label": "Description",
+                    "default": "Image with text overlay"
+                },
+                {
+                    "type": "text",
+                    "id": "button",
+                    "label": "Button",
+                    "default": "Button"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Banner Block 2",
+            "category": "Banners",
+            "blocks": [
+                {
+                    "type": "banner_block"
+                },
+                {
+                    "type": "banner_block"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

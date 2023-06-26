@@ -1,0 +1,543 @@
+{% include 'setting-spacing' %}
+{% include 'setting-background-color' %}
+
+{% case section.settings.column %}
+  {% when 1 %}
+    {%- assign column = '1' -%}
+  {% when 2 %}
+    {%- assign column = '2' -%}
+  {% when 3 %}
+    {%- assign column = '3' -%}
+  {% when 4 %}
+    {%- assign column = '4' -%}
+  {% when 5 %}
+    {%- assign column = '5' -%}
+{% endcase %}
+
+{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
+{%- assign carousel = carousel | default: section.settings.layout -%}
+{%- assign arrows = arrows | default: section.settings['carousel-arrows'] -%}
+{%- assign dots = dots | default: section.settings['carousel-dots'] -%}
+
+{% if section.settings.custom_color %}
+  {% render 'customcolor_feature-image-row' %}
+{% endif %}
+<div
+  class=" halo-section  {{ padding_top }} {{ padding_bottom }} {{ background_color }} "
+  data-section-id="{{ section.id }}"
+  data-section-type="banner block 1"
+>
+  <div class="container">
+    {% if section.settings.title != blank %}
+      <div class="section-header text-center">
+        <h2 class="smart-title gradiant">
+          Thoughtfully Crafted for Your Kitchen
+        </h2>
+      </div>
+    {% endif %}
+   
+  </div>
+  <div class="container">
+    
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/3-Menus_5e306838-44bd-47d0-bb08-0ad8fe4bc504.png?v=1687180087"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+         
+      <h3 class="title aplustitle overlaptexttop" >
+            <span class="" style="text-transform: capitalize;color:#fff!important;">3 Pre-programmed Menus
+          </span></h3>
+          <p class="content" style="text-align:left;">
+           Nutri-blend SMART™ delivers precision with pre-programmed settings for dry grinding, chutneys, and smoothies. Its advanced microcontroller manages operation timing and stops it automatically, freeing you to enjoy the results.
+         </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container new-blog">
+     
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Double-Pulse_8f64088c-b44d-4582-9e12-26e6a1a7c7fe.jpg?v=1687268578"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+        
+          <h3 class="title aplustitle overlaptexttop" >
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Double Pulse Technology
+          </span></h3>
+          <p class="content" style="text-align:left;">
+            Once the Nutri-blend SMART™ starts, it stops twice for 2 seconds after every 4 seconds. This feature of very sophisticated blenders allows the content to settle down and fall back on the blades for perfect blending rather than sticking on the sides.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="halo-row halo-row-custom  new-blog">
+          <div class="halo-item cet">
+            
+   <table >
+              <tbody>
+               
+                <h3 class="title aplustitle overlaptexttop" style="font-size: 5.75rem;color:#fff!important;margin-left: 9px;text-align:left;">
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Audio-visual Indicators
+          </span></h3>
+                 
+                   
+                  
+                <tr>
+                  <td style="width:50%"> <img
+     class="lazyload image-shadow" style="border-radius: 10px;"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Sound.png?v=1687172401"
+      alt="" width="200px"
+    ></td>
+                <td> <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+         
+        
+          <p class="content" style="text-align:left;padding: 0px!important;">
+            LED lights and beeps signify various operational stages - switched-on, operation-ready and task-completed - enhancing user safety and allowing freedom to multitask as Nutri-blend SMART™ completes its jobs.
+          </p>
+        </div>
+      </div></td>
+                </tr>
+                 
+              </tbody>
+   </table>
+         
+  <table>
+    <tbody>
+       <h3 class="title aplustitle overlaptexttop" style="font-size: 5.75rem;color:#fff!important;text-align: right;margin: 0px 6px 0px 0px;">
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Powerful 500 WATT 100% Copper Motor
+          </span></h3>
+     
+ <tr>
+                  <td> <div class="halo-item " style="padding-right: 0px!important;">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+         
+        
+          <p class="content" style="text-align:right;padding: 0px!important;">
+           Equipped with a superior 500 Watt, 100% Copper motor operating at a high-speed 22,000 RPM, Nutri-blend SMART™ effortlessly grinds the toughest ingredients for delicious chutneys and masalas with ease.
+          </p>
+        </div>
+      </div></td>
+                <td style="width:50%"> <img
+      class="lazyload image-shadow" style="border-radius: 10px;"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Motor.png?v=1687172400"
+      alt=""
+    ></td>
+                </tr>
+    </tbody>
+  </table>
+<table>
+  <tbody>
+     <h3 class="title aplustitle overlaptexttop" style="font-size: 5.75rem;color:#fff!important;margin-left: 9px;text-align:left;">
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Transparent & Unbreakable PC Jars
+          </span></h3>
+     
+    <tr>
+                  <td style="width:50%"> <img
+     class="lazyload image-shadow" style="border-radius: 10px;"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Unbreaking-Jars_c15fd17b-a932-4fde-a70c-feac67fd683c.png?v=1687172400"
+      alt=""
+    ></td>
+                <td><div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+         
+        
+          <p class="content" style="text-align:left;padding: 0px!important;">
+            Observe the progress without the need to open the jars. The tall (500ml) with a 4-wing blade and short jars (300ml) with a 2-wing flat blade are perfect for mixing-blending and grinding, respectively.
+          </p>
+        </div>
+      </div></td>
+                </tr>
+  </tbody>
+</table>
+  </div>
+ </div>
+
+<div class="container" style="    margin-top: 10px;">
+  
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/LEAKPROOF_DESIGN_04420b09-bf39-49fb-ab4b-0fe5b4ec27b0.jpg?v=1687171936"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+         
+         <h3 class="title aplustitle overlaptexttop" >
+             <span class="" style="text-transform: capitalize;color:#fff!important;">Leakproof Design
+          </span></h3>
+           <p class="content" style="text-align:left;">
+           Experience hassle-free performance with Nutri-blend SMART™’s impeccably leak-proof design. The UV-bonded silicon gasket and specially infused Molybdenum bush guarantee a perfect seal during operation. </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container new-blog">
+    
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Re-Engine_6069fb54-5655-4d9d-94bb-2e985f6ddae6.jpg?v=1687171936"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+          <h3 class="title aplustitle overlaptexttop" >
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Re-engineered Blade Design for Higher Efficiency
+          </span></h3>
+        
+           <p class="content" style="text-align:left;">
+          Experience 30% higher efficiency in blending and grinding operations with Nutri-blend SMART™'s meticulously crafted surgical-grade stainless steel blades.</p>
+       </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  
+  <div class="container new-blog">
+     
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/2-Years-Warranty-Option-2_1.jpg?v=1687261361"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+        
+          <h3 class="title aplustitle overlaptexttop" >
+            <span class="" style="text-transform: capitalize;color:#fff!important;">2-Year On-site Warranty
+          </span></h3>
+          <p class="content" style="text-align:left;">
+           With a best-in-class 2-Year service-at-your-doorstep warranty, Nutri-blend SMART™ ensures complete peace of mind.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="container new-blog">
+     
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Designed-For-Excellence_28b79be2-84ae-4e95-8859-6959e74f255d.jpg?v=1687180085"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+          <h3 class="title aplustitle overlaptexttop" >
+           <span class="" style="text-transform: capitalize;color:#fff!important;">Designed for Excellence
+          </span></h3>
+        
+          <p class="content" style="text-align:left;">
+          The unique cuboid shape, smart ventilation, strong suction feet, screw-type jars for zero leakage, and razor-sharp stainless steel blades guarantee unparalleled performance.</p>
+         </div>
+      </div>
+    </div>
+  </div>
+
+  
+   
+  <div class="container new-blog">
+     
+    <img
+      class="lazyload radius marg fullwidth image-shadow"
+      src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Modular-Upgarde-Option-2_2.jpg?v=1687498809"
+      alt=""
+    >
+
+    <div class="halo-row halo-row-custom ">
+      <div class="halo-item ">
+        <div
+          class="layout-1 "
+          data-wow-delay="0.3s"
+          style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;"
+        >
+        
+          <h3 class="title aplustitle overlaptexttop" >
+            <span class="" style="text-transform: capitalize;color:#fff!important;">Modular Upgrades
+          </span></h3>
+          <p class="content" style="text-align:left;">
+           Nutri-blend SMART™ adapts to your evolving needs. Start with the 2-jar version and add a chopper, food processor, juicer, or a big jar as required. Just visit wonderchef.com <URL for NB accessories>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+    "name": "A plus",
+    "max_blocks": 2,
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Banner Block 1"
+        },
+        {
+            "type": "text",
+            "id": "text_link",
+            "label": "Text Link"
+        },
+        {
+            "type": "url",
+            "id": "custom_link",
+            "label": "Link (Optional)"
+        },
+        {
+            "type": "textarea",
+            "id": "description",
+            "label": "Description"
+        },
+        {
+            "type": "select",
+            "id": "title_layout",
+            "label": "Title Layout",
+            "default": "center",
+            "options": [
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "left",
+                    "label": "Left"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Layout Column"
+        },
+        {
+            "type": "range",
+            "id": "column",
+            "label": "Column",
+            "default": 3,
+            "min": 1,
+            "max": 5,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Block Style"
+        },
+        {
+            "type": "select",
+            "id": "overlay",
+            "label": "Overlays",
+            "default": "dark",
+            "options": [
+                {
+                    "label": "Dark",
+                    "value": "dark"
+                },
+                {
+                    "label": "Light",
+                    "value": "light"
+                }
+            ]
+        },
+        {
+            "type": "header",
+            "content": "Custom Color"
+        },
+        {
+            "type": "checkbox",
+            "id": "custom_color",
+            "label": "Turn on custom color",
+            "default": false
+        },
+        {
+            "type": "color",
+            "id": "color_heading",
+            "label": "Heading Color"
+        },
+        {
+            "type": "color",
+            "id": "color_heading_hover",
+            "label": "Heading Color Hover"
+        },
+        {
+            "type": "color",
+            "id": "color_text",
+            "label": "Description Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "banner_block",
+            "name": "Another Block",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "url",
+                    "id": "link",
+                    "label": "Link (Optional)"
+                },
+               {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Main Title",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "title1",
+                    "label": "Title 1",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description1",
+                    "label": "Description 1",
+                    "default": "Image with text overlay"
+                },
+              {
+                    "type": "text",
+                    "id": "title2",
+                    "label": "Title 2",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description2",
+                    "label": "Description 2",
+                    "default": "Image with text overlay"
+                },
+              {
+                    "type": "text",
+                    "id": "title3",
+                    "label": "Title 3",
+                    "default": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "description3",
+                    "label": "Description 3",
+                    "default": "Image with text overlay"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "A plus",
+            "category": "Banners",
+            "blocks": [
+                {
+                    "type": "banner_block"
+                },
+                {
+                    "type": "banner_block"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

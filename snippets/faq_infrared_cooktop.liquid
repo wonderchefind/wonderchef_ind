@@ -1,0 +1,159 @@
+<div>
+ 
+   
+             <h2 class="heading_description" style="text-align:center;">Frequently Asked Questions</h2>
+        
+        </div>
+
+
+<dl>
+<div class=".faqAccordion .faqAccordion2">
+    <dt class="acc_trigger specic_tab"><a href="#toggle1">How is the infrared cooktop different from an induction cooktop?</a></dt>
+    <dd class="acc_container specic_tab">
+        <div class="block">
+         An induction cooktop heats the pot magnetically and works only with induction friendly cookware. Whereas infrared cookware works with any type of flat bottomed cookware. 
+
+</div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle2">How long can it be used constantly, and will it stop automatically if overheated?</a></dt>
+    <dd class="acc_container">
+        <div class="block">
+      The easy cook hot plate of Wonderchef infrared cooktop has an advanced and unique function which helps in keeping food warm for a longer duration, also to ensure the safety of the users the appliance is provided with auto-off function. Making it safer than gas and electric cookers.</div>
+    </dd>
+    
+    <dt class="acc_trigger specic_tab"><a href="#toggle3">What types of utensils can be used on the Wonderchef Infrared cooktop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Suitable for all types of flat-bottomed cookware. Even cookware without induction bottom would work on this cooktop</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle4">Can I use every day utensils with the infrared cooktop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Yes, flat bottomed cookware can be used easily. The induction bottom is not necessary.  </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle5">How safe is the infrared cooktop? Can I use it with kids around?</a></dt>
+    <dd class="acc_container">
+        <div class="block">The easy cook hot plate has an advanced and unique function which helps in keeping food warm for a longer duration, also to ensure the safety of the users the appliance is provided with auto-off function. Making it safer than gas and electric cookers even when kids are around. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle6">What pre-programmed functions does the infrared cooktop come with?</a></dt>
+    <dd class="acc_container">
+        <div class="block">The Wonderchef infrared cooktop comes with pre-set functions i.e. Keep warm, soup, grill, curry/dal, saute/bhuna. Just set timing and temperature for different types of recipes. Use the LED display on the cooktop to navigate through the functions with ease. </div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle7">What type of food can I cook with the Wonderchef infrared cooktop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">With Wonderchef infrared cooktop you can cook soups, curries, dals, saute masala and much more.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle8">How can I clean the infrared cooktop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">After usage, wait for surface cool and clean it with damp cloth.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle9">What is the warranty of the Wonderchef Infrared cooktop?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Wonderchef infrared cooktop has 1 Year Warranty.</div>
+    </dd>
+   <dt class="acc_trigger specic_tab"><a href="#toggle10">How can I get after-sales service if any problem arises with this product?</a></dt>
+    <dd class="acc_container">
+        <div class="block">Register a complaint at 1800-266-0788 and our technician will visit under 24 to 72 hours to solve it.</div>
+    </dd>
+   
+   
+  
+</div>
+</dl>
+
+
+<style>
+  
+  
+  .acc_trigger > a:hover, .acc_trigger > a:focus {
+    background: #ededed;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+   .faqAccordion2 > dt > a {
+   
+    color: #000!important;
+    font-size:15px!important;
+   
+}
+  .faqAccordion > dt > a:hover, .faqAccordion > dt > a:focus {
+    background: #f7f7f7;
+    border: none;
+    border-bottom: 1px solid #ededed;
+    color: #000000;
+}
+  
+  
+  .acc_container {
+    display: none;
+    padding: 20px 0px;
+}
+  .acc_trigger > a::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50.1%);
+    -ms-transform: translateY(-50.1%);
+    transform: translateY(-50.1%);
+    right: 15px;
+    font-size: 25px;
+    content: "\002b";
+    color: inherit;
+}
+  
+  
+
+ .acc_trigger > a::after {
+    right: 0px!important;
+}
+ .acc_trigger > a:focus::after {
+    content: "\002d";
+    font-size: 30px;
+}
+  
+  
+  .acc_trigger > a {
+    background: transparent;
+    position: relative;
+    padding: 10px;
+    color: #000!important;
+    font-size: 15px!important;
+    border-bottom: 1px solid #ededed;
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    outline: none;
+    text-transform: initial;
+    min-height: auto;
+    height: auto;
+    line-height: inherit;
+    font-weight: normal;
+    /* font-family: Montserrat, sans-serif; */
+    font-style: normal;
+    box-shadow: none;
+    border-radius: 0px;
+   
+}
+  
+</style>
+<script>
+$(function () {
+    $('.acc_trigger a').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        $(this).closest('.acc_trigger').next('.acc_container').stop().slideDown();
+        return false;
+    })
+
+    $('.expand').click(function () {
+        $('.acc_trigger').closest('.acc_trigger').next('.acc_container').slideDown();
+        return false;
+    })
+
+    $('.collapse').click(function () {
+        $('.acc_trigger').next('.acc_container').slideUp();
+        return false;
+    })
+});
+</script>
+

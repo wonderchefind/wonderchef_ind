@@ -1,0 +1,17 @@
+<style>
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .title {
+        color: {{ section.settings.color_heading }}
+    }
+
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content,
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content p,
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content p > a,
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content > a {
+        color: {{ section.settings.color_text }}
+    }
+
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content p > a:after,
+    [data-section-id='{{ section.id }}'] .collection-tab-banner .banner-html .content > a:after {
+    	background-color: {{ section.settings.color_text }};
+    }
+</style>

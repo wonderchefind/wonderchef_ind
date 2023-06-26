@@ -1,0 +1,99 @@
+{%- if section.settings.show_product_reviews -%}
+    {% include 'setting-spacing' %}
+    {% include 'setting-background-color' %}
+
+    {% case section.settings.column %}
+        {% when 1 %}
+            {%- assign column = '1' -%}
+        {% when 2 %}
+            {%- assign column = '2' -%}
+        {% when 3 %}
+            {%- assign column = '3' -%}
+        {% when 4 %}
+            {%- assign column = '4' -%}
+        {% when 5 %}
+            {%- assign column = '5' -%}
+    {% endcase %}
+
+    <div class="product-review__inner halo-section {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}">
+        {% if section.settings.title != blank %}
+            <div class="section-header">
+                <h2>{% render 'multilang' with section.settings.title %}</h2>
+                {% if section.settings.title_border %}<hr class="section-header-border" aria-hidden="true" />{% endif %}
+            </div>
+            <div id="shopify-product-reviews" data-id="{{product.id}}">
+                {{ product.metafields.spr.reviews }}
+            </div>
+        {% endif %}
+    </div>
+{%- endif -%}
+
+{% schema %}
+{
+    "name": "Product Reviews",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Layout"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_product_reviews",
+            "label": "Show reviews",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "background-color",
+            "label": "Background Gray",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-top",
+            "label": "show border top",
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "border-bottom",
+            "label": "show border bottom",
+            "default": false
+        },
+        {
+            "type": "range",
+            "id": "padding-top",
+            "label": "Spacing Top",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "range",
+            "id": "padding-bottom",
+            "label": "Spacing bottom",
+            "default": 3,
+            "min": 0,
+            "max": 10,
+            "step": 1
+        },
+        {
+            "type": "header",
+            "content": "Heading Section"
+        },
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Customer Reviews"
+        },
+        {
+            "type": "checkbox",
+            "id": "title_border",
+            "label": "Heading underline",
+            "default": false
+        }
+    ]
+}
+{% endschema %}
