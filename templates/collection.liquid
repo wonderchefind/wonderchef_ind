@@ -1,36 +1,34 @@
 {% assign collectionDescription = collection.description | split: '<!-- split -->' %}
 {% comment %}
-  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
-{% endcomment %}
-
-{% section 'collection-template-banner' %}
+The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}{% section 'collection-template-banner' %}
 {% section 'collection-header' %}
 <div class="container">
-    <div class="page page-collections">
-      
-     {%if collection.title == 'Gifting' %}
+  <div class="page page-collections">
+
+    {% if collection.title == 'Gifting' %}
       {% section 'collection_gift_static_layout' %}
-      {% endif %}
-      
-      {% if collection.title contains 'Home & Living' %}
+    {% endif %}
+
+    {% if collection.title contains 'Home & Living' %}
       <div class="homeware-highlights">
-      {%section 'brand-carousel'%}
-      {%section 'brand-carousel1'%}
-          </div>
-      {% endif %}
-       
-       {% if collection.description != blank %}
+        {% section 'brand-carousel' %}
+        {% section 'brand-carousel1' %}
+      </div>
+    {% endif %}
+
+    {% if collection.description != blank %}
       <div class="collection-description desc ">
         {{ collectionDescription[0] }}
       </div>
     {% endif %}
-      
-        {% section 'sidebar-collection' %}
-        
-     
-        {% section 'collection-template' %}
-        <div class="clearfix"></div>
-    </div>
+
+    {% section 'sidebar-collection' %}
+
+
+    {% section 'collection-template' %}
+    <div class="clearfix"></div>
+  </div>
 </div>
 {% section 'collection_customHtml' %}
 {% if collection.description != blank %}
@@ -42,14 +40,35 @@
 {% section 'recently-viewed-products' %}
 {% section 'brand-grid' %}
 <style>
-    .desc{
+  .desc {
 
-      padding:20px 15 px;
-    }
-
-    .desc p{
-
-      font-size: 14px;
+    padding: 20px 15 px;
   }
-    }
+
+  .desc p {
+
+    font-size: 14px;
+  }
 </style>
+<script>
+  // This code will move sold out products to the bottom of the product collection page.
+// Get the product collection.
+  var collection = Shopify.Product.collection('collection-handle');
+
+// Get all of the products in the collection.
+  var products = collection.products;
+
+// Loop through the products and move any that are sold out to the bottom of the collection.
+  for (var i = 0; i < products.length; i++) {
+    if (products[i].soldOut) {
+      products.splice(i, 1);
+      products.push(products[i]);
+    }
+  }
+
+// Update the product collection.
+  collection.products = products;
+
+// Save the product collection.
+  collection.save();
+</script>
