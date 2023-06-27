@@ -51,16 +51,7 @@
                         </div>
                     </div>
                 </div>
-                {% if product.sold_out %}
-  <script>
-    setTimeout(function() {
-      var product = document.querySelector('[data-product-id="' + {{ product.id }} + '"]');
-      if (product) {
-        product.parentNode.insertBefore(product, product.nextSibling);
-      }
-    }, 1000);
-  </script>
-{% endif %}
+               
 
                 <div class="filters-toolbar__item-wrapper three ">
                   <!-- <div class="filters-toolbar__item-child" data-limited-view>
