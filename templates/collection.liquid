@@ -50,25 +50,3 @@ The contents of the collection.liquid template can be found in /sections/collect
     font-size: 14px;
   }
 </style>
-<script>
-  // This code will move sold out products to the bottom of the product collection page.
-// Get the product collection.
-  var collection = Shopify.Product.collection('collection-handle');
-
-// Get all of the products in the collection.
-  var products = collection.products;
-
-// Loop through the products and move any that are sold out to the bottom of the collection.
-  for (var i = 0; i < products.length; i++) {
-    if (products[i].soldOut) {
-      products.splice(i, 1);
-      products.push(products[i]);
-    }
-  }
-
-// Update the product collection.
-  collection.products = products;
-
-// Save the product collection.
-  collection.save();
-</script>
