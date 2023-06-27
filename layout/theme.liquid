@@ -507,16 +507,7 @@
         }
       });
     </script>
-    {% if product.sold_out %}
-      <script>
-        setTimeout(function() {
-          var product = document.querySelector('[data-product-id="' + {{ product.id }} + '"]');
-          if (product) {
-            product.parentNode.insertBefore(product, product.nextSibling);
-          }
-        }, 1000);
-      </script>
-    {% endif %}
+
   </body>
 </html>
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
