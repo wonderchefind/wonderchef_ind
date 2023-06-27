@@ -200,7 +200,8 @@
       var faqbotKey = 'wonderchef';
     </script>
     <script src="https://myfaqprime.appspot.com/bot/bot.js" defer="defer"></script>
-    <link href="https://myfaqprime.appspot.com/bot/bot.css"
+    <link
+    href="https://myfaqprime.appspot.com/bot/bot.css"
       rel="stylesheet"
       type="text/css">
     <!-- END of FAQPRIME Code -->
@@ -507,7 +508,28 @@
         }
       });
     </script>
+    <script>
+      // This code will move sold out products to the bottom of the product collection page.
+// Get the product collection.
+      var collection = Shopify.Product.collection('collection-handle');
 
+// Get all of the products in the collection.
+      var products = collection.products;
+
+// Loop through the products and move any that are sold out to the bottom of the collection.
+      for (var i = 0; i < products.length; i++) {
+        if (products[i].soldOut) {
+          products.splice(i, 1);
+          products.push(products[i]);
+        }
+      }
+
+// Update the product collection.
+      collection.products = products;
+
+// Save the product collection.
+      collection.save();
+    </script>
   </body>
 </html>
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
