@@ -47,7 +47,10 @@
             width="100px">
 
           <div class="btp">
-
+            <a
+              href="#"
+              style="{% unless current_variant.available %}display:none;{% endunless %} font-size: 25px!important; color: #fff!important;border-color: #ffffff00 !important;border-bottom: 1px solid #b2000000 !important;position:absolute;"
+              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded smart-button">Pre-book-now</a>
             <!-- pre-book button -->
             {% section 'smart-buy-button' %}
             <!-- end of pre book button-->
@@ -87,6 +90,35 @@
 
 </div>
 <style>
+
+  .show-read-more .more-text {
+    display: none;
+  }
+  .btn {
+    flex: 1 1 auto;
+    margin: 10px;
+    padding: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+
+    border-radius: 10px;
+  }
+
+  /* Demo Stuff End -> */
+
+  /* <- Magic Stuff Start */
+
+  .btn:hover {
+    background-position: right center; /* change the direction of the change here */
+  }
+
+  .btn-1 {
+    background-image: linear-gradient(to right, #1ba0e9 0%, #0bcae6 51%, #15e1d5 100%);
+  }
+
 
   @media only screen and (min-width: 800px) {
     .ttp {
