@@ -50,11 +50,12 @@
             width="100px">
 
           <div class="bcenter">
-
+            <div id="sticky-anchor"></div>
+            <div class="sticky1"></div>
             <a
               href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
               style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
-              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded ">Pre-book-now</a>
+              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded button1">Pre-book-now</a></div>
 
             <p style="margin-top:10px;">Deliveries start from 16 July 2023.</p>
             <h3>
@@ -68,16 +69,7 @@
       </div>
     </div>
   </div>
-  <div id="container">
-    <div id="sticky-anchor"></div>
-    <div class="sticky1 left1">
-      <a href="#" class="button1">Sticky Button</a>
-    </div>
-    <div class="sticky1 right1">
-      <a href="#" class="button1">Sticky Button</a>
-    </div>
-  </div>
-
+ 
   <hr class="hrborder">
   <div class="hidden_xs">
     {% section 'smart-compare' %}
@@ -109,15 +101,12 @@
 <style>
 
   .button1 {
-    display: block;
-    background-color: tomato;
-    padding: 15px;
-    text-align: center;
+    
   }
 
   .sticky1 {
     display: block;
-    width: 49%;
+   
   }
 
   .left1 {
@@ -133,6 +122,7 @@
   .mobile-sticky1 {
     position: fixed !important;
     bottom: 0;
+    z-index: 999;
   }
 
   .show-read-more .more-text {
@@ -143,7 +133,7 @@
     margin: 10px;
     padding: 10px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: uppercase; 
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
