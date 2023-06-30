@@ -50,15 +50,13 @@
             width="100px">
 
           <div class="bcenter">
-            <div id="sticky-anchor"></div>
-            <div class="sticky1">
-              <div class="btn-1-b">
-                <a
-                  href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
-                  style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
-                  class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded button1">Pre-book-now</a>
-              </div>
-            </div>
+
+
+            <a
+              href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
+              style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
+              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded ">Pre-book-now</a>
+
 
             <p style="margin-top:10px;">Deliveries start from 16 July 2023.</p>
             <h3>
@@ -68,6 +66,15 @@
           </div>
 
 
+        </div>
+        <div id="sticky-anchor"></div>
+        <div class="sticky1">
+          <div class="btn-1-b hide">
+            <a
+              href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
+              style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
+              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded button1">Pre-book-now</a>
+          </div>
         </div>
       </div>
     </div>
@@ -102,7 +109,9 @@
 
 </div>
 <style>
-
+  .hide {
+    display: none;
+  }
   .button1 {}
 
   .sticky1 {
@@ -686,7 +695,9 @@
     var div_top = $('#sticky-anchor').offset().top;
     if (window_top > div_top) {
       $('.btn-1-b').addClass('mobile-sticky1');
+      $('.btn-1-b').removeClass('hide');
     } else {
+      $('.btn-1-b').addClass('hide');
       $('.btn-1-b').removeClass('mobile-sticky1');
     }
   }
