@@ -675,8 +675,8 @@
     
     validateCart();
     
-    let shop_url = "{{shop.url | split: 'https://' }}"; //shop url 
-    
+    // let shop_url = "{{shop.url | split: 'https://' }}"; //shop url 
+    let shop_url = Shopify.shop || Shopify.Checkout.apiHost; //myshopify url 
     //flag variable for adding or refreshing gift card
     tag_flag = function(){
       if($(document).find('.tag').length >= 1){

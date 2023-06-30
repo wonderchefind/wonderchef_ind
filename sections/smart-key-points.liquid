@@ -33,11 +33,9 @@
                     {% when 'center' %} text-center
                 {% endcase %} ">
                 <h2 class="smart-title gradiant">{% render 'multilang' with section.settings.title %}</h2>
-                {% if section.settings.text_link != blank %}
-                    <a class="text-link" href="{{ section.settings.custom_link }}">
-                        {% render 'multilang' with section.settings.text_link %}
-                    </a>
-                {% endif %}
+              
+                        <p class="description" style="color:#fff;font-size:24px!important;font-weight:700;">{% render 'multilang' with section.settings.text_link %}</p>
+                  
                 {% if section.settings.description != blank %}
                     <p>{% render 'multilang' with section.settings.description %}</p>
                 {% endif %}

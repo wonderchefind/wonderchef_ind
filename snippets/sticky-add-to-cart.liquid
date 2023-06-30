@@ -57,7 +57,7 @@
                         <input type="hidden" name="id" value="{{ product.variants[0].id }}" /> 
                         <input data-sticky-btn-addToCart type="submit" name="add" class="btn btn--primary btn-sticky-add-to-cart" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %} value="{{ 'products.product.add_to_cart' | t }}">          
                     {% else %} 
-                     {% section 'product-template-au-coffee-prebook' %}
+                    
                         <input type="submit" name="add" class="btn btn--secondary-accent btn-sticky-add-to-cart" disabled {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %} value="{{ 'products.product.sold_out' | t }}">          
                     {% endif %}
                     {% comment %}
