@@ -1,9 +1,9 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Wonderchef",
-    "theme_author": "Ankit Jain",
-    "theme_version": "5.2.1",
+    "theme_name": "Caros",
+    "theme_author": "HaloThemes",
+    "theme_version": "1.0.0",
     "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/using-themes\/sections",
     "theme_support_url": "https:\/\/support.shopify.com\/"
   },
@@ -882,6 +882,11 @@
         "type": "image_picker",
         "id": "newsletter",
         "label": "Upload a new newsletter image"
+      },
+      {
+        "type": "url",
+        "id": "popup_image_link",
+        "label": "Link (Optional)"
       },
       {
         "type": "text",
