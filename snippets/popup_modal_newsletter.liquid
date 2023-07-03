@@ -4,11 +4,19 @@
 
 <div id="halo_newsletter">
     <div class="popup-overlay"></div>
-    <div class="newsletterPopup" data-delay="{{ newsletter_delay }}" data-expire="{{ settings.popup_newsletter_expire }}">
+    <div class="newsletterPopup" data-delay="{{ newsletter_delay }}" data-expire="{{ settings.popup_newsletter_expire }}" style="max-width:500px;">
+      
         <a href="#" class="modal-close close" aria-label="{{lang 'common.close'}}" role="button" data-close-newsletter-popup>
             <span aria-hidden="true">&#215;</span>
         </a>
-        <div class="newsletter-content">
+
+  {% if settings.popup_newsletter_title == blank %}
+     <a href="{{setting.popup_image_link}}">  <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ settings.newsletter | img_url: '420x380' }}" data-sizes="auto" alt="" data-image ></a>
+
+      {% endif %}
+
+      
+       <!-- <div class="newsletter-content">
             {% if settings.popup_newsletter_title != blank %}
                 <h2 class="newsletter-heading">
                     {{ settings.popup_newsletter_title }}
@@ -49,7 +57,7 @@
                     {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
                 </div>
             {% endif %}
-        </div>
+        </div>-->
     </div>
 </div>
 {% endif %}
