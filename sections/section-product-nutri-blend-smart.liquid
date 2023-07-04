@@ -1,7 +1,7 @@
 {% include 'setting-spacing' %}
 {% include 'setting-background-color' %}
 
-{% case section.settings.grid %}
+{% case section.settings.column %}
   {% when 1 %}
   {%- assign column = '1' -%}
   {% when 2 %}
@@ -14,147 +14,95 @@
   {%- assign column = '5' -%}
 {% endcase %}
 
-{%- assign collection = collections[section.settings.collection] -%}
-{%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
-{%- assign title_layout = title_layout | default: section.settings.title_layout -%}
-{%- assign title_border = title_border | default: section.settings.title_border -%}
 {%- assign carousel = carousel | default: section.settings.collection_layout -%}
+{%- assign sort_by = sort_by | default: section.settings.collection_sort -%}
 {%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
 {%- assign dots = dots | default: section.settings.carousel-dots -%}
 
-<div class="nutri-mobile halo-section {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-type="collection">
-  <div class="container" data-carousel>
 
-    {% if section.settings.title != blank %}
-      <div>
-        <div class="section-header with-timer  {% if title_layout == 'center' %}text-center{% else %}text-left{% endif %}" {% if section.settings.custom-color %}style="color: {{ section.settings.color_heading_custom }}"{% endif %}>
-          {{ section.settings.icon }}
-          <h2>{{ section.settings.title }}</h2>
-          <span class="time" id="flash-sale-time"></span>
-          {% include 'countdown-timer', end_date: "April 23, 2022, 17:59:59" %}
+<div class="halo-section {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-type="collection-tabs">
+  <div class="container">
+    <div class="halo-collection-tab tab-special">
+      {% if section.settings.title != blank %}
+        <div class="section-header">
+          <h2>{% include 'multilang' with section.settings.title %}</h2>
         </div>
-        {% if carousel == 'carousel' and arrows and section.settings.rows > 1 %}
-          <div class="arrow-on-heading">
-            <div class="btn-arrow btn-arrow-prev">{% render 'icon-chevron-left' %}</div>
-            <div class="btn-arrow btn-arrow-next">{% render 'icon-chevron-right' %}</div>
-          </div>
-        {% endif %}
-        {% if title_border %}<hr class="section-header-border" aria-hidden="true" />{% endif %}
-        {% if carousel == 'carousel' and arrows %}
-          <div class="wrapper-link-description">
-          {% endif %}
-          {% if section.settings.text_link != blank %}
-            <a class="text-link" href="{{ section.settings.custom_link }}">
-              {{ section.settings.text_link }}
+      {% endif %}
+      <ul class="nav nav-tabs" role="tablist">
+        {% for block in section.blocks %}
+          <li class="nav-item">
+            <a
+              class="nav-link {% if forloop.first %}active{% endif %}"
+              data-row="{{ section.settings.limit_product }}"
+              href="#{{ block.id }}"
+              data-toggle="tab"
+              role="tab"
+              data-href="/collections/{{ block.settings.collection }}?view=json&sort_by={{ sort_by }}">
+              {% include 'multilang' with block.settings.title_tab %}
             </a>
-          {% endif %}
-          {% if section.settings.description != blank %}
-            <p class="description">{{ section.settings.description }}</p>
-          {% endif %}
-          {% if carousel == 'carousel' and arrows %}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
-    <div class="halo-row halo-row-custom column-{{ column }} {%if carousel == 'carousel' %}collection-carousel{% endif %}"{% if carousel == 'carousel' %}data-slick='{
-                            "dots": true,
-                            "arrows": false,
-                            "infinite": true,
-                            "mobileFirst": true,
-                            "adaptiveHeight": true,
-                            "slidesToShow": 2,
-                            "slidesToScroll": 2,
-                            "responsive": [
-                                {
-                                    "breakpoint": 1100,
-                                    "settings": {
-                                        "slidesToShow": {{ column }},
-                                        "slidesToScroll": {{ column }},
-                                        "dots": {{ dots }}
-                                    }
-                                },
-                                {
-                                    "breakpoint": 992,
-                                    "settings": {
-                                        "slidesToScroll": 4,
-                                        "slidesToShow": 4
-                                    }
-                                },
-                                {
-                                    "breakpoint": 551,
-                                    "settings": {
-                                        "slidesToScroll": 3,
-                                        "slidesToShow": 3
-                                    }
-                                }
-                            ]}'{% endif %}>
-      {% for product in collection.products limit: product_limit %}
-        <div class="halo-item">
-          {% render 'product-card-grid' with product as product %}
-        </div>
-      {% else %}
-        {% for i in (1..product_limit) %}
-          <div class="halo-item">
-            <div class="product-card">
-              <div class="product-image">
-                <a class="product-link" href="#">
-                  {% capture current %}
-                    {% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
-                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-                </a>
-              </div>
-              <div class="product-content">
-                <h4 class="product-title">{{ 'homepage.onboarding.product_title' | t }}</h4>
-                <div class="product-reviews">{% render 'product-price', variant: nil %}</div>
-                <span class="sale savings" style="{% if collection.title contains 'The Big Mega Sale' %}color: #e31e24;margin-top: 12px;font-weight: bold;font-size: 15px;padding: 6px;border: 2px dotted;width: 43%;{% endif %}">
-                  {% if variant.price < variant.compare_at_price and variant.available %}
-                    {{ 'products.product.savings' | t }}
-                    <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}%
-                    </span>
-                    (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
-                  {% endif %}
-                </span>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="tab-content">
+        {% for block in section.blocks %}
+          <div
+            class="tab-pane fade {% if forloop.first %}show active{% endif %}"
+            id="{{ block.id }}"
+            role="tabpanel">
+            <div class="halo-row halo-row-custom column-{{ column }} {%if carousel == 'carousel' %}collection-carousel{% endif %}" {% if carousel == 'carousel' %}data-slick='{
+                                                    "dots": true,
+                                                    "arrows": false,
+                                                    "infinite": true,
+                                                    "mobileFirst": true,
+                                                    "adaptiveHeight": true,
+                                                    "slidesToShow": 2,
+                                                    "slidesToScroll": 2,
+                                                    "prevArrow": "<div class=&apos;slick-prev slick-arrow&apos;><svg id=&apos;arrow-left&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 370.814 370.814&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;292.92,24.848 268.781,0 77.895,185.401 268.781,370.814 292.92,345.961 127.638,185.401&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>", 
+                                                    "nextArrow": "<div class=&apos;slick-next slick-arrow&apos;><svg id=&apos;arrow-right&apos; x=&apos;0px&apos; y=&apos;0px&apos; viewBox=&apos;0 0 478.448 478.448&apos; xml:space=&apos;preserve&apos;><g><g><polygon points=&apos;131.659,0 100.494,32.035 313.804,239.232 100.494,446.373 131.65,478.448 377.954,239.232&apos;/></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>",
+                                                    "responsive": [
+                                                        {
+                                                            "breakpoint": 1100,
+                                                            "settings": {
+                                                                "slidesToScroll": {{ column }},
+                                                                "slidesToShow": {{ column }},
+                                                                "arrows": {{ arrows }},
+                                                                "dots": {{ dots }}
+                                                            }
+                                                        },
+                                                        {
+                                                            "breakpoint": 992,
+                                                            "settings": {
+                                                                "slidesToScroll": 4,
+                                                                "slidesToShow": 4
+                                                            }
+                                                        },
+                                                        {
+                                                            "breakpoint": 551,
+                                                            "settings": {
+                                                                "slidesToScroll": 3,
+                                                                "slidesToShow": 3
+                                                            }
+                                                        }
+                                                    ]
+                                                }'{% endif %}>
+              <div class="halo-item-full halo-loading">
+                <img
+                  class="image_lazyload"
+                  src="{{ 'loading.svg' | asset_url }}"
+                  alt="">
               </div>
             </div>
           </div>
         {% endfor %}
-      {% endfor %}
-    </div>
-    {% if section.settings.show_view_all %}
-      <div class="halo-button-wrapper padding-top-40 text-center">
-        <a
-          href="{{ collection.url }}"
-          class="btn btn--secondary btn--big btn--big2"
-          aria-label="{{ 'collections.general.view_all_label' | t: collection_name: collection.title }}">
-          {{ 'collections.general.view_all' | t }}
-        </a>
       </div>
-    {% endif %}
+    </div>
   </div>
 </div>
 
-<script type="text/javascript">
-  var elems = $(" #shopify-section-{{ section.id }} [data-section-type='collection'] .halo-row-custom .halo-item");
-  if (elems.length) {
-          var j, x, i;
-          for (i = elems.length - 1; i > 0; i--) {
-              j = Math.floor(Math.random() * (i + 1));
-              x = $( elems[i] ).html();
-              $( elems[i] ).html( $( elems[j] ).html() );
-              $( elems[j] ).html( x );
-          }
-      }</script>
-<style>
-  @media(max-width: 650px) {
-    .nutri-mobile {
-
-      padding-left: 40px;
-    }
-  }
-</style>
 {% schema %}
   {
-    "name": "Product Carousel/Grid 1",
+    "name": "Product Tab 2",
+    "max_blocks": 8,
     "settings": [
       {
         "type": "header",
@@ -195,69 +143,28 @@
         "step": 1
       }, {
         "type": "header",
-        "content": "Heading Section"
-      }, {
-        "type": "text",
-        "id": "icon",
-        "label": "Icon",
-        "info": "Font Awesome [(Where do I find Font Awesome?)](https:\/\/fontawesome.com\/icons)"
+        "content": "Heading"
       }, {
         "type": "text",
         "id": "title",
         "label": "Title",
-        "default": "Collection"
-      }, {
-        "type": "text",
-        "id": "text_link",
-        "label": "Text Link"
-      }, {
-        "type": "url",
-        "id": "custom_link",
-        "label": "Link (Optional)"
-      }, {
-        "type": "textarea",
-        "id": "description",
-        "label": "Description"
-      }, {
-        "type": "select",
-        "id": "title_layout",
-        "label": "Heading Layout",
-        "default": "center",
-        "options": [
-          {
-            "value": "center",
-            "label": "Center"
-          }, {
-            "value": "left",
-            "label": "Left"
-          }
-        ]
-      }, {
-        "type": "checkbox",
-        "id": "title_border",
-        "label": "Heading underline",
-        "default": false
-      }, {
-        "type": "checkbox",
-        "id": "custom-color",
-        "label": "custom color heading",
-        "default": false
-      }, {
-        "type": "color",
-        "id": "color_heading_custom",
-        "label": "Heading Color"
+        "default": "Product Tabs"
       }, {
         "type": "header",
-        "content": "Collection layout"
+        "content": "Product Layout"
       }, {
-        "type": "collection",
-        "id": "collection",
-        "label": "Collection"
+        "type": "range",
+        "id": "limit_product",
+        "label": "Limit Product",
+        "min": 1,
+        "max": 20,
+        "step": 1,
+        "default": 6
       }, {
         "type": "select",
         "id": "collection_layout",
         "label": "Layout",
-        "default": "grid",
+        "default": "carousel",
         "options": [
           {
             "value": "grid",
@@ -269,25 +176,12 @@
         ]
       }, {
         "type": "range",
-        "id": "grid",
-        "label": "Products per row",
+        "id": "column",
+        "label": "Column",
         "min": 1,
         "max": 5,
         "step": 1,
-        "default": 3
-      }, {
-        "type": "range",
-        "id": "rows",
-        "label": "Rows",
-        "min": 1,
-        "max": 5,
-        "step": 1,
-        "default": 2
-      }, {
-        "type": "checkbox",
-        "id": "show_view_all",
-        "label": "Show 'View all' (Layout grid)",
-        "default": false
+        "default": 4
       }, {
         "type": "checkbox",
         "id": "carousel-arrows",
@@ -298,12 +192,66 @@
         "id": "carousel-dots",
         "label": "show dots (Layout carousel)",
         "default": false
+      }, {
+        "type": "header",
+        "content": "Product Sort By"
+      }, {
+        "type": "select",
+        "id": "collection_sort",
+        "label": "Sort By",
+        "default": "manual",
+        "options": [
+          {
+            "value": "manual",
+            "label": "Featured"
+          }, {
+            "value": "created-descending",
+            "label": "New Product"
+          }, {
+            "value": "best-selling",
+            "label": "best Selling"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collectiontab",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_tab",
+            "label": "Title Tab",
+            "default": "Title Tab"
+          }, {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection to use"
+          }
+        ]
       }
     ],
     "presets": [
       {
-        "name": "Product Carousel/Grid 1",
-        "category": "Products"
+        "name": "Product Tab 2",
+        "category": "Product Tabs",
+        "blocks": [
+          {
+            "type": "collectiontab"
+          },
+          {
+            "type": "collectiontab"
+          },
+          {
+            "type": "collectiontab"
+          },
+          {
+            "type": "collectiontab"
+          }, {
+            "type": "collectiontab"
+          }
+        ]
       }
     ]
   }
