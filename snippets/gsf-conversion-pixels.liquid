@@ -31,5 +31,3 @@
     var gsf_conversion_data = {page_type : '', event : '', data : {shop_currency : {% for currency in shop.enabled_currencies %}{% if currency == cart.currency %}{% assign shop_currency = currency.iso_code %}{% endif %}{% endfor %}{% if shop_currency != '' %}"{{ shop_currency }}"{% else %}"{{ shop.currency }}"{% endif %}}};
     {% endif %}
 </script>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1637804303221744"
-     crossorigin="anonymous"></script>

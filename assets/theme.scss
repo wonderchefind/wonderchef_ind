@@ -463,7 +463,7 @@ $z-index-announcement-bar: 10;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
-$svg-select-icon: #{'//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/ico-select.svg?v=146038610840559294621684236834'};
+$svg-select-icon: #{'//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/ico-select.svg?v=146038610840559294621688214128'};
 
 /*================ Drawers ================*/
 $transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
@@ -623,7 +623,7 @@ $slick-opacity-not-active: 0.25;
 
 // Only called once so make sure proper file is grabbed
 @function slick-image-url($url) {
-    @return url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/ajax-loader.gif?v=41356863302472015721684236834);
+    @return url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/ajax-loader.gif?v=41356863302472015721688214128);
 }
 
 // Unused intentionally
@@ -6855,7 +6855,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             }
         }
         @include media-query($halo-medium-up) {
-            display: flex;
+            display: block;
             .newsletter-content {
                 width: 56%;
                 padding: 40px;
@@ -17990,7 +17990,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 margin-bottom: 30px;
                 min-height: 110px;
                 padding-left: 118px;
-                background: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/avata-blog.png?v=37472725946730154391684236834) no-repeat 0 2px;
+                background: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/avata-blog.png?v=37472725946730154391688214128) no-repeat 0 2px;
             }
         }
     }
@@ -20797,20 +20797,20 @@ margin:0 auto;
       }
     @font-face {
     font-family: "Caviar Dreams";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/CaviarDreams.woff?v=46286174416640935541684236834) format("woff");
-      src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/CaviarDreams.ttf?v=140498311186176901431684236834) format("truetype");
+    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams.woff?v=46286174416640935541688214128) format("woff");
+      src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams.ttf?v=140498311186176901431688214128) format("truetype");
 }
  @font-face {
     font-family: "CaviarDreamsItalic";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/CaviarDreamsItalic.woff?v=52628913926067237981684236834) format("woff");
+    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreamsItalic.woff?v=52628913926067237981688214128) format("woff");
 }
  @font-face {
     font-family: "CaviarDreams_Bold";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/CaviarDreams_Bold.woff?v=24248015653497195331684236834) format("woff");
+    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams_Bold.woff?v=24248015653497195331688214128) format("woff");
 }
  @font-face {
     font-family: "CaviarDreams_BoldItalic";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/309/assets/CaviarDreams_BoldItalic.woff?v=91169623278739843001684236834) format("woff");
+    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams_BoldItalic.woff?v=91169623278739843001688214128) format("woff");
 }
 
 .hh1{

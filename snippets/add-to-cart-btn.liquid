@@ -1,5 +1,12 @@
 {% assign variantCount = product.variants | size %}
 <div class="product-action">
+   {% if product.id == 7486795907249 %}
+     <a
+              href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
+              class="btn product-btn" >Pre-book-now</a>
+
+  
+     {% else %}
     <form action="/cart/add" method="post" class="variants" id="{{id}}-{{ product.id }}" data-id="product-actions-{{ product.id }}" enctype="multipart/form-data">
         {% if product.available %}
             {% if variantCount > 1 %}
@@ -42,4 +49,5 @@
         {% endif %}
         
     </form>
+  {% endif %}
 </div>

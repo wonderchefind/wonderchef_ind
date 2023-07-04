@@ -10,10 +10,10 @@
             <span aria-hidden="true">&#215;</span>
         </a>
 
+  {% if settings.popup_newsletter_title == blank %}
+     <a href="https://www.wonderchef.com/products/nutri-blend-smart?utm_source=website&utm_medium=popup&utm_campaign=new_launch" data-close-newsletter-popup >  <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ settings.newsletter | img_url: '500x500' }}" data-sizes="auto" alt="" data-image ></a>
 
-     <a href="{{setting.popup_image_link}}">  <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ settings.newsletter | img_url: '420x380' }}" data-sizes="auto" alt="" data-image ></a>
-
-     
+      {% endif %}
 
       
        <!-- <div class="newsletter-content">
