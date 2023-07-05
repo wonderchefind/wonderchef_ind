@@ -277,7 +277,7 @@ $(document).ready(function(){
       
       
         <div class="product_shop">
-            <h1 class="product-title ">{{ product.title }}</h1>
+            <h1 class="product-title ">{{ product.title }}</h1>  <button  onClick="openPopup();">share <i class="fa fa-share-alt" aria-hidden="true"></i></button>
           {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
           
           <div class="group_item laptop">
@@ -316,7 +316,7 @@ $(document).ready(function(){
             {% if section.settings.display_price %}
                 {% render 'product-price', variant: current_variant %}
             {% endif %}
-          <button  onClick="openPopup();">share <i class="fa fa-share-alt" aria-hidden="true"></i></button>
+         
 <div id="test" class="popup" style="display:none;">
   <div class="cancel" onclick="closePopup();">x</div>
     {% if section.settings.display_product_detail_share %}
