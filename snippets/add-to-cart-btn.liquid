@@ -41,19 +41,20 @@
               {% comment %}
               {% render 'rentity-product-capsule', product: product %}
               {% endcomment %}
-              {% if template != 'index' and product.id != 7486795907249 %}
-                {% render 'rentity-add-to-rent-cart-btn', product: product %}
-              {% endif %}
 
-            {% else %}
-
-
-              <button
-                data-btn-addToCart
-                class="btn product-btn"
-                type="submit"
-                data-form-id="#{{id}}-{{ product.id }}">
-                {{ 'products.product.pre_order' | t }}
+              {% if product.id == 7486795907249 %}
+                {{ % else %}
+                 {% if template != 'index' %}
+                 {% render 'rentity-add-to-rent-cart-btn', product: product %}
+                 {% endif %}
+                 {% endif %}
+                 {% else %}
+                 < button
+                 data-btn-addToCart
+                 class = "btn product-btn"
+                 type = "submit"
+                 data-form-id = "#{{id}}-{{ product.id }}" >
+                 {{ 'products.product.pre_order' | t }}
               </button>
             {% endif %}
           {% else %}
