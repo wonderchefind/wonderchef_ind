@@ -1,45 +1,55 @@
 <div class="share_toolbox">  
-   <div class="product-sharing-buttons">
-  <a class="share-button" href="#" onclick="shareOnFacebook('{{ product.url }}')">Share on Facebook</a>
-  <a class="share-button" href="#" onclick="shareOnTwitter('{{ product.title }}', '{{ product.url }}')">Share on Twitter</a>
-  <a class="share-button" href="#" onclick="shareOnPinterest('{{ product.title }}', '{{ product.url }}')">Share on Pinterest</a>
+   <!-- Add product share option to Shopify product page -->
+
+{% if template contains 'product' %}
+  <div class="product-share">
+    <h3>Share this product:</h3>
+    <ul>
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ product.url }}" target="_blank" rel="noopener noreferrer">
+          Share on Facebook
+        </a>
+      </li>
+      <li>
+        <a href="https://twitter.com/intent/tweet?url={{ product.url }}&text={{ product.title }}" target="_blank" rel="noopener noreferrer">
+          Share on Twitter
+        </a>
+      </li>
+      <li>
+        <a href="https://pinterest.com/pin/create/button/?url={{ product.url }}&media={{ product.featured_image | img_url: 'medium' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">
+          Pin it on Pinterest
+        </a>
+      </li>
+      <li>
+        <a href="whatsapp://send?text={{ product.title }} - {{ product.url }}" target="_blank" rel="noopener noreferrer">
+          Share on WhatsApp
+        </a>
+      </li>
+      <li>
+        <a href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - {{ product.url }}">
+          Share via Email
+        </a>
+      </li>
+      <li>
+        <button onclick="copyProductURL()">
+          Copy URL
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    function copyProductURL() {
+      var copyText = "{{ product.url }}";
+      var tempInput = document.createElement("input");
+      tempInput.value = copyText;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand("copy");
+      document.body.removeChild(tempInput);
+      alert("Product URL copied to clipboard!");
+    }
+  </script>
+{% endif %}
+
 </div>
-<script>
-  function shareOnFacebook(url) {
-    window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
-  }
-
-  function shareOnTwitter(title, url) {
-    window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url), '_blank');
-  }
-
-  function shareOnPinterest(description, url) {
-    window.open('https://www.pinterest.com/pin/create/button/?description=' + encodeURIComponent(description) + '&url=' + encodeURIComponent(url), '_blank');
-  }
-</script>
-
-</div>
-<style>
-  .product-sharing-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
-
-.share-button {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #0070c9;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.share-button:hover {
-  background-color: #005ea3;
-}
-
-</style>
