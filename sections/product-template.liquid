@@ -334,6 +334,46 @@ function closePopup() {
 
 
                   </script>
+                  <style>
+                    .popup {
+    position:fixed;
+    top:0px;
+    left:0px;
+	bottom:0px;
+	right:0px;	
+    margin:auto;
+    width:200px;
+    height:150px;
+    font-family:verdana;
+    font-size:13px;
+    padding:10px;
+    background-color:rgb(240,240,240);
+    border:2px solid grey;
+    z-index:100000000000000000;
+}
+    
+.cancel {
+    display:relative;
+    cursor:pointer;
+    margin:0;
+    float:right;
+    height:10px;
+    width:14px;
+    padding:0 0 5px 0;
+    background-color:red;
+    text-align:center;
+    font-weight:bold;
+    font-size:11px;
+    color:white;
+    border-radius:3px;
+    z-index:100000000000000000;
+}
+
+.cancel:hover {
+    background:rgb(255,50,50);
+}
+                    </style>
+                  </style>
             	<div class="product_form_wrapper">
                 {% capture "form_classes" -%}
                     product-form product-form-{{ section.id }}{% if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
