@@ -6,23 +6,23 @@
   
     <div class="product-sharing-buttons">
    
-        <a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=https://wonderchefind.myshopify.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
+        <a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=https://wonderchef.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
          <i class="fa fa-facebook-square" ></i>
         </a>
     
-        <a class="share-button" href="https://twitter.com/intent/tweet?url=https://wonderchefind.myshopify.com{{ product.url }}&text='{{ product.title }}'" target="_blank" rel="noopener noreferrer">
+        <a class="share-button" href="https://twitter.com/intent/tweet?url=https://wonderchef.com{{ product.url }}&text='{{ product.title }}'" target="_blank" rel="noopener noreferrer">
          <i class="fa fa-twitter-square" ></i>
         </a>
      
-        <a class="share-button" href="https://pinterest.com/pin/create/button/?url=https://wonderchefind.myshopify.com{{ product.url }}&media={{ product.featured_image | img_url: 'medium' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">
+        <a class="share-button" href="https://pinterest.com/pin/create/button/?url=https://wonderchef.com{{ product.url }}&media={{ product.featured_image | img_url: 'medium' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">
           <i class="fa fa-pinterest-square"></i>
         </a>
      
-        <a class="share-button" href="whatsapp://send?text={{ product.title }} - https://wonderchefind.myshopify.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
+        <a class="share-button" href="whatsapp://send?text={{ product.title }} - https://wonderchef.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
           <i class="fa fa-whatsapp"></i>
         </a>
      
-        <a class="share-button" href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - https://wonderchefind.myshopify.com{{ product.url }}">
+        <a class="share-button" href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - https://wonderchef.com{{ product.url }}">
          <i class="fa fa-envelope-square"></i>
         </a>
     
@@ -35,7 +35,7 @@
 
   <script>
     function copyProductURL() {
-      var copyText = "{{ product.url }}";
+      var copyText = "https://wonderchef.com{{ product.url }}";
       var tempInput = document.createElement("input");
       tempInput.value = copyText;
       document.body.appendChild(tempInput);
