@@ -321,6 +321,19 @@ $(document).ready(function(){
     This is a test message
     <div class="cancel" onclick="closePopup();">x</div>
 </div>
+                  <script>
+                    function openPopup() {
+    //document.getElementById('test').style.display = 'block';
+   $('#test').fadeIn(100);
+}
+
+function closePopup() {
+    //document.getElementById('test').style.display = 'none';
+    $('#test').fadeOut(100);
+}
+
+
+                  </script>
             	<div class="product_form_wrapper">
                 {% capture "form_classes" -%}
                     product-form product-form-{{ section.id }}{% if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
