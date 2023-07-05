@@ -286,7 +286,7 @@ $(document).ready(function(){
       
         <div class="product_shop">
             <h1 class="product-title ">{{ product.title }}</h1>  
-            <button  onClick="openPopup();" style="float: left;background: #f36969;color: #fff; border: 0;margin-right:15px;">share <i class="fa fa-share-alt" aria-hidden="true"></i></button>
+           
           {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', jm_style: '', concierge_install: true, product: product %}
           
           <div class="group_item laptop">
@@ -455,6 +455,7 @@ function closePopup() {
                
           </div>
                     {% endif %}
+                   <button  onClick="openPopup();" style="float: left;background: #f36969;color: #fff; border: 0;margin-right:15px;">share <i class="fa fa-share-alt" aria-hidden="true"></i></button>
                     {% render 'product-variants', product: product %}
                     {% if section.settings.show_quantity_selector %}
                         {% if product.id != 7410828837041 %}
