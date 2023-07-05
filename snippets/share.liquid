@@ -4,6 +4,7 @@
 {% if template contains 'product' %}
   <div class="product-share">
     <h3>Share this product:</h3>
+    <div class="product-sharing-buttons">
     <ul>
       <li>
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://wonderchefind.myshopify.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
@@ -36,6 +37,7 @@
         </button>
       </li>
     </ul>
+    </div>
   </div>
 
   <script>
@@ -53,3 +55,26 @@
 {% endif %}
 
 </div>
+<style>
+  .product-sharing-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.share-button {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #0070c9;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.share-button:hover {
+  background-color: #005ea3;
+}
+</style>
