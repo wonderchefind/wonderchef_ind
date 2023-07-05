@@ -316,7 +316,7 @@ $(document).ready(function(){
             {% if section.settings.display_price %}
                 {% render 'product-price', variant: current_variant %}
             {% endif %}
-          <button  onClick="openPopup();">click here</button>
+          <button  onClick="openPopup();">share <i class="fa fa-share-alt" aria-hidden="true"></i></button>
 <div id="test" class="popup" style="display:none;">
     {% if section.settings.display_product_detail_share %}
                 {% render 'share' with product %}
