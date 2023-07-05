@@ -15,7 +15,14 @@ $(document).ready(function(){
 	
 });
 </script>
-
+<div id="test" class="" style="display:none;">
+  <div class="popup">
+  <div class="cancel" onclick="closePopup();">x</div>
+    {% if section.settings.display_product_detail_share %}
+                {% render 'share' with product %}
+            {% endif %}
+  </div>
+</div>
 
 <style>
     .show-read-more .more-text{
@@ -317,14 +324,7 @@ $(document).ready(function(){
                 {% render 'product-price', variant: current_variant %}
             {% endif %}
          
-<div id="test" class="" style="display:none;">
-  <div class="popup">
-  <div class="cancel" onclick="closePopup();">x</div>
-    {% if section.settings.display_product_detail_share %}
-                {% render 'share' with product %}
-            {% endif %}
-  </div>
-</div>
+
                   <script>
                     function openPopup() {
     //document.getElementById('test').style.display = 'block';
