@@ -15,7 +15,7 @@ $(document).ready(function(){
 	
 });
 </script>
-<div id="test" class="" style="display:none;">
+<div id="test" class="overlay" style="display:none;">
   <div class="popup">
   <div class="cancel" onclick="closePopup();">x</div>
     {% if section.settings.display_product_detail_share %}
@@ -340,6 +340,17 @@ function closePopup() {
                   </script>
                   
                   <style>
+
+                    .overlay{
+                      background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    inset: 0px;
+    z-index: 20;
+    cursor: pointer;
+                    }
                     .popup {
     position:fixed;
     top:0px;
