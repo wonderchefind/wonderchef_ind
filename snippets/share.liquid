@@ -15,11 +15,11 @@
         </a>
      
         <a class="share-button" href="https://pinterest.com/pin/create/button/?url=https://wonderchefind.myshopify.com{{ product.url }}&media={{ product.featured_image | img_url: 'medium' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">
-          Pin it on Pinterest
+          <i class="fa fa-pinterest-square"></i>
         </a>
      
         <a class="share-button" href="whatsapp://send?text={{ product.title }} - https://wonderchefind.myshopify.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
-          Share on WhatsApp
+          <i class="fa fa-whatsapp"></i>
         </a>
      
         <a class="share-button" href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - https://wonderchefind.myshopify.com{{ product.url }}">
@@ -27,7 +27,7 @@
         </a>
     
         <button class="share-button" onclick="copyProductURL()">
-          Copy URL
+          <i class="fa fa-clone"></i>
         </button>
      
     </div>
