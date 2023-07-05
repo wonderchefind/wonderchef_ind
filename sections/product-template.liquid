@@ -318,7 +318,9 @@ $(document).ready(function(){
             {% endif %}
           <button  onClick="openPopup();">click here</button>
 <div id="test" class="popup" style="display:none;">
-    This is a test message
+    {% if section.settings.display_product_detail_share %}
+                {% render 'share' with product %}
+            {% endif %}
     <div class="cancel" onclick="closePopup();">x</div>
 </div>
                   <script>
