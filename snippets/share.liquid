@@ -2,37 +2,19 @@
    <!-- Add product share option to Shopify product page -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% if template contains 'product' %}
-  <div class="product-share">
-  
-    <div class="product-sharing-buttons">
-   
-        <a class="share-button" href="https://www.facebook.com/sharer/sharer.php?u=https://wonderchef.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
-         <i class="fa fa-facebook-square" ></i>
-        </a>
-    
-        <a class="share-button" href="https://twitter.com/intent/tweet?url=https://wonderchef.com{{ product.url }}&text='{{ product.title }}'" target="_blank" rel="noopener noreferrer">
-         <i class="fa fa-twitter-square" ></i>
-        </a>
-     
-        <a class="share-button" href="https://pinterest.com/pin/create/button/?url=https://wonderchef.com{{ product.url }}&media={{ product.featured_image | img_url: 'medium' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-pinterest-square"></i>
-        </a>
-     
-        <a class="share-button" href="whatsapp://send?text={{ product.title }} - https://wonderchef.com{{ product.url }}" target="_blank" rel="noopener noreferrer">
-          <i class="fa fa-whatsapp"></i>
-        </a>
-     
-        <a class="share-button" href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - https://wonderchef.com{{ product.url }}">
+  <div class="product-sharing-buttons">
+  <a class="share-button" href="#" onclick="shareOnFacebook('https://wonderchef.com{{ product.url }}')"><i class="fa fa-facebook-square" ></i></a>
+  <a class="share-button" href="#" onclick="shareOnTwitter('{{ product.title }}', 'https://wonderchef.com{{ product.url }}')"> <i class="fa fa-twitter-square" ></i></a>
+  <a class="share-button" href="#" onclick="shareOnPinterest('{{ product.title }}', 'https://wonderchef.com{{ product.url }}')"><i class="fa fa-pinterest-square"></i></a>
+  <a class="share-button" href="#" onclick="shareOnWhatsapp('{{ product.title }}', 'https://wonderchef.com{{ product.url }}')"><i class="fa fa-whatsapp"></i></a>
+  <a class="share-button" href="mailto:?subject=Check out this product&body=Hey, I found this amazing product and thought you might like it! %0D%0A%0D%0A{{ product.title }} - https://wonderchef.com{{ product.url }}">
          <i class="fa fa-envelope-square"></i>
         </a>
     
         <a class="share-button" onclick="copyProductURL()">
           <i class="fa fa-clone"></i>
         </a>
-     
-    </div>
-  </div>
-
+</div>
   <script>
     function copyProductURL() {
       var copyText = "https://wonderchef.com{{ product.url }}";
@@ -94,11 +76,7 @@
 }
 </style>
 
-<div class="product-sharing-buttons">
-  <a class="share-button" href="#" onclick="shareOnFacebook('{{ product.url }}')">Share on Facebook</a>
-  <a class="share-button" href="#" onclick="shareOnTwitter('{{ product.title }}', '{{ product.url }}')">Share on Twitter</a>
-  <a class="share-button" href="#" onclick="shareOnPinterest('{{ product.title }}', '{{ product.url }}')">Share on Pinterest</a>
-</div>
+
 <script>
   function shareOnFacebook(url) {
     window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(url), '_blank');
@@ -111,4 +89,12 @@
   function shareOnPinterest(description, url) {
     window.open('https://www.pinterest.com/pin/create/button/?description=' + encodeURIComponent(description) + '&url=' + encodeURIComponent(url), '_blank');
   }
+   function shareOnWhatsapp(title, url) {
+    window.open('whatsapp://send?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url), '_blank');
+  }
+    function shareOnMail(title, url) {
+    window.open('whatsapp://send?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url), '_blank');
+  }
+
+ 
 </script>
