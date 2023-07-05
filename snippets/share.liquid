@@ -1,4 +1,15 @@
 <div class="share_toolbox">  
-    <div class="addthis_inline_share_toolbox"></div>
-    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-595b0ea2fb9c5869"></script>
+   {% if product.available %}
+
+  <div class="product-share">
+    <h4>Share this product:</h4>
+    <ul>
+      <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ product.url }}" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      <li><a href="https://twitter.com/intent/tweet?url={{ product.url }}&text={{ product.title }}" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+      <li><a href="https://www.pinterest.com/pin/create/button/?url={{ product.url }}&media={{ product.featured_image | img_url: '1024x1024' }}&description={{ product.title }}" target="_blank" rel="noopener noreferrer">Pinterest</a></li>
+      <!-- Add more social media sharing options as needed -->
+    </ul>
+  </div>
+
+{% endif %}
 </div>
