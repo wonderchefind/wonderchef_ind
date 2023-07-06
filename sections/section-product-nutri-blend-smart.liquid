@@ -27,9 +27,9 @@
   <div class="container" data-carousel>
 
     {% if section.settings.title != blank %}
-      <div class="section-header smart-title gradiant {% if title_layout == 'center' %}text-center{% else %}text-left{% endif %} " >
+      <div class="section-header  {% if title_layout == 'center' %}text-center{% else %}text-left{% endif %} " >
         {{ section.settings.icon }}
-        <h2>{% render 'multilang' with section.settings.title %}</h2>
+        <h2 class="smart-title gradiant">{% render 'multilang' with section.settings.title %}</h2>
         {% if carousel == 'carousel' and arrows and section.settings.rows > 1 %}
           <div class="arrow-on-heading">
             <div class="btn-arrow btn-arrow-prev">{% render 'icon-chevron-left' %}</div>
