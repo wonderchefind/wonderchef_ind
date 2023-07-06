@@ -5881,7 +5881,7 @@
           "padding-top": 3,
           "padding-bottom": 3,
           "icon": "",
-          "title": "",
+          "title": "Other SMart Products",
           "text_link": "",
           "custom_link": "",
           "description": "",
@@ -5892,7 +5892,7 @@
           "collection": "appliances",
           "collection_layout": "carousel",
           "grid": 4,
-          "rows": 5,
+          "rows": 10,
           "show_view_all": true,
           "carousel-arrows": true,
           "carousel-dots": false
