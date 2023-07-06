@@ -45,7 +45,7 @@
 <div class="product-price  {% if compare_at_price > price %}price--on-sale{% endif %} " style="margin-bottom: 15px;margin-top: 10px;">
     {% if compare_at_price > price %}
      {% if template != 'product'  %} 
-   <span class="sale savings"  {% if product.available %}style="background: #f3f3f3;padding: 7px 8px;font-weight: bolder;"{% endif %}>
+   <span class="sale savings"  style="background: #f3f3f3;padding: 7px 8px;font-weight: bolder;">
                   {% if variant.price < variant.compare_at_price and variant.available %}
                   You Save  <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% </span> (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
                   {% endif %}
