@@ -87,7 +87,7 @@
                                             ]}'{% endif %}>
       {% for product in collection.products limit: product_limit %}
         <div class="halo-item pt">
-          {% render 'product-card-grid-special', product: product %}
+          {% render 'product-card-grid-nutri-blend-smart', product: product %}
         </div>
       {% else %}
         {% for i in (1..product_limit) %}
