@@ -84,6 +84,8 @@
       {% render 'product-price' with product as product, variant: product.selected_or_first_available_variant %}
     {% endif %}
 
-   
+    {% if show_product_button %}
+      {% render 'add-to-cart-btn-nutri-blend-smart' with product as product, id: 'list-product-form', variant: product.selected_or_first_available_variant %}
+    {% endif %}
   </div>
 </div>
