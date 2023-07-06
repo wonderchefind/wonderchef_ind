@@ -27,7 +27,7 @@
   <div class="container" data-carousel>
 
     {% if section.settings.title != blank %}
-      <div class="section-header {% if title_layout == 'center' %}text-center{% else %}text-left{% endif %} " {% if section.settings.custom-color %}style="color: {{ section.settings.color_heading_custom }}"{% endif %}>
+      <div class="smart-title gradiant {% if title_layout == 'center' %}text-center{% else %}text-left{% endif %} " {% if section.settings.custom-color %}style="color: {{ section.settings.color_heading_custom }}"{% endif %}>
         {{ section.settings.icon }}
         <h2>{% render 'multilang' with section.settings.title %}</h2>
         {% if carousel == 'carousel' and arrows and section.settings.rows > 1 %}
