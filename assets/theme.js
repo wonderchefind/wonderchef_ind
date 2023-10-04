@@ -7991,7 +7991,7 @@ theme.header = (function() {
 
     function cart_form() {
         if ($('#cart-dropdown').length) {
-            if ($(window).width() > 1024) {
+            if ($(window).width() > 5024) {
                 if ($('#cart-mobile #cart-dropdown').length) {
                     $('#cart-mobile #cart-dropdown').appendTo('.item--cart');
                 }
