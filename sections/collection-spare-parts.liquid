@@ -75,7 +75,7 @@
             <div class="enlarge_pane">
               <div class="enlarge">
                 <div class="enlarge_contain">
-                  <img src="{{'nutri-blend-b.jpg' | file_url }}" srcset="{{'nutri-blend-b.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="" id="test-img">
+                  <img src="{{'nutri-blend-b.jpg' | file_url }}" srcset="{{'nutri-blend-b.jpg' | file_img_url : 'master' }}" sizes="100vw" alt="Nutri Blend B series" id="test-img">
                 </div>
                 <a href="{{'nutri-blend-b.jpg' | file_url }}" class="enlarge_btn" title="Toggle Zoom">Toggle Zoom</a>
               </div>
@@ -97,7 +97,7 @@
         </div>
         <a class="collection-info__caption " href="{{ link.url }}" itemprop="url">
           {% if link.title != 'Nutri Blend Pro' and link.title != 'Nutri Blend A1' %}
-          	<span class="center">{{ link.title  }}</span>
+          	<span class="center">{% if link.title == 'Nutri Blend B'%} Nutri Blend B Series{% else %}{{ link.title  }}{% endif %}</span>
           {% endif %}
         </a>
       </div>

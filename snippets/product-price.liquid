@@ -9,27 +9,60 @@
     {%- assign available = true -%}
 {% endif %}
 
-<div class="product-price  {% if compare_at_price > price %}price--on-sale{% endif %} " data-price style="">
-    {% if compare_at_price > price %}
-      MRP:
+<div class="product-price  {% if compare_at_price > price %}price--on-sale{% endif %} " data-price style="min-height:50px;">
+                        
+   {% if compare_at_price > price %}
         <span class="price-item price-item--regular" data-regular-price>
-          {{ compare_at_price | money }}
+         MRP: {{ compare_at_price | money }}/-
         </span>
   <br>
-        <span class="price-item price-item--sale" data-sale-price>
-            OFFER PRICE:{{ price | money }}
+
+       <span class="price-item price-item--sale" data-sale-price>
+            OFFER PRICE: {{ price | money }}/-
         </span>
+
+  {% comment %}
+         {% if product.tags contains 'Rakhi15' %}
+           <br>
+        <span class="price-item price-item--sale" data-sale-price style=" color:green;line-height:1.4">
+           Rakhi Deal : {{ price | times: 0.85 | money }}<br>
+           Use Coupon: <span style="color:#b92320;"><b>RAKHI15</b></span>
+        </span>
+      {% endif %}
+      {% if product.tags contains 'Rakhi10' %}
+           <br>
+        <span class="price-item price-item--sale" data-sale-price style=" color:green;line-height:1.4">
+           Rakhi Deal : {{ price | times: 0.90 | money }}<br>
+           Use Coupon: <span style="color:#b92320;"><b>RAKHI10</b></span>
+        </span>
+      {% endif %}
+       {% if product.tags contains 'Rakhi5' %}
+           <br>
+        <span class="price-item price-item--sale" data-sale-price style=" color:green;line-height:1.4">
+           Rakhi Deal : {{ price | times: 0.95 | money }}<br>
+           Use Coupon: <span style="color:#b92320;"><b>RAKHI5</b></span>
+        </span>
+      {% endif %}
  
     {% else %}
+         {% endcomment %}
+      
+  {% else %}
        
         <span class="price-item price-item--regular" data-regular-price>
             {{ price | money }}
         </span>
         <span class="price-item price-item--sale" data-sale-price></span>
   
-   <span class="sale savings" style="background: #dfa649;padding: 7px 8px;font-weight: bolder;">
+   <span class="sale savings" style="background:{% if template =='index' %}#285b78{% else %} background: #f3f3f3;
+    padding: 5px 8px;
+    font-weight: bolder;
+    background-color: #b81f1f;
+    background-image: linear-gradient(to right, #b81f1f , #dfa649);
+    clip-path: polygon(0% 100%, 100% 100%, calc(100% - 8px) 0%, 0% 0%, calc(100% - 10px) 0%, 0% 0%);
+    color: white;{% endif %};padding: 5px 8px;font-weight: bolder;">
                   {% if variant.price < variant.compare_at_price and variant.available %}
-                  <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% off</span>
+                  You Save <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% OFF</span>
                   {% endif %}
                 </span>
     {% endif %}
@@ -43,26 +76,35 @@
 </div>
 
 <div class="product-price  {% if compare_at_price > price %}price--on-sale{% endif %} " style="margin-bottom: 15px;margin-top: 10px;">
-    {% if compare_at_price > price %}
+
      {% if template != 'product'  %} 
-   <span class="sale savings"  style="background: #f3f3f3;padding: 7px 8px;font-weight: bolder;">
-                 
-                  You Save  <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% </span> (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
-                
+   <span class="sale savings"  {% if product.available %}style="background: {% if template =='index' %}#285b78{% else %} background: #f3f3f3;
+    padding: 5px 8px;
+    font-weight: bolder;
+    background-color: #b81f1f;
+    background-image: linear-gradient(to right, #b81f1f , #dfa649);
+    clip-path: polygon(0% 100%, 100% 100%, calc(100% - 8px) 0%, 0% 0%, calc(100% - 10px) 0%, 0% 0%);
+    color: white;{% endif %};padding: 5px 8px;font-weight: bolder;"{% endif %}>
+                  {% if variant.price < variant.compare_at_price and variant.available %}
+                 You Save <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}%</span> (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                  {% endif %}
                 </span>
   
   {% endif %}
   {% if template == 'product' %}
-     <span class="sale savings"  {% if product.available %}style="background: #f3f3f3;padding: 7px 8px;font-weight: bolder;"{% endif %}>
+     <span class="sale savings"  {% if product.available %}style="background: {% if template =='index' %}#285b78{% else %} background: #f3f3f3;
+    padding: 5px 8px;
+    font-weight: bolder;
+    background-color: #b81f1f;
+    background-image: linear-gradient(to right, #b81f1f , #dfa649);
+    clip-path: polygon(0% 100%, 100% 100%, calc(100% - 8px) 0%, 0% 0%, calc(100% - 10px) 0%, 0% 0%);
+    color: white;{% endif %};padding: 5px 8px;font-weight: bolder;"{% endif %}>
                   {% if variant.price < variant.compare_at_price and variant.available %}
-                  You Save  <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% </span> (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
+                You Save <span style="{% if collection.title contains 'The Big Mega Sale' %}color: #000;font-weight: bold;{% endif %}">{{ variant.compare_at_price | minus: variant.price | times: 100 | divided_by: variant.compare_at_price }}% </span> (<span class="money">{{ variant.compare_at_price | minus: variant.price | money }}</span>)
                   {% endif %}
                 </span>
    &nbsp;(inclusive of all taxes)
   
   {% endif %}
    
-    {% endif %}
-  
-    
 </div>

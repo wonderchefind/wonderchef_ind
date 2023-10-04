@@ -7,24 +7,15 @@
    
     
     <ul class="tabs-content">
-      {% if product.metafields.product.aplus_fullwidth_image != blank %}
-      <li class="active dis_tab" >
-        <!--<h2 class="heading_description">Product Information</h2>-->
+        <li class="active dis_tab" >
+   
       	 <div class="details_description">
-           {% comment %}
-           {% if product.metafields.product.description_p != blank %}
-           <p>{{ product.metafields['product']['description_p'] }}</p>
-           {% endif %}
-           {% if product.metafields.product.description_li != blank %}
-             <ul>
-              {{ product.metafields['product']['description_li'] }}
-             </ul>
-            {% endif %}
-           {% endcomment %}
+        
            <!-- Featured icon description  -->
            {% if product.metafields.product.featured_icon != blank %}
            <div class="featured-icon">
              <div class="icon-toolsfeatured">
+
                {{ product.metafields['product']['featured_icon'] }}
              </div>
            </div>
@@ -32,19 +23,7 @@
            
            <!-- A+ content 63151691  id="bio1" -->
            	<div class="content-aplus  ">
-              {% comment%}
-               {% if product.metafields.product.aplus_logo != blank %}
-              <div class="row">
-              <div class="product-banner-logo">
-                <img class="lazyload lazyload-fade"
-                     src="{{ product.metafields['product']['aplus_logo'] }}"
-                     data-src="{{ product.metafields['product']['aplus_logo'] }}"
-                     data-sizes="auto"
-                     alt="Wonderchef">
-              </div>
-              </div>
-              {% endif %}
-              {% endcomment%}
+             
               {% if product.metafields.product.aplus_fullwidth_image != blank %}
               <div class="seconttype-description clearfix">
               <div class="product-banner-second-type">
@@ -256,11 +235,11 @@
                                         <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li9_h'] }}</b></p>
                                         {% endif %}
                                         {% if product.metafields.product.aplus_li9_p != blank %}
-                                        <p>{{ product.metafields['product']['aplus_li9_p']  }}</p><p>{{ product.metafields['product']['aplus_li22_p'] }}</p>
+                                        <p>{{ product.metafields['product']['aplus_li9_p'] }}</p>
                                      {% endif %}
                                       </li>
                                        <li>
-                                         {% if product.tags contains 'description-List13' %}
+                                       
                                         {% if product.metafields.product.aplus_li10_image != blank %}
                                         <img class="lazyload lazyload-fade"
                                            src="{{ product.metafields['product']['aplus_li10_image'] }}"
@@ -274,6 +253,7 @@
                                         {% if product.metafields.product.aplus_li10_p != blank %}
                                         <p>{{ product.metafields['product']['aplus_li10_p'] }}</p>
                                      {% endif %}
+                                          
                                       </li>
                                        <li>
                                         {% if product.metafields.product.aplus_li11_image != blank %}
@@ -320,7 +300,7 @@
                                         <p>{{ product.metafields['product']['aplus_li13_p'] }}</p>
                                      {% endif %}
                                       </li>
-                                      {% endif %}
+                                     
                                       
                                     </ul>
                                   </div>
@@ -526,7 +506,7 @@
                       <p class="heading_aplus"><b>{{ product.metafields['product']['aplus_li9_h'] }}</b></p>
                       {% endif %}
                       {% if product.metafields.product.aplus_li9_p != blank %}
-                      <p>{{ product.metafields['product']['aplus_lip_p'] }}</p><p>{{ product.metafields['product']['aplus_li22_p'] }}</p>
+                      <p>{{ product.metafields['product']['aplus_li9_p'] }}</p>
                    {% endif %}
                     </li>
                       <li {% if product.title == 'Mobile Phone Sterilizer, 9W' or product.title == 'Veneto Ozonizer 10L, 25W' or product.title == 'Genoa Chimney 60cm,700m3h With Baffle Filters' or product.title == 'Lazio Steam Gun, 200ml, 1200W' or product.title == 'Torino Anti-Viral UVC Oven 21L, 25W' or product.title == 'Turin Spray Bottle for Chlorination, 500ml, 9W' or product.title == "Copper Coated Reusable Anti-Bacterial Face Mask" or product.title == 'Ultra-Violet Toothbrush Sterilizer'%} style="width:100%;"{% endif%}>
@@ -602,34 +582,11 @@
               {% endif %}
                 
            </div>
-           {% if product.metafields.product.aplus_logo != blank %}
-<!--            <div class="showmore-class">
-             <div class="showmorebtn"><a href="#bio1" class="open-discription btn">View More »</a></div>
-           </div> -->
-            {% endif %}
-        </div>
+                  </div>
+         </div>
       </li>
-        {% endif %}
-
-     {% if product.metafields.product != blank %}
-      {% comment %}
-      <li class=" specic_tab" id="tab-2">
-        <div class="br_feviconicons">
-          <div class="brd">
-            <div>
-              <img class="" src="{{'logo_razor.png' | file_img_url: '30x' }}" alt="Wonderchef Logo">
-            </div>
-            </div>
-        </div>
-       <h2 class="heading_description specification">Specifications</h2>
-      	 <div class="details_specification">
-         {{ product.metafields['product']['specification'] }}
-           <br>
-           {% include 'supplier_address'%}
-        </div>
-      </li>
-      {% endcomment %}
-        {% endif %}
+      
+     
        {%if product.tags contains 'uses' %}
       <li class=" uses_tab" id="tab-3">
         <div class="br_feviconicons">
@@ -670,6 +627,21 @@
   </div>
 </div>
 
+<script>
+$('.open-discription').click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('href');
+
+    if ($(id).is(":visible")) {
+        $(this).text("View More »");
+    } else {
+        $(this).text("View Less «");
+    }
+
+    $(id).slideToggle(500);
+});
+</script>
+{{ 'scrollmenu.js'  | asset_url |script_tag }}
 
 <style>
   

@@ -547,6 +547,22 @@
   </div>
 </div>
 
+<script>
+$('.open-discription').click(function(e) {
+    e.preventDefault();
+    var id = $(this).attr('href');
+
+    if ($(id).is(":visible")) {
+        $(this).text("View More »");
+    } else {
+        $(this).text("View Less «");
+    }
+
+    $(id).slideToggle(500);
+});
+</script>
+{{ 'scrollmenu.js'  | asset_url |script_tag }}
+
 <style>
   
   .featuredicon {

@@ -1,0 +1,66 @@
+{% assign collectionDescription = collection.description | split: '<!-- split -->' %}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+<div class="container">
+    <div class="page page-collections">
+      
+         <div class="page">
+	    <div class="rte">
+	      	<h1 style="text-align: center;" class="hh1"><span style="font-size:25px">THE SUV TEST - Die-Cast Cookware </span></h1>
+          <br>
+              <div class="rte1">
+<p><b>Meet the elegant yet toughest cookware, Wonderchef Die-Cast cookware.</b></p>      
+<p>Proven by a rigorous test, the Wonderchef Die-Cast range is so sturdy that the cookware doesn't lose shape even if an SUV car goes over it. </p><p>That's right; we drove an SUV repeatedly over different pans. While the pressed pans lost their shape, Wonderchef Die-cast pans retained their original shape perfectly - thanks to the unique property of pure Aluminium. When molten metal is poured into a cast and solidified, it becomes as hard as concrete.</p>
+<p> <iframe width="640" height="360" src="https://www.youtube.com/embed/2rOPz67zxbU" title="The SUV Test - Wonderchef Duralife Die-Cast Cookware" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe></p>
+<h4>Introducing Wonderchef Duralife Die-Cast Cookware</h4>
+ <p>Crafted from pure-grade Aluminium Die-cast technology, Duralife cookware is designed to last for years to come. It is a perfect expression of your artistic endeavours matched with superior quality.</p>
+
+<ul>
+<li><strong>STYLISH COOKWARE -</strong> Duralife Die-cast cookware adds elegance to your kitchen with its unique colours and wood-finish soft-touch handles, offering a comfortable grip.</li>
+<li><strong>HEALTHY COOKING MADE EASY -</strong> DURAMAX Japanese non-stick coating ensures minimal oil use, excellent abrasion resistance, and is 100% free from PFOA for healthy cooking.</li>
+<li><strong>NO DEFORMATION -</strong> Duralife Die-cast cookware is highly durable, never loses its shape, features a 4mm thick base and rim for higher strength, and retains its original shape even after prolonged use.</li>
+<li><strong>STRONG &amp; DURABLE -</strong> Pure Aluminium cast retains its shape even after being pressed repeatedly by an SUV in a load test, thanks to its special property of Aluminium. When molten Aluminium is poured into a cast and solidified, it turns into concrete.</li>
+<li><strong>VERSATILE -</strong> Cook a variety of dishes with the cookware, including pakodas, jalebis, sabzis, chips, exotic noodles, Chinese gravies and more.</li>
+<li><strong>ENERGY-EFFICIENT -</strong> Pure grade virgin Aluminum offers 9 times better heat conduction, cooking your meals faster while saving energy and time.</li>
+<li><strong>COMPATIBLE WITH ALL COOKING SURFACES -</strong> Use gas cooktops, hot plates, infrared cooktops, and ceramic cooktops for maximum flexibility in your kitchen.</li>
+<li><strong>IDEAL FOR GIFTING -</strong> Loaded with features and beautiful looks, the Duralife Cookware with lid is an ideal choice for gifting and a perfect addition to your loved ones' kitchen.</li>
+<li><strong>PEACE OF MIND WITH WARRANTY -</strong> Enjoy a 2-year warranty on Wonderchef's Duralife Cookware with reliable after-sales service in over 20,000 pin codes across India.</li>
+</ul>
+            
+          </div>
+	    </div>
+    </div>
+       {% if collection.description != blank %}
+      <div class="collection-description desc ">
+        {{ collectionDescription[0] }}
+      </div>
+    {% endif %}
+      
+        
+        {% section 'collection-template' %}
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% section 'collection_customHtml' %}
+{% if collection.description != blank %}
+  <div class="collection-description container desc">
+    {{ collectionDescription[1] }}
+  </div>
+{% endif %}
+{% section 'reviews' %}
+{% section 'recently-viewed-products' %}
+{% section 'brand-grid' %}
+<style>
+    .desc{
+
+      padding:20px 15 px;
+    }
+
+    .desc p{
+
+      font-size: 14px;
+  }
+    }
+</style>

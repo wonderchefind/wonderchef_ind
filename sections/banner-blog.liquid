@@ -24,8 +24,9 @@
     {% render 'customcolor_feature-image-row' %}
 {% endif %}
 
-<div class="halo-section bbc  {{ padding_top }} {{ padding_bottom }} {{ background_color }}" data-section-id="{{ section.id }}" data-section-type="banner block 1">
+<div class="halo-section  bbc example3 {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-id="{{ section.id }}" data-section-type="banner block 1">
     <div class="container">
+   
         {% if section.settings.title != blank %}
             <div class="section-header
                 {% case title_layout %}
@@ -33,16 +34,39 @@
                     {% when 'center' %} text-center
                 {% endcase %}">
                 <h2>{% render 'multilang' with section.settings.title %}</h2>
-                {% if section.settings.text_link != blank %}
-                    <a class="text-link" href="{{ section.settings.custom_link }}">
-                        {% render 'multilang' with section.settings.text_link %}
-                    </a>
-                {% endif %}
-                {% if section.settings.description != blank %}
-                    <p>{% render 'multilang' with section.settings.description %}</p>
-                {% endif %}
             </div>
         {% endif %}
+
+       <div class="container-new">
+                <div class="half-column">
+                          {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+          </div>
+          <div class="half-column content" style="padding:50px;">
+               {% if section.settings.blog_title != blank %}
+                  <a href="{{ section.settings.custom_link }}">
+                <h3 class="title desktop-screen" style="font-size:24px;">
+                    {% render 'multilang' with section.settings.blog_title %}
+                </h3>
+                  </a>
+                {% endif %}
+                 {% if section.settings.mobile_title != blank %}
+                   <a href="{{ section.settings.custom_link }}">
+                <h3 class="title mobile-screen" style="font-size:24px; margin-bottom:0px;">
+                    {% render 'multilang' with section.settings.mobile_title %}
+                </h3>
+                   </a>
+                {% endif %}
+              {% if section.settings.description != blank %}
+               <p class="desktop-screen">{% render 'multilang' with section.settings.description %}</p><br>
+                {% endif %}
+               {% if section.settings.blog_link != blank %}
+                <a class="text-link desktop-screen" style="margin: initial; width: auto;" href="{{ section.settings.custom_link }}">
+                {% render 'multilang' with section.settings.blog_link %}
+                </a>
+                {% endif %}
+          </div>
+           </div>
+      
         {% if section.blocks.size > 0 %}
             <div class="halo-row halo-row-custom  column-{{ column }}">
                 {% for block in section.blocks %}
@@ -90,11 +114,19 @@
             </div>
         {% endif %}
     </div>
+                
+                  {% if section.settings.text_link != blank %}
+               <center>
+<a class="btn btn--secondary btn--big btn--big2" href="{{ section.settings.custom_link_1 }}">
+                {% render 'multilang' with section.settings.text_link %}
+                </a>
+                 </center>
+                {% endif %}
 </div>
 
 {% schema %}
 {
-    "name": "Banner Block 1",
+    "name": "Banner blog",
     "max_blocks": 12,
     "settings": [
         {
@@ -147,20 +179,45 @@
             "label": "Title",
             "default": "Banner Block 1"
         },
-        {
+          {
             "type": "text",
             "id": "text_link",
             "label": "Text Link"
         },
-        {
+      {
             "type": "url",
-            "id": "custom_link",
+            "id": "custom_link_1",
             "label": "Link (Optional)"
+        },
+       {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Main Image"
+                },
+          {
+            "type": "text",
+            "id": "blog_title",
+            "label": "Blog Title"
+        },
+       {
+            "type": "text",
+            "id": "mobile_title",
+            "label": "Mobile Title"
         },
         {
             "type": "textarea",
             "id": "description",
             "label": "Description"
+        },
+      {
+            "type": "text",
+            "id": "blog_link",
+            "label": "Blog Link"
+        },
+        {
+            "type": "url",
+            "id": "custom_link",
+            "label": "Link (Optional)"
         },
         {
             "type": "select",
@@ -289,3 +346,59 @@
     ]
 }
 {% endschema %}
+
+<style>
+  .container-new{
+    display: flex;
+    margin-bottom: 40px;
+    width: 100% !important;
+    font-size: initial;
+
+  }
+  .half-column {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+  }
+  .half-column img{
+    border-radius:40px;
+  }
+  .mobile-screen{
+    display:none;
+  }
+
+@media (max-width: 1025px){
+  .container-new{
+    display:block;
+    padding:0 15px;
+    margin-bottom: -15px;
+    padding-top:23px;
+  }
+   .half-column{
+     width: 100%;
+    text-align: center;
+    padding: 0px !important;
+    display: block;
+    margin-top: 5px;
+  }
+   .half-column .text-link{
+     margin: 0 auto !important;
+   }
+  
+ .half-column .image-element__wrap{
+   width:100%;
+   padding-bottom:5px;
+ }
+   .half-column img{
+    border-radius:40px;
+  }
+  .desktop-screen{
+    display:none;
+  }
+  .mobile-screen{
+    display:block;
+  }
+}
+</style>

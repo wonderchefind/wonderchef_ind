@@ -25,5 +25,29 @@
     </div>
 </div>
 {% section 'recently-viewed-products' %}
+<script type="text/javascript">
+    // required object
+    window.ad_product = {
+        "id": "{{ product.id }}",   // required
+        "vendor": "{{ product.vendor }}",
+        "price": "{{ product.price | money }}",
+        "url": "//www.wonderchef.com{{ product.url }}",
+        "picture": "{{ product.featured_image | image_url }}",
+        "name": "{{ product.title }}",
+        "category": "{{ collection.title | metafield_text}}"
+    };
 
+    window._retag = window._retag || [];
+    window._retag.push({code: "9ce8884bff", level: 2});
+    (function () {
+        var id = "admitad-retag";
+        if (document.getElementById(id)) {return;}
+        var s = document.createElement("script");
+        s.async = true; s.id = id;
+        var r = (new Date).getDate();
+        s.src = (document.location.protocol == "https:" ? "https:" : "http:") + "//cdn.lenmit.com/static/js/retag.js?r="+r;
+        var a = document.getElementsByTagName("script")[0]
+        a.parentNode.insertBefore(s, a);
+    })()
+</script>
 

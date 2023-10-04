@@ -4,18 +4,18 @@
         {% if section.settings.display_product_detail_description %}
           {% if productDescription[0] !=blank %}
       <li class="nav-item tab">
-                <a href="#tab1" class="tab-title {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %} active {% endif %}" role="tab" data-toggle="tab" aria-controls="tab1">
+                <a href="#tab1" style="display:none;" class="tab-title " role="tab" data-toggle="tab" aria-controls="tab1"> 
                   {% render 'multilang' with section.settings.product_description_title %}
                 </a>
             </li>
             {% endif %}
-    {%  if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}
+   
        <li class="nav-item tab">
-                <a href="#tab2" class="tab-title {% if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}active{% endif %}" role="tab" data-toggle="tab" aria-controls="tab2">
+                <a href="#tab2" class="tab-title active" role="tab" data-toggle="tab" aria-controls="tab2">
                   Product Details
                 </a>
             </li>
-      {% endif %}
+     
        {% if productDescription[1] !=blank %}
                    <li class="nav-item tab">
                 <a href="#tab3" class="tab-title {% if productDescription[2] == blank and productDescription[0] == blank %} active {% endif %}" role="tab" data-toggle="tab" aria-controls="tab3">
@@ -60,7 +60,7 @@
         {% if section.settings.display_product_detail_description %}
            
    
-      <div id="tab1" class="tab-description tab-pane fade {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %}show active{% endif %}" role="tabpanel">
+      <div id="tab1" style="display:none;" class="tab-description tab-pane fade " role="tabpanel">
                 <div class="toggle-title">
                     <a class="toggleLink collapsed" data-toggle="collapse" href="#tab1_mobile">
                         <span class="page-heading">{% render 'multilang' with section.settings.product_description_title %}</span>
@@ -69,7 +69,7 @@
                       {% render 'icon-chevron-up' %}
                     </a>
                 </div>
-                <div class="toggle-content collapse {% if product.metafields.product.aplus_fullwidth_image == blank and productDescription[2] == blank %}show{% endif %}" id="tab1_mobile">
+                <div class="toggle-content collapse " id="tab1_mobile">
                     {% assign des = product.description %}
                   {{ productDescription[0] }}
                   
@@ -77,7 +77,7 @@
                 </div>
             </div>
        
-      <div id="tab2" class="tab-pane fade {% if product.metafields.product.aplus_fullwidth_image != blank or productDescription[2] != blank %}show active{% endif %}" role="tabpanel">
+      <div id="tab2" class="tab-pane fade show active" role="tabpanel">
                  <div class="toggle-title">
                     <a class="toggleLink " data-toggle="collapse" href="#tab2_mobile">
                         <span class="page-heading">Product Details</span>
@@ -148,7 +148,7 @@
                 </div> {% endif %}
                 <div class="toggle-content collapse " id="tab4_mobile">
                     {% assign des = product.description %}
-                    <div >
+                    <div>
                        
          {% if product.tags contains 'faq_nutri-blend-400' %} {% include 'faq-nutriblend-2jar' %}{% endif %}
          {% if product.tags contains 'toaster faq' %} {% include 'faq_toasters' %}{% endif %}

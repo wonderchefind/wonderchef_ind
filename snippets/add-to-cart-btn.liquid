@@ -1,83 +1,46 @@
 {% assign variantCount = product.variants | size %}
 <div class="product-action">
-  {% if product.id == 7486795907249 %}
-    <a href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1" class="btn product-btn">Pre-book-now</a>
 
-
-  {% else %}
-    <form
-      action="/cart/add"
-      method="post"
-      class="variants"
-      id="{{id}}-{{ product.id }}"
-      data-id="product-actions-{{ product.id }}"
-      enctype="multipart/form-data">
-      {% if product.available %}
-        {% if variantCount > 1 %}
-          <a
-            class="btn product-btn"
-            href="{{ product.url }}"
-            aria-label="button">
-            {{ 'products.product.select_options' | t }}
-          </a>
-        {% else %}
-          <input
-            type="hidden"
-            name="id"
-            value="{{ product.variants[0].id }}" />
-          <input
-            type="hidden"
-            name="quantity"
-            value="1" />
-          {% if variant.inventory_management %}
-            {% if variant.inventory_quantity > 0 %}
-              <button
-                data-btn-addToCart
-                class="btn product-btn"
-                type="submit"
-                data-form-id="#{{id}}-{{ product.id }}">
-                {{ 'products.product.add_to_cart' | t }}
-              </button>
-              {% comment %}
-              {% render 'rentity-product-capsule', product: product %}
-              {% endcomment %}
-
-
-              {% if template != 'index' %}
-                {% render 'rentity-add-to-rent-cart-btn', product: product %}
-              {% endif %}
-
+    <form action="/cart/add" method="post" class="variants" id="{{id}}-{{ product.id }}" data-id="product-actions-{{ product.id }}" enctype="multipart/form-data">
+        {% if product.available %}
+            {% if variantCount > 1 %}
+                <a class="btn product-btn" href="{{ product.url }}" aria-label="button">
+                    {{ 'products.product.select_options' | t }}
+                </a>
             {% else %}
-
-
-              <button
-                data-btn-addToCart
-                class="btn product-btn"
-                type="submit"
-                data-form-id="#{{id}}-{{ product.id }}">
-                {{ 'products.product.pre_order' | t }}
-              </button>
-            {% endif %}
-          {% else %}
-            <button
-              data-btn-addToCart
-              class="btn product-btn"
-              type="submit"
-              data-form-id="#{{id}}-{{ product.id }}">
-              {{ 'products.product.add_to_cart' | t }}
-            </button>
-          {% endif %}
-        {% endif %}
-      {% else %}
-        <button
-          class="btn product-btn product-btn-soldOut"
-          type="submit"
-          disabled="disabled">
-          {{ 'products.product.unavailable' | t }}
-        </button>
-        <div class="notify-mate"></div>
+                <input type="hidden" name="id" value="{{ product.variants[0].id }}" />
+                <input type="hidden" name="quantity" value="1" />
+               {% if variant.inventory_management %}
+                    {% if variant.inventory_quantity > 0%}
+                        <button data-btn-addToCart class="btn product-btn" type="submit" data-form-id="#{{id}}-{{ product.id }}">
+                            {{ 'products.product.add_to_cart' | t }} 
+                        </button>
+   {% comment %}
+  {% render 'rentity-product-capsule', product: product %}
+  {% endcomment %}
+                      {% if template != 'index' %}
+  {% render 'rentity-add-to-rent-cart-btn', product: product %}
       {% endif %}
-
+      
+                    {% else %}
+                      
+        
+                        <button data-btn-addToCart class="btn product-btn" type="submit" data-form-id="#{{id}}-{{ product.id }}">
+                           {{ 'products.product.pre_order' | t }} 
+                        </button>
+        {% endif %}
+                {% else %}
+                    <button data-btn-addToCart class="btn product-btn" type="submit" data-form-id="#{{id}}-{{ product.id }}">
+                        {{ 'products.product.add_to_cart' | t }} 
+                    </button>
+                {% endif %}
+            {% endif %}
+        {% else %}
+            <button class="btn product-btn product-btn-soldOut" type="submit" disabled="disabled" >
+                {{ 'products.product.unavailable' | t }}
+            </button>
+       <div class="notify-mate"></div>
+        {% endif %}
+        
     </form>
-  {% endif %}
 </div>

@@ -16,18 +16,55 @@
     	{% assign image = '' %}
     {% endif %}
           <h1 class="headline">{{ collection.title }}</h1>
-        </div>
+       
     {% else %}
     	{% assign image = collection.products.first.featured_image %}
     {% endif %}
+    
     {% if collection.title== 'Offers' %}
+    
+    <div class="hidden_xs">
+      		 {% include 'image-element', image: image, alt: 'Offers' %}
+      </div>
+        <div class="visible_xs ">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Website_Landing_Page_Mobile_Banner_1.jpg?v=1695015158" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+  </div>
+
+       {% elsif collection.title== 'Monsoon Magic' %}
     
     	<div class="hidden_xs">
       		 {% include 'image-element', image: image, alt: 'Offers' %}
       </div>
         <div class="visible_xs ">
-           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Summer_offer_banner_Mobile.jpg?v=1678683923" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/monsoon_landing_mobile_df03b7f9-b819-4b3f-9a0d-f45f5db2efbe.jpg?v=1692172604" alt="{{ alt | escape }}" class="{{ additional_classes }}">
   </div>
+       {% elsif collection.title== 'Raksha Bandhan Special' %}
+    
+    	<div class="hidden_xs">
+      		 {% include 'image-element', image: image, alt: 'Raksha Bandhan Special' %}
+      </div>
+        <div class="visible_xs ">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Landing_page_mobile_9fa212fb-4834-4f7a-87e5-c95bff4d23ec.jpg?v=1692866245" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+  </div>
+
+        {% elsif collection.title== 'The Monsoon' %}
+    
+    	<div class="hidden_xs">
+      		 {% include 'image-element', image: image, alt: 'Offers' %}
+      </div>
+        <div class="visible_xs ">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Landing_Mobile__1.jpg?v=1690869969" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+  </div>
+
+        {% elsif collection.title== 'Die-cast' %}
+    
+    	<div class="hidden_xs">
+      		 {% include 'image-element', image: image, alt: 'Offers' %}
+      </div>
+        <div class="visible_xs ">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Die-Cast-mobile-720X360.jpg?v=1694076230" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+  </div>
+      
  {% elsif collection.title== 'Valentine Collection' %}
     
     	<div class="hidden_xs">
@@ -35,6 +72,16 @@
       </div>
         <div class="visible_xs ">
            <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Valentine_s_Day_Offer_Banner-_Stand_Mixer_Final_Mobile.jpg?v=1676037618" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+  </div>
+
+
+       {% elsif collection.title== 'Nutri-blend Smart accessories' %}
+    
+    	<div class="hidden_xs">
+      		 {% include 'image-element', image: image, alt: 'Nutri-blend Smart accessories' %}
+      </div>
+        <div class="visible_xs ">
+           <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nb_smart_mobile__1.jpg?v=1689076329" alt="{{ alt | escape }}" class="{{ additional_classes }}">
   </div>
       
      {% elsif collection.title== 'Diwali' %}
@@ -51,13 +98,13 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_with_range_mobile.jpg?v=1644243406" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cooking_together_Mobile.jpg?v=1692189475" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Wonderent' %}
     <div class="hidden_xs">
   {% include 'image-element', image: image, alt: 'wonderent' %}   </div>
        <div class="visible_xs">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rentity_landing_mobile_banner.jpg?v=1673437981" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rentity-landing-mobile-banner.jpg?v=1691660069" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
   {% elsif collection.title == 'Groom collection' %}
@@ -73,11 +120,13 @@
       <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/bride_mobile_banner.png?v=1672376353" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
         {% elsif collection.title == 'SUMMER COLLECTION' %}
+       <div class="hidden_xs">
       {% include 'image-element', image: image, alt: 'SUMMER COLLECTION' %}   </div>
        <div class="visible_xs">
       <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/summer_mobile_NB.jpg?v=1683617202" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
        {% elsif collection.title == 'Nutri-cup' %}
+       <div class="hidden_xs">
       {% include 'image-element', image: image, alt: 'Nutri-cup' %}   </div>
        <div class="visible_xs">
       <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Mobile_Nutri-cup.jpg?v=1683617283" alt="{{ alt | escape }}" class="{{ additional_classes }}">
@@ -124,19 +173,19 @@
     <div class="hidden_xs">
   {% include 'image-element', image: image, alt: 'Fitness Freaks' %}   </div>
        <div class="visible_xs">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Fitness_Freak_Mobile.jpg?v=1672320184" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/fitness_freak_mobile_b28ff9b7-d938-4a41-b2be-348e7f512591.jpg?v=1691663950" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
        {% elsif collection.title == 'Home Chefs' %}
     <div class="hidden_xs">
   {% include 'image-element', image: image, alt: 'Home Chefs' %}   </div>
        <div class="visible_xs">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Home_Chefs_Mobile.jpg?v=1672320184" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/CAESER-FRY-PAN-mobile-720X360.jpg-2.jpg?v=1692180841" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
        {% elsif collection.title == 'Foodies' %}
     <div class="hidden_xs">
   {% include 'image-element', image: image, alt: 'Foodies' %}   </div>
        <div class="visible_xs">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/foodie_Mobile.jpg?v=1672320184" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Foodie_mobile_140940b4-c536-4e67-9aa1-2e1814a8158f.jpg?v=1691664173" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
          {% elsif collection.title == 'Smart Appliances' %}
     <div class="hidden_xs">
@@ -158,7 +207,7 @@
       {% include 'image-element', image: image, alt: 'test' %}
     </div>
     <div class="visible_xs ">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/independence_day_mobile_landing_page_banner.jpg?v=1660290053" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/720_x_360_px.png?v=1691775318" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
   {% elsif collection.title == 'Monsoon Special' %}
@@ -383,7 +432,7 @@
       {% include 'image-element', image: image, alt: 'test' %}
     </div>
     <div class="visible_xs ">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Bakeware_mobile_720X360..jpg?v=1631251466" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/bakeware_mobile_720X360._f32e53d4-b4a3-4e82-9eb1-b9a6856b6666.jpg?v=1691660300" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
       
      {% elsif  collection.title == 'Bakeware' or collection.title == 'Cake Moulds' or collection.title =='Baking Tools'  or collection.title =='Pavoni' or collection.title =='Chocolate Moulds' or collection.title =='Cup Cakes Muffin Moulds'  %}
@@ -401,7 +450,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Steal_Deals_mobile_720X360..jpg?v=1631252247" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Steal_deals_mobile.jpg?v=1692188566" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
        {% elsif collection.title == 'Home & Living Combos' %}
     <div class="hidden_xs">
@@ -418,7 +467,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Mobile_4.jpg?v=1684758516" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Mobile_a8bb827a-c26c-40d3-a0da-68ac5fe9d818.jpg?v=1691658861" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
      {% elsif collection.title == 'Republic Day offer' %}
@@ -445,7 +494,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/offer_mobile_5f032db4-ed03-4ee0-929c-fc8019be57ee.jpg?v=1648535557" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Mobile_e55b8cbb-b4b3-4150-8f62-d24a13405ea5.jpg?v=1691655921" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
         {% elsif collection.title == 'Birthday Bash'  %}
@@ -472,7 +521,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Flash20__Mobile-720x360.jpg?v=1637301740" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/flash_sale_mobile_psd.jpg?v=1691664040" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
       {% elsif collection.title == 'Home & Living' %}
@@ -481,7 +530,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_With_teramo_blue_Mobile_opt_2.jpg?v=1659089535" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Home-_-Living-mobile-720X360_57d8b713-1df1-4e4d-aec0-9f1067cf227b.jpg?v=1692181012" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
        {% elsif collection.title == 'Cyber Monday Offer' %}
@@ -490,7 +539,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cyber_Monday_Offer_Banner_mobile.jpg?v=1638030287" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/CYBER-MONDAY-OFFER-MOBILE-BANNER.jpg?v=1691655829" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
     {% elsif collection.title == 'Cross sell Bakeware' or collection.title == 'Cross Sell HotSet' or collection.title == 'cross Sell Nutri-blend' or  collection.title == 'cross sell Kitchen Tools' or collection.title == 'Cross Sell Health-Gear' or collection.title == 'Cross Sell Mixer-Grinder' or collection.title =='Cross Sell Chimneys'  or collection.title =='Cross Sell Pressure Cooker' or collection.title =='Cross Sell Nutri-Pot' or collection.title =='Cross Sell Small Appliances' or collection.title =='Cross Sell Cookware' %}
@@ -558,7 +607,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cookware_mobile_720X360..jpg?v=1631251561" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Granite-mobile-720X360_9f328c18-7866-413c-9bc4-c4816265daff.jpg?v=1692180862" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Granite Non-stick'  %}
     <div class="hidden_xs">
@@ -622,7 +671,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/OTGs_mobile_720X360_048d6c85-4582-4364-a1b1-3dfc53e59dc7.jpg?v=1631794024" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/OTG_mobile_2963f2a7-9617-4942-89ed-5c919a3cf6e7.jpg?v=1692188566" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
       {% elsif collection.title == 'Casseroles' %}
     <div class="hidden_xs">
@@ -664,7 +713,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Pressure_Cookers_mobile_720X360..jpg?v=1634212663" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Pressure-Cookers-mobile-720X360..jpg?v=1691659975" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
     {% elsif collection.title == 'Cookers' %}
@@ -759,7 +808,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Crimson_Edge_mobile_720X360._d61d4112-e20a-4a87-a858-863805497538.jpg?v=1634210215" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cooktops_Mobile.jpg?v=1692188566" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
     {% elsif collection.title == 'Induction Cooktops' %}
@@ -793,7 +842,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gas_Cooktops_offer_banner_mobile_720X360_f48e8b48-c55a-4bdf-b53c-31a77bf4a7eb.jpg?v=1618824264" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gas_Cooktops_offer_banner_mobile_720X360_b6eb7bc3-97c2-4eb3-b9a9-841924f6449e.jpg?v=1691662995" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Ebony Hard Anodized' %}
     <div class="hidden_xs">
@@ -826,7 +875,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-blend_FP_mobile_720X360..jpg?v=1631252181" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/NUTRIBLEND_FP_offer_banner_mobile_720X360_bb531cff-d985-4e6d-8c04-f14adc8064ad.jpg?v=1692172813" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Nutri-blend Complete Kitchen Machine' %}
     <div class="hidden_xs">
@@ -834,7 +883,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-Blend_CKM_mobile_720X360..jpg?v=1631252145" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/CKM_Mobile.jpg?v=1692188566" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Nutri-blend 3 Jars'  %}
     <div class="hidden_xs">
@@ -842,7 +891,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-blend_3jarmobile_720X360..jpg?v=1631252110" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nuti-blend_3_jar_mobile.jpg?v=1691664636" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Nutri-blend 2 Jars'  %}
     <div class="hidden_xs">
@@ -850,7 +899,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri_blend_2_jars_mobile_720X360..jpg?v=1631252068" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nuti-blend-2-jar-mobile.jpg?v=1691664546" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Nutri-blend' or collection.title == 'Nutri blend' %}
     <div class="hidden_xs">
@@ -858,7 +907,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-Blend_mobile_720X360..jpg?v=1631251998" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-blend-offer-banner-mobile-720X360.jpg?v=1691659021" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     {% elsif collection.title == 'Nutri-blend BOLT' %}
     <div class="hidden_xs">
@@ -893,7 +942,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kitchen_tools_mobile_720X360..jpg?v=1634209891" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kitchen-Tools-mobile-720X360.jpg?v=1691658668" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
     
     {% elsif collection.title == 'Graters' or collection.title == 'Tea Infuser'%}
@@ -931,7 +980,7 @@
       
       <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Spoons_and_ladles_offer_banner_mobile_720X360_d6c8e401-af29-41c1-9840-31cd43dff861.jpg?v=1618836055" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
-    </div>
+    
      {% elsif collection.title == 'Knives & Peelers' %}
     <div class="hidden_xs">
       {% include 'image-element', image: image, alt: 'test' %}
@@ -956,7 +1005,7 @@
       
       <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Copper_bottle.png?v=1600355394" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
- {% elsif collection.title == 'Nutri Blend B' %}
+ {% elsif collection.title == 'Nutri Blend B Series' %}
     <div class="hidden_xs">
       {% include 'image-element', image: image, alt: 'test' %}
     </div>
@@ -1073,7 +1122,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/coffee_launch_mobile_offer_banner_1.jpg?v=1662450083" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Untitled-1_25910744-2b38-4225-a0c4-f887c9344283.jpg?v=1692172240" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
 
@@ -1111,7 +1160,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-pot_mobile_720X360..jpg?v=1631882052" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri_pot_mobile_79016296-47f5-4eb9-8216-2bb0a8b566f6.jpg?v=1692172950" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 {% elsif collection.title == 'Electric Choppers'   %}
     <div class="hidden_xs">
@@ -1127,7 +1176,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Best_Seller_mobile_720X360..jpg?v=1632920639" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Nutri-Pot-banner-mobile-720X360.jpg?v=1691652463" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
    
 {% elsif collection.title == 'New Arrivals'   %}
@@ -1135,7 +1184,7 @@
       {% include 'image-element', image: image, alt: 'test' %}
     </div>
     <div class="visible_xs ">
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/New_arrivals_mobile_720X360..jpg?v=1631251952" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/New_arrivals_mobile.jpg?v=1692172690" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
 {% elsif collection.title == 'Chef Sanjeev Kapoor'   %}
@@ -1609,7 +1658,7 @@
     </div>
     
     {% elsif collection.title == 'Sandwich Makers' %}
-    <div class="hidden_xs"
+    <div class="hidden_xs">
       {% include 'image-element', image: image, alt: 'test' %}
     </div>
     <div class="visible_xs ">
@@ -1782,7 +1831,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Crimson_Edge_mobile_720X360..jpg?v=1631251681" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Crimson_mobile_720X360_8b8a177f-4cca-43b5-a70a-a78efccfd091.jpg?v=1691663464" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
 {% elsif collection.title == 'Health Guard 3L Maroon Spare Parts' %}
@@ -1930,7 +1979,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/d_Offer_banner_mobile.jpg?v=1627151645" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/monsoon_landing_mobile_7002cb38-4d01-4dc3-b463-0e2d09cf9874.jpg?v=1692173034" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 {% elsif collection.title == 'Glassware' %}
     <div class="hidden_xs">
@@ -1962,7 +2011,7 @@
     </div>
     <div class="visible_xs ">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Combos_mobile_720X360..jpg?v=1631251527" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Combos_mobile.jpg?v=1691662847" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 {% elsif collection.title == 'Non-stick' %}
     <div class="hidden_xs">
@@ -1978,7 +2027,7 @@
     </div>
     <div class="visible_xs clearfix">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gifting_mobile_720X360..jpg?v=1631251734" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gifting_offer_banner_mobile_720X360_b25c6938-49aa-4a17-a217-ebde72b51432.jpg?v=1691664316" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
 {% elsif collection.title == 'Gift' %}
@@ -1987,7 +2036,7 @@
     </div>
     <div class="visible_xs clearfix">
       
-      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gifting_mobile_720X360..jpg?v=1631251734" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Gifting_offer_banner_mobile_720X360_b25c6938-49aa-4a17-a217-ebde72b51432.jpg?v=1691664316" alt="{{ alt | escape }}" class="{{ additional_classes }}">
     </div>
 
 

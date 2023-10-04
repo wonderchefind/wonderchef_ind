@@ -364,8 +364,8 @@ $color-text-field-text: #000;
 $color-navigation-text: #383e47;
 
 // heading colors
-$color-heading-text: #383e47;
-$color-heading-link: #000000;
+$color-heading-text: #285b78;
+$color-heading-link: #285b78;
 
 // Button colors
 $color-btn-primary: #f36969;
@@ -463,7 +463,7 @@ $z-index-announcement-bar: 10;
 $z-index-skip-to-content: 10000; // really high to be safe of app markup
 
 /*================ SVG ================*/
-$svg-select-icon: #{'//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/ico-select.svg?v=146038610840559294621688214128'};
+$svg-select-icon: #{'//www.wonderchef.com/cdn/shop/t/327/assets/ico-select.svg?v=146038610840559294621695734702'};
 
 /*================ Drawers ================*/
 $transition-drawer: all 0.45s cubic-bezier(0.29, 0.63, 0.44, 1);
@@ -483,72 +483,72 @@ $color-slideshow-dots: #fff;
   font-family: Rajdhani;
   font-weight: 400;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n4.34575ccbcb52f35923f4e4bfad59de9af781b58a.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=7b0048d0feb2a2148da9a7ee263aecb8faa3f1fd2277b6ddb2d118b450334ed6") format("woff2"),
-       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n4.5ab547d29d0f1ab30fb3b6602c2fdd262886c842.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=984110c43b9e77695263325a33605c672b10d1793dd1e7c4960ec22d0ae78496") format("woff");
+  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n4.34575ccbcb52f35923f4e4bfad59de9af781b58a.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=ac1d4cc4aa5dc5723bfd4a0720c90f7a43fb218ed3c87ab65f91f1ad36dff848") format("woff2"),
+       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n4.5ab547d29d0f1ab30fb3b6602c2fdd262886c842.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=ef2008eedee25a1f399a5da6d40491a06b708f6947236a5aad745c9cd86922d9") format("woff");
 }
 
 @font-face {
   font-family: Arimo;
   font-weight: 400;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/arimo/arimo_n4.37b74ffdd8f32b386933afc2f690ab2b837c67d4.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=2ac2b2672656a29bc38add8f72b2efae6998a9db3bde0e408b4ace757b0068e4") format("woff2"),
-       url("https://fonts.shopifycdn.com/arimo/arimo_n4.3b91be2b1578df1fd5917078b7d92a21cb34d88e.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=f6419b55ab5c1fd6ca136c92aada897d3909b8ab9785c6ab91efa52fe0584810") format("woff");
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_n4.37b74ffdd8f32b386933afc2f690ab2b837c67d4.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=dbcc7f35e172a4af505d1c85f75e5172eaa87fb43737fb4e3aacc0ae97818da8") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_n4.3b91be2b1578df1fd5917078b7d92a21cb34d88e.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=760a1d14bade0881bdc82beae45d648c8296cf2d3fc505550c09008af478e1ad") format("woff");
 }
 
 @font-face {
   font-family: Rajdhani;
   font-weight: 700;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=de9ec86f5e7411c5a5896e98f4fdd8851872770434a0da374a2321071a30452b") format("woff2"),
-       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=c0a746585efc0ac99feac34c88cde00e0ba942c2ef593a8ac7f9f5154a820abe") format("woff");
+  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=b94cfcc0d11f64efd6229795fb33f3c16ea0a642231153e927ebfff3e28ff4bf") format("woff2"),
+       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=92d74886e1d7789cc53c5d3f89860ab6ccc1fb810f05aa7acc6906f4093170b6") format("woff");
 }
 
 @font-face {
   font-family: Rajdhani;
   font-weight: 700;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=de9ec86f5e7411c5a5896e98f4fdd8851872770434a0da374a2321071a30452b") format("woff2"),
-       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=c0a746585efc0ac99feac34c88cde00e0ba942c2ef593a8ac7f9f5154a820abe") format("woff");
+  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=b94cfcc0d11f64efd6229795fb33f3c16ea0a642231153e927ebfff3e28ff4bf") format("woff2"),
+       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=92d74886e1d7789cc53c5d3f89860ab6ccc1fb810f05aa7acc6906f4093170b6") format("woff");
 }
 
 @font-face {
   font-family: Rajdhani;
   font-weight: 700;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=de9ec86f5e7411c5a5896e98f4fdd8851872770434a0da374a2321071a30452b") format("woff2"),
-       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=c0a746585efc0ac99feac34c88cde00e0ba942c2ef593a8ac7f9f5154a820abe") format("woff");
+  src: url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.f6e03eacadd4bbe38110a25ef05200437ee83087.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=b94cfcc0d11f64efd6229795fb33f3c16ea0a642231153e927ebfff3e28ff4bf") format("woff2"),
+       url("https://fonts.shopifycdn.com/rajdhani/rajdhani_n7.a054bdc0b1ce90a35d9ddd33a5641d9669d16d89.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=92d74886e1d7789cc53c5d3f89860ab6ccc1fb810f05aa7acc6906f4093170b6") format("woff");
 }
 
 @font-face {
   font-family: Arimo;
   font-weight: 700;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/arimo/arimo_n7.bf3fa65912c7598edac87f3464dc56cced61307e.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=cd33ac751febd8b7a28195960b46a1cd47c4101f0ca68add41d57283de7f0259") format("woff2"),
-       url("https://fonts.shopifycdn.com/arimo/arimo_n7.1de27ffea9bb2528cf1df7ad7c3c04a2b278cd8d.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=80b432bb74c82fd215f41aff850162543d4faaa708b299e6d91317d713255ccc") format("woff");
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_n7.bf3fa65912c7598edac87f3464dc56cced61307e.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=58d3e91100fe32a642e0cf54921f771ba5fb2a8dabe13364f225dda704c70745") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_n7.1de27ffea9bb2528cf1df7ad7c3c04a2b278cd8d.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=f23ed7a36c33e8721d9ed2c1b37635fe2901b77e241ecb7d17d2caa06c824ddf") format("woff");
 }
 
 @font-face {
   font-family: Arimo;
   font-weight: 700;
   font-style: normal;
-  src: url("https://fonts.shopifycdn.com/arimo/arimo_n7.bf3fa65912c7598edac87f3464dc56cced61307e.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=cd33ac751febd8b7a28195960b46a1cd47c4101f0ca68add41d57283de7f0259") format("woff2"),
-       url("https://fonts.shopifycdn.com/arimo/arimo_n7.1de27ffea9bb2528cf1df7ad7c3c04a2b278cd8d.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=80b432bb74c82fd215f41aff850162543d4faaa708b299e6d91317d713255ccc") format("woff");
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_n7.bf3fa65912c7598edac87f3464dc56cced61307e.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=58d3e91100fe32a642e0cf54921f771ba5fb2a8dabe13364f225dda704c70745") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_n7.1de27ffea9bb2528cf1df7ad7c3c04a2b278cd8d.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=f23ed7a36c33e8721d9ed2c1b37635fe2901b77e241ecb7d17d2caa06c824ddf") format("woff");
 }
 
 @font-face {
   font-family: Arimo;
   font-weight: 400;
   font-style: italic;
-  src: url("https://fonts.shopifycdn.com/arimo/arimo_i4.9739ae4f9473f2a63d3554a38a434d5ce842d444.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=27ef46056590fbe2989c27da1d54e35d8fb9688352417101fc063a99dad7ac84") format("woff2"),
-       url("https://fonts.shopifycdn.com/arimo/arimo_i4.d350b23df4855a383320ead1b9422fa48bb3a6b9.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=742e63928937b67be3134350d597d5ff78b0528cb4b7f8c6aa9ebb92a2524005") format("woff");
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_i4.9739ae4f9473f2a63d3554a38a434d5ce842d444.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=9c3ccf1f87b4e3b268724757a138b3762646e9d03820692c55ce5f7f7adc86b5") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_i4.d350b23df4855a383320ead1b9422fa48bb3a6b9.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=0faff1b8cdcdebd1463dde5136bb566a90bbf3323a1ec42a79801635752e318c") format("woff");
 }
 
 @font-face {
   font-family: Arimo;
   font-weight: 700;
   font-style: italic;
-  src: url("https://fonts.shopifycdn.com/arimo/arimo_i7.f62cd88331ad0c31a41f31618f8ff95cca052800.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=92615296296fe10047bc62d4d17e73322b9e9310c549b48154a6ed0e65905f64") format("woff2"),
-       url("https://fonts.shopifycdn.com/arimo/arimo_i7.6ead2569d278254c7a14fcf41f3024dc621fc58a.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&h7=ZW1haWwud29uZGVyY2hlZnByb21vbWFpbC5pbg&hmac=781c654b6b1f575b9cfa8e853d80cd3f12f3e48cb7d651fbd96d739bb3868118") format("woff");
+  src: url("https://fonts.shopifycdn.com/arimo/arimo_i7.f62cd88331ad0c31a41f31618f8ff95cca052800.woff2?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=f3e80cdd8cf557d86f822b83ca72580de74f7433f89be1ce932068c71ac05cef") format("woff2"),
+       url("https://fonts.shopifycdn.com/arimo/arimo_i7.6ead2569d278254c7a14fcf41f3024dc621fc58a.woff?h1=d29uZGVyY2hlZi5jb20&h2=d29uZGVyY2hlZi5pbg&h3=d29uZGVyY2hlZm1haWwuaW4&h4=d29uZGVyY2hlZm1haWxpbmZvLmNvbQ&h5=d29uZGVyY2hlZnByb21vbWFpbC5pbg&h6=ZW1haWwud29uZGVyY2hlZm1haWwuaW4&hmac=c08e35d6a69c0d3998785091ebd35fe27d76c3bc0efb521cbdda3155edcea0a2") format("woff");
 }
 
 
@@ -623,7 +623,7 @@ $slick-opacity-not-active: 0.25;
 
 // Only called once so make sure proper file is grabbed
 @function slick-image-url($url) {
-    @return url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/ajax-loader.gif?v=41356863302472015721688214128);
+    @return url(//www.wonderchef.com/cdn/shop/t/327/assets/ajax-loader.gif?v=41356863302472015721695734702);
 }
 
 // Unused intentionally
@@ -6048,6 +6048,9 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             font-style: $font-style-heading;
             font-weight: $font-weight-heading;
         }
+      h2{
+      font-size:40px;
+      }
         a {
             color: inherit;
         }
@@ -7325,7 +7328,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         display: block;
         padding: 10px 0 10px 0;
         color: #383e47;
-        background-color: #ffffff;
+        background-color: #d6f2ff;
         .container {
             @include display-flexbox;
             @include flex-wrap(nowrap);
@@ -7520,7 +7523,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
     .header-bottom {
         position: relative;
         color: #f7f7f7;
-        background-color: #dfa649;
+        background-color: #285b78;
         padding-bottom: 1px;
         /*border-bottom: 1px solid #373e46;*/
         transition: all .3s ease;
@@ -7573,7 +7576,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         width: 100%;
         line-height: 50px;
         color: #383e47;
-        background-color: #ffffff;
+        background-color: #d6f2ff;
         @include display-flexbox;
         @include flex-wrap(nowrap);
         @include align-items(center);
@@ -7696,7 +7699,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         border-radius: 50%;
         position: absolute;
         color: #ffffff;
-        background-color: #b20000;
+        background-color: #285b78;
     }
 
     .lang_currency-dropdown {
@@ -7875,7 +7878,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             padding-top: 15px;
             padding-bottom: 30px;
             .login-form {
-                margin-bottom: 0;
+                margin-bottom: 0px;
             }
             .form-field {
                 margin-bottom: 20px;
@@ -7883,6 +7886,10 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             .form-actions {
                 margin-top: 0;
                 text-align: left;
+                margin-bottom: 10px;
+                padding-bottom: 11px;
+              border-bottom: 1px solid #888;
+              
                 .forgot-password,
                 .button {
                     margin-left: 0;
@@ -7927,6 +7934,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             width: 100%;
             display: block;
             padding: 11px 15px 10px 15px;
+           margin-bottom: 10px;
         }
         @include media-query($halo-large) {
             right: 0;
@@ -9340,7 +9348,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             -webkit-transform: translateY(30px);
             transform: translateY(30px);
             transition: all .3s ease;
-            background-color: #dfa649;
+            background-color: #285b78;
         }
         &:hover,
         &.is-open {
@@ -9892,7 +9900,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         font-size: 15px;
         text-align: center;
         color: #000000;
-        background-color: #a0f2fd;
+        background-color: #d6f2ff;
         .container {
             position: relative;
         }
@@ -13499,14 +13507,14 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         overflow: hidden;
         border-radius: 5px;
         background-color: #ffffff;
-     /*  
+   
        box-shadow: 0 1px 2px 1px rgba(0,0,0,.05);
-        */
+      
         .product-image {
-            /*  margin: 6px 6px 0 6px;*/
+           
         }
         .product-content {
-          /*  padding: 20px 15px 0;*/
+        padding: 20px 15px 0;
         }
         .product-btn {
             width: calc(100% + 30px);
@@ -13914,14 +13922,14 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 @include display-flexbox;
                 @include justify-content(space-between);
                 .product_photos {
-                    width: 50%;
+                    width: 45%;
                     padding-right: 15px;
                     .product_badges {
                         right: 15px;
                     }
                 }
                 .product_shop {
-                    width: 50%;
+                    width: 55%;
                     padding-left: 15px;
                 }
             }
@@ -15767,15 +15775,13 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         position: fixed;
         left: 0;
         right: 0;
-        bottom: 0;
+        top: 86px;
         width: 100%;
         z-index: 101;
         padding: 15px 0;
         text-align: center;
         background: #fff;
-        transition: all .3s ease;
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,100%,0);
+        
         box-shadow: 0 0 4px rgba(0,0,0,.2);
         .sticky-add-to-cart form {
             display: flex;
@@ -16922,8 +16928,10 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             width: 100%;
             display: block;
             .cart-thumb {
-                width: 120px;
-                display: block;
+                width: 160px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: block;
                 img {
                     width: 100%;
                 }
@@ -16934,22 +16942,22 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 width: 100%;
             }
             .product-title {
-                margin-bottom: 10px;
+                margin-bottom: 2px;
             }
             .product-vendor {
-                margin-bottom: 12px;
+                margin-bottom: 0px;
                 color: $color-body-text;
             }
             .product-price {
                 line-height: 22px;
-                margin-top: 5px;
-                margin-bottom: 15px;
+                margin-top: 0px;
+                margin-bottom: 5px;
             }
             .button-groups {
                 margin-bottom: 0;
                 .quantity {
                     display: block;
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                 }
                 .group-action {
                     display: block;
@@ -16957,7 +16965,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                     white-space: nowrap;
                     .btn {
                         display: inline-block;
-                        min-width: 140px;
+                        min-width: 50px;
                         max-width: 160px;
                         white-space: nowrap;
                         text-overflow: ellipsis;
@@ -17990,7 +17998,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 margin-bottom: 30px;
                 min-height: 110px;
                 padding-left: 118px;
-                background: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/avata-blog.png?v=37472725946730154391688214128) no-repeat 0 2px;
+                background: url(//www.wonderchef.com/cdn/shop/t/327/assets/avata-blog.png?v=37472725946730154391695734702) no-repeat 0 2px;
             }
         }
     }
@@ -19699,7 +19707,7 @@ display:none;
 
 .halo-item .layout-1 .content{
 	font-size: 20px;
-    line-height: 2.0;
+    line-height: 1.2;
     margin: 5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -20643,7 +20651,8 @@ div.content {
     float: right;
 }
  span.sale.savings {
-    color: #000;
+ 
+    color: #fff;
     line-height: 20px;    margin-bottom: 15px;
   }
 
@@ -20797,20 +20806,20 @@ margin:0 auto;
       }
     @font-face {
     font-family: "Caviar Dreams";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams.woff?v=46286174416640935541688214128) format("woff");
-      src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams.ttf?v=140498311186176901431688214128) format("truetype");
+    src: url(//www.wonderchef.com/cdn/shop/t/327/assets/CaviarDreams.woff?v=46286174416640935541695734702) format("woff");
+      src: url(//www.wonderchef.com/cdn/shop/t/327/assets/CaviarDreams.ttf?v=140498311186176901431695734702) format("truetype");
 }
  @font-face {
     font-family: "CaviarDreamsItalic";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreamsItalic.woff?v=52628913926067237981688214128) format("woff");
+    src: url(//www.wonderchef.com/cdn/shop/t/327/assets/CaviarDreamsItalic.woff?v=52628913926067237981695734702) format("woff");
 }
  @font-face {
     font-family: "CaviarDreams_Bold";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams_Bold.woff?v=24248015653497195331688214128) format("woff");
+    src: url(//www.wonderchef.com/cdn/shop/t/327/assets/CaviarDreams_Bold.woff?v=24248015653497195331695734702) format("woff");
 }
  @font-face {
     font-family: "CaviarDreams_BoldItalic";
-    src: url(//cdn.shopify.com/s/files/1/0104/9211/7092/t/312/assets/CaviarDreams_BoldItalic.woff?v=91169623278739843001688214128) format("woff");
+    src: url(//www.wonderchef.com/cdn/shop/t/327/assets/CaviarDreams_BoldItalic.woff?v=91169623278739843001695734702) format("woff");
 }
 
 .hh1{
@@ -20820,7 +20829,7 @@ margin:0 auto;
 @media only screen and (min-width: 601px) {
 .cbc
 {
-background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Untitled-1_e291ea56-66e4-4ce1-9de6-37e0f457d50b.jpg?v=1683099571");
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Section-1_Desktop.jpg?v=1690551945");
  background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
@@ -20851,17 +20860,12 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
     .bbc
 {
-background-color: #ffec77;
-  background-repeat: no-repeat;
-   background-position: top;
- 
-  background-size: cover;
-  position: relative;
+background-color: #80e0eb;
   
 }
    .bbcr
 {
-background-color: #ffec77;
+background-color: #80e0eb;
   background-repeat: no-repeat;
    background-position: top;
  
@@ -20871,7 +20875,7 @@ background-color: #ffec77;
 }
    .bbc2
 {
- background-color: #ffec77;
+ background-color: #81d5ef;
   background-repeat: no-repeat;
    background-position: top;
   
@@ -20892,13 +20896,13 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
     .tbbc
 {
- background-color: #fdf1b3;
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Highlight_banner.jpg?v=1690550563");
+ background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
  
   background-size: cover;
   position: relative;
-  opecity:0.5;
   
 }
     .ttpbc
@@ -20910,9 +20914,39 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
   position: relative;
   
 }
+   .example1 {
+ background-position:
+    top 5px left, top 40px left 33%, top right 5px, bottom 70% right 35%;
+  
+  background-size: 75px;
+  background-repeat: no-repeat;
+  
+  background-image:
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677);
+}
+ 
  }
 
   @media only screen and (max-width: 600px) {
+
+     .example1 {
+ background-position:
+    top 5px left, top 40px left 150px, top right 5px, bottom 70% right 100px !important;
+  
+  background-size: 30px!important;
+  background-repeat: no-repeat;
+  
+  background-image:
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677);
+       
+}
+ 
 
     .search-bar {
     display: -webkit-flex;
@@ -20936,7 +20970,7 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
     border-radius: 3px;
     color: #383e47;
     background-color: #ffffff;
-    border: 1px solid #b20000;
+    border: 1px solid #285b78;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
     .search-bar .btn-search {
@@ -20969,7 +21003,7 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 
   .cbc
 {
-background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Untitled-3_d9ca2413-5529-424e-97dd-50fb9a1993d6.jpg?v=1683096312");
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Section_1_mobile.jpg?v=1690551945");
 
    background-color: #cccccc;
   background-repeat: no-repeat;
@@ -21014,19 +21048,13 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
      .bbc
 {
-background-color: #ffec77;
-  background-repeat: no-repeat;
-   background-position: top;
-  
-  background-size: cover;
-  position: relative;
-  padding: 25px 22px 50px 22px;
-  margin-bottom: -3px;
+background-color: #80e0eb;
+ 
   
 }
      .bbcr
 {
-background-color: #ffec77;
+background-color: #80e0eb;
   background-repeat: no-repeat;
    background-position: top;
   
@@ -21038,7 +21066,7 @@ background-color: #ffec77;
 }
     .bbc2
 {
-background-color: #ffec77;
+background-color: #81d5ef;
   background-repeat: no-repeat;
    background-position: top;
  
@@ -21049,13 +21077,13 @@ background-color: #ffec77;
 }
      .tbbc
 {
- background-color: #fdf1b3;
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Highlights_Pannel_a2baf08a-13e8-4fe6-8e8f-69fbbe318c47.jpg?v=1690549506");
+ background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
- 
-  background-size: cover;
+   background-size: cover;
   position: relative;
-  opecity:0.5;
+  
   
 }
       .fpbc
@@ -21120,3 +21148,141 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 
          display:none!important;
       }
+
+  .alerts-border {
+    border: 5px #930156 dotted;
+    padding:10px;
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+     color:#930156;
+}
+
+@keyframes blink { 50% { border-color:#fff ; }  }
+
+.flash {
+   -webkit-animation-name:flash;
+   -webkit-animation-duration:3s;
+   -webkit-animation-iteration-count:1;
+   -webkit-animation-timing-function:ease-in-out;
+   -webkit-animation-direction:alternate;
+}
+
+@-webkit-keyframes flash  {
+   from {
+      color:#930156!important;
+   }
+   
+   to {
+      color:#e397c3!important;
+   }
+
+}
+
+#offer{
+   background: #ecd193;
+  animation: mymove 3s infinite;
+  padding:5px;
+}
+@keyframes mymove {
+  from {background-color: #ecd193;}
+  to {background-color: #facccc;}
+}
+
+.example3{
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rainbow_1.png?v=1690552295") , url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rainbow_2.png?v=1690552295");
+ 
+  background-repeat: no-repeat;
+   background-position: top right , bottom left;
+
+  background-size: 200px;
+  height:100%;
+  }
+ 
+
+
+@media only screen and (max-width: 600px) {
+.notice_flash_sale a, .notice_flash_sale i, .notice_flash_sale span, .notice_flash_sale p{    color: #d6f2ff!important;}
+
+  .notice_flash_sale {
+        color: #d6f2ff;
+    background-color: #285b78;
+}
+ }
+
+   @font-face {
+    font-family: "Playkidz";
+         src: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Playkidz.woff2?v=1690797360) format("woff2"),
+          url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Playkidz.woff?v=1690797360) format("woff");
+     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+           
+}
+
+.btnb
+{
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Water_splash.png?v=1690547675");
+ background-color: #cccccc00;
+  background-repeat: no-repeat;
+   background-position: top;
+   background-size: cover;
+  position: relative;
+  
+  
+}
+
+
+.btn5{
+  background-color: #285b78;
+    color: #d6f2ff;
+    border-radius: 40px;
+    padding: 13px 15px 11px 15px;
+}
+
+.btn5:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn5{
+  -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: auto;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-family: Rajdhani, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+  .oxi-social-login{
+    margin-top:10px;
+  }
+
+  .sticky_form {
+display: none
+}
+
+.hide {
+    opacity:0;
+    left:-100%;
+}
+.show {
+    opacity:1;
+    left:0;
+}
+
+@media only screen and (max-width: 600px){
+.hreview { .slick-slide {
+    width: 398px!important;
+}}
+}

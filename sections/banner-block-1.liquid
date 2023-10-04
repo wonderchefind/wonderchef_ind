@@ -24,7 +24,7 @@
     {% render 'customcolor_feature-image-row' %}
 {% endif %}
 
-<div class="halo-section cbc  {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-id="{{ section.id }}" data-section-type="banner block 1">
+<div class="halo-section  bbc example3 {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-id="{{ section.id }}" data-section-type="banner block 1">
     <div class="container">
         {% if section.settings.title != blank %}
             <div class="section-header
@@ -34,7 +34,7 @@
                 {% endcase %}">
                 <h2>{% render 'multilang' with section.settings.title %}</h2>
                 {% if section.settings.text_link != blank %}
-                    <a class="text-link" href="{{ section.settings.custom_link }}">
+                    <a class="text-link btnb" href="{{ section.settings.custom_link }}">
                         {% render 'multilang' with section.settings.text_link %}
                     </a>
                 {% endif %}
@@ -52,10 +52,10 @@
                                 {% if block.settings.link != blank %}
                                     <a class="img" href="{{ block.settings.link }}">
                                 {% else %}
-                                    <div class="img">
+                                    <div class="img item">
                                 {% endif %}
                                     {% if block.settings.image != blank %}
-                                        <img class="lazyload radius" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: 'master'  }}" alt="" data-image>
+                                       <img class="lazyload radius" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: 'master'  }}" alt="" data-image>
                                     {% else %}
                                         <span class="recommended_size">370x110</span>
                                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -69,7 +69,7 @@
                             <div class="content">
                                 {% if block.settings.title != blank %}
                                     {% if block.settings.link != blank %}
-                                        <a class="title" href="{{ block.settings.link }}">
+                                        <a class="title btn5" href="{{ block.settings.link }}">
                                     {% else %}
                                         <h3 class="title">
                                     {% endif %}
@@ -78,7 +78,8 @@
                                         </a>
                                     {% else %}
                                         </h3>
-                                    {% endif %}
+                                    {% endif %}<br>
+                                  <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Water_splash.png?v=1690547675" style="margin-top: -40px;">
                                 {% endif %}
                                 {% if block.settings.description != blank %}
                                     <p class="description">{% render 'multilang' with block.settings.description %}</p>
@@ -295,3 +296,5 @@
     ]
 }
 {% endschema %}
+
+

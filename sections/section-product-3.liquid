@@ -23,7 +23,7 @@
 {%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
 {%- assign dots = dots | default: section.settings.carousel-dots -%}
 
-<div class="halo-section pbcs  {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-type="collection" >
+<div class="halo-section   {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-type="collection" >
     <div class="container" data-carousel>
 
         {% if section.settings.title != blank %}
@@ -130,29 +130,7 @@
         {% endif %}
     </div>
 </div>
-<style>
 
-  .product-btn {
-    width: 100%;
-    display: block;
-    margin-top: 0px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 13px 15px 11px 15px;
-    color: #b20000;
-    border-color: #f36969;
-    background-color: #f1da4d;
-  }
-
-  .halo-row.slick-slider .halo-item .product-card {
-    width: 100%;
-    max-width: none;
-    border: 6px solid #fff;
-}
-
- 
-</style>
 
 {% schema %}
 {

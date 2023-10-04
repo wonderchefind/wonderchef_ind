@@ -1,4 +1,11 @@
-<div class="smart-background">
+ {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_image_zoom_size = '1024x1024' -%}
+    {%- assign product_image_scale = '2' -%}
+    {%- assign enable_zoom = section.settings.enable_zoom -%}
+    {%- assign enable_fancybox = section.settings.enable_fancybox -%}
+    {%- assign compare_at_price = current_variant.compare_at_price -%}
+    {%- assign price = current_variant.price -%}
+<div class="smart-background" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
 
   {% comment %}{% section 'smart-video' %} {% endcomment %}
   {% section 'smart-slide' %}
@@ -39,49 +46,25 @@
         <div class="column-1  padtop ttp" style="position: relative;">
           <h3 class="title  gradiant tp1" style="margin:0px!important;">MRP: ₹ 7,700/-</h3>
           <h3 class="title  tp1" style="color:#fff;margin:0px!important;">Special Launch Price:
-            <span class="gradiant">₹ 3,899/-</span>
+            ₹ 3,899/-
           </h3>
           <br>
-          <h4 class=" gradiant" style="margin:0px!important;">Pre-book now and Save ₹ 3,801/-</h4>
-          <h4 class="tt2 " style="color:#fff;margin:0px!important;">Also, get a SIPPY BOT worth ₹ 450 <br>absolutely FREE!</h4>
-          <img
-            class="notify-badge"
-            src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/wasss.png?v=1687340520"
-            width="100px">
-
+          <h4 class=" gradiant" style="margin:0px!important;">Save ₹ 3,801/-</h4>
           <div class="bcenter">
-
-
-            <a
-              href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
-              style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
-              class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded ">Pre-book-now</a>
-
-
-            <p style="margin-top:10px;">Deliveries start from 16 July 2023.</p>
-            <h3>
+ {% section 'product-button-smart' %}
+                     <h4>
               <a href="#work" style="color:#fff;margin-top:30px!important;text-decoration-line: underline;">See How It Works</a>
-            </h3>
+            </h4>
 
           </div>
 
 
         </div>
-        <div id="sticky-anchor"></div>
-
+  
       </div>
     </div>
   </div>
-  <div class="">
-    <div class="sticky1">
-      <div class="btn-1-b hide">
-        <a
-          href="https://wonderchefind.myshopify.com/cart/42779388215473:1,42779386675377:1"
-          style="font-size: 25px!important; color: #fff!important;margin: 0px;box-shadow: 0px 3px 4px;"
-          class="btn btn-1 shopify-payment-button__button buy-now shopify-payment-button__button--unbranded button1">Pre-book-now</a>
-      </div>
-    </div>
-  </div>
+ 
 
   <hr class="hrborder">
   <div class="hidden_xs">
@@ -108,17 +91,47 @@
 
   {% section 'smart-video-bottom' %}
   <hr class="hrborder">
-  {% section 'section-product-nutri-blend-smart' %}
-  <hr class="hrborder">
   {% section 'faq-template' %}
+  <hr class="hrborder">
+  {% section 'section-product-nutri-blend-smart' %}
 
 </div>
 <style>
 
+  .cart-popup__dismiss-button {
+    background:#bb1c35!important;
+  }
+ 
+.jdgm-preview-badge .jdgm-star.jdgm-star {
+   
+    background: -webkit-linear-gradient(rgb(27, 160, 233), rgb(11, 202, 230), rgb(21, 225, 213));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+  .quantity .qty-group .button .icon {
+    padding: 12px;
+    width: 100%;
+    height: 100%;
+    fill: #ffffff;
+    background: -webkit-linear-gradient(rgb(27, 160, 233), rgb(11, 202, 230), rgb(21, 225, 213));
+}
+
+  .form-label {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-family: rajdhani, sans-serif;
+    color: #fbfbfb;
+    text-transform: capitalize;
+}
+  .jdgm-prev-badge__text {
+    color: #fff !important;
+}
+
   .btn--secondary {
     color: #b20000;
     border-color: #ffffff!important;
-    background-color: transparent;
+    background-color: #b20000;
 }
 
   .section-header .arrow-on-heading .btn-arrow .icon {
@@ -132,9 +145,7 @@
     color: #000 !important;
     position: relative;
   }
-  .jdgm-prev-badge__text {
-    color: #000 !important;
-  }
+
   .product-btn {
 
     background-image: linear-gradient(to right, #1ba0e9 0%, #0bcae6 51%, #15e1d5 100%) !important;
@@ -175,7 +186,7 @@
   }
   .btn {
     flex: 1 1 auto;
-    margin: 10px;
+    margin-bottom: 10px;
     padding: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -200,9 +211,15 @@
 
 
   @media only screen and (min-width: 800px) {
+
+     .btn-width{
+width:25%
+
+    
+  }
     .ttp {
 
-      padding-top: 4% !important;
+      padding-top: 1% !important;
     }
     .vsize {
       width: 65% !important;
@@ -462,6 +479,14 @@
 
 
   @media only screen and (max-width: 600px) {
+
+     .btn-width{
+width:50%
+
+    
+  }
+
+    
     .bcenter {
       text-align: center;
     }
@@ -761,3 +786,29 @@
 
 // end sticky button
 </script>
+<script type="text/javascript">
+    // required object
+    window.ad_product = {
+        "id": "{{ product.id }}",   // required
+        "vendor": "{{ product.vendor }}",
+        "price": "{{ product.price | money }}",
+        "url": "//www.wonderchef.com{{ product.url }}",
+        "picture": "{{ product.featured_image | image_url }}",
+        "name": "{{ product.title }}",
+        "category": "{{ collection.title | metafield_text}}"
+    };
+
+    window._retag = window._retag || [];
+    window._retag.push({code: "9ce8884bff", level: 2});
+    (function () {
+        var id = "admitad-retag";
+        if (document.getElementById(id)) {return;}
+        var s = document.createElement("script");
+        s.async = true; s.id = id;
+        var r = (new Date).getDate();
+        s.src = (document.location.protocol == "https:" ? "https:" : "http:") + "//cdn.lenmit.com/static/js/retag.js?r="+r;
+        var a = document.getElementsByTagName("script")[0]
+        a.parentNode.insertBefore(s, a);
+    })()
+</script>
+

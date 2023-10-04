@@ -5999,6 +5999,9 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             font-style: $font-style-heading;
             font-weight: $font-weight-heading;
         }
+      h2{
+      font-size:40px;
+      }
         a {
             color: inherit;
         }
@@ -7826,7 +7829,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             padding-top: 15px;
             padding-bottom: 30px;
             .login-form {
-                margin-bottom: 0;
+                margin-bottom: 0px;
             }
             .form-field {
                 margin-bottom: 20px;
@@ -7834,6 +7837,10 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             .form-actions {
                 margin-top: 0;
                 text-align: left;
+                margin-bottom: 10px;
+                padding-bottom: 11px;
+              border-bottom: 1px solid #888;
+              
                 .forgot-password,
                 .button {
                     margin-left: 0;
@@ -7878,6 +7885,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             width: 100%;
             display: block;
             padding: 11px 15px 10px 15px;
+           margin-bottom: 10px;
         }
         @include media-query($halo-large) {
             right: 0;
@@ -13450,14 +13458,14 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         overflow: hidden;
         border-radius: 5px;
         background-color: #ffffff;
-     /*  {% if template != 'index' %}
+   
        box-shadow: 0 1px 2px 1px rgba(0,0,0,.05);
-        {% endif %}*/
+      
         .product-image {
-            /*  margin: 6px 6px 0 6px;*/
+           
         }
         .product-content {
-          /*  padding: 20px 15px 0;*/
+        padding: 20px 15px 0;
         }
         .product-btn {
             width: calc(100% + 30px);
@@ -13865,14 +13873,14 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 @include display-flexbox;
                 @include justify-content(space-between);
                 .product_photos {
-                    width: 50%;
+                    width: 45%;
                     padding-right: 15px;
                     .product_badges {
                         right: 15px;
                     }
                 }
                 .product_shop {
-                    width: 50%;
+                    width: 55%;
                     padding-left: 15px;
                 }
             }
@@ -15718,15 +15726,13 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
         position: fixed;
         left: 0;
         right: 0;
-        bottom: 0;
+        top: 86px;
         width: 100%;
         z-index: 101;
         padding: 15px 0;
         text-align: center;
         background: #fff;
-        transition: all .3s ease;
-        -webkit-transform: translate3d(0,100%,0);
-        transform: translate3d(0,100%,0);
+        
         box-shadow: 0 0 4px rgba(0,0,0,.2);
         .sticky-add-to-cart form {
             display: flex;
@@ -16873,8 +16879,10 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
             width: 100%;
             display: block;
             .cart-thumb {
-                width: 120px;
-                display: block;
+                width: 160px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    display: block;
                 img {
                     width: 100%;
                 }
@@ -16885,22 +16893,22 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                 width: 100%;
             }
             .product-title {
-                margin-bottom: 10px;
+                margin-bottom: 2px;
             }
             .product-vendor {
-                margin-bottom: 12px;
+                margin-bottom: 0px;
                 color: $color-body-text;
             }
             .product-price {
                 line-height: 22px;
-                margin-top: 5px;
-                margin-bottom: 15px;
+                margin-top: 0px;
+                margin-bottom: 5px;
             }
             .button-groups {
                 margin-bottom: 0;
                 .quantity {
                     display: block;
-                    margin-bottom: 20px;
+                    margin-bottom: 10px;
                 }
                 .group-action {
                     display: block;
@@ -16908,7 +16916,7 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
                     white-space: nowrap;
                     .btn {
                         display: inline-block;
-                        min-width: 140px;
+                        min-width: 50px;
                         max-width: 160px;
                         white-space: nowrap;
                         text-overflow: ellipsis;
@@ -19650,7 +19658,7 @@ display:none;
 
 .halo-item .layout-1 .content{
 	font-size: 20px;
-    line-height: 2.0;
+    line-height: 1.2;
     margin: 5px;
     text-transform: uppercase;
     transition: all 0.3s ease;
@@ -20597,7 +20605,8 @@ div.content {
     float: right;
 }
  span.sale.savings {
-    color: #000;
+ 
+    color: #fff;
     line-height: 20px;    margin-bottom: 15px;
   }
 
@@ -20774,7 +20783,7 @@ margin:0 auto;
 @media only screen and (min-width: 601px) {
 .cbc
 {
-background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Untitled-1_e291ea56-66e4-4ce1-9de6-37e0f457d50b.jpg?v=1683099571");
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Section-1_Desktop.jpg?v=1690551945");
  background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
@@ -20805,17 +20814,12 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
     .bbc
 {
-background-color: #ffec77;
-  background-repeat: no-repeat;
-   background-position: top;
- 
-  background-size: cover;
-  position: relative;
+background-color: #80e0eb;
   
 }
    .bbcr
 {
-background-color: #ffec77;
+background-color: #80e0eb;
   background-repeat: no-repeat;
    background-position: top;
  
@@ -20825,7 +20829,7 @@ background-color: #ffec77;
 }
    .bbc2
 {
- background-color: #ffec77;
+ background-color: #81d5ef;
   background-repeat: no-repeat;
    background-position: top;
   
@@ -20846,13 +20850,13 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
     .tbbc
 {
- background-color: #fdf1b3;
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Highlight_banner.jpg?v=1690550563");
+ background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
  
   background-size: cover;
   position: relative;
-  opecity:0.5;
   
 }
     .ttpbc
@@ -20864,9 +20868,39 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
   position: relative;
   
 }
+   .example1 {
+ background-position:
+    top 5px left, top 40px left 33%, top right 5px, bottom 70% right 35%;
+  
+  background-size: 75px;
+  background-repeat: no-repeat;
+  
+  background-image:
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677);
+}
+ 
  }
 
   @media only screen and (max-width: 600px) {
+
+     .example1 {
+ background-position:
+    top 5px left, top 40px left 150px, top right 5px, bottom 70% right 100px !important;
+  
+  background-size: 30px!important;
+  background-repeat: no-repeat;
+  
+  background-image:
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677),
+    url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Cloud.png?v=1690547677);
+       
+}
+ 
 
     .search-bar {
     display: -webkit-flex;
@@ -20890,7 +20924,7 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
     border-radius: 3px;
     color: #383e47;
     background-color: #ffffff;
-    border: 1px solid #b20000;
+    border: 1px solid #285b78;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
     .search-bar .btn-search {
@@ -20923,7 +20957,7 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 
   .cbc
 {
-background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Untitled-3_d9ca2413-5529-424e-97dd-50fb9a1993d6.jpg?v=1683096312");
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Section_1_mobile.jpg?v=1690551945");
 
    background-color: #cccccc;
   background-repeat: no-repeat;
@@ -20968,19 +21002,13 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 }
      .bbc
 {
-background-color: #ffec77;
-  background-repeat: no-repeat;
-   background-position: top;
-  
-  background-size: cover;
-  position: relative;
-  padding: 25px 22px 50px 22px;
-  margin-bottom: -3px;
+background-color: #80e0eb;
+ 
   
 }
      .bbcr
 {
-background-color: #ffec77;
+background-color: #80e0eb;
   background-repeat: no-repeat;
    background-position: top;
   
@@ -20992,7 +21020,7 @@ background-color: #ffec77;
 }
     .bbc2
 {
-background-color: #ffec77;
+background-color: #81d5ef;
   background-repeat: no-repeat;
    background-position: top;
  
@@ -21003,13 +21031,13 @@ background-color: #ffec77;
 }
      .tbbc
 {
- background-color: #fdf1b3;
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Highlights_Pannel_a2baf08a-13e8-4fe6-8e8f-69fbbe318c47.jpg?v=1690549506");
+ background-color: #cccccc;
   background-repeat: no-repeat;
    background-position: top;
- 
-  background-size: cover;
+   background-size: cover;
   position: relative;
-  opecity:0.5;
+  
   
 }
       .fpbc
@@ -21074,3 +21102,141 @@ background-image: url("https://cdn.shopify.com/s/files/1/0077/6801/4937/files/Un
 
          display:none!important;
       }
+
+  .alerts-border {
+    border: 5px #930156 dotted;
+    padding:10px;
+    animation: blink 1s;
+    animation-iteration-count: infinite;
+     color:#930156;
+}
+
+@keyframes blink { 50% { border-color:#fff ; }  }
+
+.flash {
+   -webkit-animation-name:flash;
+   -webkit-animation-duration:3s;
+   -webkit-animation-iteration-count:1;
+   -webkit-animation-timing-function:ease-in-out;
+   -webkit-animation-direction:alternate;
+}
+
+@-webkit-keyframes flash  {
+   from {
+      color:#930156!important;
+   }
+   
+   to {
+      color:#e397c3!important;
+   }
+
+}
+
+#offer{
+   background: #ecd193;
+  animation: mymove 3s infinite;
+  padding:5px;
+}
+@keyframes mymove {
+  from {background-color: #ecd193;}
+  to {background-color: #facccc;}
+}
+
+.example3{
+background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rainbow_1.png?v=1690552295") , url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Rainbow_2.png?v=1690552295");
+ 
+  background-repeat: no-repeat;
+   background-position: top right , bottom left;
+
+  background-size: 200px;
+  height:100%;
+  }
+ 
+
+
+@media only screen and (max-width: 600px) {
+.notice_flash_sale a, .notice_flash_sale i, .notice_flash_sale span, .notice_flash_sale p{    color: #d6f2ff!important;}
+
+  .notice_flash_sale {
+        color: #d6f2ff;
+    background-color: #285b78;
+}
+ }
+
+   @font-face {
+    font-family: "Playkidz";
+         src: url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Playkidz.woff2?v=1690797360) format("woff2"),
+          url(https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Playkidz.woff?v=1690797360) format("woff");
+     font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+           
+}
+
+.btnb
+{
+ background-image: url("https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Water_splash.png?v=1690547675");
+ background-color: #cccccc00;
+  background-repeat: no-repeat;
+   background-position: top;
+   background-size: cover;
+  position: relative;
+  
+  
+}
+
+
+.btn5{
+  background-color: #285b78;
+    color: #d6f2ff;
+    border-radius: 40px;
+    padding: 13px 15px 11px 15px;
+}
+
+.btn5:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+
+.btn5{
+  -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: auto;
+    line-height: 1;
+    cursor: pointer;
+    text-align: center;
+    white-space: normal;
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    text-transform: uppercase;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    font-family: Rajdhani, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+  .oxi-social-login{
+    margin-top:10px;
+  }
+
+  .sticky_form {
+display: none
+}
+
+.hide {
+    opacity:0;
+    left:-100%;
+}
+.show {
+    opacity:1;
+    left:0;
+}
+
+@media only screen and (max-width: 600px){
+.hreview { .slick-slide {
+    width: 398px!important;
+}}
+}

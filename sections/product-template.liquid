@@ -429,8 +429,15 @@ function closePopup() {
           </div>
                   
             {% endif %}
-                  {% if product.id != 7410828837041 %}
-                  <div style="margin-bottom:25px;">
+                 
+                  <div style="margin-bottom:25px;" id="offer">
+                    
+                <!--     <div style="display:flex;font-size: 14px;margin: 5px 0px;" class="flash" >
+            
+<img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/pngwing.com.png?v=1668666647" width="20px" height="20px;" >
+            <p id="agent_commission_model" style=" margin-left: 5px;color:#930156;" ><b>Cook Good, Look Good!</b> Shop For <b>₹ 2,500 & get a Lakmé Salon voucher worth Rs 500/- absolutely free.</b></p>
+            </div>-->
+        
                   {% if product.price < 79900 %}
                  
                       <div style="display:flex;margin: 5px 0px;font-size: 14px;">
@@ -451,14 +458,16 @@ function closePopup() {
 <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/pngwing.com.png?v=1668666647" width="20px" height="20px;" >
             <p id="agent_commission_model" style=" margin-left: 5px;">Buy now & earn <b><span class="mp" style="color:#b20000">{{ price | money_with_comma_separator | divided_by:100 }} WonderPoints </span></b>that can be used towards your next purchase.</p>
             </div>
-                  {% endif %}   
+                  {% endif %}  
+
+                   
                
           </div>
-                    {% endif %}
+                 
                   
                     {% render 'product-variants', product: product %}
                     {% if section.settings.show_quantity_selector %}
-                        {% if product.id != 7410828837041 %}
+                      
                         <div class="product-form__item product-form__item--quantity quantity">
                             <label for="Quantity-{{ section.id }}" class="form-label">{{ 'products.product.quantity' | t }}</label>
                             <div class="qty-group">
@@ -467,7 +476,7 @@ function closePopup() {
                                 <a href="#" data-qtt data-plus-qtt class="plus button"> {% render 'icon-chevron-up' %}</a>
                             </div>
                         </div>
-                          {% endif %}
+                         
                     {% endif %}
 
                     {% if section.settings.display_subtotal and current_variant.available %}
@@ -655,10 +664,7 @@ function closePopup() {
             {% endif %}
       
 
-            {% if section.settings.display_product_detail_share %}
-                {% render 'share' with product %}
-            {% endif %}
-
+      
             {% if section.settings.display_trust_img and section.settings.img_trust != blank %}
                 <div class="product_trust_img">
                     <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ section.settings.img_trust | img_url: '500x'  }}" alt="">

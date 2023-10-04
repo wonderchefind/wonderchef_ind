@@ -9,8 +9,8 @@
     <div class ="tncwonderchef">
      
       <div class="mainbanner">
-          <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/roti_magic_offer_desktop_d3ff1e06-0641-402a-a207-5ef32f72bbd6.jpg?v=1684128008" width="100%" alt="TNC banner" s/>
-        <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Roti_magic_banner_mobile_8137b0de-3cd8-48b0-8ca4-a06038088e64.jpg?v=1684128008" width="100%" alt="TNC banner" s/>
+          <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/roti_magic_desktop_7df0df91-8931-4bd3-876d-68188dc11809.jpg?v=1692173408" width="100%" alt="TNC banner" s/>
+        <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Roti_Magic_mobile_d4384918-6d74-44e9-9b1e-b2699d2f0437.jpg?v=1692173408" width="100%" alt="TNC banner" s/>
       </div> 
     
 <div class="three-column special-phone" style="text-align:center;">
@@ -32,8 +32,8 @@
 </div>
 </div>
        <div class="mainbanner" style="margin-bottom: 50px;">
-        <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/desktop_ecb0663b-0856-4900-b195-8bc7af052bfb.jpg?v=1658397766" width="100%" alt="TNC banner" />
-        <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/mobile_24447225-cb5a-46d1-a04e-e818a6bb764a.jpg?v=1658396668" width="100%" alt="TNC banner" />
+        <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Roti_magic_Desktop_63f2c26a-7f3d-45c1-a86b-f594064eb647.jpg?v=1692190334" width="100%" alt="TNC banner" />
+        <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Roti_magic_mobile_9c9c9adf-de7c-407e-9051-6a4d7230f31f.jpg?v=1692190334" width="100%" alt="TNC banner" />
       </div> 
       <div class="one-column mobile">
  
@@ -611,7 +611,31 @@ font-size:20px;
    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, auto_install: true, product: product %}
   
 </div>
+<script type="text/javascript">
+    // required object
+    window.ad_product = {
+        "id": "{{ product.id }}",   // required
+        "vendor": "{{ product.vendor }}",
+        "price": "{{ product.price | money }}",
+        "url": "//www.wonderchef.com{{ product.url }}",
+        "picture": "{{ product.featured_image | image_url }}",
+        "name": "{{ product.title }}",
+        "category": "{{ collection.title | metafield_text}}"
+    };
 
+    window._retag = window._retag || [];
+    window._retag.push({code: "9ce8884bff", level: 2});
+    (function () {
+        var id = "admitad-retag";
+        if (document.getElementById(id)) {return;}
+        var s = document.createElement("script");
+        s.async = true; s.id = id;
+        var r = (new Date).getDate();
+        s.src = (document.location.protocol == "https:" ? "https:" : "http:") + "//cdn.lenmit.com/static/js/retag.js?r="+r;
+        var a = document.getElementsByTagName("script")[0]
+        a.parentNode.insertBefore(s, a);
+    })()
+</script>
 
 
 

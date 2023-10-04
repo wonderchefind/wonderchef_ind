@@ -27,7 +27,7 @@
 {%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
 {%- assign dots = dots | default: section.settings.carousel-dots -%}
 
-<div class="halo-section tbbc {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-id="{{ section.id }}" data-section-type="logolist">
+<div class="halo-section  bbc2 example1 {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-id="{{ section.id }}" data-section-type="logolist">
     <div class="container {% if section.settings.layout == 'layout special' %}logo-special-layout{% endif %}">
         {% if section.settings.title != blank %}
             <div class="section-header {% if section.settings.layout == 'layout special' %}text-left{% else %}text-center{% endif %}">

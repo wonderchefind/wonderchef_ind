@@ -57,19 +57,22 @@
                         <div class="button-group">
 
                             <input type="submit" class="btn btn--secondary" value="{{ 'layout.customer.log_in' | t }}">
-                            
+                             <hr>
                             {% if form.password_needed %}
                                 <div class="RecoverPassword-wrapper">
                                     <a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | t }}</a>
                                 </div>
+                             <hr>
                             {% endif %}
                         </div>
                     {% endform %}
                 </div>
+           
 
                 <div id="RecoverPasswordForm" class="hide">
                     <h2 id="RecoverHeading" class="loginTitle">{{ 'customer.recover_password.title' | t }}</h2>
                     <p>{{ 'customer.recover_password.subtext' | t }}</p>
+                
 
                     <div class="form-vertical">
                         {% form 'recover_customer_password' %}
@@ -103,10 +106,12 @@
 
                             <div class="button-group">
                                 <input type="submit" class="btn btn--secondary" value="{{ 'customer.recover_password.submit' | t }}">
-                                <a href="#LoginHeading" id="HideRecoverPasswordLink" class="btn btn--primary">{{ 'customer.recover_password.cancel' | t }}</a>
+                                <a href="#LoginHeading" id="HideRecoverPasswordLink" class="btn btn--primary">{{ 'customer.recover_password.cancel' | t }}</a>  
                             </div>
+                        
                         {% endform %}
                     </div>
+              
 
                 </div>
 
@@ -125,7 +130,7 @@
                     </div>
                 {% endif %}
             </div>
-            <div class="col-12 col-sm-6">
+          <!--  <div class="col-12 col-sm-6">
                 <div class="form-vertical" id="CustomerRegisterForm" >
 
                     <h1 class="loginTitle">{{ 'customer.register.title' | t }}</h1>
@@ -187,8 +192,9 @@
 
                     {% endform %}
                 </div>
+              <hr>
               <div class='oxi-social-login'></div>
-            </div>
+            </div>-->
         </div>
     </div>
 </div>

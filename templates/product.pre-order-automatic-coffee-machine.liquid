@@ -2,8 +2,8 @@
 <div  class="static-page roti-magic">
 <div class ="tncwonderchef">
    <div class="mainbanner">
-      <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_fully_automatic_coffee_maker_banner_for_microsite_Brown_bg_DESKTOP_9f31bd9b-8372-4e4b-a629-d8d1c26e57d3.jpg?v=1684387214" width="100%" alt="Fully automatic coffee machine" s/>
-      <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_fully_automatic_coffee_maker_banner_for_microsite_Brown_bg_MOBILE_63d5e768-2d16-47e4-9ad5-71cb95eeced9.jpg?v=1684387214" width="100%" alt="Fully automatic coffee machine" s/>
+      <img class="hidden_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_fully_automatic_coffee_maker_banner_for_microsite_Brown_bg_DESKTOP_6278590e-4954-46e8-a8cd-9234c8496b08.jpg?v=1691663825" width="100%" alt="Fully automatic coffee machine" s/>
+      <img class="visible_xs" src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/Kriti_fully_automatic_coffee_maker_banner_for_microsite_Brown_bg_MOBILE_cd0bd6ad-6d51-4823-bda3-fec5e3bb60f3.jpg?v=1691663829" width="100%" alt="Fully automatic coffee machine" s/>
    </div>
 
   <div class="container">
@@ -678,3 +678,28 @@ a:-webkit-any-link {
    {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: true, auto_install: true, product: product %}
   
 </div>
+<script type="text/javascript">
+    // required object
+    window.ad_product = {
+        "id": "{{ product.id }}",   // required
+        "vendor": "{{ product.vendor }}",
+        "price": "{{ product.price | money }}",
+        "url": "//www.wonderchef.com{{ product.url }}",
+        "picture": "{{ product.featured_image | image_url }}",
+        "name": "{{ product.title }}",
+        "category": "{{ collection.title | metafield_text}}"
+    };
+
+    window._retag = window._retag || [];
+    window._retag.push({code: "9ce8884bff", level: 2});
+    (function () {
+        var id = "admitad-retag";
+        if (document.getElementById(id)) {return;}
+        var s = document.createElement("script");
+        s.async = true; s.id = id;
+        var r = (new Date).getDate();
+        s.src = (document.location.protocol == "https:" ? "https:" : "http:") + "//cdn.lenmit.com/static/js/retag.js?r="+r;
+        var a = document.getElementsByTagName("script")[0]
+        a.parentNode.insertBefore(s, a);
+    })()
+</script>

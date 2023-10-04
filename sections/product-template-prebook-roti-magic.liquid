@@ -71,7 +71,7 @@ $(document).ready(function(){
                     </div>
           
           <div class="custom-buy__now shopify-payment-button">
-          <button type="button" style="{% unless current_variant.available %}display:none;{% endunless %} font-size: 25px!important;" class="shopify-payment-button__button buy-now shopify-payment-button__button--unbranded" onClick="instantBuy(event,this)"><span>BUY NOW</span></button>
+          <button type="button" style="{% unless current_variant.available %} display:none; {% endunless %}font-size: 25px!important;" class="shopify-payment-button__button buy-now shopify-payment-button__button--unbranded" onClick="instantBuy(event,this)"><span>BUY NOW</span></button>
         </div>
                     <!-- <input required type="text" id="monogram" name="properties[Note]" data-error="Please enter a Note."> -->
                 {% endform %}
@@ -712,3 +712,9 @@ $(document).ready(function(){
     })
   }
 </script>
+
+<style>
+  .smartech-payment-button{
+    display:none !important;
+  }
+</style>

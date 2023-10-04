@@ -1,6 +1,6 @@
-{%- assign img_url = product.featured_image | img_url: '270x270' -%}
-{%- assign img_url_1 = product.images[0].src | img_url: '270x270' -%}
-{%- assign img_url_2 = product.images[1].src | img_url: '270x270' -%}
+{%- assign img_url = product.featured_image | img_url: '400x400' -%}
+{%- assign img_url_1 = product.images[0].src | img_url: '400x400' -%}
+{%- assign img_url_2 = product.images[1].src | img_url: '400x400' -%}
 {%- assign show_image_swap = show_image_swap | default: settings.image_swap -%}
 {%- assign show_product_quickview = show_product_quickview | default: settings.show_product_quickview -%}
 {%- assign show_product_vendor = show_product_vendor | default: settings.show_product_vendor -%}
@@ -11,7 +11,7 @@
 
 <div class="product-card product-card-special {% unless product.available %} product-card--sold-out{% endunless %}" data-product-card >
     <div class="product-image">
-        {% render 'product_badges' with product as product %}
+      
         <a class="product-link {% if product.images.size > 1 and show_image_swap %}image-swap{% endif %}" href="{{ product.url | within: collection }}" aria-label="link">
             {% if product.images.size > 1 and show_image_swap %}
                 <img class="image-one lazyload"

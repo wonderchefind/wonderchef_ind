@@ -1,0 +1,872 @@
+{% comment %}
+** Banner page - custom view **
+- Page template
+{% endcomment %}
+
+{% if section.settings.show_banner %}
+
+<section id="banner-{{section.id}}" class="banner page_banner">
+  {% if section.settings.image != nil %}
+  
+  <div class="hidden_xs">
+      {% include 'image-element', image: section.settings.image, alt: section.settings.image.alt, stretch_width: true %}
+    </div>
+    <div class="visible_xs ">
+      
+      <img src="https://cdn.shopify.com/s/files/1/0104/9211/7092/files/WhatsApp_Image_2023-08-17_at_10.46.48_PM.jpg?v=1692293028" alt="{{ alt | escape }}" class="{{ additional_classes }}">
+    </div>
+  {% else %}
+  {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg placeholder-svg--banner' }}
+  {% endif %}
+  {% unless section.settings.button1_link != blank and section.settings.button2_link != blank %}
+  {% if section.settings.button1_link != blank %}
+  <a href="{{ section.settings.button1_link }}" class="banner-full-link">
+    {{ section.settings.button1 }}
+  </a>
+  {% endif %}
+  {% if section.settings.button2_link != blank %}
+  <a href="{{ section.settings.button2_link }}" class="banner-full-link">
+    {{ section.settings.button2 }}
+  </a>
+  {% endif %}
+  {% endunless %}
+  {% unless section.settings.pretext == blank and section.settings.title == blank and section.settings.subtitle == blank and section.settings.button1 == blank and section.settings.button2 == blank %}
+  <div class="position-{{ section.settings.text_position }} caption js-caption">
+    <div class="caption-content caption-background-{{ section.settings.caption_background }} caption-transparency-{{ section.settings.caption_background_transparency }} align-{{ section.settings.text_align }}">
+      {% if section.settings.pretext != blank %}
+      <div class="pretext">
+        {{ section.settings.pretext }}
+      </div>
+      {% endif %}
+      {% if section.settings.title != blank %}
+      <h1 class="headline">
+        {{ section.settings.title }}
+      </h1>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+      <div class="subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+      {% endif %}
+      {% if section.settings.button1 != blank %}
+      <a {% if section.settings.button1_link != blank %}href="{{ section.settings.button1_link }}"{% endif %} class="action_button first_button highlight-{{ section.settings.button1_highlight }}">
+        {{ section.settings.button1 }}
+      </a>
+      {% endif %}
+      {% if section.settings.button2 != blank %}
+      <a {% if section.settings.button2_link != blank %}href="{{ section.settings.button2_link }}"{% endif %} class="action_button second_button highlight-{{ section.settings.button2_highlight }}">
+        {{ section.settings.button2 }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endunless %}
+</section>
+
+{% endif %}
+
+<a name="pagecontent" id="pagecontent"></a>
+
+<div class="container main content" style="margine:0px 0px;width:100%!important">
+  <div class="page clearfix">
+    {% unless section.settings.show_banner %}
+    <h1>
+      {{ page.title }}
+    </h1>
+    <div class="feature_divider"></div>
+    {% endunless %}
+   <div  class="static-page">
+    <div class ="tncwonderchef">
+      
+      <div class=" normaltext container">
+            <br>
+        <p style="text-align:left; line-height:25px;">
+Have you ever dreamt of having your culinary creations tasted by none other than the legendary Chef Sanjeev Kapoor? Here's your golden ticket!  
+          <br><br>
+Dive into this once-in-a-lifetime opportunity to showcase your cooking prowess and meet, greet, and get invaluable feedback from the master chef himself.
+                  <br><br>
+          🌟 <b>Why You Can't Miss This:</b><br><br>
+
+✨ Get your dishes tasted by Chef Sanjeev Kapoor.<br>
+
+✨ A chance to be crowned Mumbai's "Kitchen Queen."<br>
+
+✨ Exclusive selfies with the culinary icon.<br>
+
+✨ Personalized feedback to elevate your cooking game.
+          <br><br>
+          Spaces are limited, and the clock is ticking. Register NOW, and don't let this dream opportunity slip away!
+          <br><br>
+          <b>Venue:</b> Infiniti Mall, Malad (Mumbai)
+          <br>
+<b>Date & Time:</b> 25th August 2023, 4 pm onwards.
+       <br><br><br>
+<p style="text-align:center;"><b>SIGN UP FOR THE KITCHEN QUEEN CONTEST</b></p>
+        </p>
+      </div>
+    
+   
+   <div style="margin:0 auto;" class="pxFormGenerator" id="x_E4wHP0Qy4_cl01jY5LZw"></div> 
+     <div class=" normaltext container" style="margin-top:-50px;">
+              <p style="text-align:left; line-height:25px; ">
+<b>Here's How It Works:</b>
+                <br><br>
+1. <b>Preparation:</b> Cook your healthy festive delicacy at home using one of the methods: air-frying, baking, or steaming.<br>
+2. <b>Presentation:</b> Bring your pre-cooked dish to the venue, ensuring it's presented in the most appetising manner.<br>
+3. <b>Judgment Criteria:</b> Chef Sanjeev Kapoor and the Wonderchef team will be tasting and judging based on:
+                <ul>
+<li><p><b>Health Quotient:</b> Method of preparation.</p></li>
+<li><p><b>Taste:</b> Because flavor matters!</p></li>
+<li><p><b>Innovation:</b> How unique is your dish?</p></li>
+<li><p><b>Presentation:</b> A feast for the eyes is half the battle.</p></li>
+                  </ul>
+       <br><br>
+<p><b>📌 Note:</b></p>
+<ul>
+<li><p>Ensure you register on the brand website before the deadline.</p></li>
+<li><p>Only pre-cooked dishes will be accepted at the venue.</p></li>
+<li><p>All participants must adhere to the event's health and safety guidelines.</p> </li>
+   </ul>
+  <br>
+     </p>
+     </div>
+<br>
+      <div class=" normaltext container">
+              <p style="text-align:left; line-height:25px; ">
+<b>FREQUENTLY ASKED QUESTIONS</b>
+                <br><br>
+                <b>What is the reporting time for the Kitchen Queen contest?</b>
+<br>
+For all registered participants, the reporting time is 4 pm on 25th August 2023. The event will be held at the main atrium (upper ground floor) of The Infiniti Mall, Malad (West), Mumbai. 
+<br>
+We recommend arriving earlier to ensure a smooth check-in process. 
+                <br><br>
+               <b>What is the mechanism of the Kitchen Queen contest?</b> </br>          
+<p style="margin-left:20px;">
+1. The winners will be announced at the end of the event.<br>
+2. Chef Sanjeev Kapoor and the Wonderchef team will taste each dish and judge based on health quotient, taste, innovation, and presentation.<br>
+3. The winners will be announced at the end of the event.
+</p></p>
+     
+         <p style="text-align:left; line-height:25px; ">
+<b>What is the recommended food type?</b>
+<br>
+We encourage participants to prepare healthy delicacies in sync with the event's theme. The focus is on dishes that are air-fried, baked, or steamed. Think of dishes that taste great and promote a healthy lifestyle.
+  <br><br>
+        A few examples of these are: Millet Upma, Millet Dhokla, Ragi Chocolate Cake, Airfryed Broccoli Pops, Steamed Modak, Steamed Moongdal Dhokla, Steamed Karanji, Airfried Soya Samosa, Airfried Sweet Potato Tikky, Almond Jaggery Halwa etc.
+<br><br>
+        Non-vegetarian dishes are strictly prohibited for this contest.
+<br><br>
+        <b>Will cooking at the venue be permitted?</b>
+        <br>
+        Participants are required to bring their dishes completely pre-cooked to the venue. Ensure your dish remains fresh and presentable upon arrival. 
+        <br><br>
+        Cooking and reheating at the event is strictly prohibited. 
+        <br>
+     </p>
+     </div>
+       </div>
+  </div>
+  </div>
+</div>
+
+
+      
+      
+      
+      
+      <script>
+        // Sticky Plugin v1.0.4 for jQuery
+// =============
+// Author: Anthony Garand
+// Improvements by German M. Bravo (Kronuz) and Ruud Kamphuis (ruudk)
+// Improvements by Leonardo C. Daronco (daronco)
+// Created: 02/14/2011
+// Date: 07/20/2015
+// Website: http://stickyjs.com/
+// Description: Makes an element on the page stick on the screen as you scroll
+//              It will only set the 'top' and 'position' of your element, you
+//              might need to adjust the width in some cases.
+
+(function (factory) {
+    if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(['jquery'], factory);
+    } else if (typeof module === 'object' && module.exports) {
+        // Node/CommonJS
+        module.exports = factory(require('jquery'));
+    } else {
+        // Browser globals
+        factory(jQuery);
+    }
+}(function ($) {
+    var slice = Array.prototype.slice; // save ref to original slice()
+    var splice = Array.prototype.splice; // save ref to original slice()
+
+  var defaults = {
+      topSpacing: 0,
+      bottomSpacing: 0,
+      className: 'is-sticky',
+      wrapperClassName: 'sticky-wrapper',
+      center: false,
+      getWidthFrom: '',
+      widthFromWrapper: true, // works only when .getWidthFrom is empty
+      responsiveWidth: false,
+      zIndex: 'auto'
+    },
+    $window = $(window),
+    $document = $(document),
+    sticked = [],
+    windowHeight = $window.height(),
+    scroller = function() {
+      var scrollTop = $window.scrollTop(),
+        documentHeight = $document.height(),
+        dwh = documentHeight - windowHeight,
+        extra = (scrollTop > dwh) ? dwh - scrollTop : 0;
+
+      for (var i = 0, l = sticked.length; i < l; i++) {
+        var s = sticked[i],
+          elementTop = s.stickyWrapper.offset().top,
+          etse = elementTop - s.topSpacing - extra;
+
+        //update height in case of dynamic content
+        s.stickyWrapper.css('height', s.stickyElement.outerHeight());
+
+        if (scrollTop <= etse) {
+          if (s.currentTop !== null) {
+            s.stickyElement
+              .css({
+                'width': '',
+                'position': '',
+                'top': '',
+                'z-index': ''
+              });
+            s.stickyElement.parent().removeClass(s.className);
+            s.stickyElement.trigger('sticky-end', [s]);
+            s.currentTop = null;
+          }
+        }
+        else {
+          var newTop = documentHeight - s.stickyElement.outerHeight()
+            - s.topSpacing - s.bottomSpacing - scrollTop - extra;
+          if (newTop < 0) {
+            newTop = newTop + s.topSpacing;
+          } else {
+            newTop = s.topSpacing;
+          }
+          if (s.currentTop !== newTop) {
+            var newWidth;
+            if (s.getWidthFrom) {
+                newWidth = $(s.getWidthFrom).width() || null;
+            } else if (s.widthFromWrapper) {
+                newWidth = s.stickyWrapper.width();
+            }
+            if (newWidth == null) {
+                newWidth = s.stickyElement.width();
+            }
+            s.stickyElement
+              .css('width', newWidth)
+              .css('position', 'fixed')
+              .css('top', newTop)
+              .css('z-index', s.zIndex);
+
+            s.stickyElement.parent().addClass(s.className);
+
+            if (s.currentTop === null) {
+              s.stickyElement.trigger('sticky-start', [s]);
+            } else {
+              // sticky is started but it have to be repositioned
+              s.stickyElement.trigger('sticky-update', [s]);
+            }
+
+            if (s.currentTop === s.topSpacing && s.currentTop > newTop || s.currentTop === null && newTop < s.topSpacing) {
+              // just reached bottom || just started to stick but bottom is already reached
+              s.stickyElement.trigger('sticky-bottom-reached', [s]);
+            } else if(s.currentTop !== null && newTop === s.topSpacing && s.currentTop < newTop) {
+              // sticky is started && sticked at topSpacing && overflowing from top just finished
+              s.stickyElement.trigger('sticky-bottom-unreached', [s]);
+            }
+
+            s.currentTop = newTop;
+          }
+
+          // Check if sticky has reached end of container and stop sticking
+          var stickyWrapperContainer = s.stickyWrapper.parent();
+          var unstick = (s.stickyElement.offset().top + s.stickyElement.outerHeight() >= stickyWrapperContainer.offset().top + stickyWrapperContainer.outerHeight()) && (s.stickyElement.offset().top <= s.topSpacing);
+
+          if( unstick ) {
+            s.stickyElement
+              .css('position', 'absolute')
+              .css('top', '')
+              .css('bottom', 0)
+              .css('z-index', '');
+          } else {
+            s.stickyElement
+              .css('position', 'fixed')
+              .css('bottom', newTop)
+              .css('top', '')
+              .css('z-index', s.zIndex)
+            .css('background', '#fff');
+          }
+        }
+      }
+    },
+    resizer = function() {
+      windowHeight = $window.height();
+
+      for (var i = 0, l = sticked.length; i < l; i++) {
+        var s = sticked[i];
+        var newWidth = null;
+        if (s.getWidthFrom) {
+            if (s.responsiveWidth) {
+                newWidth = $(s.getWidthFrom).width();
+            }
+        } else if(s.widthFromWrapper) {
+            newWidth = s.stickyWrapper.width();
+        }
+        if (newWidth != null) {
+            s.stickyElement.css('width', newWidth);
+        }
+      }
+    },
+    methods = {
+      init: function(options) {
+        var o = $.extend({}, defaults, options);
+        return this.each(function() {
+          var stickyElement = $(this);
+
+          var stickyId = stickyElement.attr('id');
+          var wrapperId = stickyId ? stickyId + '-' + defaults.wrapperClassName : defaults.wrapperClassName;
+          var wrapper = $('<div></div>')
+            .attr('id', wrapperId)
+            .addClass(o.wrapperClassName);
+
+          stickyElement.wrapAll(wrapper);
+
+          var stickyWrapper = stickyElement.parent();
+
+          if (o.center) {
+            stickyWrapper.css({width:stickyElement.outerWidth(),marginLeft:"auto",marginRight:"auto"});
+          }
+
+          if (stickyElement.css("float") === "right") {
+            stickyElement.css({"float":"none"}).parent().css({"float":"right"});
+          }
+
+          o.stickyElement = stickyElement;
+          o.stickyWrapper = stickyWrapper;
+          o.currentTop    = null;
+
+          sticked.push(o);
+
+          methods.setWrapperHeight(this);
+          methods.setupChangeListeners(this);
+        });
+      },
+
+      setWrapperHeight: function(stickyElement) {
+        var element = $(stickyElement);
+        var stickyWrapper = element.parent();
+        if (stickyWrapper) {
+          stickyWrapper.css('height', element.outerHeight());
+        }
+      },
+
+      setupChangeListeners: function(stickyElement) {
+        if (window.MutationObserver) {
+          var mutationObserver = new window.MutationObserver(function(mutations) {
+            if (mutations[0].addedNodes.length || mutations[0].removedNodes.length) {
+              methods.setWrapperHeight(stickyElement);
+            }
+          });
+          mutationObserver.observe(stickyElement, {subtree: true, childList: true});
+        } else {
+          stickyElement.addEventListener('DOMNodeInserted', function() {
+            methods.setWrapperHeight(stickyElement);
+          }, false);
+          stickyElement.addEventListener('DOMNodeRemoved', function() {
+            methods.setWrapperHeight(stickyElement);
+          }, false);
+        }
+      },
+      update: scroller,
+      unstick: function(options) {
+        return this.each(function() {
+          var that = this;
+          var unstickyElement = $(that);
+
+          var removeIdx = -1;
+          var i = sticked.length;
+          while (i-- > 0) {
+            if (sticked[i].stickyElement.get(0) === that) {
+                splice.call(sticked,i,1);
+                removeIdx = i;
+            }
+          }
+          if(removeIdx !== -1) {
+            unstickyElement.unwrap();
+            unstickyElement
+              .css({
+                'width': '',
+                'position': '',
+                'top': '',
+                'float': '',
+                'z-index': ''
+              })
+            ;
+          }
+        });
+      }
+    };
+
+  // should be more efficient than using $window.scroll(scroller) and $window.resize(resizer):
+  if (window.addEventListener) {
+    window.addEventListener('scroll', scroller, false);
+    window.addEventListener('resize', resizer, false);
+  } else if (window.attachEvent) {
+    window.attachEvent('onscroll', scroller);
+    window.attachEvent('onresize', resizer);
+  }
+
+  $.fn.sticky = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method ) {
+      return methods.init.apply( this, arguments );
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+    }
+  };
+
+  $.fn.unstick = function(method) {
+    if (methods[method]) {
+      return methods[method].apply(this, slice.call(arguments, 1));
+    } else if (typeof method === 'object' || !method ) {
+      return methods.unstick.apply( this, arguments );
+    } else {
+      $.error('Method ' + method + ' does not exist on jQuery.sticky');
+    }
+  };
+  $(function() {
+    setTimeout(scroller, 0);
+  });
+}));
+
+$(".add-to-cart").sticky({topSpacing:5,zIndex:100000});
+      </script>
+ 
+ 
+
+
+
+<style>
+  {% if section.settings.show_banner %}
+  .mobile_nav-fixed--true #pagecontent, .mobile_nav-fixed--false #pagecontent {
+    padding: 0;
+  }
+  @media only screen and (max-width: 479px) {
+    div.content {
+      padding-top: 0;
+    }
+  }
+  {% endif %}
+</style>
+
+{% schema %}
+
+{
+"name": "Page | banner",
+"class": "banner-template-section",
+"settings": [
+{
+"type": "checkbox",
+"id": "show_banner",
+"label": "Show banner",
+"default": true
+},
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image",
+"info": "1800 x 1000px recommended"
+},
+{
+"type": "richtext",
+"id": "pretext",
+"label": "Preheading"
+},
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "richtext",
+"id": "subtitle",
+"label": "Subheading"
+},
+{
+"type": "checkbox",
+"id": "caption_background",
+"label": "Display solid text background",
+"default": false
+},
+{
+"type": "checkbox",
+"id": "caption_background_transparency",
+"label": "Enable background transparency"
+},
+{
+"type": "select",
+"id": "text_position",
+"label": "Text position",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "select",
+"id": "text_align",
+"label": "Text alignment",
+"options": [
+{
+"value": "left",
+"label": "Left"
+},
+{
+"value": "center",
+"label": "Center"
+},
+{
+"value": "right",
+"label": "Right"
+}
+]
+},
+{
+"type": "text",
+"id": "button1",
+"label": "First button label"
+},
+{
+"type": "url",
+"id": "button1_link",
+"label": "First button link"
+},
+{
+"type": "checkbox",
+"id": "button1_highlight",
+"label": "Highlight first button"
+},
+{
+"type": "text",
+"id": "button2",
+"label": "Second button label"
+},
+{
+"type": "url",
+"id": "button2_link",
+"label": "Second button link"
+},
+{
+"type": "checkbox",
+"id": "button2_highlight",
+"label": "Highlight second button"
+}
+],
+"default": {
+"settings": {
+"title": "Page Banner Template",
+"subtitle": "<p>Create an amazing page with a full-width banner</p>",
+"text_position": "center",
+"text_align": "center"
+}
+}
+}
+
+{% endschema %}
+
+<style>
+.grid-container,.grid-container1 {
+  padding: 10px;
+}
+.grid-container1 > div {
+  text-align: center;
+  padding: 0px 0;
+  font-size: 20px;
+  width: fit-content;
+    margin: 0 20px 20px;
+    display: inline-flex;
+}
+  
+.grid-container > div {
+  
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+  width: 25%;
+    float:left;
+}
+
+  .bbt{
+    background: #b20000;
+    color: #fff;
+    box-shadow: 0 1px 3px #000000;
+      }
+
+  .sticky {
+  
+text-align:center;
+  }
+
+   .sticky a:hover{
+      color:#fff;
+    }
+  
+</style>
+
+
+
+
+
+<style>
+  .imageone{
+    margin-bottom:15px;
+  }
+  button#reward_readmore {
+    text-transform: none;
+    background: transparent;
+    color: #2626fd;
+    font-size: 26px;
+    border: 0;
+    outline:none;
+  }
+  img.imageone.wpwork {
+    position: relative;
+    top: 22px;
+  }
+  .second_stagechanges p {
+    line-height: 30px;
+    margin: 0;
+}
+  h3.headingreward {
+    letter-spacing: -1.2px!important;
+    line-height: 40px!important;
+    margin-bottom: 20px!important;
+  }
+  .first_stagechanges p {
+    margin-bottom: 0;
+  }
+  .first_stagechanges p input#btAnimate {
+    min-height: 30px;
+    height: 30px;
+  }
+  .sixteen.column.normaltext.liability {
+    text-align: left;
+}
+  .wonderarrow{
+    margin:6px 0px 0px 6px;
+  }
+  .icon-up-arrow{
+    margin:6px 0px 0px 6px;
+    font-size:15px;
+  }
+  .second_stagechanges h3.headingreward.hidden_xs {
+    margin-bottom: 0px!important;
+}
+  .centerText{
+    text-align:center;
+  }#more {display: none;}
+  .tncwonderchef p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #4e4e4e;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+  .sixteen.column.normaltext.liability h3 {
+    color: #e33237;
+    margin: 30px 0 10px;
+    text-align: center;
+    text-transform: none;
+
+  }
+ 
+  .first_stagechanges p img.imageone {
+    margin: 0;
+    top: 4px;
+    width: 25px;
+  }
+  img.first_stage_image {
+    width: 80%;
+    float: right;
+  }
+  .padding_top.main.content {
+    padding: 0;
+}
+  img.imageone.firts-step-pointers {
+    width: 60px;
+  }
+ p img.imageone {
+    top: 6px;
+    position: relative;
+    margin: 0;
+}
+  .tncwonderchef h3 {
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 20px;
+    letter-spacing: 0;
+    color: #4e4e4e;
+  }
+  .tncwonderchef #divAnim input {
+    padding: 0 6px;
+    border: solid 1px #5d6bc4;
+    background: #606ec6;
+    color: #FFF;
+    cursor: pointer;
+    height: 40px;
+    line-height: 26px!important;
+    min-height: 40px;
+    font-weight: 600;
+  }
+  .centerText h1 {
+    color:#e31e24;
+    margin: 0px 0px 0px 0px;
+    text-transform: none;
+    font-size: 20px;
+    letter-spacing: -1.2px;
+    line-height: 10px;
+  }
+  .margintop{
+    margin-top:60px;
+  }
+  .margintop h3{
+    text-transform:none;
+  } 
+
+  .tncwonderchef .imageone{
+    width:5%;
+  }
+  .centerimg{
+    padding:40% 0px 0px 0px;
+  }
+  .righttoleft{
+    direction: rtl;
+  }
+  .mainbanner img {
+    width: 100%;
+  }
+  .pointer_rewards {
+    display: block;
+    clear: both;
+    padding-top: 40px;
+  }
+  img.imageone.wpwork.headingwonderpoint {
+    position: relative;
+    top: 18px;
+}
+  .pointer_rewards p {
+    margin-bottom: 26px;
+  }.termsplicy-reward {
+    background: #eaeaea;
+   
+  }
+
+  .termsplicy-reward h3 {
+    color: #e21e24;
+    text-transform: none;
+    
+  }
+  ul li {
+    list-style: disc;
+    margin-left: 25px;
+}
+  @media (max-width: 600px){
+    .tncwonderchef h3 {
+      font-size: 20px;
+      text-align: center;
+    }
+    .tncwonderchef p {
+      font-size: 20px;
+      line-height: 26px;
+    }
+
+    .tncwonderchef span#divAnim {
+      display: inline-block;
+    }
+    .tncwonderchef #divAnim input{
+      min-height: 30px;
+      height: 30px;
+    }
+    .tncwonderchef .imageone {
+      width: 10%;
+    }
+    .margintop {
+      margin-top: 0;
+    }
+    .centerimg {
+      padding: 10% 0 0;
+    }
+    .tncwonderchef {
+      margin-top: 40px;
+    }
+    img.imageone.firts-step-pointers {
+    width: 50px;
+}.tncwonderchef h3 {
+    font-size: 30px;
+    text-align: center;
+    line-height: 34px!important;
+}
+    img.first_stage_image {
+    width: 100%;
+    float: none;
+}
+     h3.visible_xs.headingreward {
+    margin-bottom: 0px!important;
+}
+    .pointer_rewards p {
+    text-align: left;
+}
+    .grid-container > div{
+      width: 50%;
+    padding: 10px;
+      font-size: 16px;
+    }
+     .grid-container1 > div{
+    margin: 0 10px 10px;
+    }
+  }
+  
+  @media (max-width: 600px){
+.tncwonderchef p {
+    font-size: 18px!important;
+    line-height: 20px!important;
+}
+  }
+  h2{
+  font-size:14px!important; 
+  }
+
+  
+  .p2{
+    font-size: 18px!important;
+    font-weight: 500!important;
+    color: #ffffff!important;
+    line-height: 30px!important;
+    letter-spacing: -0.5px!important;
+    
+  }
+
+</style>

@@ -23,7 +23,7 @@
 {%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
 {%- assign dots = dots | default: section.settings.carousel-dots -%}
 
-<div class="halo-section fpbc  {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-type="collection" >
+<div class="halo-section bbc2  {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-type="collection" >
     <div class="container" data-carousel>
 
         {% if section.settings.title != blank %}
@@ -89,11 +89,14 @@
                     ]}'
             {% endif %}>
             {% for product in collection.products limit: product_limit %}
+               
                 <div class="halo-item pt" >
+            
                     {% render 'product-card-grid-special', product: product %}
                 </div>
             {% else %}
                 {% for i in (1..product_limit) %}
+                
                     <div class="halo-item">
                         <div class="product-card">
                             <div class="product-image">
@@ -134,6 +137,7 @@
 
     </div>
 </div>
+{% comment %}
 <script type="text/javascript">
     var elems = $("#shopify-section-{{ section.id }} [data-section-type='collection'] .halo-row-custom .halo-item");
     if (elems.length) {
@@ -146,29 +150,7 @@
         }
     }
 </script>
-<style>
-
-  .product-btn {
-    width: 100%;
-    display: block;
-    margin-top: 0px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: 13px 15px 11px 15px;
-    color: #b20000;
-    border-color: #f36969;
-    background-color: #f1da4d;
-  }
-
-  .halo-row.slick-slider .halo-item .product-card {
-    width: 100%;
-    max-width: none;
-    border: 6px solid #fff;
-}
-
- 
-</style>
+{% endcomment %}
 
 {% schema %}
 {
@@ -348,3 +330,104 @@
     ]
 }
 {% endschema %}
+
+<style>
+
+  .product-btn {
+    width: 100%;
+    display: block;
+    margin-top: 0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 13px 15px 11px 15px;
+    color: #fff;
+   border-color: #285b78!important;
+    background-color: #285b78!important;
+  }
+
+  .halo-row.slick-slider .halo-item .product-card {
+    width: 100%;
+    max-width: none;
+    border: 6px solid #fff;
+}
+
+  .btn--secondary {
+    color: #285b78;
+    border-color: #285b78;
+    background-color: transparent;
+}
+  .btn--secondary:not([disabled]):hover, .btn--secondary:focus {
+    color: white;
+    border-color: #285b78;
+    background-color: #285b78;
+}
+
+  .halo_footer-default {
+    z-index: 1;
+    position: relative;
+    color: #dfdfdf;
+    background-color: #285b78!important;
+}
+
+  .halo-feature-icon-footer {
+    color: #285b78!important;
+    background-color: #d6f2ff!important;
+}
+
+  .halo-feature-icon-footer .halo-feature-icon .content {
+    color: #285b78!important;
+}
+  .halo-feature-icon-footer .halo-feature-icon .icon {
+   color: #285b78!important;
+}
+
+  .btn--primary {
+    color: white;
+    border-color: #d6f2ff;
+    background-color: #f36969;
+}
+
+  .newsletterSubscription .input-group .btn, .newsletterSubscription .input-group .shopify-payment-button .shopify-payment-button__button--unbranded, .shopify-payment-button .newsletterSubscription .input-group .shopify-payment-button__button--unbranded {
+    width: 120px;
+    height: 42px;
+    min-height: 42px;
+    line-height: 40px;
+    padding: 0 15px;
+    margin: 0 0 0 10px;
+    color: #285b78;
+    background-color: #d6f2ff;
+}
+
+  .social_list .social-icons .social-icon {
+    font-size: 14px;
+    text-align: center;
+    display: block;
+    width: 34px;
+    height: 34px;
+    padding: 0 8px;
+    line-height: 34px;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: transparent;
+    border: 1px solid #cbe8fa;
+}
+
+  
+h2{
+  font-family:"Playkidz"!important;
+}
+
+      .jdgm-preview-badge .jdgm-star.jdgm-star {
+    color: #285b78;
+}
+
+  .product-card-special {
+ 
+    background-color: #d6f2ff;
+   
+}
+
+ 
+ 
+</style>

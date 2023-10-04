@@ -1,3 +1,10 @@
+<style>
+  @media (max-width: 600px){
+  .img-width{
+    width:150px!important;
+  }
+  }
+</style>
 {% include 'setting-spacing' %}
 {% include 'setting-background-color' %}
 
@@ -27,7 +34,7 @@
 {%- assign arrows = arrows | default: section.settings.carousel-arrows -%}
 {%- assign dots = dots | default: section.settings.carousel-dots -%}
 
-<div class="halo-section bbc2 {{ padding_top }} {{ padding_bottom }} {{ background_color }} " data-section-id="{{ section.id }}" data-section-type="logolist">
+<div class="halo-section  bbc2 {{ padding_top }} {{ padding_bottom }} {{ background_color }} {{ border-top }} {{ border-bottom }}" data-section-id="{{ section.id }}" data-section-type="logolist">
     <div class="container {% if section.settings.layout == 'layout special' %}logo-special-layout{% endif %}">
         {% if section.settings.title != blank %}
             <div class="section-header {% if section.settings.layout == 'layout special' %}text-left{% else %}text-center{% endif %}">
@@ -58,9 +65,9 @@
                         {% if block.settings.link != blank %}
                             <a href="{{ block.settings.link }}" class="logo-link">
                         {% endif %}
-                            <span class="logo-image border-image">
+                            <span class="logo-image border-image img-width">
                                 {% if block.settings.image != blank %}
-                                    <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: '160x'  }}" alt="" data-image>
+                                    <img class="lazyload" src="{{ 'loading.svg' | asset_url }}" data-src="{{ block.settings.image | img_url: '250x'  }}" alt="" data-image ">
                                 {% else %}
                                     <span class="recommended_size">160x60</span>
                                     {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}

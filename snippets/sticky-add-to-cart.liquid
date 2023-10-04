@@ -1,4 +1,4 @@
-<div class="sticky_form" data-sticky-add-to-cart>
+<div class="sticky_form cta" data-sticky-add-to-cart id="sticky">
     <div class="container">
         <div class="sticky-add-to-cart">
             {% form 'product', product, id: "form-sticky" %}
@@ -55,15 +55,15 @@
                 <div class="item action-wrapper">
                     {% if product.selected_or_first_available_variant.available %}
                         <input type="hidden" name="id" value="{{ product.variants[0].id }}" /> 
-                        <input data-sticky-btn-addToCart type="submit" name="add" class="btn btn--primary btn-sticky-add-to-cart" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %} value="{{ 'products.product.add_to_cart' | t }}">          
+                        <input data-sticky-btn-addToCart type="submit" name="add" style="margin: 8px 0 !important;" class="btn btn--primary btn-sticky-add-to-cart" {% if settings.enable_multilang %}data-translate="products.product.add_to_cart"{% endif %} value="{{ 'products.product.add_to_cart' | t }}">          
                     {% else %} 
                     
-                        <input type="submit" name="add" class="btn btn--secondary-accent btn-sticky-add-to-cart" disabled {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %} value="{{ 'products.product.sold_out' | t }}">          
+                        <input type="submit" name="add" style="margin: 9px 0 !important;" class="btn btn--secondary-accent btn-sticky-add-to-cart" disabled {% if settings.enable_multilang %}data-translate="products.product.sold_out"{% endif %} value="{{ 'products.product.sold_out' | t }}">          
                     {% endif %}
                     {% comment %}
   {% render 'rentity-product-capsule', product: product %}
   {% endcomment %}
-              <div style="   float: right;">
+              <div class="stick-rentity-btn" style="float: right;">
   {% render 'rentity-add-to-rent-cart-btn', product: product %}
               </div>
                 </div>
@@ -71,3 +71,51 @@
         </div>
     </div>
 </div>
+
+<script>
+  myID = document.getElementById("sticky");
+
+var myScrollFunc = function() {
+  var y = window.scrollY;
+  if (y >= 800) {
+    myID.className = "sticky_form show"
+  } else {
+    myID.className = "sticky_form hide"
+  }
+};
+
+window.addEventListener("scroll", myScrollFunc);
+</script>
+
+<style>
+  .item.action-wrapper {
+    width: 60%;
+    display: inline-block;
+}
+ .btn-sticky-add-to-cart, .stick-rentity-btn{
+   width: 50%;
+ }
+  .stick-rentity-btn .action-buttons{
+    padding-left:10px;
+  }
+   .stick-rentity-btn .action-buttons button{
+      padding: 3px !important;
+   }
+  .info-bar {
+    padding-left: 10px;
+}
+  .item.quantity{
+    margin-top:-13px;
+  }
+  @media (max-width: 767px){
+      .item.action-wrapper {
+    width: 100%;
+}
+   .stick-rentity-btn .action-buttons button{
+      padding: 8px !important;
+   }
+    .sticky_form .sticky-add-to-cart form>.item {
+    margin: 0 10px;
+    }
+  
+</style>

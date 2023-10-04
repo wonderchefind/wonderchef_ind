@@ -1,0 +1,36 @@
+{% assign collectionDescription = collection.description | split: '<!-- split -->' %}
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+{% section 'collection-template-banner' %}
+<div class="container">
+    <div class="page page-collections">
+      
+        {% section 'duralife-grid' %}<div class="clearfix"></div>
+        <br> <br>
+        {% section 'duralife-product-template' %}            
+        
+        {% section 'collection-template' %}
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% section 'collection_customHtml' %}
+{% if collection.description != blank %}
+  <div class="collection-description container desc">
+    {{ collectionDescription[1] }}
+  </div>
+{% endif %}
+{% section 'reviews' %}
+{% section 'recently-viewed-products' %}
+<style>
+    .desc{
+
+      padding:20px 15 px;
+    }
+
+    .desc p{
+
+      font-size: 14px;
+  }
+    }
+</style>
