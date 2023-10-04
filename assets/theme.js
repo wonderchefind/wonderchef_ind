@@ -4566,17 +4566,6 @@ theme.product_quickview = (function() {
             unitPriceBaseUnit: '[data-unit-price-base-unit]'
         };
 
-        this.classes = {
-            cartPopupWrapperHidden: 'cart-popup-wrapper--hidden',
-            hidden: 'hide',
-            inputError: 'input--error',
-            productOnSale: 'price--on-sale',
-            productUnitAvailable: 'price--unit-available',
-            productUnavailable: 'price--unavailable',
-            productFormErrorMessageWrapperHidden:
-                'product-form__error-message-wrapper--hidden',
-            activeClass: 'active-thumb'
-        };
 
         this.$quantityInput = $(this.selectors.quantity, $container);
         this.$errorMessageWrapper = $(
@@ -5052,25 +5041,7 @@ theme.product_quickview = (function() {
         }
     }
 
-    function _setupCartPopup(item) {
-        this.$cartPopup = this.$cartPopup || $(this.selectors.cartPopup);
-        this.$cartPopupWrapper =
-            this.$cartPopupWrapper || $(this.selectors.cartPopupWrapper);
-        this.$cartPopupTitle =
-            this.$cartPopupTitle || $(this.selectors.cartPopupTitle);
-        this.$cartPopupQuantity =
-            this.$cartPopupQuantity || $(this.selectors.cartPopupQuantity);
-        this.$cartPopupQuantityLabel =
-            this.$cartPopupQuantityLabel ||
-            $(this.selectors.cartPopupQuantityLabel);
-        this.$cartPopupClose =
-            this.$cartPopupClose || $(this.selectors.cartPopupClose);
-        this.$cartPopupDismiss =
-            this.cartPopupDismiss || $(this.selectors.cartPopupDismiss);
-
-        _setupCartPopupEventListeners();
-        _updateCartPopupContent(item);
-    }
+  
 
     function _updateCartPopupContent(item) {
         var quantity = this.$quantityInput.length ? this.$quantityInput.val() : 1;
@@ -5093,24 +5064,7 @@ theme.product_quickview = (function() {
         );
     }
 
-    function _setupCartPopupEventListeners() {
-        this.$cartPopupWrapper.on(
-            'keyup',
-            function(event) {
-                if (event.keyCode === slate.utils.keyboardKeys.ESCAPE) {
-                    _hideCartPopup(event);
-                }
-            }.bind(this)
-        );
-
-        this.$cartPopupClose.on('click', _hideCartPopup.bind(this));
-        this.$cartPopupDismiss.on('click', _hideCartPopup.bind(this));
-        $('body').on('click', _onBodyClick.bind(this));
-        // setTimeout(function() {
-        //     _hideCartPopup(true);
-        // }, 3000);
-    }
-
+  
     function _setCartPopupImage(imageUrl, productTitle) {
         this.$cartPopupImageWrapper =
             this.$cartPopupImageWrapper || $(this.selectors.cartPopupImageWrapper);
@@ -5263,40 +5217,9 @@ theme.product_quickview = (function() {
         this.$cartCount.text(quantity);
     }
 
-    function _showCartPopup() {
-        this.$cartPopupWrapper
-            .prepareTransition()
-            .removeClass(this.classes.cartPopupWrapperHidden);
-        _handleButtonLoadingState(false);
+   
 
-        slate.a11y.trapFocus({
-            $container: this.$cartPopupWrapper,
-            $elementToFocus: this.$cartPopup,
-            namespace: 'cartPopupFocus'
-        });
-    }
-
-    function _hideCartPopup(event) {
-        var setFocus = event.detail === 0 ? true : false;
-        this.$cartPopupWrapper
-            .prepareTransition()
-            .addClass(this.classes.cartPopupWrapperHidden);
-
-        $(this.selectors.cartPopupImage).remove();
-        this.$cartPopupImagePlaceholder.removeClass(this.classes.hidden);
-
-        slate.a11y.removeTrapFocus({
-            $container: this.$cartPopupWrapper,
-            namespace: 'cartPopupFocus'
-        });
-
-        if (setFocus) this.$previouslyFocusedElement[0].focus();
-
-        this.$cartPopupWrapper.off('keyup');
-        this.$cartPopupClose.off('click');
-        this.$cartPopupDismiss.off('click');
-        $('body').off('click');
-    }
+   
 
     function _onBodyClick(event) {
         var $target = $(event.target);
@@ -5670,10 +5593,7 @@ theme.product_card =(function() {
             cartPopupWrapper: '[data-cart-popup-wrapper]'
         };
 
-        this.classes = {
-            cartPopupWrapperHidden: 'cart-popup-wrapper--hidden',
-            hidden: 'hide'
-        };
+        
 
         var addToCart_quick = '[data-btn-addToCart]';
         $(document).on('click', addToCart_quick, function(evt) {
@@ -5698,24 +5618,7 @@ theme.product_card =(function() {
         })
     }
 
-    function _setupCartPopup(item) {
-        this.$cartPopup = this.$cartPopup || $(this.selectors.cartPopup);
-        this.$cartPopupWrapper =
-            this.$cartPopupWrapper || $(this.selectors.cartPopupWrapper);
-        this.$cartPopupTitle =
-            this.$cartPopupTitle || $(this.selectors.cartPopupTitle);
-        this.$cartPopupQuantity =
-            this.$cartPopupQuantity || $(this.selectors.cartPopupQuantity);
-        this.$cartPopupQuantityLabel =
-            this.$cartPopupQuantityLabel || $(this.selectors.cartPopupQuantityLabel);
-        this.$cartPopupClose =
-            this.$cartPopupClose || $(this.selectors.cartPopupClose);
-        this.$cartPopupDismiss =
-            this.cartPopupDismiss || $(this.selectors.cartPopupDismiss);
-
-        _setupCartPopupEventListeners();
-
-        _updateCartPopupContent(item);
+    _updateCartPopupContent(item);
     }
 
     function _updateCartPopupContent(item) {
@@ -5739,23 +5642,7 @@ theme.product_card =(function() {
         );
     }
 
-    function _setupCartPopupEventListeners() {
-        this.$cartPopupWrapper.on(
-            'keyup',
-            function(event) {
-                if (event.keyCode === slate.utils.keyboardKeys.ESCAPE) {
-                    this._hideCartPopup(event);
-                }
-            }.bind(this)
-        );
-
-        this.$cartPopupClose.on('click', _hideCartPopup.bind(this));
-        this.$cartPopupDismiss.on('click', _hideCartPopup.bind(this));
-        $('body').on('click', _onBodyClick.bind(this));
-        // setTimeout(function() {
-        //     _hideCartPopup(true);
-        // }, 3000);
-    }
+  
 
     function _setCartPopupImage(imageUrl, productTitle) {
         this.$cartPopupImageWrapper =
@@ -5850,17 +5737,7 @@ theme.product_card =(function() {
         this.$cartCount.text(quantity);
     }
 
-    function _showCartPopup() {
-        this.$cartPopupWrapper
-            .prepareTransition()
-            .removeClass(this.classes.cartPopupWrapperHidden);
-
-        slate.a11y.trapFocus({
-            $container: this.$cartPopupWrapper,
-            $elementToFocus: this.$cartPopup,
-            namespace: 'cartPopupFocus'
-        });
-    }
+    
 
     function _hideCartPopup(event) {
         var setFocus = event.detail === 0 ? true : false;
