@@ -574,26 +574,30 @@
                     </div>
                   {% endif %}
                   {% if section.settings.enable_header_cart %}
-                    <div class="items item--cart themevale_cart" style="margin-left: 10px;">
+                    <div class="item--cart">
                       <a
                         class="navUser-action"
-                        data-cart-preview
+                        data-cart-preview-pc
                         data-options="align:right"
-                        href="javascript:void(0)"
-                        aria-label="cart"
-                        style="padding-right: 10px;">
-                        {% render 'icon-cart' %}
+                        href="javascript:void(0)">
+                        {% include 'icon-cart' %}
                         <span class="countPill cart-quantity" data-cart-count>{{ cart.item_count }}</span>
                       </a>
+                      {% include 'dropdown-cart' %}
+                    </div>
+                    &nbsp;
+
+                    <div class="item--cart">
+
                       <a
                         class="navUser-action"
-                        data-rent-cart-preview
+                        data-rent-cart-preview-pc
                         data-options="align:right"
-                        href="javascript:void(0)"
-                        aria-label="cart">
-                        {% render 'icon-rent-cart' %}
+                        href="javascript:void(0)">
+                        {% include 'icon-rent-cart' %}
                         <span class="rentcountPill cart-quantity" data-rent-cart-count></span>
                       </a>
+                      {% include 'dropdown-rent-cart' %}
                     </div>
                   {% endif %}
                 </div>
