@@ -466,7 +466,7 @@
           "enable_header_account": false,
           "enable_header_wishlist": false,
           "enable_header_cart": true,
-          "main_menu": "new-website-menu",
+          "main_menu": "",
           "display_megamenu": true,
           "label_1": "sale",
           "label_1_collection": "",
@@ -502,14 +502,14 @@
             "type": "link_list",
             "settings": {
               "title": "OUR POLICIES",
-              "menu": "our-policies"
+              "menu": ""
             }
           },
           "1569230475940": {
             "type": "link_list",
             "settings": {
               "title": "Information",
-              "menu": "information"
+              "menu": ""
             }
           },
           "fc127494-1557-47b8-99b3-8bf559a0f8db": {
@@ -606,8 +606,6 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Ganpati-Website-Main-Banner-Desktop.gif-1.5_sec.gif",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Ganesh-Chaturthi-Website-Banner-Mobile.gif-1.5-sec_1.gif",
               "alignment": "middle",
               "heading": "",
               "slide-des": "",
@@ -622,8 +620,6 @@
           "17fc5f50-6a19-4bba-bda4-f529e44aab40": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Monsoon_desktop_NB_smart_49123001-b652-49cc-91fd-c08eb79a778c.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Nutri-blend_1da6d80a-240c-43dc-be30-6cf4eb24d00e.jpg",
               "alignment": "left",
               "heading": "",
               "slide-des": "",
@@ -638,8 +634,6 @@
           "1569227318062": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Monsoon-desktop-soup-maker.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Soup_maker_mobile_dcc4e16d-8c76-414d-af4e-bc7de87f8244.jpg",
               "alignment": "middle",
               "heading": "",
               "slide-des": "",
@@ -654,8 +648,6 @@
           "f218c6d0-545a-4b64-aadb-a16be806b27f": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Monsoon_desktop_airfryer.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/fries_mobile_copy.jpg",
               "alignment": "middle",
               "heading": "",
               "slide-des": "",
@@ -670,8 +662,6 @@
           "e13b881c-5e6b-41a2-bcae-7cf834971f59": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Monsoon_desktop_SKT.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/sandwitch_maker_copy.jpg",
               "alignment": "left",
               "heading": "",
               "slide-des": "",
@@ -687,8 +677,6 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/LAKME_Desktop_Banner.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/lakme_mobile_final_2192e627-51a9-4a30-9f4a-d4462abd1920.jpg",
               "alignment": "left",
               "heading": "",
               "slide-des": "",
@@ -704,8 +692,6 @@
             "type": "image",
             "disabled": true,
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Kriti_fully_automatic_coffee_maker_MAIN_BANNER_DESKTOP_98eaea98-b4ec-425f-adf7-65e012df1bdc.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Kriti_fully_automatic_coffee_maker_MAIN_BANNER_MOBILE_28e4e6b1-137f-46fb-8888-9faf8d0b3e8c.jpg",
               "alignment": "right",
               "heading": "",
               "slide-des": "",
@@ -720,8 +706,6 @@
           "7dc232aa-c31e-4afe-a928-480687d1d3e5": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Rentity_main_desktop_banner_609b8a6d-a086-48d1-b98d-a0aaed05364d.jpg",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Rentity_main_mobile_banner_2_20da30b1-d5d9-48d1-b1f6-9171c2578007.jpg",
               "alignment": "left",
               "heading": "",
               "slide-des": "",
@@ -736,8 +720,6 @@
           "54435a39-e216-450e-bc86-07cbd784a4d0": {
             "type": "image",
             "settings": {
-              "image_slide": "shopify:\/\/shop_images\/Spare-parts-Desktop_6ac52587-ae89-428b-9f3c-d8e43432b00e.gif",
-              "slide_image_mobile": "shopify:\/\/shop_images\/Spare-parts-Mobile_9e0e3cfc-f1be-40b0-9ed3-7a34529701a9.gif",
               "alignment": "left",
               "heading": "",
               "slide-des": "",
@@ -2747,7 +2729,6 @@
           "1573033709117-2": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Chef-with-nutri-blend-smart--appliances.jpg",
               "link": "https:\/\/www.wonderchef.com\/collections\/nutri-blend",
               "title": "Nutri-Blend",
               "description": ""
@@ -2765,7 +2746,6 @@
           "1573033709117-3": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Cookware_0d52be95-d95b-4b1c-9bcb-ffc1221e83dd.jpg",
               "link": "shopify:\/\/collections\/cookware",
               "title": "Cookware",
               "description": ""
@@ -2774,7 +2754,6 @@
           "1573033709117-4": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Nutri_pot_1c394211-9bcc-4cee-accc-ffa377e08fd5.jpg",
               "link": "shopify:\/\/collections\/appliances",
               "title": "Appliances",
               "description": ""
@@ -2792,7 +2771,6 @@
           "af5333f0-33da-4182-8aea-d758eed8b6ab": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Cooktop.png",
               "link": "shopify:\/\/collections\/cooktop",
               "title": "Cooktops",
               "description": ""
@@ -2801,7 +2779,6 @@
           "1573033709117-0": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Home_living_ba4f662b-2ea5-4ff1-a8f4-5530a59d75e7.png",
               "link": "shopify:\/\/collections\/home-living",
               "title": "Home & Living",
               "description": ""
@@ -2810,7 +2787,6 @@
           "d4ad55ff-2107-4f17-86fa-a80d62f6f87b": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/KItchen_tools.png",
               "link": "shopify:\/\/collections\/kitchen-tools",
               "title": "Kitchen Tools",
               "description": ""
@@ -3346,8 +3322,6 @@
         ],
         "disabled": true,
         "settings": {
-          "image": "shopify:\/\/shop_images\/tooltip-bg.jpg",
-          "image_mobile": "shopify:\/\/shop_images\/kuforrod-3idyng5_420x_2x_39ed2949-589f-4b44-a569-b3062268f832.jpg",
           "breakpoint": "200"
         }
       },
@@ -3357,7 +3331,6 @@
           "1649916598a8122276-0": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Home_centre_logo_color-min_200x_0bfc4fcf-dbb8-4d36-99eb-3964201a98ae.jpg",
               "link": "",
               "title": ""
             }
@@ -3365,7 +3338,6 @@
           "1649916598a8122276-1": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/2_1cd89edc-8c1c-41e0-a543-2ef9febd9765.png",
               "link": "",
               "title": ""
             }
@@ -3373,7 +3345,6 @@
           "1649916598a8122276-3": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/4_30cea9b2-fd14-4762-8183-d68918b0708b.png",
               "link": "",
               "title": ""
             }
@@ -3381,7 +3352,6 @@
           "1649916598a8122276-4": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/5_74ed1c86-cbd2-46b6-883c-c078583626e9.png",
               "link": "",
               "title": ""
             }
@@ -3405,7 +3375,6 @@
           "7205dfcd-2312-4c0f-8b26-01637fd4858a": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/8_a0acbeec-a5bb-4577-a3c1-c771c92efa45.png",
               "link": "",
               "title": ""
             }
@@ -3413,7 +3382,6 @@
           "353c39b8-b0f7-46d4-a78f-e2f64791a482": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/9_1807b9ac-4375-438c-8a16-5415b533dfa5.png",
               "link": "",
               "title": ""
             }
@@ -3421,7 +3389,6 @@
           "f23d484a-1b7d-4a7b-b41f-7184fdc429f6": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/10.png",
               "link": "",
               "title": ""
             }
@@ -3429,7 +3396,6 @@
           "00860612-ce21-4fa8-8439-2d94b3f63bb7": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/11_4f682a1d-d64b-43be-b366-ac82bbd790a2.jpg",
               "link": "",
               "title": ""
             }
@@ -3437,7 +3403,6 @@
           "f194ad1a-049c-4ac0-8bab-6a309b1dfc6d": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/12_6a234330-b4e7-4805-8a60-35556a4e4cc6.jpg",
               "link": "",
               "title": ""
             }
@@ -3445,7 +3410,6 @@
           "cdc20deb-741b-4ecd-bea7-3bbabfb74234": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/13_98a2fe95-27ad-4c4c-946c-f124fc830d04.jpg",
               "link": "",
               "title": ""
             }
@@ -3454,7 +3418,6 @@
             "type": "logo_image",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/3_12874c8f-118f-4c58-b583-a535387feb4c.png",
               "link": "",
               "title": ""
             }
@@ -3805,7 +3768,7 @@
           "title_border": false,
           "custom-color": false,
           "color_heading_custom": "",
-          "collection": "best-selling-product",
+          "collection": "caesar",
           "collection_layout": "carousel",
           "grid": 3,
           "rows": 10,
@@ -4841,8 +4804,6 @@
           "89595e74-8db1-46ca-889c-f63ebb618b65-1673504398221207a3-0": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Desktop_offer.png",
-              "mimage": "shopify:\/\/shop_images\/Offer_banner_mobile.png",
               "link": "https:\/\/bit.ly\/3X2pfmA",
               "title": "",
               "description": "",
@@ -4950,7 +4911,6 @@
           "2183263b-ac9c-44af-83dc-eba0bb3fa0ce-1683360255b61a1279-0": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Chefs_Picks_small_160x_160x_d999b666-7e66-4404-ad6f-63bfd15adf29_160x_1.png",
               "link": "shopify:\/\/collections\/chefs-picks",
               "title": "chef's picks"
             }
@@ -4959,7 +4919,6 @@
             "type": "logo_image",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Kriti_s_choice_small_160x_160x_160x_d93ede55-e277-4767-9e68-4ea10d385e84.png",
               "link": "shopify:\/\/collections\/kriti-choices",
               "title": "kriti's choice"
             }
@@ -4967,7 +4926,6 @@
           "2183263b-ac9c-44af-83dc-eba0bb3fa0ce-1683360255b61a1279-2": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/wedding.png",
               "link": "shopify:\/\/collections\/wedding-gifts",
               "title": "wedding gifts"
             }
@@ -4975,7 +4933,6 @@
           "2183263b-ac9c-44af-83dc-eba0bb3fa0ce-1683360255b61a1279-3": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/HOME_living_OP2_1.png",
               "link": "shopify:\/\/collections\/home-living",
               "title": "Home & living"
             }
@@ -4983,7 +4940,6 @@
           "2183263b-ac9c-44af-83dc-eba0bb3fa0ce-1683360255b61a1279-4": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/New_Arrivals_small_160x_160x_160x_bedaa79e-117d-4ccf-a381-2b3dc9e5dcd3_160x_1.png",
               "link": "shopify:\/\/collections\/new-arrivals",
               "title": "new arrivals"
             }
@@ -4991,7 +4947,6 @@
           "de88475e-498d-4a5b-b715-e6fd416691cd": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/best_seller.png",
               "link": "shopify:\/\/collections\/combos",
               "title": "combos"
             }
@@ -4999,7 +4954,6 @@
           "ef9a5966-8a6b-4846-a157-294558b6d680": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/gifting_91fb9651-791b-4d19-b8a2-c6f32430121f.png",
               "link": "shopify:\/\/collections\/gift",
               "title": "gifting"
             }
@@ -5007,7 +4961,6 @@
           "991c1b66-b028-4881-8d5b-1579a0a2de34": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Combos_22fdba96-b835-446f-a6f7-76d0e545eb69.png",
               "link": "shopify:\/\/collections\/best-selling-product",
               "title": "best sellers"
             }
@@ -5015,7 +4968,6 @@
           "fb4de1c7-af8b-462e-b1e0-ac90dc2a91fd": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/spare_parts_a477b9cf-a5f0-4230-8bbf-d0bf0f84fa14.png",
               "link": "shopify:\/\/collections\/spares-accessories",
               "title": "spare parts"
             }
@@ -5091,7 +5043,7 @@
           "title_border": false,
           "custom-color": false,
           "color_heading_custom": "",
-          "collection": "new-arrivals",
+          "collection": "all",
           "collection_layout": "carousel",
           "grid": 3,
           "rows": 2,
@@ -5134,7 +5086,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Affogato-1-1.jpg",
               "link": "https:\/\/blog.wonderchef.com\/affogato-the-perfect-five-minute-coffee-dessert\/",
               "title": "AFFOGATO – The Coffee Dessert",
               "description": ""
@@ -5144,7 +5095,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Rum-Balls-1-1140x760.jpg",
               "link": "https:\/\/blog.wonderchef.com\/boozy-bite-sized-no-bake-christmas-rum-balls\/",
               "title": "NO-BAKE CHRISTMAS RUM BALLS",
               "description": ""
@@ -5154,7 +5104,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Pineapple-Oats-Smoothie-1_1.jpg",
               "link": "https:\/\/blog.wonderchef.com\/pineapple-oats-smoothie-tropical-sunshine-smoothie\/",
               "title": "PINEAPPLE OATS SMOOTHIE",
               "description": ""
@@ -5164,7 +5113,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Cafe-De-Paris-Butter-1-1.webp",
               "link": "https:\/\/blog.wonderchef.com\/cafe-de-paris-betty-botters-better-butter\/",
               "title": "CAFE DE PARIS BUTTER",
               "description": ""
@@ -5174,7 +5122,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Blogs_Kids_tiffin_1200x_db79d076-1572-4686-abd3-64d9338c3129.webp",
               "link": "https:\/\/blog.wonderchef.com\/quick-and-easy-kids-tiffin-ideas-for-your-fussy-eater\/",
               "title": "Quick and easy kids tiffin ideas",
               "description": "Image with text overlay"
@@ -5184,7 +5131,6 @@
             "type": "banner_block",
             "disabled": true,
             "settings": {
-              "image": "shopify:\/\/shop_images\/Cinnamon-Apple-Muffins-5-768x510.webp",
               "link": "https:\/\/blog.wonderchef.com\/cinnamon-apple-muffins\/",
               "title": "Cinnamon Apple Muffins",
               "description": "Image with text overlay"
@@ -5211,7 +5157,6 @@
           "title": "BLOGS & RECIPES",
           "text_link": "",
           "custom_link_1": "",
-          "image": "shopify:\/\/shop_images\/Mexican-Quinoa-1-1140x758.jpg",
           "blog_title": "Mexican Quinoa Bowl",
           "mobile_title": "Mexican Quinoa Bowl",
           "description": "Calling this a ‘Mexican’ bowl is definitely a bit of a stretch but naming recipes is not my strong suit, so I’m hoping you’ll forgive me. Besides, the recipe does include Mexican seasoning so I’m hoping that counts for something!",
@@ -6021,8 +5966,6 @@
           "2c1ee597-6ad8-4901-b9c8-30b4fd9fcb51-banner_block-1": {
             "type": "banner_block",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Banner_2_1.jpg",
-              "mimage": "shopify:\/\/shop_images\/Banner_4_9e60751b-d3a3-448b-92ac-eb300ccfec3f.jpg",
               "link": "",
               "title": "",
               "description": "",
@@ -6100,12 +6043,10 @@
           "bac31aa3-3267-4c3b-bfb0-b1634c5ac750-review-1": {
             "type": "review",
             "settings": {
-              "image": "shopify:\/\/shop_images\/FREEDOM-FROM-GUESSWORK_6389e3d2-aa93-4d47-94bd-ee76cbb7eb54.jpg",
               "brand": "brands",
               "title": "Nutri-blend SMART - India's first fully automatic mixer grinder from Wonderchef",
               "link": "shopify:\/\/products\/nutri-blend-smart",
               "stars": 5,
-              "image1": "shopify:\/\/shop_images\/final-edited-NB-Smart.jpg",
               "author": "Anil Patel, Delhi",
               "caption": "Captions",
               "text": "It is fully automatic. It is very easy to use with the pre-programmed menus - you just need to press one button, and it does its job and stops after completion. The jars are unbreakable. Better than my old mixer. My family loves this Nutri-blend SMART."
@@ -6114,12 +6055,10 @@
           "bac31aa3-3267-4c3b-bfb0-b1634c5ac750-review-2": {
             "type": "review",
             "settings": {
-              "image": "shopify:\/\/shop_images\/15barforwebsite_cdbe2428-2250-443b-ac10-fcccfa01b4f6.jpg",
               "brand": "brands",
               "title": "Regalia Espresso Coffee Maker 15 Bar | Ideal for Espresso, Cappuccino, Latté, Macchiato or Ristretto at Home | with Steamer Spout for Cappuccino & Latte | Professional Style Coffee | Works with Coffee Powder | 2 Years Warranty | Steel",
               "link": "shopify:\/\/products\/regalia-espresso-coffee-maker-15-bar",
               "stars": 5,
-              "image1": "shopify:\/\/shop_images\/final-edited-15-bar-coffe-maker.jpg",
               "author": "Nirja Singh, Mumbai",
               "caption": "Captions",
               "text": "Easy to use and value for money. As a coffee enthusiast, I had doubts about this machine, but it does more than a fair job of extracting decent coffee. The key here is using the right coffee grind - use Fine grind. Rest, leave it to this machine."
@@ -6128,12 +6067,10 @@
           "bac31aa3-3267-4c3b-bfb0-b1634c5ac750-review-3": {
             "type": "review",
             "settings": {
-              "image": "shopify:\/\/shop_images\/9_1_0880bf57-a625-4f76-8a2e-0130324fc911.jpg",
               "brand": "brands",
               "title": "Forza 30cm Cast-iron Kadhai, Pre-Seasoned Cookware, Induction Friendly, 3.35L, 3.8mm",
               "link": "shopify:\/\/products\/forza-30cm-cast-iron-kadhai-pre-seasoned-cookware-induction-friendly-3-35l-3-8mm",
               "stars": 5,
-              "image1": "shopify:\/\/shop_images\/final-edited-forza_8e7b759c-72c6-4806-8539-9702e3b14665.jpg",
               "author": "Madhuri Gujarathi, Hyderabad",
               "caption": "Captions",
               "text": "This kadhai is great. It heats up evenly and retains heat for quite sometime, even after turning off heat. The base is thick, food does not burn quickly, and is cooked evenly. It was pre-seasoned so easy to use. Great for making sambar, deep frying, curries, etc - totally loved the way it is."
@@ -6142,12 +6079,10 @@
           "1ddd0f38-a433-4476-af1d-f409cd54d7b9": {
             "type": "review",
             "settings": {
-              "image": "shopify:\/\/shop_images\/1_d012a060-d605-4158-aa6e-56304ba10b1b.jpg",
               "brand": "brands",
               "title": "Soup Maker 1L, 800W, Green and Silver, Easy to use,",
               "link": "shopify:\/\/products\/wonderchef-soup-maker-1-litre",
               "stars": 5,
-              "image1": "shopify:\/\/shop_images\/final-edited-soupmaker.jpg",
               "author": "Savita Dhawle, Nagpur",
               "caption": "Captions",
               "text": "I never thought that soup could be made in 20 min with a simple push of a button. Heating, blending and cooking are all done in the same device. Earlier, making soup was a big hassle, but now it happens in half of the time, and the taste is awesome. To surprise me, my husband made jelly with compote option!"
@@ -6156,12 +6091,10 @@
           "d308a03e-764f-46eb-aeba-f607ddd681c8": {
             "type": "review",
             "settings": {
-              "image": "shopify:\/\/shop_images\/01_4d4aca28-e9f3-4471-b5b3-aed9f57bc26d.jpg",
               "brand": "brands",
               "title": "Duralife Die-cast 24 cm Fry Pan | 5 Layer Healthy Duramax Non-Stick Coating | Soft Touch Handle | Pure Grade Aluminium | PFOA Free | 1.7 litres | 2 Year Warranty | Copper",
               "link": "shopify:\/\/products\/wonderchef-duralife-die-cast-fry-pan-5-layer-healthy-duramax-non-stick-coating-soft-touch-handle-pure-grade-aluminium-pfoa-free-1-7-litres-24-cm-2-year-warranty-copper",
               "stars": 5,
-              "image1": "shopify:\/\/shop_images\/final-edited-pan.jpg",
               "author": "Sunita Mehta, Jaipur",
               "caption": "Captions",
               "text": "I must say that it is the queen among all the utensils - beautiful pan. I use it to do all my tadka, eggs, and paneer dishes because better material doesn't burn my stuff and uses less oil. Even the handle doesn't get hot. Really appreciate the effort of making this product wonderful."
@@ -6322,7 +6255,6 @@
           "f0a41230-7048-46a7-b401-8e9ccb23c9aa-logo_image-1": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Vietnamese-Coffee-Smoothie-1_1_3.jpg",
               "link": "https:\/\/blog.wonderchef.com\/cinnamon-apple-muffins\/",
               "title": "Cinnamon Apple Muffins"
             }
@@ -6330,7 +6262,6 @@
           "f0a41230-7048-46a7-b401-8e9ccb23c9aa-logo_image-2": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Vietnamese-Coffee-Smoothie-1_1.jpg",
               "link": "https:\/\/blog.wonderchef.com\/vietnamese-coffee-smoothie-calling-all-cold-coffee-lovers\/",
               "title": "VIETNAMESE COFFEE SMOOTHIE"
             }
@@ -6338,7 +6269,6 @@
           "f0a41230-7048-46a7-b401-8e9ccb23c9aa-logo_image-3": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Vietnamese-Coffee-Smoothie-1_1_1.jpg",
               "link": "https:\/\/blog.wonderchef.com\/mint-and-coriander-rice\/",
               "title": "MINT AND CORIANDER RICE"
             }
@@ -6346,7 +6276,6 @@
           "f0a41230-7048-46a7-b401-8e9ccb23c9aa-logo_image-4": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Coffee-Carrots-5-768x511.jpg",
               "link": "https:\/\/blog.wonderchef.com\/coffee-roasted-carrots-a-savoury-coffee-pairing-that-will-surprise-you\/",
               "title": "COFFEE ROASTED CARROTS"
             }
@@ -6354,7 +6283,6 @@
           "f0a41230-7048-46a7-b401-8e9ccb23c9aa-logo_image-5": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Vietnamese-Coffee-Smoothie-1_1_4.jpg",
               "link": "https:\/\/blog.wonderchef.com\/air-fryer-apple-crumble\/",
               "title": "Air Fryer Apple Crumble"
             }
@@ -6362,7 +6290,6 @@
           "68429680-61e1-4ba5-b1c2-39884b7fab0d": {
             "type": "logo_image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/Vietnamese-Coffee-Smoothie-1_1.png",
               "link": "https:\/\/blog.wonderchef.com\/quick-and-easy-kids-tiffin-ideas-for-your-fussy-eater\/",
               "title": "Quick and easy kids tiffin ideas"
             }
