@@ -5943,17 +5943,7 @@ theme.products_frequently_by_together = (function() {
 
     var $addToCart = $('[data-bundle-addtocart]', $bundleContainer);
     var $addToCartText = $('[data-add-to-cart-text]', $bundleContainer);
-    var classes = {
-            cartPopupWrapperHidden: 'cart-popup-wrapper--hidden',
-            hidden: 'hide',
-            inputError: 'input--error',
-            productOnSale: 'price--on-sale',
-            productUnitAvailable: 'price--unit-available',
-            productUnavailable: 'price--unavailable',
-            productFormErrorMessageWrapperHidden:
-                'product-form__error-message-wrapper--hidden',
-            activeClass: 'active-thumb'
-        };
+   
     var $errorMessageWrapper = $('[data-error-message-wrapper]', $bundleContainer);
     var $loader = $('[data-loader]', $addToCart);
     var $loaderStatus = $('[data-loader-status]', $bundleContainer);
