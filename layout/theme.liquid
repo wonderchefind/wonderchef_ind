@@ -199,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {% if {{ "now" | date: "%H:%M" }} contains '18:' %}
   hello time {{ "now" | date: "%H:%M" }}
   {% else %}
-  this is test
+  this is test {{ "now" | date: "%H:%M" }}
   {% endif %}
     
   <!-- Google Tag Manager (noscript) -->
