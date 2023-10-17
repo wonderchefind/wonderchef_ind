@@ -191,6 +191,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-SSRFNVNCEM');
 </script>
+{{ 'daily-deals.scss' | asset_url | stylesheet_tag }}
 </head>
 
 <body class="template-{{ template | split: '.' | first }}">
@@ -535,6 +536,7 @@ window.addEventListener('load', () => {
 </script>
    {% endif %}
   
+{% include 'daily-deals' %}
 </body>
 </html>
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
