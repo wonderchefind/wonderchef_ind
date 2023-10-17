@@ -196,8 +196,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body class="template-{{ template | split: '.' | first }}">
 {% assign time = {{ "now" | date: "%H:%M" }} %}
-
-  hello time : {{ time }}
+{% if {{ "now" | date: "%H:%M" }} contains '18:' %}
+  hello time {{ "now" | date: "%H:%M" }}
+  {% else %}
+  this is test
+  {% endif %}
     
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT2DQRG"
