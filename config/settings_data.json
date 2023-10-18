@@ -6352,6 +6352,12 @@
         "disabled": false,
         "settings": {
         }
+      },
+      "6544724514127332554": {
+        "type": "shopify:\/\/apps\/go-gift-cards\/blocks\/app-embed\/3676fc08-8fa0-4857-baf6-8c6e28f899dc",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   },
