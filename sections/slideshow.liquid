@@ -4,14 +4,76 @@
 {%- assign autoplay = autoplay | default: section.settings.autoplay -%}
 {%- assign time = time | default: section.settings.autorotate_speed | times: 1000 -%}
 {% assign currenttime = "now" | date: "%H%M" %}
-{% if currenttime > '1600' %}
+{% assign day = 'now' | date: '%A' %}
+{% case day %}
+{% when "Monday" %}
+  {% if currenttime > '1600' %}
 
-  Time is greater then 16:00
+  Time is greater then 16:00 Monday
 
 {% elsif currenttime < '1600' %}
-  Time is less then 16:00
+  Time is less then 16:00 Monday
 
 {% endif %}
+{% when "Tuesday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Tuesday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Tuesday
+
+{% endif %}
+{% when "Wednesday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Wednesday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Wednesday
+
+{% endif %}
+{% when "Thursday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Thursday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Thursday
+
+{% endif %}
+{% when "Friday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Friday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Friday
+
+{% endif %}
+{% when "Saturday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Saturday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Saturday
+
+{% endif %}
+{% when "Sunday" %}
+  {% if currenttime > '1600' %}
+
+  Time is greater then 16:00 Sunday
+
+{% elsif currenttime < '1600' %}
+  Time is less then 16:00 Sunday
+
+{% endif %}
+
+{% else %}
+third_expression
+{% endcase %}
+
 
 {% if section.settings.custom_color %}
     {% render 'customcolor_slideshow' %}
