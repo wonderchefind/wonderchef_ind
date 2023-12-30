@@ -3,7 +3,7 @@
 {%- assign fadein = fadein | default: section.settings.show_fadein -%}
 {%- assign autoplay = autoplay | default: section.settings.autoplay -%}
 {%- assign time = time | default: section.settings.autorotate_speed | times: 1000 -%}
-{% assign currenttime = "now" | date: "%H%M" %}
+{% assign currenttime = "now" | date: "%H" %}
 {% assign day = 'now' | date: '%A' %}
 {% assign currentdate = 'now' | date: '%d' %}
 {% case day %}
@@ -53,7 +53,7 @@
 
 {% endif %}
 {% when "Saturday" %}
-  {% if currenttime == '1600' %}
+  {% if currenttime == '16' %}
 
   Time is greater then 16:00 {{ day }}, {{ currentdate }}
 
