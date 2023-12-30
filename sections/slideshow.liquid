@@ -5,6 +5,7 @@
 {%- assign time = time | default: section.settings.autorotate_speed | times: 1000 -%}
 {% assign currenttime = "now" | date: "%H%M" %}
 {% assign day = 'now' | date: '%A' %}
+{% assign currentdate = 'now' | date: '%d' %}
 {% case day %}
 {% when "Monday" %}
   {% if currenttime > '1600' %}
