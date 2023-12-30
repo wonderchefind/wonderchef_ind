@@ -55,10 +55,10 @@
 {% when "Saturday" %}
   {% if currenttime > '1600' %}
 
-  Time is greater then 16:00 Saturday
+  Time is greater then 16:00 {{ day }}, {{ currentdate }}
 
 {% elsif currenttime < '1600' %}
-  Time is less then 16:00 Saturday
+  Time is less then 16:00 {{ day }}, {{ currentdate }}
 
 {% endif %}
 {% when "Sunday" %}
