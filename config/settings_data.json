@@ -6341,21 +6341,21 @@
       "1649916598a8122276"
     ],
     "blocks": {
-      "6065014864672580889": {
-        "type": "shopify:\/\/apps\/slide-cart-by-amp\/blocks\/app-embed\/0a410b8d-7dc4-4f2d-b4e8-c12d34fd2255",
+      "6446056954808858455": {
+        "type": "shopify:\/\/apps\/upsellio-discounted-upsells\/blocks\/app-embed\/e4a32349-e833-4914-a005-0578072ba642",
         "disabled": false,
         "settings": {
         }
       },
       "17442089763355273418": {
         "type": "shopify:\/\/apps\/vify-professional-gift-cards\/blocks\/gift-card-issue\/43d9e0cc-139a-4d15-b0b8-63f2863afb32",
-        "disabled": false,
+        "disabled": true,
         "settings": {
         }
       },
-      "6446056954808858455": {
-        "type": "shopify:\/\/apps\/upsellio-discounted-upsells\/blocks\/app-embed\/e4a32349-e833-4914-a005-0578072ba642",
-        "disabled": false,
+      "6065014864672580889": {
+        "type": "shopify:\/\/apps\/slide-cart-by-amp\/blocks\/app-embed\/0a410b8d-7dc4-4f2d-b4e8-c12d34fd2255",
+        "disabled": true,
         "settings": {
         }
       }
