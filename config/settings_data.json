@@ -6358,6 +6358,12 @@
         "disabled": true,
         "settings": {
         }
+      },
+      "9760743957074645847": {
+        "type": "shopify:\/\/apps\/ea-spin-wheel-popups\/blocks\/app-embed-block\/559c6968-8916-4f43-b93f-91b8ea061003",
+        "disabled": false,
+        "settings": {
+        }
       }
     }
   },
