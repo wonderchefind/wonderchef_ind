@@ -6347,29 +6347,16 @@
         "settings": {
         }
       },
-      "17442089763355273418": {
-        "type": "shopify:\/\/apps\/vify-professional-gift-cards\/blocks\/gift-card-issue\/43d9e0cc-139a-4d15-b0b8-63f2863afb32",
-        "disabled": true,
-        "settings": {
-        }
-      },
-      "6065014864672580889": {
-        "type": "shopify:\/\/apps\/slide-cart-by-amp\/blocks\/app-embed\/0a410b8d-7dc4-4f2d-b4e8-c12d34fd2255",
-        "disabled": true,
-        "settings": {
-        }
-      },
       "9760743957074645847": {
         "type": "shopify:\/\/apps\/ea-spin-wheel-popups\/blocks\/app-embed-block\/559c6968-8916-4f43-b93f-91b8ea061003",
         "disabled": false,
         "settings": {
         }
       },
-      "10605408327587305396": {
-        "type": "shopify:\/\/apps\/eg-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
+      "1486654112309516955": {
+        "type": "shopify:\/\/apps\/bogo-easy-free-gift-upsell\/blocks\/feeniks-offers\/9416ce92-aaaf-4a81-8fdf-b9a4e639d6dc",
         "disabled": false,
         "settings": {
-          "version": "v3"
         }
       }
     }
