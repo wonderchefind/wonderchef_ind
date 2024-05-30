@@ -6341,22 +6341,9 @@
       "1649916598a8122276"
     ],
     "blocks": {
-      "9760743957074645847": {
-        "type": "shopify:\/\/apps\/ea-spin-wheel-popups\/blocks\/app-embed-block\/559c6968-8916-4f43-b93f-91b8ea061003",
+      "8154336783611098045": {
+        "type": "shopify:\/\/apps\/izyrent\/blocks\/izyrent\/cda4a37a-6d4d-4f3d-b8e5-c19d5c367c6a",
         "disabled": false,
-        "settings": {
-        }
-      },
-      "10605408327587305396": {
-        "type": "shopify:\/\/apps\/eg-auto-add-to-cart\/blocks\/app-embed\/0f7d4f74-1e89-4820-aec4-6564d7e535d2",
-        "disabled": false,
-        "settings": {
-          "version": "v3"
-        }
-      },
-      "6446056954808858455": {
-        "type": "shopify:\/\/apps\/upsellio-discounted-upsells\/blocks\/app-embed\/e4a32349-e833-4914-a005-0578072ba642",
-        "disabled": true,
         "settings": {
         }
       }
